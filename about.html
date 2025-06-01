@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Us - Gayatri Tours and Travels</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#0a2463',secondary:'#ffc857'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+.page-header {
+    background-image: linear-gradient(rgba(10, 36, 99, 0.8), rgba(10, 36, 99, 0.8)), url('https://readdy.ai/api/search-image?query=professional%2520travel%2520agency%2520office%2520with%2520modern%2520design%252C%2520travel%2520brochures%252C%2520world%2520map%2520on%2520wall%252C%2520friendly%2520staff%2520helping%2520customers%252C%2520high%2520quality%2520professional%2520photography%252C%2520bright%2520lighting%252C%2520clean%2520environment&width=1920&height=400&seq=20&orientation=landscape');
+    background-size: cover;
+    background-position: center;
+}
+.value-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.value-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+.timeline-item {
+    position: relative;
+}
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 19px;
+    height: 100%;
+    width: 2px;
+    background-color: #e5e7eb;
+    z-index: 0;
+}
+.timeline-item:last-child::before {
+    height: 50%;
+}
+.timeline-item:first-child::before {
+    top: 50%;
+    height: 50%;
+}
+.timeline-dot {
+    position: relative;
+    z-index: 1;
+    background-color: white;
+}
+.counter-item {
+    position: relative;
+}
+.counter-item::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    height: 50px;
+    width: 1px;
+    background-color: #e5e7eb;
+}
+.counter-item:last-child::after {
+    display: none;
+}
+.testimonial-card {
+    transition: transform 0.3s ease;
+}
+.testimonial-card.active {
+    transform: scale(1.05);
+}
+.service-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+.cta-section {
+    background-image: linear-gradient(to right, rgba(10, 36, 99, 0.9), rgba(10, 36, 99, 0.7)), url('https://readdy.ai/api/search-image?query=luxury%2520travel%2520concept%2520with%2520world%2520map%252C%2520passport%252C%2520tickets%252C%2520camera%252C%2520sunglasses%2520on%2520wooden%2520table%252C%2520professional%2520photography%252C%2520top%2520view%252C%2520travel%2520planning%2520concept%252C%2520high%2520resolution&width=1920&height=600&seq=21&orientation=landscape');
+    background-size: cover;
+    background-position: center;
+}
+</style>
+</head>
+<body class="bg-white">
+<!-- Header -->
+<header class="bg-white shadow-md fixed w-full top-0 z-50">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+        <a href="index.html" class="text-2xl font-['Pacifico'] text-primary">Gayatri Tours & Travels</a>   
+        <nav class="hidden lg:flex items-center space-x-6">
+           <a href="index.html" class="text-primary font-medium border-b-2 border-primary">Home</a>
+            <a href="about.html" class="text-gray-700 hover:text-primary transition-colors">About</a>
+            <a href="packages.html" class="text-gray-700 hover:text-primary transition-colors">Packages</a>
+            <a href="contact.html" class="text-gray-700 hover:text-primary transition-colors">Contact</a>
+        </nav>
+        <div class="hidden lg:flex items-center space-x-4">
+            <a href="tel:+919405597993" class="text-primary font-medium flex items-center whitespace-nowrap">
+                <div class="w-5 h-5 flex items-center justify-center mr-1">
+                    <i class="ri-phone-line"></i>
+                </div>
+                +91 9405597993
+            </a>
+        </div>
+        <button class="lg:hidden w-10 h-10 flex items-center justify-center text-primary">
+            <i class="ri-menu-line text-2xl"></i>
+        </button>
+    </div>
+</header>
+
+<!-- Page Header -->
+<section class="page-header pt-28 pb-16">
+    <div class="container mx-auto px-4 text-white">
+        <div class="max-w-3xl">
+            <h1 class="text-3xl md:text-4xl font-bold mb-4">About Gayatri Tours and Travels</h1>
+            <p class="text-lg mb-6">Learn about our journey, mission, values, and the team behind Maharashtra's most trusted travel partner.</p>
+            <nav class="flex" aria-label="Breadcrumb">
+                <ol class="inline-flex items-center space-x-1 md:space-x-3">
+                    <li class="inline-flex items-center">
+                        <a href="https://readdy.ai/home/64319105-0b5e-4a51-af8b-8c85364cc76f/91671dcd-a745-4183-a82b-932bcd6286ff" data-readdy="true" class="inline-flex items-center text-white hover:text-gray-200">
+                            <div class="w-4 h-4 flex items-center justify-center mr-2">
+                                <i class="ri-home-line"></i>
+                            </div>
+                            Home
+                        </a>
+                    </li>
+                    <li>
+                        <div class="flex items-center">
+                            <div class="w-4 h-4 flex items-center justify-center mx-1">
+                                <i class="ri-arrow-right-s-line"></i>
+                            </div>
+                            <span class="text-white">About Us</span>
+                        </div>
+                    </li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+</section>
+
+<!-- Company Overview Section -->
+<section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+        <div class="flex flex-col lg:flex-row items-center gap-12">
+            <div class="lg:w-1/2">
+                <img src="https://readdy.ai/api/search-image?query=professional%2520travel%2520agency%2520team%2520in%2520modern%2520office%252C%2520diverse%2520staff%2520working%2520together%252C%2520planning%2520travel%2520itineraries%252C%2520using%2520computers%252C%2520maps%2520and%2520brochures%2520visible%252C%2520friendly%2520atmosphere%252C%2520high%2520quality%2520professional%2520photography&width=600&height=500&seq=22&orientation=landscape" alt="About Gayatri Tours and Travels" class="rounded-lg shadow-xl w-full h-auto object-cover object-top">
+            </div>
+            <div class="lg:w-1/2">
+                <h2 class="text-3xl font-bold text-primary mb-6">Your Trusted Travel Partner Since 2010</h2>
+                <p class="text-gray-700 mb-6 leading-relaxed">Gayatri Tours and Travels has been providing exceptional travel services across Maharashtra and beyond for over 15 years. Founded with a passion for creating memorable travel experiences, we've grown from a small family business to one of the region's most trusted travel service providers.</p>
+                <p class="text-gray-700 mb-6 leading-relaxed">Our extensive fleet of well-maintained vehicles, professional drivers, and dedicated customer service team ensure that every journey with us is comfortable, safe, and enjoyable. Whether you're planning a weekend getaway, a religious pilgrimage, or need reliable airport transfers, we have tailored solutions to meet your needs.</p>
+                <div class="flex flex-col sm:flex-row gap-4 mt-8">
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mr-4">
+                            <i class="ri-car-line text-primary text-2xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-900">50+ Vehicles</h4>
+                            <p class="text-gray-600">Modern fleet</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mr-4">
+                            <i class="ri-map-pin-line text-primary text-2xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-900">100+ Destinations</h4>
+                            <p class="text-gray-600">Across India</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex flex-col sm:flex-row gap-4 mt-4">
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mr-4">
+                            <i class="ri-user-smile-line text-primary text-2xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-900">10,000+ Customers</h4>
+                            <p class="text-gray-600">Satisfied travelers</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mr-4">
+                            <i class="ri-award-line text-primary text-2xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-900">15+ Years</h4>
+                            <p class="text-gray-600">Industry experience</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Mission & Values Section -->
+<section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+        <div class="text-center max-w-3xl mx-auto mb-12">
+            <h2 class="text-3xl font-bold text-primary mb-4">Our Mission & Values</h2>
+            <p class="text-gray-700">At Gayatri Tours and Travels, we're driven by a clear mission and guided by strong values that shape everything we do.</p>
+        </div>
+        
+        <div class="bg-white rounded-lg shadow-lg p-8 mb-16">
+            <div class="flex items-center justify-center mb-6">
+                <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mr-4">
+                    <i class="ri-flag-line text-primary text-3xl"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-gray-900">Our Mission</h3>
+            </div>
+            <p class="text-gray-700 text-center max-w-3xl mx-auto text-lg leading-relaxed">To provide exceptional travel experiences that create lasting memories, ensuring safety, comfort, and personalized service for every customer while promoting the rich cultural heritage and natural beauty of India.</p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="bg-white rounded-lg shadow-md p-6 value-card">
+                <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+                    <i class="ri-shield-check-line text-primary text-3xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-3">Safety First</h3>
+                <p class="text-gray-700">We prioritize the safety and security of our customers above all else, with well-maintained vehicles, professional drivers, and strict safety protocols.</p>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-md p-6 value-card">
+                <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+                    <i class="ri-customer-service-2-line text-primary text-3xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-3">Customer Excellence</h3>
+                <p class="text-gray-700">We're committed to exceeding customer expectations through personalized service, attention to detail, and prompt response to all inquiries and needs.</p>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-md p-6 value-card">
+                <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+                    <i class="ri-heart-line text-primary text-3xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-3">Passion for Travel</h3>
+                <p class="text-gray-700">Our love for travel drives us to create memorable experiences, showcase hidden gems, and share the beauty and culture of every destination.</p>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-md p-6 value-card">
+                <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+                    <i class="ri-recycle-line text-primary text-3xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-3">Sustainability</h3>
+                <p class="text-gray-700">We're committed to responsible tourism practices that minimize environmental impact and support local communities at every destination we serve.</p>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-md p-6 value-card">
+                <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+                    <i class="ri-team-line text-primary text-3xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-3">Teamwork</h3>
+                <p class="text-gray-700">Our success comes from collaboration, mutual respect, and a shared commitment to excellence among all members of our diverse team.</p>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-md p-6 value-card">
+                <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+                    <i class="ri-hand-heart-line text-primary text-3xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-3">Integrity</h3>
+                <p class="text-gray-700">We operate with honesty, transparency, and ethical business practices in all our dealings with customers, partners, and employees.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Company History Section -->
+<section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+        <div class="text-center max-w-3xl mx-auto mb-12">
+            <h2 class="text-3xl font-bold text-primary mb-4">Our Journey Through Time</h2>
+            <p class="text-gray-700">From humble beginnings to becoming one of Maharashtra's most trusted travel partners, explore the key milestones in our 15-year journey.</p>
+        </div>
+        
+        <div class="max-w-4xl mx-auto">
+            <div class="timeline-item pl-14 pb-10">
+                <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center timeline-dot">
+                    <i class="ri-flag-line text-white"></i>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-6 ml-6">
+                    <h3 class="text-xl font-bold text-primary mb-2">2010: The Beginning</h3>
+                    <p class="text-gray-700 mb-4">Gayatri Tours and Travels was founded by Mr. Rajesh Sharma with just two vehicles, offering local cab services in Pune. His vision was to provide reliable and comfortable transportation with a personal touch.</p>
+                    <img src="https://readdy.ai/api/search-image?query=small%2520travel%2520agency%2520office%2520opening%2520day%252C%2520two%2520cars%2520parked%2520outside%252C%2520ribbon%2520cutting%2520ceremony%252C%2520small%2520team%2520celebrating%252C%2520professional%2520photography%252C%2520historical%2520moment%252C%2520high%2520resolution&width=500&height=300&seq=23&orientation=landscape" alt="Gayatri Tours and Travels Beginning" class="rounded-lg w-full h-auto object-cover object-top">
+                </div>
+            </div>
+            
+            <div class="timeline-item pl-14 pb-10">
+                <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center timeline-dot">
+                    <i class="ri-building-line text-white"></i>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-6 ml-6">
+                    <h3 class="text-xl font-bold text-primary mb-2">2013: Expansion to Mumbai</h3>
+                    <p class="text-gray-700 mb-4">After establishing a strong presence in Pune, we expanded our services to Mumbai, adding 10 more vehicles to our fleet and opening our first branch office in the financial capital of India.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item pl-14 pb-10">
+                <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center timeline-dot">
+                    <i class="ri-award-line text-white"></i>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-6 ml-6">
+                    <h3 class="text-xl font-bold text-primary mb-2">2015: Recognition & Growth</h3>
+                    <p class="text-gray-700 mb-4">Received the "Best Travel Service Provider" award from the Maharashtra Tourism Development Corporation. Our fleet expanded to 25 vehicles, and we introduced our first package tours to popular destinations.</p>
+                    <img src="https://readdy.ai/api/search-image?query=business%2520award%2520ceremony%252C%2520travel%2520agency%2520receiving%2520trophy%252C%2520formal%2520event%252C%2520professional%2520photography%252C%2520celebration%2520moment%252C%2520business%2520achievement%252C%2520high%2520resolution&width=500&height=300&seq=24&orientation=landscape" alt="Award Ceremony" class="rounded-lg w-full h-auto object-cover object-top">
+                </div>
+            </div>
+            
+            <div class="timeline-item pl-14 pb-10">
+                <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center timeline-dot">
+                    <i class="ri-global-line text-white"></i>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-6 ml-6">
+                    <h3 class="text-xl font-bold text-primary mb-2">2018: Digital Transformation</h3>
+                    <p class="text-gray-700 mb-4">Launched our website and mobile app, making it easier for customers to book our services online. Implemented a digital fleet management system to enhance operational efficiency and customer service.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item pl-14 pb-10">
+                <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center timeline-dot">
+                    <i class="ri-virus-line text-white"></i>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-6 ml-6">
+                    <h3 class="text-xl font-bold text-primary mb-2">2020: Navigating Challenges</h3>
+                    <p class="text-gray-700 mb-4">During the global pandemic, we adapted our services to prioritize safety with enhanced sanitization protocols. Introduced special medical transport services to support the community during difficult times.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item pl-14">
+                <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center timeline-dot">
+                    <i class="ri-rocket-line text-white"></i>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-6 ml-6">
+                    <h3 class="text-xl font-bold text-primary mb-2">2025: Present Day & Beyond</h3>
+                    <p class="text-gray-700 mb-4">Today, with a fleet of over 50 vehicles and services across Maharashtra and neighboring states, we continue to grow while maintaining our commitment to exceptional service. We're expanding our eco-friendly vehicle options and developing new specialized tour packages to meet evolving customer needs.</p>
+                    <img src="https://readdy.ai/api/search-image?query=modern%2520travel%2520agency%2520headquarters%252C%2520large%2520fleet%2520of%2520vehicles%2520parked%2520outside%252C%2520mix%2520of%2520cars%2520and%2520buses%252C%2520professional%2520photography%252C%2520business%2520success%252C%2520high%2520resolution&width=500&height=300&seq=25&orientation=landscape" alt="Gayatri Tours and Travels Today" class="rounded-lg w-full h-auto object-cover object-top">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Achievements Section -->
+<section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+        <div class="text-center max-w-3xl mx-auto mb-12">
+            <h2 class="text-3xl font-bold text-primary mb-4">Our Achievements</h2>
+            <p class="text-gray-700">We take pride in our growth, recognition, and the trust we've earned from thousands of satisfied customers over the years.</p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-16">
+            <div class="bg-white rounded-lg shadow-md p-6 text-center counter-item">
+                <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="ri-calendar-check-line text-primary text-3xl"></i>
+                </div>
+                <h3 class="text-4xl font-bold text-primary mb-2">15+</h3>
+                <p class="text-gray-700">Years of Experience</p>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-md p-6 text-center counter-item">
+                <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="ri-user-smile-line text-primary text-3xl"></i>
+                </div>
+                <h3 class="text-4xl font-bold text-primary mb-2">10,000+</h3>
+                <p class="text-gray-700">Happy Customers</p>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-md p-6 text-center counter-item">
+                <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="ri-route-line text-primary text-3xl"></i>
+                </div>
+                <h3 class="text-4xl font-bold text-primary mb-2">5M+</h3>
+                <p class="text-gray-700">Kilometers Traveled</p>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-md p-6 text-center counter-item">
+                <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="ri-award-line text-primary text-3xl"></i>
+                </div>
+                <h3 class="text-4xl font-bold text-primary mb-2">12</h3>
+                <p class="text-gray-700">Industry Awards</p>
+            </div>
+        </div>
+        
+        <div class="bg-white rounded-lg shadow-lg p-8">
+            <h3 class="text-2xl font-bold text-primary mb-6 text-center">Awards & Recognition</h3>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="flex items-start">
+                    <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mr-4 mt-1">
+                        <i class="ri-award-fill text-primary text-xl"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-gray-900 mb-1">Best Travel Service Provider 2015</h4>
+                        <p class="text-gray-700">Maharashtra Tourism Development Corporation</p>
+                    </div>
+                </div>
+                
+                <div class="flex items-start">
+                    <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mr-4 mt-1">
+                        <i class="ri-award-fill text-primary text-xl"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-gray-900 mb-1">Excellence in Customer Service 2017</h4>
+                        <p class="text-gray-700">Pune Chamber of Commerce</p>
+                    </div>
+                </div>
+                
+                <div class="flex items-start">
+                    <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mr-4 mt-1">
+                        <i class="ri-award-fill text-primary text-xl"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-gray-900 mb-1">Best Tour Operator 2019</h4>
+                        <p class="text-gray-700">India Travel Awards - West</p>
+                    </div>
+                </div>
+                
+                <div class="flex items-start">
+                    <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mr-4 mt-1">
+                        <i class="ri-award-fill text-primary text-xl"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-gray-900 mb-1">Business Resilience Award 2021</h4>
+                        <p class="text-gray-700">Maharashtra Business Forum</p>
+                    </div>
+                </div>
+                
+                <div class="flex items-start">
+                    <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mr-4 mt-1">
+                        <i class="ri-award-fill text-primary text-xl"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-gray-900 mb-1">Sustainable Tourism Initiative 2023</h4>
+                        <p class="text-gray-700">Green Tourism Association of India</p>
+                    </div>
+                </div>
+                
+                <div class="flex items-start">
+                    <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mr-4 mt-1">
+                        <i class="ri-award-fill text-primary text-xl"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-gray-900 mb-1">Digital Innovation Award 2024</h4>
+                        <p class="text-gray-700">Travel Technology Association</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials Section -->
+<section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+        <div class="text-center max-w-3xl mx-auto mb-12">
+            <h2 class="text-3xl font-bold text-primary mb-4">What Our Customers Say</h2>
+            <p class="text-gray-700">Don't just take our word for it. Here's what some of our satisfied customers have to say about their experiences with Gayatri Tours and Travels.</p>
+        </div>
+        
+        <div class="relative">
+            <div class="flex overflow-hidden" id="testimonial-container">
+                <div class="min-w-full px-4 testimonial-card active" id="testimonial-1">
+                    <div class="bg-white rounded-lg shadow-lg p-8 border border-gray-100">
+                        <div class="flex items-center mb-6">
+                            <div class="w-16 h-16 rounded-full overflow-hidden mr-4">
+                                <img src="https://readdy.ai/api/search-image?query=professional%2520headshot%2520of%2520Indian%2520businessman%2520in%2520his%252040s%252C%2520smiling%252C%2520wearing%2520business%2520casual%2520attire%252C%2520neutral%2520background%252C%2520high%2520quality%2520portrait%2520photography&width=100&height=100&seq=26&orientation=squarish" alt="Vikram Desai" class="w-full h-full object-cover object-top">
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-900">Vikram Desai</h4>
+                                <p class="text-gray-600">Business Executive, Mumbai</p>
+                                <div class="flex mt-1">
+                                    <i class="ri-star-fill text-yellow-400"></i>
+                                    <i class="ri-star-fill text-yellow-400"></i>
+                                    <i class="ri-star-fill text-yellow-400"></i>
+                                    <i class="ri-star-fill text-yellow-400"></i>
+                                    <i class="ri-star-fill text-yellow-400"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-gray-700 mb-4">"I've been using Gayatri Tours and Travels for my business trips between Pune and Mumbai for over 3 years now. Their service is consistently excellent - punctual, professional drivers, and clean, comfortable vehicles. Their online booking system makes scheduling trips a breeze, and their customer service team is always responsive. I highly recommend them for business travel."</p>
+                        <p class="text-gray-500 italic">June 2025</p>
+                    </div>
+                </div>
+                
+                <div class="min-w-full px-4 testimonial-card" id="testimonial-2">
+                    <div class="bg-white rounded-lg shadow-lg p-8 border border-gray-100">
+                        <div class="flex items-center mb-6">
+                            <div class="w-16 h-16 rounded-full overflow-hidden mr-4">
+                                <img src="https://readdy.ai/api/search-image?query=professional%2520headshot%2520of%2520Indian%2520family%2520-%2520mother%252C%2520father%2520and%2520two%2520children%252C%2520smiling%252C%2520casual%2520attire%252C%2520neutral%2520background%252C%2520high%2520quality%2520portrait%2520photography&width=100&height=100&seq=27&orientation=squarish" alt="Sharma Family" class="w-full h-full object-cover object-top">
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-900">Sharma Family</h4>
+                                <p class="text-gray-600">Family Travelers, Pune</p>
+                                <div class="flex mt-1">
+                                    <i class="ri-star-fill text-yellow-400"></i>
+                                    <i class="ri-star-fill text-yellow-400"></i>
+                                    <i class="ri-star-fill text-yellow-400"></i>
+                                    <i class="ri-star-fill text-yellow-400"></i>
+                                    <i class="ri-star-fill text-yellow-400"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-gray-700 mb-4">"Our family trip to Mahabaleshwar with Gayatri Tours was absolutely wonderful! The package was well-planned with a perfect balance of sightseeing and relaxation time. Our driver Rajesh was knowledgeable about the area and suggested some local spots that weren't in our itinerary. The accommodations were comfortable and the included meals were delicious. We'll definitely book with them for our next family vacation!"</p>
+                        <p class="text-gray-500 italic">May 2025</p>
+                    </div>
+                </div>
+                
+                <div class="min-w-full px-4 testimonial-card" id="testimonial-3">
+                    <div class="bg-white rounded-lg shadow-lg p-8 border border-gray-100">
+                        <div class="flex items-center mb-6">
+                            <div class="w-16 h-16 rounded-full overflow-hidden mr-4">
+                                <img src="https://readdy.ai/api/search-image?query=professional%2520headshot%2520of%2520elderly%2520Indian%2520couple%2520in%2520their%252060s%252C%2520smiling%252C%2520wearing%2520traditional%2520attire%252C%2520neutral%2520background%252C%2520high%2520quality%2520portrait%2520photography&width=100&height=100&seq=28&orientation=squarish" alt="Patel Couple" class="w-full h-full object-cover object-top">
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-900">Patel Couple</h4>
+                                <p class="text-gray-600">Senior Travelers, Nashik</p>
+                                <div class="flex mt-1">
+                                    <i class="ri-star-fill text-yellow-400"></i>
+                                    <i class="ri-star-fill text-yellow-400"></i>
+                                    <i class="ri-star-fill text-yellow-400"></i>
+                                    <i class="ri-star-fill text-yellow-400"></i>
+                                    <i class="ri-star-half-fill text-yellow-400"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-gray-700 mb-4">"As senior citizens, we were looking for a comfortable and hassle-free way to visit Shirdi. Gayatri Tours' religious package was perfect for us. They took care of everything - transportation, accommodation near the temple, and even arranged for priority darshan. The driver was very patient and considerate of our pace. We felt safe and well-cared for throughout the journey. We've already recommended them to our friends in our senior community."</p>
+                        <p class="text-gray-500 italic">April 2025</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flex justify-center mt-8">
+                <button class="w-3 h-3 rounded-full bg-primary mx-1 testimonial-dot active" data-testimonial="testimonial-1"></button>
+                <button class="w-3 h-3 rounded-full bg-gray-300 mx-1 testimonial-dot" data-testimonial="testimonial-2"></button>
+                <button class="w-3 h-3 rounded-full bg-gray-300 mx-1 testimonial-dot" data-testimonial="testimonial-3"></button>
+            </div>
+            
+            <button class="absolute top-1/2 left-0 transform -translate-y-1/2 w-10 h-10 bg-white rounded-full shadow-md flex items-center justify-center text-primary hover:bg-gray-100 focus:outline-none z-10" id="prev-testimonial">
+                <i class="ri-arrow-left-s-line"></i>
+            </button>
+            
+            <button class="absolute top-1/2 right-0 transform -translate-y-1/2 w-10 h-10 bg-white rounded-full shadow-md flex items-center justify-center text-primary hover:bg-gray-100 focus:outline-none z-10" id="next-testimonial">
+                <i class="ri-arrow-right-s-line"></i>
+            </button>
+        </div>
+    </div>
+</section>
+
+<!-- Services Overview Section -->
+<section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+        <div class="text-center max-w-3xl mx-auto mb-12">
+            <h2 class="text-3xl font-bold text-primary mb-4">Our Services</h2>
+            <p class="text-gray-700">Discover the wide range of travel services we offer to meet your every need, from airport transfers to customized tour packages.</p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="bg-white rounded-lg shadow-md overflow-hidden service-card">
+                <div class="h-48 overflow-hidden">
+                    <img src="https://readdy.ai/api/search-image?query=luxury%2520sedan%2520car%2520for%2520airport%2520transfer%252C%2520driver%2520in%2520uniform%2520holding%2520sign%252C%2520airport%2520terminal%2520in%2520background%252C%2520professional%2520photography%252C%2520travel%2520service%252C%2520high%2520resolution&width=600&height=400&seq=29&orientation=landscape" alt="Airport Transfers" class="w-full h-full object-cover object-top">
+                </div>
+                <div class="p-6">
+                    <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+                        <i class="ri-flight-takeoff-line text-primary text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Airport Transfers</h3>
+                    <p class="text-gray-700 mb-4">Reliable and comfortable airport pickup and drop-off services with professional drivers and well-maintained vehicles.</p>
+                    <a href="#" class="text-primary font-medium flex items-center">
+                        Learn More
+                        <div class="w-5 h-5 flex items-center justify-center ml-1">
+                            <i class="ri-arrow-right-line"></i>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-md overflow-hidden service-card">
+                <div class="h-48 overflow-hidden">
+                    <img src="https://readdy.ai/api/search-image?query=group%2520of%2520tourists%2520on%2520weekend%2520getaway%2520to%2520hill%2520station%252C%2520enjoying%2520scenic%2520viewpoint%252C%2520professional%2520photography%252C%2520travel%2520service%252C%2520high%2520resolution%252C%2520people%2520having%2520fun&width=600&height=400&seq=30&orientation=landscape" alt="Weekend Getaways" class="w-full h-full object-cover object-top">
+                </div>
+                <div class="p-6">
+                    <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+                        <i class="ri-suitcase-line text-primary text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Weekend Getaways</h3>
+                    <p class="text-gray-700 mb-4">Perfectly planned short trips to nearby destinations with accommodations, meals, and guided sightseeing included.</p>
+                    <a href="#" class="text-primary font-medium flex items-center">
+                        Learn More
+                        <div class="w-5 h-5 flex items-center justify-center ml-1">
+                            <i class="ri-arrow-right-line"></i>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-md overflow-hidden service-card">
+                <div class="h-48 overflow-hidden">
+                    <img src="https://readdy.ai/api/search-image?query=pilgrims%2520visiting%2520famous%2520temple%2520in%2520India%252C%2520spiritual%2520journey%252C%2520religious%2520tourism%252C%2520professional%2520photography%252C%2520travel%2520service%252C%2520high%2520resolution%252C%2520devotees%2520praying&width=600&height=400&seq=31&orientation=landscape" alt="Religious Tours" class="w-full h-full object-cover object-top">
+                </div>
+                <div class="p-6">
+                    <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+                        <i class="ri-building-4-line text-primary text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Religious Tours</h3>
+                    <p class="text-gray-700 mb-4">Thoughtfully arranged pilgrimages to sacred sites with comfortable transportation, accommodation, and assistance with rituals.</p>
+                    <a href="#" class="text-primary font-medium flex items-center">
+                        Learn More
+                        <div class="w-5 h-5 flex items-center justify-center ml-1">
+                            <i class="ri-arrow-right-line"></i>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-md overflow-hidden service-card">
+                <div class="h-48 overflow-hidden">
+                    <img src="https://readdy.ai/api/search-image?query=tourists%2520exploring%2520ancient%2520Indian%2520fort%2520or%2520palace%252C%2520guide%2520explaining%2520history%252C%2520professional%2520photography%252C%2520historical%2520tour%252C%2520travel%2520service%252C%2520high%2520resolution&width=600&height=400&seq=32&orientation=landscape" alt="Historical Tours" class="w-full h-full object-cover object-top">
+                </div>
+                <div class="p-6">
+                    <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+                        <i class="ri-ancient-gate-line text-primary text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Historical Tours</h3>
+                    <p class="text-gray-700 mb-4">Immersive journeys to historical sites with knowledgeable guides, comfortable accommodations, and enriching cultural experiences.</p>
+                    <a href="#" class="text-primary font-medium flex items-center">
+                        Learn More
+                        <div class="w-5 h-5 flex items-center justify-center ml-1">
+                            <i class="ri-arrow-right-line"></i>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-md overflow-hidden service-card">
+                <div class="h-48 overflow-hidden">
+                    <img src="https://readdy.ai/api/search-image?query=corporate%2520team%2520on%2520business%2520trip%252C%2520professionals%2520in%2520business%2520attire%2520entering%2520luxury%2520vehicle%252C%2520professional%2520photography%252C%2520corporate%2520travel%2520service%252C%2520high%2520resolution&width=600&height=400&seq=33&orientation=landscape" alt="Corporate Travel" class="w-full h-full object-cover object-top">
+                </div>
+                <div class="p-6">
+                    <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+                        <i class="ri-briefcase-4-line text-primary text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Corporate Travel</h3>
+                    <p class="text-gray-700 mb-4">Specialized business travel solutions with premium vehicles, professional drivers, and flexible scheduling for corporate clients.</p>
+                    <a href="#" class="text-primary font-medium flex items-center">
+                        Learn More
+                        <div class="w-5 h-5 flex items-center justify-center ml-1">
+                            <i class="ri-arrow-right-line"></i>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-md overflow-hidden service-card">
+                <div class="h-48 overflow-hidden">
+                    <img src="https://readdy.ai/api/search-image?query=luxury%2520wedding%2520car%2520decorated%2520with%2520flowers%252C%2520Indian%2520wedding%2520ceremony%252C%2520professional%2520photography%252C%2520event%2520transportation%2520service%252C%2520high%2520resolution&width=600&height=400&seq=34&orientation=landscape" alt="Event Transportation" class="w-full h-full object-cover object-top">
+                </div>
+                <div class="p-6">
+                    <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+                        <i class="ri-calendar-event-line text-primary text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Event Transportation</h3>
+                    <p class="text-gray-700 mb-4">Reliable transportation services for weddings, parties, and special events with decorated vehicles and professional chauffeurs.</p>
+                    <a href="#" class="text-primary font-medium flex items-center">
+                        Learn More
+                        <div class="w-5 h-5 flex items-center justify-center ml-1">
+                            <i class="ri-arrow-right-line"></i>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="py-20 cta-section">
+    <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto text-center text-white">
+            <h2 class="text-3xl font-bold mb-6">Ready to Experience the Gayatri Difference?</h2>
+            <p class="text-lg mb-8">Whether you're planning a weekend getaway, a business trip, or a special event, we're here to make your journey comfortable, safe, and memorable.</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="https://readdy.ai/home/64319105-0b5e-4a51-af8b-8c85364cc76f/99545bbb-10c1-4e53-a800-ac9a0e4cd060" data-readdy="true" class="bg-white text-primary px-8 py-3 font-medium !rounded-button whitespace-nowrap hover:bg-gray-100 transition-colors">
+                    Explore Packages
+                </a>
+                <a href="#" class="bg-transparent text-white border-2 border-white px-8 py-3 font-medium !rounded-button whitespace-nowrap hover:bg-white/10 transition-colors">
+                    Contact Us
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Newsletter Section -->
+<section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto text-center">
+            <h2 class="text-3xl font-bold text-primary mb-4">Subscribe to Our Newsletter</h2>
+            <p class="text-gray-600 mb-8">Stay updated with our latest offers, new destinations, and travel tips. Subscribe to our newsletter and get exclusive deals directly in your inbox.</p>
+            <form class="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto">
+                <input type="email" placeholder="Enter your email address" class="flex-1 px-4 py-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                <button type="submit" class="bg-primary text-white px-6 py-3 font-medium !rounded-button whitespace-nowrap hover:bg-primary/90 transition-colors">Subscribe</button>
+            </form>
+            <p class="text-gray-500 text-sm mt-4">By subscribing, you agree to our Privacy Policy and consent to receive updates from our company.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-primary text-white pt-16 pb-8">
+    <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+            <!-- Company Info -->
+            <div>
+                <h3 class="text-xl font-bold mb-4">Gayatri Tours and Travels</h3>
+                <p class="text-white/80 mb-4">Your trusted partner for comfortable and reliable cab services across India.</p>
+                <div class="flex items-start mb-2">
+                    <div class="w-5 h-5 flex items-center justify-center mr-2 mt-1">
+                        <i class="ri-map-pin-line"></i>
+                    </div>
+                    <p class="text-white/80">Flat No 202, Swapnshilp Apartment, Abhinav College Road, Narhe, Pune 411041</p>
+                </div>
+                <div class="flex items-center mb-2">
+                    <div class="w-5 h-5 flex items-center justify-center mr-2">
+                        <i class="ri-phone-line"></i>
+                    </div>
+                    <a href="tel:+919405597993" class="text-white/80 hover:text-white">+91 9405597993</a>
+                </div>
+                <div class="flex items-center mb-2">
+                    <div class="w-5 h-5 flex items-center justify-center mr-2">
+                        <i class="ri-mail-line"></i>
+                    </div>
+                    <a href="mailto:gayatritoursandtravels@gmail.com" class="text-white/80 hover:text-white">gayatritoursandtravels@gmail.com</a>
+                </div>
+            </div>
+            <!-- Quick Links -->
+            <div>
+                <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+                <ul class="space-y-2">
+                    <li><a href="https://readdy.ai/home/64319105-0b5e-4a51-af8b-8c85364cc76f/91671dcd-a745-4183-a82b-932bcd6286ff" data-readdy="true" class="text-white/80 hover:text-white">Home</a></li>
+                    <li><a href="#" class="text-white/80 hover:text-white">About Us</a></li>
+                    <li><a href="#" class="text-white/80 hover:text-white">Services</a></li>
+                    <li><a href="https://readdy.ai/home/64319105-0b5e-4a51-af8b-8c85364cc76f/99545bbb-10c1-4e53-a800-ac9a0e4cd060" data-readdy="true" class="text-white/80 hover:text-white">Packages</a></li>
+                    <li><a href="#" class="text-white/80 hover:text-white">Contact Us</a></li>
+                    <li><a href="#" class="text-white/80 hover:text-white">FAQs</a></li>
+                    <li><a href="#" class="text-white/80 hover:text-white">Terms & Conditions</a></li>
+                    <li><a href="#" class="text-white/80 hover:text-white">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <!-- Popular Destinations -->
+            <div>
+                <h3 class="text-xl font-bold mb-4">Popular Destinations</h3>
+                <ul class="space-y-2">
+                    <li><a href="#" class="text-white/80 hover:text-white">Pune to Mumbai</a></li>
+                    <li><a href="#" class="text-white/80 hover:text-white">Pune to Lonavala</a></li>
+                    <li><a href="#" class="text-white/80 hover:text-white">Pune to Mahabaleshwar</a></li>
+                    <li><a href="#" class="text-white/80 hover:text-white">Pune to Shirdi</a></li>
+                    <li><a href="#" class="text-white/80 hover:text-white">Pune to Goa</a></li>
+                    <li><a href="#" class="text-white/80 hover:text-white">Pune to Aurangabad</a></li>
+                    <li><a href="#" class="text-white/80 hover:text-white">Pune to Nashik</a></li>
+                    <li><a href="#" class="text-white/80 hover:text-white">Pune to Kolhapur</a></li>
+                </ul>
+            </div>
+            <!-- Connect With Us -->
+            <div>
+                <h3 class="text-xl font-bold mb-4">Connect With Us</h3>
+                <div class="flex space-x-4 mb-6">
+                    <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors">
+                        <i class="ri-facebook-fill"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors">
+                        <i class="ri-instagram-line"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors">
+                        <i class="ri-twitter-x-line"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors">
+                        <i class="ri-linkedin-fill"></i>
+                    </a>
+                </div>
+                <h3 class="text-xl font-bold mb-4">We Accept</h3>
+                <div class="flex flex-wrap gap-3">
+                    <div class="w-10 h-6 bg-white rounded flex items-center justify-center">
+                        <i class="ri-visa-fill text-blue-700"></i>
+                    </div>
+                    <div class="w-10 h-6 bg-white rounded flex items-center justify-center">
+                        <i class="ri-mastercard-fill text-orange-600"></i>
+                    </div>
+                    <div class="w-10 h-6 bg-white rounded flex items-center justify-center">
+                        <i class="ri-paypal-fill text-blue-600"></i>
+                    </div>
+                    <div class="w-10 h-6 bg-white rounded flex items-center justify-center">
+                        <i class="ri-google-fill text-red-500"></i>
+                    </div>
+                    <div class="w-10 h-6 bg-white rounded flex items-center justify-center">
+                        <i class="ri-amazon-pay-fill text-blue-900"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="border-t border-white/20 pt-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <p class="text-white/80 mb-4 md:mb-0">© 2025 Gayatri Tours and Travels. All rights reserved.</p>
+                <div class="flex space-x-4">
+                    <a href="#" class="text-white/80 hover:text-white text-sm">Terms & Conditions</a>
+                    <a href="#" class="text-white/80 hover:text-white text-sm">Privacy Policy</a>
+                    <a href="#" class="text-white/80 hover:text-white text-sm">Refund Policy</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- WhatsApp Button -->
+<a href="https://wa.me/919405597993" class="fixed bottom-6 right-6 w-14 h-14 bg-green-500 rounded-full flex items-center justify-center shadow-lg z-50 hover:bg-green-600 transition-colors">
+    <i class="ri-whatsapp-line text-white text-2xl"></i>
+</a>
+
+<!-- Testimonial Script -->
+<script id="testimonial-script">
+document.addEventListener('DOMContentLoaded', function() {
+    const container = document.getElementById('testimonial-container');
+    const dots = document.querySelectorAll('.testimonial-dot');
+    const prevBtn = document.getElementById('prev-testimonial');
+    const nextBtn = document.getElementById('next-testimonial');
+    const testimonials = document.querySelectorAll('.testimonial-card');
+    
+    let currentIndex = 0;
+    
+    // Function to show testimonial by index
+    function showTestimonial(index) {
+        // Update current index
+        currentIndex = index;
+        
+        // Calculate the translation value
+        const translateValue = -100 * index + '%';
+        
+        // Apply the translation
+        container.style.transition = 'transform 0.5s ease';
+        container.style.transform = 'translateX(' + translateValue + ')';
+        
+        // Update active class on testimonials
+        testimonials.forEach((testimonial, i) => {
+            testimonial.classList.toggle('active', i === index);
+        });
+        
+        // Update active class on dots
+        dots.forEach((dot, i) => {
+            dot.classList.toggle('bg-primary', i === index);
+            dot.classList.toggle('bg-gray-300', i !== index);
+        });
+    }
+    
+    // Add click event to dots
+    dots.forEach((dot, i) => {
+        dot.addEventListener('click', () => {
+            showTestimonial(i);
+        });
+    });
+    
+    // Add click event to prev button
+    prevBtn.addEventListener('click', () => {
+        let newIndex = currentIndex - 1;
+        if (newIndex < 0) {
+            newIndex = testimonials.length - 1;
+        }
+        showTestimonial(newIndex);
+    });
+    
+    // Add click event to next button
+    nextBtn.addEventListener('click', () => {
+        let newIndex = currentIndex + 1;
+        if (newIndex >= testimonials.length) {
+            newIndex = 0;
+        }
+        showTestimonial(newIndex);
+    });
+    
+    // Auto slide every 5 seconds
+    setInterval(() => {
+        let newIndex = currentIndex + 1;
+        if (newIndex >= testimonials.length) {
+            newIndex = 0;
+        }
+        showTestimonial(newIndex);
+    }, 5000);
+});
+</script>
+
+</body>
+</html>

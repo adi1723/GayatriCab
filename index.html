@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gayatri Tours and Travels - Cab Booking Service</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#0a2463',secondary:'#ffc857'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body {
+font-family: 'Montserrat', sans-serif;
+}
+.hero-section {
+background-image: linear-gradient(rgba(10, 36, 99, 0.7), rgba(10, 36, 99, 0.7)), url('https://readdy.ai/api/search-image?query=luxury%20car%20on%20a%20scenic%20road%20with%20mountains%20and%20sunset%20in%20the%20background%2C%20professional%20photography%2C%20high%20resolution%2C%20dramatic%20lighting%2C%20cinematic%2C%20travel%20concept&width=1920&height=1080&seq=1&orientation=landscape');
+background-size: cover;
+background-position: center;
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+-webkit-appearance: none;
+margin: 0;
+}
+.custom-checkbox {
+position: relative;
+display: inline-block;
+width: 20px;
+height: 20px;
+margin-right: 8px;
+}
+.custom-checkbox input {
+opacity: 0;
+width: 0;
+height: 0;
+}
+.checkmark {
+position: absolute;
+top: 0;
+left: 0;
+height: 20px;
+width: 20px;
+background-color: #fff;
+border: 2px solid #0a2463;
+border-radius: 4px;
+}
+.custom-checkbox input:checked ~ .checkmark {
+background-color: #0a2463;
+}
+.checkmark:after {
+content: "";
+position: absolute;
+display: none;
+}
+.custom-checkbox input:checked ~ .checkmark:after {
+display: block;
+}
+.custom-checkbox .checkmark:after {
+left: 6px;
+top: 2px;
+width: 5px;
+height: 10px;
+border: solid white;
+border-width: 0 2px 2px 0;
+transform: rotate(45deg);
+}
+.custom-switch {
+position: relative;
+display: inline-block;
+width: 48px;
+height: 24px;
+}
+.custom-switch input {
+opacity: 0;
+width: 0;
+height: 0;
+}
+.slider {
+position: absolute;
+cursor: pointer;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background-color: #ccc;
+transition: .4s;
+border-radius: 24px;
+}
+.slider:before {
+position: absolute;
+content: "";
+height: 18px;
+width: 18px;
+left: 3px;
+bottom: 3px;
+background-color: white;
+transition: .4s;
+border-radius: 50%;
+}
+input:checked + .slider {
+background-color: #0a2463;
+}
+input:checked + .slider:before {
+transform: translateX(24px);
+}
+.custom-radio {
+position: relative;
+display: inline-block;
+width: 20px;
+height: 20px;
+margin-right: 8px;
+}
+.custom-radio input {
+opacity: 0;
+width: 0;
+height: 0;
+}
+.radio-mark {
+position: absolute;
+top: 0;
+left: 0;
+height: 20px;
+width: 20px;
+background-color: #fff;
+border: 2px solid #0a2463;
+border-radius: 50%;
+}
+.custom-radio input:checked ~ .radio-mark {
+background-color: #fff;
+}
+.radio-mark:after {
+content: "";
+position: absolute;
+display: none;
+}
+.custom-radio input:checked ~ .radio-mark:after {
+display: block;
+}
+.custom-radio .radio-mark:after {
+top: 3px;
+left: 3px;
+width: 10px;
+height: 10px;
+border-radius: 50%;
+background: #0a2463;
+}
+.range-slider {
+width: 100%;
+height: 6px;
+background: #e5e7eb;
+border-radius: 3px;
+position: relative;
+}
+.range-slider .range-fill {
+height: 100%;
+background-color: #0a2463;
+border-radius: 3px;
+position: absolute;
+}
+.range-slider .range-handle {
+width: 18px;
+height: 18px;
+background: #fff;
+border: 2px solid #0a2463;
+border-radius: 50%;
+position: absolute;
+top: -6px;
+margin-left: -9px;
+cursor: pointer;
+}
+</style>
+</head>
+<body class="bg-white">
+<!-- Header -->
+<header class="bg-white shadow-md fixed w-full top-0 z-50">
+<div class="container mx-auto px-4 py-3 flex justify-between items-center">
+<a href="index.html" class="text-2xl font-['Pacifico'] text-primary">Gayatri Tours & Travels</a>   
+<nav class="hidden lg:flex items-center space-x-6">
+<a href="index.html" class="text-primary font-medium border-b-2 border-primary">Home</a>
+<a href="about.html" class="text-gray-700 hover:text-primary transition-colors">About</a>
+<a href="packages.html" class="text-gray-700 hover:text-primary transition-colors">Packages</a>
+<a href="contact.html" class="text-gray-700 hover:text-primary transition-colors">Contact</a>
+</nav>
+<div class="hidden lg:flex items-center space-x-4">
+<a href="tel:+919405597993" class="text-primary font-medium flex items-center whitespace-nowrap">
+<div class="w-5 h-5 flex items-center justify-center mr-1">
+<i class="ri-phone-line"></i>
+</div>
++91 9405597993
+</a>
+</div>
+<button class="lg:hidden w-10 h-10 flex items-center justify-center text-primary">
+<i class="ri-menu-line text-2xl"></i>
+</button>
+</div>
+</header>
+<!-- Hero Section -->
+<section class="hero-section min-h-[600px] flex items-center pt-20">
+<div class="container mx-auto px-4 py-16 text-white">
+<div class="max-w-3xl">
+<h1 class="text-4xl md:text-5xl font-bold mb-4">SERVICES ACROSS 2000+ CITIES</h1>
+<p class="text-xl mb-8">Experience the comfort and reliability of Gayatri Tours and Travels, your trusted partner for all your travel needs.</p>
+<div class="flex flex-wrap gap-4">
+<a href="#" class="bg-white text-primary px-6 py-3 font-medium !rounded-button whitespace-nowrap hover:bg-gray-100 transition-colors">Book Now</a>
+<a href="#" class="bg-transparent border-2 border-white text-white px-6 py-3 font-medium !rounded-button whitespace-nowrap hover:bg-white/10 transition-colors">View Packages</a>
+</div>
+</div>
+</div>
+</section>
+<!-- Booking Form -->
+<section class="py-16 bg-white">
+<div class="container mx-auto px-4">
+<div class="max-w-5xl mx-auto bg-white shadow-xl rounded-lg -mt-24 relative z-10 p-6 md:p-8">
+<h2 class="text-2xl font-bold text-primary mb-6">Book Your Ride</h2>
+<form class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div>
+<label class="block text-gray-700 mb-2">Pickup Location</label>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none w-10 h-10">
+<i class="ri-map-pin-line text-gray-500"></i>
+</div>
+<input type="text" placeholder="Enter pickup location" class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+</div>
+</div>
+<div>
+<label class="block text-gray-700 mb-2">Destination</label>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none w-10 h-10">
+<i class="ri-map-pin-line text-gray-500"></i>
+</div>
+<input type="text" placeholder="Enter destination" class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+</div>
+</div>
+<div>
+<label class="block text-gray-700 mb-2">Date</label>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none w-10 h-10">
+<i class="ri-calendar-line text-gray-500"></i>
+</div>
+<input type="date" class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+</div>
+</div>
+<div>
+<label class="block text-gray-700 mb-2">Time</label>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none w-10 h-10">
+<i class="ri-time-line text-gray-500"></i>
+</div>
+<input type="time" class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+</div>
+</div>
+<div>
+<label class="block text-gray-700 mb-2">Cab Type</label>
+<div class="grid grid-cols-2 gap-4">
+<div class="flex items-center">
+<label class="custom-radio">
+<input type="radio" name="cab-type" checked>
+<span class="radio-mark"></span>
+</label>
+<span>AC Cab (₹25/km)</span>
+</div>
+<div class="flex items-center">
+<label class="custom-radio">
+<input type="radio" name="cab-type">
+<span class="radio-mark"></span>
+</label>
+<span>Non-AC Cab (₹21/km)</span>
+</div>
+</div>
+</div>
+<div>
+<label class="block text-gray-700 mb-2">Number of Passengers</label>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none w-10 h-10">
+<i class="ri-user-line text-gray-500"></i>
+</div>
+<input type="number" min="1" max="6" value="1" class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+</div>
+</div>
+<div class="md:col-span-2">
+<button type="submit" class="w-full bg-primary text-white py-3 font-medium !rounded-button hover:bg-primary/90 transition-colors whitespace-nowrap">Search Available Cabs</button>
+</div>
+</form>
+</div>
+</div>
+</section>
+<!-- Popular Packages -->
+<section class="py-16 bg-gray-50">
+<div class="container mx-auto px-4">
+<div class="text-center mb-12">
+<h2 class="text-3xl font-bold text-primary mb-4">Popular Packages</h2>
+<p class="text-gray-600 max-w-2xl mx-auto">Explore our most booked destinations from Pune with all-inclusive packages tailored for your comfort and convenience.</p>
+</div>
+<div class="mb-8 flex flex-wrap justify-center gap-4">
+<button class="bg-primary text-white px-4 py-2 !rounded-button whitespace-nowrap">All Packages</button>
+<button class="bg-white text-gray-700 px-4 py-2 !rounded-button whitespace-nowrap hover:bg-gray-100 transition-colors">One Day</button>
+<button class="bg-white text-gray-700 px-4 py-2 !rounded-button whitespace-nowrap hover:bg-gray-100 transition-colors">Weekend</button>
+<button class="bg-white text-gray-700 px-4 py-2 !rounded-button whitespace-nowrap hover:bg-gray-100 transition-colors">Long Distance</button>
+<button class="bg-white text-gray-700 px-4 py-2 !rounded-button whitespace-nowrap hover:bg-gray-100 transition-colors">Airport Transfer</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Package 1 -->
+<div class="bg-white rounded-lg overflow-hidden shadow-lg transition-transform hover:transform hover:scale-105">
+<div class="h-48 overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=Mumbai%20skyline%20with%20iconic%20Gateway%20of%20India%20and%20modern%20buildings%2C%20clear%20blue%20sky%2C%20professional%20photography%2C%20travel%20destination%2C%20high%20resolution%2C%20no%20people%2C%20daytime&width=600&height=400&seq=2&orientation=landscape" alt="Pune to Mumbai" class="w-full h-full object-cover object-top">
+</div>
+<div class="p-6">
+<span class="bg-secondary/20 text-primary px-3 py-1 rounded-full text-sm font-medium">One Way</span>
+<h3 class="text-xl font-bold mt-3 mb-2">Pune to Mumbai</h3>
+<p class="text-gray-600 mb-4">Enjoy a comfortable ride to the financial capital of India with our premium cab service.</p>
+<div class="flex justify-between items-center">
+<div>
+<span class="text-gray-500 text-sm">Starting from</span>
+<p class="text-primary font-bold text-xl">₹3,200</p>
+<span class="text-gray-500 text-xs">*Excluding tolls & local charges</span>
+</div>
+<button class="bg-primary text-white px-4 py-2 !rounded-button whitespace-nowrap hover:bg-primary/90 transition-colors">Book Now</button>
+</div>
+</div>
+</div>
+<!-- Package 2 -->
+<div class="bg-white rounded-lg overflow-hidden shadow-lg transition-transform hover:transform hover:scale-105">
+<div class="h-48 overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=Lonavala%20hill%20station%20with%20lush%20green%20valleys%2C%20misty%20mountains%2C%20waterfalls%2C%20professional%20photography%2C%20travel%20destination%2C%20high%20resolution%2C%20no%20people%2C%20scenic%20beauty&width=600&height=400&seq=3&orientation=landscape" alt="Pune to Lonavala" class="w-full h-full object-cover object-top">
+</div>
+<div class="p-6">
+<span class="bg-secondary/20 text-primary px-3 py-1 rounded-full text-sm font-medium">Weekend Getaway</span>
+<h3 class="text-xl font-bold mt-3 mb-2">Pune to Lonavala</h3>
+<p class="text-gray-600 mb-4">Escape to the scenic beauty of Lonavala hills with our comfortable cab service.</p>
+<div class="flex justify-between items-center">
+<div>
+<span class="text-gray-500 text-sm">Starting from</span>
+<p class="text-primary font-bold text-xl">₹1,800</p>
+<span class="text-gray-500 text-xs">*Excluding tolls & local charges</span>
+</div>
+<button class="bg-primary text-white px-4 py-2 !rounded-button whitespace-nowrap hover:bg-primary/90 transition-colors">Book Now</button>
+</div>
+</div>
+</div>
+<!-- Package 3 -->
+<div class="bg-white rounded-lg overflow-hidden shadow-lg transition-transform hover:transform hover:scale-105">
+<div class="h-48 overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=Mahabaleshwar%20hill%20station%20with%20strawberry%20farms%2C%20lush%20green%20valleys%2C%20viewpoints%2C%20professional%20photography%2C%20travel%20destination%2C%20high%20resolution%2C%20no%20people%2C%20scenic%20beauty&width=600&height=400&seq=4&orientation=landscape" alt="Pune to Mahabaleshwar" class="w-full h-full object-cover object-top">
+</div>
+<div class="p-6">
+<span class="bg-secondary/20 text-primary px-3 py-1 rounded-full text-sm font-medium">Weekend Getaway</span>
+<h3 class="text-xl font-bold mt-3 mb-2">Pune to Mahabaleshwar</h3>
+<p class="text-gray-600 mb-4">Visit the scenic hill station known for its strawberries and breathtaking views.</p>
+<div class="flex justify-between items-center">
+<div>
+<span class="text-gray-500 text-sm">Starting from</span>
+<p class="text-primary font-bold text-xl">₹2,800</p>
+<span class="text-gray-500 text-xs">*Excluding tolls & local charges</span>
+</div>
+<button class="bg-primary text-white px-4 py-2 !rounded-button whitespace-nowrap hover:bg-primary/90 transition-colors">Book Now</button>
+</div>
+</div>
+</div>
+<!-- Package 4 -->
+<div class="bg-white rounded-lg overflow-hidden shadow-lg transition-transform hover:transform hover:scale-105">
+<div class="h-48 overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=Shirdi%20Sai%20Baba%20temple%20with%20devotees%2C%20spiritual%20atmosphere%2C%20professional%20photography%2C%20travel%20destination%2C%20high%20resolution%2C%20religious%20place&width=600&height=400&seq=5&orientation=landscape" alt="Pune to Shirdi" class="w-full h-full object-cover object-top">
+</div>
+<div class="p-6">
+<span class="bg-secondary/20 text-primary px-3 py-1 rounded-full text-sm font-medium">Religious Tour</span>
+<h3 class="text-xl font-bold mt-3 mb-2">Pune to Shirdi</h3>
+<p class="text-gray-600 mb-4">Visit the sacred town of Shirdi, home to the revered Sai Baba temple.</p>
+<div class="flex justify-between items-center">
+<div>
+<span class="text-gray-500 text-sm">Starting from</span>
+<p class="text-primary font-bold text-xl">₹3,500</p>
+<span class="text-gray-500 text-xs">*Excluding tolls & local charges</span>
+</div>
+<button class="bg-primary text-white px-4 py-2 !rounded-button whitespace-nowrap hover:bg-primary/90 transition-colors">Book Now</button>
+</div>
+</div>
+</div>
+<!-- Package 5 -->
+<div class="bg-white rounded-lg overflow-hidden shadow-lg transition-transform hover:transform hover:scale-105">
+<div class="h-48 overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=Goa%20beaches%20with%20palm%20trees%2C%20shacks%2C%20clear%20blue%20water%2C%20professional%20photography%2C%20travel%20destination%2C%20high%20resolution%2C%20no%20people%2C%20scenic%20beauty&width=600&height=400&seq=6&orientation=landscape" alt="Pune to Goa" class="w-full h-full object-cover object-top">
+</div>
+<div class="p-6">
+<span class="bg-secondary/20 text-primary px-3 py-1 rounded-full text-sm font-medium">Long Distance</span>
+<h3 class="text-xl font-bold mt-3 mb-2">Pune to Goa</h3>
+<p class="text-gray-600 mb-4">Travel to the beach paradise of Goa in comfort with our premium cab service.</p>
+<div class="flex justify-between items-center">
+<div>
+<span class="text-gray-500 text-sm">Starting from</span>
+<p class="text-primary font-bold text-xl">₹6,500</p>
+<span class="text-gray-500 text-xs">*Excluding tolls & local charges</span>
+</div>
+<button class="bg-primary text-white px-4 py-2 !rounded-button whitespace-nowrap hover:bg-primary/90 transition-colors">Book Now</button>
+</div>
+</div>
+</div>
+<!-- Package 6 -->
+<div class="bg-white rounded-lg overflow-hidden shadow-lg transition-transform hover:transform hover:scale-105">
+<div class="h-48 overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=Aurangabad%20Ajanta%20Ellora%20caves%2C%20ancient%20rock-cut%20architecture%2C%20professional%20photography%2C%20travel%20destination%2C%20high%20resolution%2C%20no%20people%2C%20historical%20site&width=600&height=400&seq=7&orientation=landscape" alt="Pune to Aurangabad" class="w-full h-full object-cover object-top">
+</div>
+<div class="p-6">
+<span class="bg-secondary/20 text-primary px-3 py-1 rounded-full text-sm font-medium">Historical Tour</span>
+<h3 class="text-xl font-bold mt-3 mb-2">Pune to Aurangabad</h3>
+<p class="text-gray-600 mb-4">Explore the historical Ajanta and Ellora caves with our comfortable cab service.</p>
+<div class="flex justify-between items-center">
+<div>
+<span class="text-gray-500 text-sm">Starting from</span>
+<p class="text-primary font-bold text-xl">₹4,200</p>
+<span class="text-gray-500 text-xs">*Excluding tolls & local charges</span>
+</div>
+<button class="bg-primary text-white px-4 py-2 !rounded-button whitespace-nowrap hover:bg-primary/90 transition-colors">Book Now</button>
+</div>
+</div>
+</div>
+</div>
+<div class="text-center mt-10">
+<a href="https://readdy.ai/home/64319105-0b5e-4a51-af8b-8c85364cc76f/99545bbb-10c1-4e53-a800-ac9a0e4cd060" data-readdy="true" class="inline-flex items-center text-primary font-medium hover:underline">
+View All Packages
+<div class="w-5 h-5 flex items-center justify-center ml-1">
+<i class="ri-arrow-right-line"></i>
+</div>
+</a>
+</div>
+</div>
+</section>
+<!-- Features Section -->
+<section class="py-16 bg-white">
+<div class="container mx-auto px-4">
+<div class="text-center mb-12">
+<h2 class="text-3xl font-bold text-primary mb-4">Why Choose Us</h2>
+<p class="text-gray-600 max-w-2xl mx-auto">Experience the best cab service in Pune with our premium features designed for your comfort and convenience.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+<!-- Feature 1 -->
+<div class="bg-white p-6 rounded-lg shadow-md text-center hover:shadow-xl transition-shadow">
+<div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+<i class="ri-taxi-line text-primary text-2xl"></i>
+</div>
+<h3 class="text-xl font-bold mb-2">AC & Non-AC Cabs</h3>
+<p class="text-gray-600">Choose between AC cabs (₹25/km) and Non-AC cabs (₹21/km) based on your preference and budget.</p>
+</div>
+<!-- Feature 2 -->
+<div class="bg-white p-6 rounded-lg shadow-md text-center hover:shadow-xl transition-shadow">
+<div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+<i class="ri-map-pin-time-line text-primary text-2xl"></i>
+</div>
+<h3 class="text-xl font-bold mb-2">Real-Time Tracking</h3>
+<p class="text-gray-600">Track your ride in real-time with our advanced GPS tracking system for a safer journey.</p>
+</div>
+<!-- Feature 3 -->
+<div class="bg-white p-6 rounded-lg shadow-md text-center hover:shadow-xl transition-shadow">
+<div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+<i class="ri-file-list-3-line text-primary text-2xl"></i>
+</div>
+<h3 class="text-xl font-bold mb-2">Digital Invoice</h3>
+<p class="text-gray-600">Get instant digital invoices for all your rides, making expense tracking and reimbursements easier.</p>
+</div>
+<!-- Feature 4 -->
+<div class="bg-white p-6 rounded-lg shadow-md text-center hover:shadow-xl transition-shadow">
+<div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+<i class="ri-award-line text-primary text-2xl"></i>
+</div>
+<h3 class="text-xl font-bold mb-2">Loyalty Program</h3>
+<p class="text-gray-600">Earn points with every ride and redeem them for discounts on your future bookings.</p>
+</div>
+<!-- Feature 5 -->
+<div class="bg-white p-6 rounded-lg shadow-md text-center hover:shadow-xl transition-shadow">
+<div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+<i class="ri-star-line text-primary text-2xl"></i>
+</div>
+<h3 class="text-xl font-bold mb-2">Top Rated Service</h3>
+<p class="text-gray-600">Consistently rated as one of India's top car rental services with 4.8/5 customer satisfaction.</p>
+</div>
+<!-- Feature 6 -->
+<div class="bg-white p-6 rounded-lg shadow-md text-center hover:shadow-xl transition-shadow">
+<div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+<i class="ri-customer-service-2-line text-primary text-2xl"></i>
+</div>
+<h3 class="text-xl font-bold mb-2">24/7 Support</h3>
+<p class="text-gray-600">Our customer support team is available round the clock to assist you with any queries.</p>
+</div>
+<!-- Feature 7 -->
+<div class="bg-white p-6 rounded-lg shadow-md text-center hover:shadow-xl transition-shadow">
+<div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+<i class="ri-shield-check-line text-primary text-2xl"></i>
+</div>
+<h3 class="text-xl font-bold mb-2">Safe & Secure</h3>
+<p class="text-gray-600">All our drivers are verified and trained to ensure your safety throughout the journey.</p>
+</div>
+<!-- Feature 8 -->
+<div class="bg-white p-6 rounded-lg shadow-md text-center hover:shadow-xl transition-shadow">
+<div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+<i class="ri-wallet-3-line text-primary text-2xl"></i>
+</div>
+<h3 class="text-xl font-bold mb-2">Transparent Pricing</h3>
+<p class="text-gray-600">No hidden charges. Our pricing is transparent with clear breakdowns of all costs.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Interactive Tools Section -->
+<section class="py-16 bg-gray-50">
+<div class="container mx-auto px-4">
+<div class="text-center mb-12">
+<h2 class="text-3xl font-bold text-primary mb-4">Interactive Tools</h2>
+<p class="text-gray-600 max-w-2xl mx-auto">Use our interactive tools to plan your journey, calculate fares, and track your bookings.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- Price Calculator -->
+<div class="bg-white p-6 rounded-lg shadow-lg">
+<h3 class="text-xl font-bold text-primary mb-4">Fare Calculator</h3>
+<form>
+<div class="mb-4">
+<label class="block text-gray-700 mb-2">From</label>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none w-10 h-10">
+<i class="ri-map-pin-line text-gray-500"></i>
+</div>
+<input type="text" value="Pune" class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+</div>
+</div>
+<div class="mb-4">
+<label class="block text-gray-700 mb-2">To</label>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none w-10 h-10">
+<i class="ri-map-pin-line text-gray-500"></i>
+</div>
+<input type="text" placeholder="Enter destination" class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+</div>
+</div>
+<div class="mb-4">
+<label class="block text-gray-700 mb-2">Cab Type</label>
+<div class="grid grid-cols-2 gap-4">
+<div class="flex items-center">
+<label class="custom-radio">
+<input type="radio" name="calc-cab-type" checked>
+<span class="radio-mark"></span>
+</label>
+<span>AC Cab (₹25/km)</span>
+</div>
+<div class="flex items-center">
+<label class="custom-radio">
+<input type="radio" name="calc-cab-type">
+<span class="radio-mark"></span>
+</label>
+<span>Non-AC Cab (₹21/km)</span>
+</div>
+</div>
+</div>
+<button type="button" class="w-full bg-primary text-white py-3 font-medium !rounded-button hover:bg-primary/90 transition-colors whitespace-nowrap">Calculate Fare</button>
+</form>
+<div class="mt-6 p-4 bg-gray-50 rounded-lg">
+<h4 class="font-medium text-gray-700 mb-2">Estimated Fare Details</h4>
+<div class="flex justify-between mb-2">
+<span class="text-gray-600">Distance</span>
+<span class="font-medium">150 km</span>
+</div>
+<div class="flex justify-between mb-2">
+<span class="text-gray-600">Base Fare (₹25/km)</span>
+<span class="font-medium">₹3,750</span>
+</div>
+<div class="flex justify-between mb-2">
+<span class="text-gray-600">GST (5%)</span>
+<span class="font-medium">₹187.50</span>
+</div>
+<div class="border-t border-gray-300 my-2"></div>
+<div class="flex justify-between font-bold text-primary">
+<span>Total Fare</span>
+<span>₹3,937.50</span>
+</div>
+<p class="text-xs text-gray-500 mt-2">*Excluding tolls & local charges</p>
+</div>
+</div>
+<!-- Service Area Map -->
+<div class="bg-white p-6 rounded-lg shadow-lg">
+<h3 class="text-xl font-bold text-primary mb-4">Our Service Areas</h3>
+<div class="h-[400px] rounded overflow-hidden bg-cover bg-center" style="background-image: url('https://public.readdy.ai/gen_page/map_placeholder_1280x720.png')"></div>
+<div class="mt-4">
+<p class="text-gray-600 mb-4">We provide cab services from Pune to over 2000+ cities across India. Some of our popular routes include:</p>
+<div class="grid grid-cols-2 gap-2">
+<div class="flex items-center">
+<div class="w-4 h-4 flex items-center justify-center mr-2">
+<i class="ri-checkbox-circle-fill text-primary"></i>
+</div>
+<span>Pune to Mumbai</span>
+</div>
+<div class="flex items-center">
+<div class="w-4 h-4 flex items-center justify-center mr-2">
+<i class="ri-checkbox-circle-fill text-primary"></i>
+</div>
+<span>Pune to Lonavala</span>
+</div>
+<div class="flex items-center">
+<div class="w-4 h-4 flex items-center justify-center mr-2">
+<i class="ri-checkbox-circle-fill text-primary"></i>
+</div>
+<span>Pune to Mahabaleshwar</span>
+</div>
+<div class="flex items-center">
+<div class="w-4 h-4 flex items-center justify-center mr-2">
+<i class="ri-checkbox-circle-fill text-primary"></i>
+</div>
+<span>Pune to Shirdi</span>
+</div>
+<div class="flex items-center">
+<div class="w-4 h-4 flex items-center justify-center mr-2">
+<i class="ri-checkbox-circle-fill text-primary"></i>
+</div>
+<span>Pune to Goa</span>
+</div>
+<div class="flex items-center">
+<div class="w-4 h-4 flex items-center justify-center mr-2">
+<i class="ri-checkbox-circle-fill text-primary"></i>
+</div>
+<span>Pune to Aurangabad</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Testimonials Section -->
+<section class="py-16 bg-white">
+<div class="container mx-auto px-4">
+<div class="text-center mb-12">
+<h2 class="text-3xl font-bold text-primary mb-4">What Our Customers Say</h2>
+<p class="text-gray-600 max-w-2xl mx-auto">Don't just take our word for it. Here's what our customers have to say about their experience with us.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Testimonial 1 -->
+<div class="bg-white p-6 rounded-lg shadow-md">
+<div class="flex items-center mb-4">
+<div class="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center text-primary font-bold mr-4">RK</div>
+<div>
+<h4 class="font-bold">Rajesh Kumar</h4>
+<div class="flex text-secondary">
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+</div>
+</div>
+</div>
+<p class="text-gray-600">"I booked a cab from Pune to Mumbai for a business trip. The driver was punctual, professional, and the car was very clean. The journey was comfortable, and I reached my destination on time. Highly recommended!"</p>
+</div>
+<!-- Testimonial 2 -->
+<div class="bg-white p-6 rounded-lg shadow-md">
+<div class="flex items-center mb-4">
+<div class="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center text-primary font-bold mr-4">AP</div>
+<div>
+<h4 class="font-bold">Ananya Patel</h4>
+<div class="flex text-secondary">
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-half-fill"></i>
+</div>
+</div>
+</div>
+<p class="text-gray-600">"We booked a weekend package to Mahabaleshwar. The driver was knowledgeable about the route and suggested some great spots to visit. The AC cab was comfortable, and the pricing was transparent with no hidden charges."</p>
+</div>
+<!-- Testimonial 3 -->
+<div class="bg-white p-6 rounded-lg shadow-md">
+<div class="flex items-center mb-4">
+<div class="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center text-primary font-bold mr-4">VS</div>
+<div>
+<h4 class="font-bold">Vikram Singh</h4>
+<div class="flex text-secondary">
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+</div>
+</div>
+</div>
+<p class="text-gray-600">"I've been using Gayatri Tours and Travels for my monthly trips to Shirdi for the past year. Their service is consistent, drivers are courteous, and the booking process is hassle-free. The digital invoice feature is very helpful for my expense tracking."</p>
+</div>
+</div>
+<div class="text-center mt-10">
+<a href="#" class="inline-flex items-center text-primary font-medium hover:underline">
+View All Reviews
+<div class="w-5 h-5 flex items-center justify-center ml-1">
+<i class="ri-arrow-right-line"></i>
+</div>
+</a>
+</div>
+</div>
+</section>
+<!-- Download App Section -->
+<section class="py-16 bg-primary text-white">
+<div class="container mx-auto px-4">
+<div class="flex flex-col md:flex-row items-center justify-between">
+<div class="md:w-1/2 mb-8 md:mb-0">
+<h2 class="text-3xl font-bold mb-4">Download Our Mobile App</h2>
+<p class="text-white/80 mb-6">Get the best cab booking experience with our mobile app. Book rides, track your journey, and manage your bookings on the go.</p>
+<div class="flex flex-wrap gap-4">
+<a href="#" class="bg-black text-white px-6 py-3 rounded-lg flex items-center hover:bg-black/80 transition-colors">
+<div class="w-8 h-8 flex items-center justify-center mr-2">
+<i class="ri-apple-fill text-2xl"></i>
+</div>
+<div>
+<div class="text-xs">Download on the</div>
+<div class="font-medium">App Store</div>
+</div>
+</a>
+<a href="#" class="bg-black text-white px-6 py-3 rounded-lg flex items-center hover:bg-black/80 transition-colors">
+<div class="w-8 h-8 flex items-center justify-center mr-2">
+<i class="ri-google-play-fill text-2xl"></i>
+</div>
+<div>
+<div class="text-xs">Get it on</div>
+<div class="font-medium">Google Play</div>
+</div>
+</a>
+</div>
+</div>
+<div class="md:w-1/2 flex justify-center">
+<img src="https://readdy.ai/api/search-image?query=smartphone%20displaying%20a%20cab%20booking%20app%20interface%20with%20map%20and%20booking%20details%2C%20clean%20design%2C%20professional%20UI%2C%20high%20resolution%2C%20isolated%20on%20white%20background&width=400&height=600&seq=8&orientation=portrait" alt="Mobile App" class="max-w-[300px] rounded-xl shadow-2xl">
+</div>
+</div>
+</div>
+</section>
+<!-- FAQ Section -->
+<section class="py-16 bg-white">
+<div class="container mx-auto px-4">
+<div class="text-center mb-12">
+<h2 class="text-3xl font-bold text-primary mb-4">Frequently Asked Questions</h2>
+<p class="text-gray-600 max-w-2xl mx-auto">Find answers to common questions about our services, booking process, and policies.</p>
+</div>
+<div class="max-w-3xl mx-auto">
+<!-- FAQ Item 1 -->
+<div class="mb-4 border border-gray-200 rounded-lg overflow-hidden">
+<button class="w-full flex justify-between items-center p-4 bg-white hover:bg-gray-50 transition-colors" id="faq-1-btn">
+<span class="font-medium text-left">How do I book a cab?</span>
+<div class="w-5 h-5 flex items-center justify-center text-primary">
+<i class="ri-add-line" id="faq-1-icon"></i>
+</div>
+</button>
+<div class="hidden p-4 border-t border-gray-200" id="faq-1-content">
+<p class="text-gray-600">You can book a cab through our website, mobile app, or by calling our customer service number. Simply enter your pickup location, destination, date, time, and select the type of cab you need. You'll receive a confirmation once your booking is confirmed.</p>
+</div>
+</div>
+<!-- FAQ Item 2 -->
+<div class="mb-4 border border-gray-200 rounded-lg overflow-hidden">
+<button class="w-full flex justify-between items-center p-4 bg-white hover:bg-gray-50 transition-colors" id="faq-2-btn">
+<span class="font-medium text-left">What is your cancellation policy?</span>
+<div class="w-5 h-5 flex items-center justify-center text-primary">
+<i class="ri-add-line" id="faq-2-icon"></i>
+</div>
+</button>
+<div class="hidden p-4 border-t border-gray-200" id="faq-2-content">
+<p class="text-gray-600">Cancellations made more than 24 hours before the scheduled pickup time are eligible for a full refund. Cancellations made between 12-24 hours before pickup incur a 25% charge. Cancellations made less than 12 hours before pickup incur a 50% charge. No-shows are charged the full amount.</p>
+</div>
+</div>
+<!-- FAQ Item 3 -->
+<div class="mb-4 border border-gray-200 rounded-lg overflow-hidden">
+<button class="w-full flex justify-between items-center p-4 bg-white hover:bg-gray-50 transition-colors" id="faq-3-btn">
+<span class="font-medium text-left">Are tolls and parking charges included in the fare?</span>
+<div class="w-5 h-5 flex items-center justify-center text-primary">
+<i class="ri-add-line" id="faq-3-icon"></i>
+</div>
+</button>
+<div class="hidden p-4 border-t border-gray-200" id="faq-3-content">
+<p class="text-gray-600">No, tolls, parking charges, and other local charges are not included in the base fare. These will be charged separately based on actual expenses incurred during the journey. You will receive a detailed breakdown of all charges in your invoice.</p>
+</div>
+</div>
+<!-- FAQ Item 4 -->
+<div class="mb-4 border border-gray-200 rounded-lg overflow-hidden">
+<button class="w-full flex justify-between items-center p-4 bg-white hover:bg-gray-50 transition-colors" id="faq-4-btn">
+<span class="font-medium text-left">What payment methods do you accept?</span>
+<div class="w-5 h-5 flex items-center justify-center text-primary">
+<i class="ri-add-line" id="faq-4-icon"></i>
+</div>
+</button>
+<div class="hidden p-4 border-t border-gray-200" id="faq-4-content">
+<p class="text-gray-600">We accept various payment methods including credit/debit cards, net banking, UPI (Google Pay, PhonePe, Paytm), and cash. For online bookings, we require a 25% advance payment to confirm your reservation.</p>
+</div>
+</div>
+<!-- FAQ Item 5 -->
+<div class="mb-4 border border-gray-200 rounded-lg overflow-hidden">
+<button class="w-full flex justify-between items-center p-4 bg-white hover:bg-gray-50 transition-colors" id="faq-5-btn">
+<span class="font-medium text-left">Can I book a cab for multiple days?</span>
+<div class="w-5 h-5 flex items-center justify-center text-primary">
+<i class="ri-add-line" id="faq-5-icon"></i>
+</div>
+</button>
+<div class="hidden p-4 border-t border-gray-200" id="faq-5-content">
+<p class="text-gray-600">Yes, we offer multi-day packages for outstation trips. You can book a cab for multiple days, and we'll provide you with a custom quote based on your itinerary. For multi-day bookings, driver allowance charges will apply in addition to the base fare.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Newsletter Section -->
+<section class="py-16 bg-gray-50">
+<div class="container mx-auto px-4">
+<div class="max-w-3xl mx-auto text-center">
+<h2 class="text-3xl font-bold text-primary mb-4">Subscribe to Our Newsletter</h2>
+<p class="text-gray-600 mb-8">Stay updated with our latest offers, new destinations, and travel tips. Subscribe to our newsletter and get exclusive deals directly in your inbox.</p>
+<form class="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto">
+<input type="email" placeholder="Enter your email address" class="flex-1 px-4 py-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+<button type="submit" class="bg-primary text-white px-6 py-3 font-medium !rounded-button whitespace-nowrap hover:bg-primary/90 transition-colors">Subscribe</button>
+</form>
+<p class="text-gray-500 text-sm mt-4">By subscribing, you agree to our Privacy Policy and consent to receive updates from our company.</p>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-primary text-white pt-16 pb-8">
+<div class="container mx-auto px-4">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+<!-- Company Info -->
+<div>
+<h3 class="text-xl font-bold mb-4">Gayatri Tours and Travels</h3>
+<p class="text-white/80 mb-4">Your trusted partner for comfortable and reliable cab services across India.</p>
+<div class="flex items-start mb-2">
+<div class="w-5 h-5 flex items-center justify-center mr-2 mt-1">
+<i class="ri-map-pin-line"></i>
+</div>
+<p class="text-white/80">Flat No 202, Swapnshilp Apartment, Abhinav College Road, Narhe, Pune 411041</p>
+</div>
+<div class="flex items-center mb-2">
+<div class="w-5 h-5 flex items-center justify-center mr-2">
+<i class="ri-phone-line"></i>
+</div>
+<a href="tel:+919405597993" class="text-white/80 hover:text-white">+91 9405597993</a>
+</div>
+<div class="flex items-center mb-2">
+<div class="w-5 h-5 flex items-center justify-center mr-2">
+<i class="ri-mail-line"></i>
+</div>
+<a href="mailto:gayatritoursandtravels@gmail.com" class="text-white/80 hover:text-white">gayatritoursandtravels@gmail.com</a>
+</div>
+</div>
+<!-- Quick Links -->
+<div>
+<h3 class="text-xl font-bold mb-4">Quick Links</h3>
+<ul class="space-y-2">
+<li><a href="#" class="text-white/80 hover:text-white">Home</a></li>
+<li><a href="#" class="text-white/80 hover:text-white">About Us</a></li>
+<li><a href="#" class="text-white/80 hover:text-white">Services</a></li>
+<li><a href="#" class="text-white/80 hover:text-white">Packages</a></li>
+<li><a href="#" class="text-white/80 hover:text-white">Contact Us</a></li>
+<li><a href="#" class="text-white/80 hover:text-white">FAQs</a></li>
+<li><a href="#" class="text-white/80 hover:text-white">Terms & Conditions</a></li>
+<li><a href="#" class="text-white/80 hover:text-white">Privacy Policy</a></li>
+</ul>
+</div>
+<!-- Popular Destinations -->
+<div>
+<h3 class="text-xl font-bold mb-4">Popular Destinations</h3>
+<ul class="space-y-2">
+<li><a href="#" class="text-white/80 hover:text-white">Pune to Mumbai</a></li>
+<li><a href="#" class="text-white/80 hover:text-white">Pune to Lonavala</a></li>
+<li><a href="#" class="text-white/80 hover:text-white">Pune to Mahabaleshwar</a></li>
+<li><a href="#" class="text-white/80 hover:text-white">Pune to Shirdi</a></li>
+<li><a href="#" class="text-white/80 hover:text-white">Pune to Goa</a></li>
+<li><a href="#" class="text-white/80 hover:text-white">Pune to Aurangabad</a></li>
+<li><a href="#" class="text-white/80 hover:text-white">Pune to Nashik</a></li>
+<li><a href="#" class="text-white/80 hover:text-white">Pune to Kolhapur</a></li>
+</ul>
+</div>
+<!-- Connect With Us -->
+<div>
+<h3 class="text-xl font-bold mb-4">Connect With Us</h3>
+<div class="flex space-x-4 mb-6">
+<a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors">
+<i class="ri-facebook-fill"></i>
+</a>
+<a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors">
+<i class="ri-instagram-line"></i>
+</a>
+<a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors">
+<i class="ri-twitter-x-line"></i>
+</a>
+<a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors">
+<i class="ri-linkedin-fill"></i>
+</a>
+</div>
+<h3 class="text-xl font-bold mb-4">We Accept</h3>
+<div class="flex flex-wrap gap-3">
+<div class="w-10 h-6 bg-white rounded flex items-center justify-center">
+<i class="ri-visa-fill text-blue-700"></i>
+</div>
+<div class="w-10 h-6 bg-white rounded flex items-center justify-center">
+<i class="ri-mastercard-fill text-orange-600"></i>
+</div>
+<div class="w-10 h-6 bg-white rounded flex items-center justify-center">
+<i class="ri-paypal-fill text-blue-600"></i>
+</div>
+<div class="w-10 h-6 bg-white rounded flex items-center justify-center">
+<i class="ri-google-fill text-red-500"></i>
+</div>
+<div class="w-10 h-6 bg-white rounded flex items-center justify-center">
+<i class="ri-amazon-pay-fill text-blue-900"></i>
+</div>
+</div>
+</div>
+</div>
+<div class="border-t border-white/20 pt-8">
+<div class="flex flex-col md:flex-row justify-between items-center">
+<p class="text-white/80 mb-4 md:mb-0">© 2025 Gayatri Tours and Travels. All rights reserved.</p>
+<div class="flex space-x-4">
+<a href="#" class="text-white/80 hover:text-white text-sm">Terms & Conditions</a>
+<a href="#" class="text-white/80 hover:text-white text-sm">Privacy Policy</a>
+<a href="#" class="text-white/80 hover:text-white text-sm">Refund Policy</a>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<!-- WhatsApp Button -->
+<a href="https://wa.me/919405597993" class="fixed bottom-6 right-6 w-14 h-14 bg-green-500 rounded-full flex items-center justify-center shadow-lg z-50 hover:bg-green-600 transition-colors">
+<i class="ri-whatsapp-line text-white text-2xl"></i>
+</a>
+<!-- Scripts -->
+<script id="faq-toggle-script">
+document.addEventListener('DOMContentLoaded', function() {
+const faqButtons = document.querySelectorAll('[id^="faq-"][id$="-btn"]');
+faqButtons.forEach(button => {
+button.addEventListener('click', function() {
+const faqId = this.id.replace('-btn', '');
+const content = document.getElementById(`${faqId}-content`);
+const icon = document.getElementById(`${faqId}-icon`);
+if (content.classList.contains('hidden')) {
+content.classList.remove('hidden');
+icon.classList.remove('ri-add-line');
+icon.classList.add('ri-subtract-line');
+} else {
+content.classList.add('hidden');
+icon.classList.remove('ri-subtract-line');
+icon.classList.add('ri-add-line');
+}
+});
+});
+});
+</script>
+<script id="range-slider-script">
+document.addEventListener('DOMContentLoaded', function() {
+const rangeSliders = document.querySelectorAll('.range-slider');
+rangeSliders.forEach(slider => {
+const handle = slider.querySelector('.range-handle');
+const fill = slider.querySelector('.range-fill');
+let isDragging = false;
+const updateSlider = (e) => {
+const sliderRect = slider.getBoundingClientRect();
+let position = (e.clientX - sliderRect.left) / sliderRect.width;
+// Clamp position between 0 and 1
+position = Math.max(0, Math.min(1, position));
+// Update handle position
+handle.style.left = `${position * 100}%`;
+// Update fill width
+fill.style.width = `${position * 100}%`;
+};
+handle.addEventListener('mousedown', () => {
+isDragging = true;
+});
+document.addEventListener('mousemove', (e) => {
+if (isDragging) {
+updateSlider(e);
+}
+});
+document.addEventListener('mouseup', () => {
+isDragging = false;
+});
+slider.addEventListener('click', (e) => {
+updateSlider(e);
+});
+});
+});
+</script>
+</body>
+</html>

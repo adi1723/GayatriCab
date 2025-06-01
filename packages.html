@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>All Packages - Gayatri Tours and Travels</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#0a2463',secondary:'#ffc857'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body {
+font-family: 'Montserrat', sans-serif;
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+-webkit-appearance: none;
+margin: 0;
+}
+.custom-checkbox {
+position: relative;
+display: inline-block;
+width: 20px;
+height: 20px;
+margin-right: 8px;
+}
+.custom-checkbox input {
+opacity: 0;
+width: 0;
+height: 0;
+}
+.checkmark {
+position: absolute;
+top: 0;
+left: 0;
+height: 20px;
+width: 20px;
+background-color: #fff;
+border: 2px solid #0a2463;
+border-radius: 4px;
+}
+.custom-checkbox input:checked ~ .checkmark {
+background-color: #0a2463;
+}
+.checkmark:after {
+content: "";
+position: absolute;
+display: none;
+}
+.custom-checkbox input:checked ~ .checkmark:after {
+display: block;
+}
+.custom-checkbox .checkmark:after {
+left: 6px;
+top: 2px;
+width: 5px;
+height: 10px;
+border: solid white;
+border-width: 0 2px 2px 0;
+transform: rotate(45deg);
+}
+.price-slider {
+width: 100%;
+height: 6px;
+background: #e5e7eb;
+border-radius: 3px;
+position: relative;
+}
+.price-slider .range-fill {
+height: 100%;
+background-color: #0a2463;
+border-radius: 3px;
+position: absolute;
+}
+.price-slider .range-handle {
+width: 18px;
+height: 18px;
+background: #fff;
+border: 2px solid #0a2463;
+border-radius: 50%;
+position: absolute;
+top: -6px;
+margin-left: -9px;
+cursor: pointer;
+}
+.price-slider .min-handle {
+left: 20%;
+}
+.price-slider .max-handle {
+left: 80%;
+}
+.custom-select {
+position: relative;
+display: inline-block;
+width: 100%;
+}
+.custom-select-header {
+padding: 0.75rem 1rem;
+border: 1px solid #e5e7eb;
+border-radius: 0.25rem;
+background-color: white;
+cursor: pointer;
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+.custom-select-options {
+position: absolute;
+top: 100%;
+left: 0;
+right: 0;
+border: 1px solid #e5e7eb;
+border-top: none;
+border-radius: 0 0 0.25rem 0.25rem;
+background-color: white;
+z-index: 10;
+max-height: 200px;
+overflow-y: auto;
+}
+.custom-select-option {
+padding: 0.75rem 1rem;
+cursor: pointer;
+}
+.custom-select-option:hover {
+background-color: #f3f4f6;
+}
+.page-header {
+background-image: linear-gradient(rgba(10, 36, 99, 0.8), rgba(10, 36, 99, 0.8)), url('https://readdy.ai/api/search-image?query=travel%2520destinations%2520collage%2520with%2520famous%2520landmarks%2520and%2520natural%2520wonders%2520of%2520India%252C%2520professional%2520photography%252C%2520high%2520resolution%252C%2520vibrant%2520colors%252C%2520travel%2520concept&width=1920&height=400&seq=10&orientation=landscape');
+background-size: cover;
+background-position: center;
+}
+</style>
+</head>
+<body class="bg-white">
+<!-- Header -->
+<header class="bg-white shadow-md fixed w-full top-0 z-50">
+<div class="container mx-auto px-4 py-3 flex justify-between items-center">
+<a href="index.html" class="text-2xl font-['Pacifico'] text-primary">Gayatri Tours & Travels</a>   
+<nav class="hidden lg:flex items-center space-x-6">
+<a href="index.html" class="text-primary font-medium border-b-2 border-primary">Home</a>
+<a href="about.html" class="text-gray-700 hover:text-primary transition-colors">About</a>
+<a href="packages.html" class="text-gray-700 hover:text-primary transition-colors">Packages</a>
+<a href="contact.html" class="text-gray-700 hover:text-primary transition-colors">Contact</a>
+</nav>
+<div class="hidden lg:flex items-center space-x-4">
+<a href="tel:+919405597993" class="text-primary font-medium flex items-center whitespace-nowrap">
+<div class="w-5 h-5 flex items-center justify-center mr-1">
+<i class="ri-phone-line"></i>
+</div>
++91 9405597993
+</a>
+</div>
+<button class="lg:hidden w-10 h-10 flex items-center justify-center text-primary">
+<i class="ri-menu-line text-2xl"></i>
+</button>
+</div>
+</header>
+<!-- Page Header -->
+<section class="page-header pt-28 pb-16">
+<div class="container mx-auto px-4 text-white">
+<div class="max-w-3xl">
+<h1 class="text-3xl md:text-4xl font-bold mb-4">All Travel Packages</h1>
+<p class="text-lg mb-6">Explore our comprehensive collection of travel packages designed for comfort, convenience, and memorable experiences.</p>
+<nav class="flex" aria-label="Breadcrumb">
+<ol class="inline-flex items-center space-x-1 md:space-x-3">
+<li class="inline-flex items-center">
+<a href="https://readdy.ai/home/64319105-0b5e-4a51-af8b-8c85364cc76f/91671dcd-a745-4183-a82b-932bcd6286ff" data-readdy="true" class="inline-flex items-center text-white hover:text-gray-200">
+<div class="w-4 h-4 flex items-center justify-center mr-2">
+<i class="ri-home-line"></i>
+</div>
+Home
+</a>
+</li>
+<li>
+<div class="flex items-center">
+<div class="w-4 h-4 flex items-center justify-center mx-1">
+<i class="ri-arrow-right-s-line"></i>
+</div>
+<span class="text-white">Packages</span>
+</div>
+</li>
+</ol>
+</nav>
+</div>
+</div>
+</section>
+<!-- Main Content -->
+<section class="py-12">
+<div class="container mx-auto px-4">
+<div class="flex flex-col lg:flex-row gap-8">
+<!-- Filters Sidebar -->
+<div class="lg:w-1/4">
+<div class="bg-white rounded-lg shadow-md p-6 sticky top-24">
+<div class="mb-6">
+<h3 class="text-lg font-bold text-gray-800 mb-4">Filters</h3>
+<div class="relative mb-4">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none w-10 h-10">
+<i class="ri-search-line text-gray-500"></i>
+</div>
+<input type="text" placeholder="Search packages" class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-sm">
+</div>
+<button class="w-full bg-primary text-white py-2 !rounded-button hover:bg-primary/90 transition-colors mb-4 whitespace-nowrap text-sm">Apply Filters</button>
+<button class="w-full bg-white text-gray-700 border border-gray-300 py-2 !rounded-button hover:bg-gray-50 transition-colors whitespace-nowrap text-sm">Reset Filters</button>
+</div>
+<div class="border-t border-gray-200 pt-6 mb-6">
+<h4 class="font-medium text-gray-800 mb-3">Destination</h4>
+<div class="custom-select mb-4">
+<div class="custom-select-header" id="destination-select">
+<span>All Destinations</span>
+<div class="w-5 h-5 flex items-center justify-center">
+<i class="ri-arrow-down-s-line"></i>
+</div>
+</div>
+<div class="custom-select-options hidden" id="destination-options">
+<div class="custom-select-option">All Destinations</div>
+<div class="custom-select-option">Mumbai</div>
+<div class="custom-select-option">Lonavala</div>
+<div class="custom-select-option">Mahabaleshwar</div>
+<div class="custom-select-option">Shirdi</div>
+<div class="custom-select-option">Goa</div>
+<div class="custom-select-option">Aurangabad</div>
+<div class="custom-select-option">Nashik</div>
+<div class="custom-select-option">Kolhapur</div>
+</div>
+</div>
+</div>
+<div class="border-t border-gray-200 pt-6 mb-6">
+<h4 class="font-medium text-gray-800 mb-3">Package Type</h4>
+<div class="space-y-2">
+<div class="flex items-center">
+<label class="custom-checkbox">
+<input type="checkbox" checked>
+<span class="checkmark"></span>
+</label>
+<span>All Types</span>
+</div>
+<div class="flex items-center">
+<label class="custom-checkbox">
+<input type="checkbox">
+<span class="checkmark"></span>
+</label>
+<span>One Way</span>
+</div>
+<div class="flex items-center">
+<label class="custom-checkbox">
+<input type="checkbox">
+<span class="checkmark"></span>
+</label>
+<span>Weekend Getaway</span>
+</div>
+<div class="flex items-center">
+<label class="custom-checkbox">
+<input type="checkbox">
+<span class="checkmark"></span>
+</label>
+<span>Religious Tour</span>
+</div>
+<div class="flex items-center">
+<label class="custom-checkbox">
+<input type="checkbox">
+<span class="checkmark"></span>
+</label>
+<span>Historical Tour</span>
+</div>
+<div class="flex items-center">
+<label class="custom-checkbox">
+<input type="checkbox">
+<span class="checkmark"></span>
+</label>
+<span>Long Distance</span>
+</div>
+<div class="flex items-center">
+<label class="custom-checkbox">
+<input type="checkbox">
+<span class="checkmark"></span>
+</label>
+<span>Airport Transfer</span>
+</div>
+</div>
+</div>
+<div class="border-t border-gray-200 pt-6 mb-6">
+<h4 class="font-medium text-gray-800 mb-3">Duration</h4>
+<div class="space-y-2">
+<div class="flex items-center">
+<label class="custom-checkbox">
+<input type="checkbox">
+<span class="checkmark"></span>
+</label>
+<span>1-3 days</span>
+</div>
+<div class="flex items-center">
+<label class="custom-checkbox">
+<input type="checkbox">
+<span class="checkmark"></span>
+</label>
+<span>4-7 days</span>
+</div>
+<div class="flex items-center">
+<label class="custom-checkbox">
+<input type="checkbox">
+<span class="checkmark"></span>
+</label>
+<span>7+ days</span>
+</div>
+</div>
+</div>
+<div class="border-t border-gray-200 pt-6">
+<h4 class="font-medium text-gray-800 mb-3">Price Range</h4>
+<div class="mb-4">
+<div class="price-slider" id="price-slider">
+<div class="range-fill" style="left: 20%; width: 60%;"></div>
+<div class="range-handle min-handle" id="min-handle"></div>
+<div class="range-handle max-handle" id="max-handle"></div>
+</div>
+</div>
+<div class="flex justify-between text-sm text-gray-600">
+<span>₹<span id="min-price">10,000</span></span>
+<span>₹<span id="max-price">30,000</span></span>
+</div>
+</div>
+</div>
+</div>
+<!-- Packages Grid -->
+<div class="lg:w-3/4">
+<!-- Sort and View Options -->
+<div class="bg-white rounded-lg shadow-md p-4 mb-6 flex flex-col sm:flex-row justify-between items-center">
+<div class="mb-4 sm:mb-0 w-full sm:w-auto">
+<p class="text-gray-600 mb-2 sm:mb-0"><span class="font-medium">24</span> packages found</p>
+</div>
+<div class="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
+<div class="custom-select w-full sm:w-48">
+<div class="custom-select-header" id="sort-select">
+<span>Sort by: Popularity</span>
+<div class="w-5 h-5 flex items-center justify-center">
+<i class="ri-arrow-down-s-line"></i>
+</div>
+</div>
+<div class="custom-select-options hidden" id="sort-options">
+<div class="custom-select-option">Popularity</div>
+<div class="custom-select-option">Price: Low to High</div>
+<div class="custom-select-option">Price: High to Low</div>
+<div class="custom-select-option">Duration: Short to Long</div>
+<div class="custom-select-option">Duration: Long to Short</div>
+</div>
+</div>
+<div class="flex items-center gap-2 w-full sm:w-auto justify-end">
+<button class="w-10 h-10 bg-primary text-white flex items-center justify-center rounded">
+<i class="ri-grid-line"></i>
+</button>
+<button class="w-10 h-10 bg-white text-gray-600 border border-gray-300 flex items-center justify-center rounded hover:bg-gray-50">
+<i class="ri-list-check"></i>
+</button>
+</div>
+</div>
+</div>
+<!-- Packages Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Package 1 -->
+<div class="bg-white rounded-lg overflow-hidden shadow-lg transition-transform hover:transform hover:scale-105">
+<div class="h-48 overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=Mumbai%2520skyline%2520with%2520iconic%2520Gateway%2520of%2520India%2520and%2520modern%2520buildings%252C%2520clear%2520blue%2520sky%252C%2520professional%2520photography%252C%2520travel%2520destination%252C%2520high%2520resolution%252C%2520no%2520people%252C%2520daytime&width=600&height=400&seq=2&orientation=landscape" alt="Pune to Mumbai" class="w-full h-full object-cover object-top">
+</div>
+<div class="p-6">
+<span class="bg-secondary/20 text-primary px-3 py-1 rounded-full text-sm font-medium">One Way</span>
+<h3 class="text-xl font-bold mt-3 mb-2">Pune to Mumbai</h3>
+<p class="text-gray-600 mb-4">Enjoy a comfortable ride to the financial capital of India with our premium cab service.</p>
+<div class="flex flex-wrap gap-2 mb-4">
+<div class="flex items-center text-sm text-gray-600">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-time-line"></i>
+</div>
+<span>4 hours</span>
+</div>
+<div class="flex items-center text-sm text-gray-600">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-restaurant-line"></i>
+</div>
+<span>Meals</span>
+</div>
+<div class="flex items-center text-sm text-gray-600">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-wifi-line"></i>
+</div>
+<span>WiFi</span>
+</div>
+</div>
+<div class="flex justify-between items-center">
+<div>
+<span class="text-gray-500 text-sm">Starting from</span>
+<p class="text-primary font-bold text-xl">₹3,200</p>
+</div>
+<button class="bg-primary text-white px-4 py-2 !rounded-button whitespace-nowrap hover:bg-primary/90 transition-colors">Book Now</button>
+</div>
+</div>
+</div>
+<!-- Package 2 -->
+<div class="bg-white rounded-lg overflow-hidden shadow-lg transition-transform hover:transform hover:scale-105">
+<div class="h-48 overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=Lonavala%2520hill%2520station%2520with%2520lush%2520green%2520valleys%252C%2520misty%2520mountains%252C%2520waterfalls%252C%2520professional%2520photography%252C%2520travel%2520destination%252C%2520high%2520resolution%252C%2520no%2520people%252C%2520scenic%2520beauty&width=600&height=400&seq=3&orientation=landscape" alt="Pune to Lonavala" class="w-full h-full object-cover object-top">
+</div>
+<div class="p-6">
+<span class="bg-secondary/20 text-primary px-3 py-1 rounded-full text-sm font-medium">Weekend Getaway</span>
+<h3 class="text-xl font-bold mt-3 mb-2">Pune to Lonavala</h3>
+<p class="text-gray-600 mb-4">Escape to the scenic beauty of Lonavala hills with our comfortable cab service.</p>
+<div class="flex flex-wrap gap-2 mb-4">
+<div class="flex items-center text-sm text-gray-600">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-time-line"></i>
+</div>
+<span>2 days</span>
+</div>
+<div class="flex items-center text-sm text-gray-600">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-hotel-line"></i>
+</div>
+<span>Stay</span>
+</div>
+<div class="flex items-center text-sm text-gray-600">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-restaurant-line"></i>
+</div>
+<span>Meals</span>
+</div>
+</div>
+<div class="flex justify-between items-center">
+<div>
+<span class="text-gray-500 text-sm">Starting from</span>
+<p class="text-primary font-bold text-xl">₹4,800</p>
+</div>
+<button class="bg-primary text-white px-4 py-2 !rounded-button whitespace-nowrap hover:bg-primary/90 transition-colors">Book Now</button>
+</div>
+</div>
+</div>
+<!-- Package 3 -->
+<div class="bg-white rounded-lg overflow-hidden shadow-lg transition-transform hover:transform hover:scale-105">
+<div class="h-48 overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=Mahabaleshwar%2520hill%2520station%2520with%2520strawberry%2520farms%252C%2520lush%2520green%2520valleys%252C%2520viewpoints%252C%2520professional%2520photography%252C%2520travel%2520destination%252C%2520high%2520resolution%252C%2520no%2520people%252C%2520scenic%2520beauty&width=600&height=400&seq=4&orientation=landscape" alt="Pune to Mahabaleshwar" class="w-full h-full object-cover object-top">
+</div>
+<div class="p-6">
+<span class="bg-secondary/20 text-primary px-3 py-1 rounded-full text-sm font-medium">Weekend Getaway</span>
+<h3 class="text-xl font-bold mt-3 mb-2">Pune to Mahabaleshwar</h3>
+<p class="text-gray-600 mb-4">Visit the scenic hill station known for its strawberries and breathtaking views.</p>
+<div class="flex flex-wrap gap-2 mb-4">
+<div class="flex items-center text-sm text-gray-600">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-time-line"></i>
+</div>
+<span>3 days</span>
+</div>
+<div class="flex items-center text-sm text-gray-600">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-hotel-line"></i>
+</div>
+<span>Stay</span>
+</div>
+<div class="flex items-center text-sm text-gray-600">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-restaurant-line"></i>
+</div>
+<span>Meals</span>
+</div>
+</div>
+<div class="flex justify-between items-center">
+<div>
+<span class="text-gray-500 text-sm">Starting from</span>
+<p class="text-primary font-bold text-xl">₹7,500</p>
+</div>
+<button class="bg-primary text-white px-4 py-2 !rounded-button whitespace-nowrap hover:bg-primary/90 transition-colors">Book Now</button>
+</div>
+</div>
+</div>
+<!-- Package 4 -->
+<div class="bg-white rounded-lg overflow-hidden shadow-lg transition-transform hover:transform hover:scale-105">
+<div class="h-48 overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=Shirdi%2520Sai%2520Baba%2520temple%2520with%2520devotees%252C%2520spiritual%2520atmosphere%252C%2520professional%2520photography%252C%2520travel%2520destination%252C%2520high%2520resolution%252C%2520religious%2520place&width=600&height=400&seq=5&orientation=landscape" alt="Pune to Shirdi" class="w-full h-full object-cover object-top">
+</div>
+<div class="p-6">
+<span class="bg-secondary/20 text-primary px-3 py-1 rounded-full text-sm font-medium">Religious Tour</span>
+<h3 class="text-xl font-bold mt-3 mb-2">Pune to Shirdi</h3>
+<p class="text-gray-600 mb-4">Visit the sacred town of Shirdi, home to the revered Sai Baba temple.</p>
+<div class="flex flex-wrap gap-2 mb-4">
+<div class="flex items-center text-sm text-gray-600">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-time-line"></i>
+</div>
+<span>2 days</span>
+</div>
+<div class="flex items-center text-sm text-gray-600">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-hotel-line"></i>
+</div>
+<span>Stay</span>
+</div>
+<div class="flex items-center text-sm text-gray-600">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-guide-line"></i>
+</div>
+<span>Guide</span>
+</div>
+</div>
+<div class="flex justify-between items-center">
+<div>
+<span class="text-gray-500 text-sm">Starting from</span>
+<p class="text-primary font-bold text-xl">₹5,800</p>
+</div>
+<button class="bg-primary text-white px-4 py-2 !rounded-button whitespace-nowrap hover:bg-primary/90 transition-colors">Book Now</button>
+</div>
+</div>
+</div>
+<!-- Package 5 -->
+<div class="bg-white rounded-lg overflow-hidden shadow-lg transition-transform hover:transform hover:scale-105">
+<div class="h-48 overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=Goa%2520beaches%2520with%2520palm%2520trees%252C%2520shacks%252C%2520clear%2520blue%2520water%252C%2520professional%2520photography%252C%2520travel%2520destination%252C%2520high%2520resolution%252C%2520no%2520people%252C%2520scenic%2520beauty&width=600&height=400&seq=6&orientation=landscape" alt="Pune to Goa" class="w-full h-full object-cover object-top">
+</div>
+<div class="p-6">
+<span class="bg-secondary/20 text-primary px-3 py-1 rounded-full text-sm font-medium">Long Distance</span>
+<h3 class="text-xl font-bold mt-3 mb-2">Pune to Goa</h3>
+<p class="text-gray-600 mb-4">Travel to the beach paradise of Goa in comfort with our premium cab service.</p>
+<div class="flex flex-wrap gap-2 mb-4">
+<div class="flex items-center text-sm text-gray-600">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-time-line"></i>
+</div>
+<span>5 days</span>
+</div>
+<div class="flex items-center text-sm text-gray-600">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-hotel-line"></i>
+</div>
+<span>Resort Stay</span>
+</div>
+<div class="flex items-center text-sm text-gray-600">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-restaurant-line"></i>
+</div>
+<span>Meals</span>
+</div>
+</div>
+<div class="flex justify-between items-center">
+<div>
+<span class="text-gray-500 text-sm">Starting from</span>
+<p class="text-primary font-bold text-xl">₹15,500</p>
+</div>
+<button class="bg-primary text-white px-4 py-2 !rounded-button whitespace-nowrap hover:bg-primary/90 transition-colors">Book Now</button>
+</div>
+</div>
+</div>
+<!-- Package 6 -->
+<div class="bg-white rounded-lg overflow-hidden shadow-lg transition-transform hover:transform hover:scale-105">
+<div class="h-48 overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=Aurangabad%2520Ajanta%2520Ellora%2520caves%252C%2520ancient%2520rock-cut%2520architecture%252C%2520professional%2520photography%252C%2520travel%2520destination%252C%2520high%2520resolution%252C%2520no%2520people%252C%2520historical%2520site&width=600&height=400&seq=7&orientation=landscape" alt="Pune to Aurangabad" class="w-full h-full object-cover object-top">
+</div>
+<div class="p-6">
+<span class="bg-secondary/20 text-primary px-3 py-1 rounded-full text-sm font-medium">Historical Tour</span>
+<h3 class="text-xl font-bold mt-3 mb-2">Pune to Aurangabad</h3>
+<p class="text-gray-600 mb-4">Explore the historical Ajanta and Ellora caves with our comfortable cab service.</p>
+<div class="flex flex-wrap gap-2 mb-4">
+<div class="flex items-center text-sm text-gray-600">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-time-line"></i>
+</div>
+<span>3 days</span>
+</div>
+<div class="flex items-center text-sm text-gray-600">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-hotel-line"></i>
+</div>
+<span>Stay</span>
+</div>
+<div class="flex items-center text-sm text-gray-600">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-guide-line"></i>
+</div>
+<span>Guide</span>
+</div>
+</div>
+<div class="flex justify-between items-center">
+<div>
+<span class="text-gray-500 text-sm">Starting from</span>
+<p class="text-primary font-bold text-xl">₹8,200</p>
+</div>
+<button class="bg-primary text-white px-4 py-2 !rounded-button whitespace-nowrap hover:bg-primary/90 transition-colors">Book Now</button>
+</div>
+</div>
+</div>
+<!-- Package 7 -->
+<div class="bg-white rounded-lg overflow-hidden shadow-lg transition-transform hover:transform hover:scale-105">
+<div class="h-48 overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=Nashik%2520vineyards%2520and%2520Trimbakeshwar%2520temple%252C%2520professional%2520photography%252C%2520travel%2520destination%252C%2520high%2520resolution%252C%2520no%2520people%252C%2520scenic%2520beauty&width=600&height=400&seq=11&orientation=landscape" alt="Pune to Nashik" class="w-full h-full object-cover object-top">
+</div>
+<div class="p-6">
+<span class="bg-secondary/20 text-primary px-3 py-1 rounded-full text-sm font-medium">Wine Tour</span>
+<h3 class="text-xl font-bold mt-3 mb-2">Pune to Nashik</h3>
+<p class="text-gray-600 mb-4">Experience the wine capital of India with vineyard tours and temple visits.</p>
+<div class="flex flex-wrap gap-2 mb-4">
+<div class="flex items-center text-sm text-gray-600">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-time-line"></i>
+</div>
+<span>2 days</span>
+</div>
+<div class="flex items-center text-sm text-gray-600">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-hotel-line"></i>
+</div>
+<span>Stay</span>
+</div>
+<div class="flex items-center text-sm text-gray-600">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-goblet-line"></i>
+</div>
+<span>Wine Tasting</span>
+</div>
+</div>
+<div class="flex justify-between items-center">
+<div>
+<span class="text-gray-500 text-sm">Starting from</span>
+<p class="text-primary font-bold text-xl">₹6,300</p>
+</div>
+<button class="bg-primary text-white px-4 py-2 !rounded-button whitespace-nowrap hover:bg-primary/90 transition-colors">Book Now</button>
+</div>
+</div>
+</div>
+<!-- Package 8 -->
+<div class="bg-white rounded-lg overflow-hidden shadow-lg transition-transform hover:transform hover:scale-105">
+<div class="h-48 overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=Kolhapur%2520Mahalaxmi%2520temple%2520and%2520palace%252C%2520professional%2520photography%252C%2520travel%2520destination%252C%2520high%2520resolution%252C%2520no%2520people%252C%2520historical%2520site&width=600&height=400&seq=12&orientation=landscape" alt="Pune to Kolhapur" class="w-full h-full object-cover object-top">
+</div>
+<div class="p-6">
+<span class="bg-secondary/20 text-primary px-3 py-1 rounded-full text-sm font-medium">Cultural Tour</span>
+<h3 class="text-xl font-bold mt-3 mb-2">Pune to Kolhapur</h3>
+<p class="text-gray-600 mb-4">Discover the rich cultural heritage and famous Mahalaxmi temple of Kolhapur.</p>
+<div class="flex flex-wrap gap-2 mb-4">
+<div class="flex items-center text-sm text-gray-600">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-time-line"></i>
+</div>
+<span>2 days</span>
+</div>
+<div class="flex items-center text-sm text-gray-600">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-hotel-line"></i>
+</div>
+<span>Stay</span>
+</div>
+<div class="flex items-center text-sm text-gray-600">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-restaurant-line"></i>
+</div>
+<span>Meals</span>
+</div>
+</div>
+<div class="flex justify-between items-center">
+<div>
+<span class="text-gray-500 text-sm">Starting from</span>
+<p class="text-primary font-bold text-xl">₹5,900</p>
+</div>
+<button class="bg-primary text-white px-4 py-2 !rounded-button whitespace-nowrap hover:bg-primary/90 transition-colors">Book Now</button>
+</div>
+</div>
+</div>
+<!-- Package 9 -->
+<div class="bg-white rounded-lg overflow-hidden shadow-lg transition-transform hover:transform hover:scale-105">
+<div class="h-48 overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=Alibaug%2520beach%2520with%2520palm%2520trees%2520and%2520fort%2520in%2520background%252C%2520professional%2520photography%252C%2520travel%2520destination%252C%2520high%2520resolution%252C%2520no%2520people%252C%2520scenic%2520beauty&width=600&height=400&seq=13&orientation=landscape" alt="Pune to Alibaug" class="w-full h-full object-cover object-top">
+</div>
+<div class="p-6">
+<span class="bg-secondary/20 text-primary px-3 py-1 rounded-full text-sm font-medium">Beach Getaway</span>
+<h3 class="text-xl font-bold mt-3 mb-2">Pune to Alibaug</h3>
+<p class="text-gray-600 mb-4">Relax at the serene beaches of Alibaug, just a few hours away from Pune.</p>
+<div class="flex flex-wrap gap-2 mb-4">
+<div class="flex items-center text-sm text-gray-600">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-time-line"></i>
+</div>
+<span>2 days</span>
+</div>
+<div class="flex items-center text-sm text-gray-600">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-hotel-line"></i>
+</div>
+<span>Beach Resort</span>
+</div>
+<div class="flex items-center text-sm text-gray-600">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-ship-line"></i>
+</div>
+<span>Ferry Ride</span>
+</div>
+</div>
+<div class="flex justify-between items-center">
+<div>
+<span class="text-gray-500 text-sm">Starting from</span>
+<p class="text-primary font-bold text-xl">₹7,200</p>
+</div>
+<button class="bg-primary text-white px-4 py-2 !rounded-button whitespace-nowrap hover:bg-primary/90 transition-colors">Book Now</button>
+</div>
+</div>
+</div>
+<!-- Package 10 -->
+<div class="bg-white rounded-lg overflow-hidden shadow-lg transition-transform hover:transform hover:scale-105">
+<div class="h-48 overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=Lavasa%2520township%2520with%2520colorful%2520buildings%2520by%2520the%2520lake%252C%2520professional%2520photography%252C%2520travel%2520destination%252C%2520high%2520resolution%252C%2520no%2520people%252C%2520scenic%2520beauty&width=600&height=400&seq=14&orientation=landscape" alt="Pune to Lavasa" class="w-full h-full object-cover object-top">
+</div>
+<div class="p-6">
+<span class="bg-secondary/20 text-primary px-3 py-1 rounded-full text-sm font-medium">Day Trip</span>
+<h3 class="text-xl font-bold mt-3 mb-2">Pune to Lavasa</h3>
+<p class="text-gray-600 mb-4">Visit India's first planned hill city with beautiful lakeside views and activities.</p>
+<div class="flex flex-wrap gap-2 mb-4">
+<div class="flex items-center text-sm text-gray-600">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-time-line"></i>
+</div>
+<span>1 day</span>
+</div>
+<div class="flex items-center text-sm text-gray-600">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-restaurant-line"></i>
+</div>
+<span>Lunch</span>
+</div>
+<div class="flex items-center text-sm text-gray-600">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-boat-line"></i>
+</div>
+<span>Water Sports</span>
+</div>
+</div>
+<div class="flex justify-between items-center">
+<div>
+<span class="text-gray-500 text-sm">Starting from</span>
+<p class="text-primary font-bold text-xl">₹2,800</p>
+</div>
+<button class="bg-primary text-white px-4 py-2 !rounded-button whitespace-nowrap hover:bg-primary/90 transition-colors">Book Now</button>
+</div>
+</div>
+</div>
+<!-- Package 11 -->
+<div class="bg-white rounded-lg overflow-hidden shadow-lg transition-transform hover:transform hover:scale-105">
+<div class="h-48 overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=Khandala%2520valley%2520view%2520with%2520mountains%2520and%2520clouds%252C%2520professional%2520photography%252C%2520travel%2520destination%252C%2520high%2520resolution%252C%2520no%2520people%252C%2520scenic%2520beauty&width=600&height=400&seq=15&orientation=landscape" alt="Pune to Khandala" class="w-full h-full object-cover object-top">
+</div>
+<div class="p-6">
+<span class="bg-secondary/20 text-primary px-3 py-1 rounded-full text-sm font-medium">Weekend Getaway</span>
+<h3 class="text-xl font-bold mt-3 mb-2">Pune to Khandala</h3>
+<p class="text-gray-600 mb-4">Enjoy the misty mountains and scenic viewpoints of this popular hill station.</p>
+<div class="flex flex-wrap gap-2 mb-4">
+<div class="flex items-center text-sm text-gray-600">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-time-line"></i>
+</div>
+<span>2 days</span>
+</div>
+<div class="flex items-center text-sm text-gray-600">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-hotel-line"></i>
+</div>
+<span>Stay</span>
+</div>
+<div class="flex items-center text-sm text-gray-600">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-restaurant-line"></i>
+</div>
+<span>Meals</span>
+</div>
+</div>
+<div class="flex justify-between items-center">
+<div>
+<span class="text-gray-500 text-sm">Starting from</span>
+<p class="text-primary font-bold text-xl">₹4,500</p>
+</div>
+<button class="bg-primary text-white px-4 py-2 !rounded-button whitespace-nowrap hover:bg-primary/90 transition-colors">Book Now</button>
+</div>
+</div>
+</div>
+<!-- Package 12 -->
+<div class="bg-white rounded-lg overflow-hidden shadow-lg transition-transform hover:transform hover:scale-105">
+<div class="h-48 overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=Pune%2520airport%2520terminal%2520with%2520modern%2520architecture%252C%2520professional%2520photography%252C%2520travel%2520destination%252C%2520high%2520resolution%252C%2520no%2520people%252C%2520airport%2520interior&width=600&height=400&seq=16&orientation=landscape" alt="Pune Airport Transfer" class="w-full h-full object-cover object-top">
+</div>
+<div class="p-6">
+<span class="bg-secondary/20 text-primary px-3 py-1 rounded-full text-sm font-medium">Airport Transfer</span>
+<h3 class="text-xl font-bold mt-3 mb-2">Pune Airport Transfer</h3>
+<p class="text-gray-600 mb-4">Reliable and comfortable airport transfers for hassle-free travel.</p>
+<div class="flex flex-wrap gap-2 mb-4">
+<div class="flex items-center text-sm text-gray-600">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-time-line"></i>
+</div>
+<span>On-demand</span>
+</div>
+<div class="flex items-center text-sm text-gray-600">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-luggage-cart-line"></i>
+</div>
+<span>Luggage Space</span>
+</div>
+<div class="flex items-center text-sm text-gray-600">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-shield-check-line"></i>
+</div>
+<span>Safe Travel</span>
+</div>
+</div>
+<div class="flex justify-between items-center">
+<div>
+<span class="text-gray-500 text-sm">Starting from</span>
+<p class="text-primary font-bold text-xl">₹800</p>
+</div>
+<button class="bg-primary text-white px-4 py-2 !rounded-button whitespace-nowrap hover:bg-primary/90 transition-colors">Book Now</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Pagination -->
+<div class="mt-10 flex flex-col sm:flex-row justify-between items-center">
+<div class="mb-4 sm:mb-0">
+<p class="text-gray-600">Showing <span class="font-medium">1-12</span> of <span class="font-medium">24</span> packages</p>
+</div>
+<div class="flex items-center">
+<button class="w-10 h-10 flex items-center justify-center border border-gray-300 rounded-l-lg text-gray-600 hover:bg-gray-50">
+<i class="ri-arrow-left-s-line"></i>
+</button>
+<button class="w-10 h-10 flex items-center justify-center bg-primary text-white border border-primary">1</button>
+<button class="w-10 h-10 flex items-center justify-center border border-gray-300 text-gray-600 hover:bg-gray-50">2</button>
+<button class="w-10 h-10 flex items-center justify-center border border-gray-300 rounded-r-lg text-gray-600 hover:bg-gray-50">
+<i class="ri-arrow-right-s-line"></i>
+</button>
+</div>
+<div class="mt-4 sm:mt-0 custom-select w-32">
+<div class="custom-select-header text-sm" id="per-page-select">
+<span>12 per page</span>
+<div class="w-5 h-5 flex items-center justify-center">
+<i class="ri-arrow-down-s-line"></i>
+</div>
+</div>
+<div class="custom-select-options hidden" id="per-page-options">
+<div class="custom-select-option text-sm">12 per page</div>
+<div class="custom-select-option text-sm">24 per page</div>
+<div class="custom-select-option text-sm">36 per page</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Newsletter Section -->
+<section class="py-16 bg-gray-50">
+<div class="container mx-auto px-4">
+<div class="max-w-3xl mx-auto text-center">
+<h2 class="text-3xl font-bold text-primary mb-4">Subscribe to Our Newsletter</h2>
+<p class="text-gray-600 mb-8">Stay updated with our latest offers, new destinations, and travel tips. Subscribe to our newsletter and get exclusive deals directly in your inbox.</p>
+<form class="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto">
+<input type="email" placeholder="Enter your email address" class="flex-1 px-4 py-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+<button type="submit" class="bg-primary text-white px-6 py-3 font-medium !rounded-button whitespace-nowrap hover:bg-primary/90 transition-colors">Subscribe</button>
+</form>
+<p class="text-gray-500 text-sm mt-4">By subscribing, you agree to our Privacy Policy and consent to receive updates from our company.</p>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-primary text-white pt-16 pb-8">
+<div class="container mx-auto px-4">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+<!-- Company Info -->
+<div>
+<h3 class="text-xl font-bold mb-4">Gayatri Tours and Travels</h3>
+<p class="text-white/80 mb-4">Your trusted partner for comfortable and reliable cab services across India.</p>
+<div class="flex items-start mb-2">
+<div class="w-5 h-5 flex items-center justify-center mr-2 mt-1">
+<i class="ri-map-pin-line"></i>
+</div>
+<p class="text-white/80">Flat No 202, Swapnshilp Apartment, Abhinav College Road, Narhe, Pune 411041</p>
+</div>
+<div class="flex items-center mb-2">
+<div class="w-5 h-5 flex items-center justify-center mr-2">
+<i class="ri-phone-line"></i>
+</div>
+<a href="tel:+919405597993" class="text-white/80 hover:text-white">+91 9405597993</a>
+</div>
+<div class="flex items-center mb-2">
+<div class="w-5 h-5 flex items-center justify-center mr-2">
+<i class="ri-mail-line"></i>
+</div>
+<a href="mailto:gayatritoursandtravels@gmail.com" class="text-white/80 hover:text-white">gayatritoursandtravels@gmail.com</a>
+</div>
+</div>
+<!-- Quick Links -->
+<div>
+<h3 class="text-xl font-bold mb-4">Quick Links</h3>
+<ul class="space-y-2">
+<li><a href="https://readdy.ai/home/64319105-0b5e-4a51-af8b-8c85364cc76f/91671dcd-a745-4183-a82b-932bcd6286ff" data-readdy="true" class="text-white/80 hover:text-white">Home</a></li>
+<li><a href="#" class="text-white/80 hover:text-white">About Us</a></li>
+<li><a href="#" class="text-white/80 hover:text-white">Services</a></li>
+<li><a href="#" class="text-white/80 hover:text-white">Packages</a></li>
+<li><a href="#" class="text-white/80 hover:text-white">Contact Us</a></li>
+<li><a href="#" class="text-white/80 hover:text-white">FAQs</a></li>
+<li><a href="#" class="text-white/80 hover:text-white">Terms & Conditions</a></li>
+<li><a href="#" class="text-white/80 hover:text-white">Privacy Policy</a></li>
+</ul>
+</div>
+<!-- Popular Destinations -->
+<div>
+<h3 class="text-xl font-bold mb-4">Popular Destinations</h3>
+<ul class="space-y-2">
+<li><a href="#" class="text-white/80 hover:text-white">Pune to Mumbai</a></li>
+<li><a href="#" class="text-white/80 hover:text-white">Pune to Lonavala</a></li>
+<li><a href="#" class="text-white/80 hover:text-white">Pune to Mahabaleshwar</a></li>
+<li><a href="#" class="text-white/80 hover:text-white">Pune to Shirdi</a></li>
+<li><a href="#" class="text-white/80 hover:text-white">Pune to Goa</a></li>
+<li><a href="#" class="text-white/80 hover:text-white">Pune to Aurangabad</a></li>
+<li><a href="#" class="text-white/80 hover:text-white">Pune to Nashik</a></li>
+<li><a href="#" class="text-white/80 hover:text-white">Pune to Kolhapur</a></li>
+</ul>
+</div>
+<!-- Connect With Us -->
+<div>
+<h3 class="text-xl font-bold mb-4">Connect With Us</h3>
+<div class="flex space-x-4 mb-6">
+<a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors">
+<i class="ri-facebook-fill"></i>
+</a>
+<a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors">
+<i class="ri-instagram-line"></i>
+</a>
+<a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors">
+<i class="ri-twitter-x-line"></i>
+</a>
+<a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors">
+<i class="ri-linkedin-fill"></i>
+</a>
+</div>
+<h3 class="text-xl font-bold mb-4">We Accept</h3>
+<div class="flex flex-wrap gap-3">
+<div class="w-10 h-6 bg-white rounded flex items-center justify-center">
+<i class="ri-visa-fill text-blue-700"></i>
+</div>
+<div class="w-10 h-6 bg-white rounded flex items-center justify-center">
+<i class="ri-mastercard-fill text-orange-600"></i>
+</div>
+<div class="w-10 h-6 bg-white rounded flex items-center justify-center">
+<i class="ri-paypal-fill text-blue-600"></i>
+</div>
+<div class="w-10 h-6 bg-white rounded flex items-center justify-center">
+<i class="ri-google-fill text-red-500"></i>
+</div>
+<div class="w-10 h-6 bg-white rounded flex items-center justify-center">
+<i class="ri-amazon-pay-fill text-blue-900"></i>
+</div>
+</div>
+</div>
+</div>
+<div class="border-t border-white/20 pt-8">
+<div class="flex flex-col md:flex-row justify-between items-center">
+<p class="text-white/80 mb-4 md:mb-0">© 2025 Gayatri Tours and Travels. All rights reserved.</p>
+<div class="flex space-x-4">
+<a href="#" class="text-white/80 hover:text-white text-sm">Terms & Conditions</a>
+<a href="#" class="text-white/80 hover:text-white text-sm">Privacy Policy</a>
+<a href="#" class="text-white/80 hover:text-white text-sm">Refund Policy</a>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<!-- WhatsApp Button -->
+<a href="https://wa.me/919405597993" class="fixed bottom-6 right-6 w-14 h-14 bg-green-500 rounded-full flex items-center justify-center shadow-lg z-50 hover:bg-green-600 transition-colors">
+<i class="ri-whatsapp-line text-white text-2xl"></i>
+</a>
+<!-- Scripts -->
+<script id="custom-select-script">
+document.addEventListener('DOMContentLoaded', function() {
+const selectHeaders = document.querySelectorAll('.custom-select-header');
+selectHeaders.forEach(header => {
+header.addEventListener('click', function() {
+const selectId = this.id;
+const options = document.getElementById(selectId.replace('select', 'options'));
+// Close all other dropdowns
+document.querySelectorAll('.custom-select-options').forEach(dropdown => {
+if (dropdown.id !== options.id) {
+dropdown.classList.add('hidden');
+}
+});
+// Toggle current dropdown
+options.classList.toggle('hidden');
+});
+});
+// Handle option selection
+document.querySelectorAll('.custom-select-option').forEach(option => {
+option.addEventListener('click', function() {
+const parentId = this.closest('.custom-select-options').id;
+const header = document.getElementById(parentId.replace('options', 'select'));
+const headerText = header.querySelector('span');
+// Update header text
+headerText.textContent = this.textContent;
+// Hide dropdown
+this.closest('.custom-select-options').classList.add('hidden');
+});
+});
+// Close dropdowns when clicking outside
+document.addEventListener('click', function(e) {
+if (!e.target.closest('.custom-select')) {
+document.querySelectorAll('.custom-select-options').forEach(dropdown => {
+dropdown.classList.add('hidden');
+});
+}
+});
+});
+</script>
+<script id="price-range-script">
+document.addEventListener('DOMContentLoaded', function() {
+const slider = document.getElementById('price-slider');
+const minHandle = document.getElementById('min-handle');
+const maxHandle = document.getElementById('max-handle');
+const fill = slider.querySelector('.range-fill');
+const minPrice = document.getElementById('min-price');
+const maxPrice = document.getElementById('max-price');
+let isDraggingMin = false;
+let isDraggingMax = false;
+const updateSlider = (e, handle) => {
+const sliderRect = slider.getBoundingClientRect();
+let position = (e.clientX - sliderRect.left) / sliderRect.width;
+// Clamp position between 0 and 1
+position = Math.max(0, Math.min(1, position));
+if (handle === minHandle) {
+// Ensure min handle doesn't go past max handle
+const maxPos = parseFloat(maxHandle.style.left || '80%') / 100;
+position = Math.min(position, maxPos - 0.05);
+// Update min handle position
+minHandle.style.left = `${position * 100}%`;
+// Update min price display (₹1,000 to ₹50,000 range)
+const price = Math.round((position * 49000) + 1000);
+minPrice.textContent = price.toLocaleString();
+} else {
+// Ensure max handle doesn't go before min handle
+const minPos = parseFloat(minHandle.style.left || '20%') / 100;
+position = Math.max(position, minPos + 0.05);
+// Update max handle position
+maxHandle.style.left = `${position * 100}%`;
+// Update max price display (₹1,000 to ₹50,000 range)
+const price = Math.round((position * 49000) + 1000);
+maxPrice.textContent = price.toLocaleString();
+}
+// Update fill width
+const minPos = parseFloat(minHandle.style.left || '20%');
+const maxPos = parseFloat(maxHandle.style.left || '80%');
+fill.style.left = `${minPos}%`;
+fill.style.width = `${maxPos - minPos}%`;
+};
+minHandle.addEventListener('mousedown', () => {
+isDraggingMin = true;
+});
+maxHandle.addEventListener('mousedown', () => {
+isDraggingMax = true;
+});
+document.addEventListener('mousemove', (e) => {
+if (isDraggingMin) {
+updateSlider(e, minHandle);
+} else if (isDraggingMax) {
+updateSlider(e, maxHandle);
+}
+});
+document.addEventListener('mouseup', () => {
+isDraggingMin = false;
+isDraggingMax = false;
+});
+slider.addEventListener('click', (e) => {
+// Determine which handle to move based on click position
+const sliderRect = slider.getBoundingClientRect();
+const clickPosition = (e.clientX - sliderRect.left) / sliderRect.width;
+const minPos = parseFloat(minHandle.style.left || '20%') / 100;
+const maxPos = parseFloat(maxHandle.style.left || '80%') / 100;
+// Move the closest handle
+if (Math.abs(clickPosition - minPos) <= Math.abs(clickPosition - maxPos)) {
+updateSlider(e, minHandle);
+} else {
+updateSlider(e, maxHandle);
+}
+});
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact Us - Gayatri Tours & Travels</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: "#3b82f6",
+            secondary: "#f59e0b",
+          },
+          borderRadius: {
+            none: "0px",
+            sm: "4px",
+            DEFAULT: "8px",
+            md: "12px",
+            lg: "16px",
+            xl: "20px",
+            "2xl": "24px",
+            "3xl": "32px",
+            full: "9999px",
+            button: "8px",
+          },
+        },
+      },
+    };
+  </script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet" />
+  
+  <!-- Remix Icon -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" />
+
+  <style>
+    /* Fix icon content for remixicon */
+    :where([class^="ri-"])::before { content: "\f3c2"; }
+
+    /* Set Montserrat font for body */
+    body {
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    /* Hero section background and gradient overlay */
+    .hero-section {
+      background-image: linear-gradient(to right, rgba(10, 36, 99, 0.9), rgba(10, 36, 99, 0.6)), 
+        url('https://readdy.ai/api/search-image?query=A%20modern%2C%20welcoming%20travel%20agency%20office%20interior%20with%20a%20professional%20customer%20service%20team%20at%20their%20desks.%20The%20space%20features%20contemporary%20design%20elements%2C%20warm%20lighting%2C%20and%20digital%20displays%20showing%20beautiful%20travel%20destinations.%20Large%20windows%20bring%20in%20natural%20light%2C%20and%20comfortable%20seating%20areas%20are%20arranged%20for%20client%20consultations.%20The%20atmosphere%20conveys%20trust%2C%20expertise%2C%20and%20hospitality.&width=1600&height=800&seq=contact1&orientation=landscape');
+      background-size: cover;
+      background-position: center;
+    }
+
+    /* Focus styles for inputs and textarea */
+    input:focus,
+    textarea:focus {
+      outline: none;
+      border-color: rgba(10, 36, 99, 1);
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+    }
+
+    /* Custom checkbox styling */
+    .custom-checkbox {
+      position: relative;
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      background-color: white;
+      border: 2px solid #d1d5db;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .custom-checkbox.checked {
+      background-color: rgba(10, 36, 99, 1);
+      border-color: rgba(10, 36, 99, 1);
+    }
+
+    .custom-checkbox.checked::after {
+      content: '';
+      position: absolute;
+      left: 6px;
+      top: 2px;
+      width: 6px;
+      height: 10px;
+      border: solid white;
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg);
+    }
+
+    .custom-checkbox input {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body class="bg-white">
+
+  <!-- Header Navigation -->
+  <header class="bg-white shadow-md fixed w-full top-0 z-50">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+        <a href="index.html" class="text-2xl font-['Pacifico'] text-primary">Gayatri Tours & Travels</a>   
+        <a href="index.html" class="text-primary font-medium border-b-2 border-primary">Home</a>
+        <a href="about.html" class="text-gray-700 hover:text-primary transition-colors">About</a>
+        <a href="packages.html" class="text-gray-700 hover:text-primary transition-colors">Packages</a>
+        <a href="contact.html" class="text-gray-700 hover:text-primary transition-colors">Contact</a>
+      </nav>
+      <div class="hidden lg:flex items-center space-x-4">
+        <a href="tel:+919405597993" class="text-primary font-medium flex items-center whitespace-nowrap">
+          <div class="w-5 h-5 flex items-center justify-center mr-1">
+            <i class="ri-phone-line"></i>
+          </div>
+          +91 9405597993
+        </a>
+      </div>
+      <button class="lg:hidden w-10 h-10 flex items-center justify-center text-primary">
+        <i class="ri-menu-line text-2xl"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section w-full h-[500px] flex items-center justify-center mt-16">
+    <div class="container mx-auto px-4 text-center">
+      <h1 class="text-5xl font-bold text-white mb-4 drop-shadow-lg">Contact Us</h1>
+      <p class="text-xl text-white max-w-2xl mx-auto drop-shadow-md">
+        Get in touch with us for your next adventure. We're here to help plan your perfect journey.
+      </p>
+    </div>
+  </section>
+
+  <!-- Main Content Section -->
+  <section class="py-20">
+    <div class="container mx-auto px-4">
+      <div class="grid md:grid-cols-2 gap-12 mb-16">
+        <div>
+          <h2 class="text-3xl font-bold text-gray-800 mb-6">How Can We Help?</h2>
+          <p class="text-gray-600 mb-8">
+            Whether you're planning a family vacation, a romantic getaway, or a business trip, our team of travel experts is here to assist you every step of the way.
+          </p>
+          <div class="space-y-8">
+            <div class="flex items-start">
+              <div class="w-12 h-12 flex items-center justify-center bg-blue-50 rounded-full mr-4">
+                <i class="ri-customer-service-2-line text-primary ri-lg"></i>
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold text-gray-800 mb-2">24/7 Customer Support</h3>
+                <p class="text-gray-600">Our dedicated support team is available round the clock to assist you with any queries or concerns.</p>
+              </div>
+            </div>
+            <div class="flex items-start">
+              <div class="w-12 h-12 flex items-center justify-center bg-blue-50 rounded-full mr-4">
+                <i class="ri-calendar-check-line text-primary ri-lg"></i>
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold text-gray-800 mb-2">Quick Response Time</h3>
+                <p class="text-gray-600">We aim to respond to your inquiries within 24 hours so you can book with confidence.</p>
+              </div>
+            </div>
+            <div class="flex items-start">
+              <div class="w-12 h-12 flex items-center justify-center bg-blue-50 rounded-full mr-4">
+                <i class="ri-map-pin-line text-primary ri-lg"></i>
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold text-gray-800 mb-2">Wide Range of Destinations</h3>
+                <p class="text-gray-600">From local tours to international packages, we offer diverse travel options for all your needs.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div>
+          <h2 class="text-3xl font-bold text-gray-800 mb-6">Send Us a Message</h2>
+          <form action="#" method="POST" class="space-y-6">
+            <div>
+              <label for="name" class="block text-gray-700 font-medium mb-1">Full Name</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Your full name"
+                required
+                class="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-primary transition"
+              />
+            </div>
+            <div>
+              <label for="email" class="block text-gray-700 font-medium mb-1">Email Address</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="your.email@example.com"
+                required
+                class="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-primary transition"
+              />
+            </div>
+            <div>
+              <label for="phone" class="block text-gray-700 font-medium mb-1">Phone Number</label>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                placeholder="+91 12345 67890"
+                class="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-primary transition"
+              />
+            </div>
+            <div>
+              <label for="message" class="block text-gray-700 font-medium mb-1">Message</label>
+              <textarea
+                id="message"
+                name="message"
+                rows="5"
+                placeholder="Write your message here..."
+                required
+                class="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-primary transition resize-none"
+              ></textarea>
+            </div>
+            <div class="flex items-center">
+              <input type="checkbox" id="subscribe" name="subscribe" class="mr-2" />
+              <label for="subscribe" class="text-gray-700 select-none">Subscribe to our newsletter</label>
+            </div>
+            <button
+              type="submit"
+              class="bg-primary text-white px-6 py-3 rounded-button font-semibold hover:bg-blue-600 transition"
+            >
+              Send Message
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Contact Details -->
+      <div class="flex flex-wrap justify-center gap-10 border-t border-gray-200 pt-12">
+        <div class="flex items-center space-x-4">
+          <i class="ri-mail-line text-primary text-3xl"></i>
+          <div>
+            <h4 class="text-lg font-semibold text-gray-800">Email</h4>
+            <a href="mailto:info@gayatritravel.com" class="text-gray-600 hover:text-primary">info@gayatritravel.com</a>
+          </div>
+        </div>
+        <div class="flex items-center space-x-4">
+          <i class="ri-phone-line text-primary text-3xl"></i>
+          <div>
+            <h4 class="text-lg font-semibold text-gray-800">Phone</h4>
+            <a href="tel:+919405597993" class="text-gray-600 hover:text-primary">+91 9405597993</a>
+          </div>
+        </div>
+        <div class="flex items-center space-x-4 max-w-xs">
+          <i class="ri-map-pin-line text-primary text-3xl"></i>
+          <div>
+            <h4 class="text-lg font-semibold text-gray-800">Location</h4>
+            <address class="not-italic text-gray-600">
+              Gayatri Tours & Travels,<br />
+              Pune, Maharashtra, India
+            </address>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-100 py-8 text-center text-gray-600">
+    &copy; 2025 Gayatri Tours & Travels. All rights reserved.
+  </footer>
+
+</body>
+</html>
