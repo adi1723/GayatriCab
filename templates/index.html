@@ -210,95 +210,76 @@ cursor: pointer;
 <h1 class="text-4xl md:text-5xl font-bold mb-4">SERVICES ACROSS 2000+ CITIES</h1>
 <p class="text-xl mb-8">Experience the comfort and reliability of Gayatri Tours and Travels, your trusted partner for all your travel needs.</p>
 <div class="flex flex-wrap gap-4">
-<a href="#" class="bg-white text-primary px-6 py-3 font-medium !rounded-button whitespace-nowrap hover:bg-gray-100 transition-colors">Book Now</a>
-<a href="#" class="bg-transparent border-2 border-white text-white px-6 py-3 font-medium !rounded-button whitespace-nowrap hover:bg-white/10 transition-colors">View Packages</a>
+<a href="#book-ride" class="bg-white text-primary px-6 py-3 font-medium !rounded-button whitespace-nowrap hover:bg-gray-100 transition-colors">Book Now</a>
+<a href="{{ url_for('packages') }}" class="bg-transparent border-2 border-white text-white px-6 py-3 font-medium !rounded-button whitespace-nowrap hover:bg-white/10 transition-colors">View Packages</a>
 </div>
 </div>
 </div>
 </section>
 <!-- Booking Section with Alpine.js -->
 <section 
-  x-data="{ popupVisible: false, showMessage: true, showForm: false }"
+  id="book-ride"
+  x-data="{
+    popupVisible: false,
+    showMessage: true,
+    showForm: false,
+    pickup: '',
+    destination: '',
+    date: '',
+    time: '',
+    passengers: 1,
+    cabType: 'AC'
+  }"
   class="py-16 bg-white"
 >
   <div class="container mx-auto px-4">
     <div class="max-w-5xl mx-auto bg-white shadow-xl rounded-lg -mt-24 relative z-10 p-6 md:p-8">
       <h2 class="text-2xl font-bold text-primary mb-6">Book Your Ride</h2>
-      <form method="POST" action="/book" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <form class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
           <label class="block text-gray-700 mb-2">Pickup Location</label>
-          <div class="relative">
-            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none w-10 h-10">
-              <i class="ri-map-pin-line text-gray-500"></i>
-            </div>
-            <input type="text" name="pickup" placeholder="Enter pickup location" class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
-          </div>
+          <input type="text" name="pickup" x-model="pickup" placeholder="Enter pickup location" class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded">
         </div>
+
         <div>
           <label class="block text-gray-700 mb-2">Destination</label>
-          <div class="relative">
-            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none w-10 h-10">
-              <i class="ri-map-pin-line text-gray-500"></i>
-            </div>
-            <input type="text" name="destination" placeholder="Enter destination" class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
-          </div>
+          <input type="text" name="destination" x-model="destination" placeholder="Enter destination" class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded">
         </div>
+
         <div>
           <label class="block text-gray-700 mb-2">Date</label>
-          <div class="relative">
-            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none w-10 h-10">
-              <i class="ri-calendar-line text-gray-500"></i>
-            </div>
-            <input type="date" name="date" class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
-          </div>
+          <input type="date" name="date" x-model="date" class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded">
         </div>
+
         <div>
           <label class="block text-gray-700 mb-2">Time</label>
-          <div class="relative">
-            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none w-10 h-10">
-              <i class="ri-time-line text-gray-500"></i>
-            </div>
-            <input type="time" name="time" class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
-          </div>
+          <input type="time" name="time" x-model="time" class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded">
         </div>
+
         <div>
           <label class="block text-gray-700 mb-2">Cab Type</label>
           <div class="grid grid-cols-2 gap-4">
-            <div class="flex items-center">
-              <label class="custom-radio">
-                <input type="radio" name="cab_type" value="AC" checked>
-                <span class="radio-mark"></span>
-              </label>
+            <label class="flex items-center space-x-2">
+              <input type="radio" name="cab_type" value="AC" x-model="cabType" checked>
               <span>AC Cab (₹25/km)</span>
-            </div>
-            <div class="flex items-center">
-              <label class="custom-radio">
-                <input type="radio" name="cab-type" value="Non-AC">
-                <span class="radio-mark"></span>
-              </label>
+            </label>
+            <label class="flex items-center space-x-2">
+              <input type="radio" name="cab_type" value="Non-AC" x-model="cabType">
               <span>Non-AC Cab (₹21/km)</span>
-            </div>
+            </label>
           </div>
         </div>
+
         <div>
           <label class="block text-gray-700 mb-2">Number of Passengers</label>
-          <div class="relative">
-            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none w-10 h-10">
-              <i class="ri-user-line text-gray-500"></i>
-            </div>
-            <input type="number" name="passengers" min="1" max="6" value="1" class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
-          </div>
+          <input type="number" name="passengers" x-model="passengers" min="1" max="4" class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded">
         </div>
 
         <div class="md:col-span-2">
           <button 
             type="button"
-            @click="
-              popupVisible = true; 
-              showMessage = true; 
-              showForm = false;
-            "
-            class="w-full bg-primary text-white py-3 font-medium !rounded-button hover:bg-primary/90 transition-colors whitespace-nowrap"
+            @click="popupVisible = true; showMessage = true; showForm = false"
+            class="w-full bg-primary text-white py-3 font-medium rounded hover:bg-primary/90 transition-colors"
           >
             Search Available Cabs
           </button>
@@ -307,45 +288,51 @@ cursor: pointer;
     </div>
   </div>
 
-  <!-- Popup Overlay -->
+ <!-- Popup Overlay -->
+<div 
+  x-show="popupVisible"
+  class="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-30"
+  style="display: none;"
+>
+  <!-- Booking Available Message -->
   <div 
-    x-show="popupVisible"
-    class="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-30"
+    x-show="showMessage" 
+    class="bg-blue-900 text-white px-6 py-4 rounded shadow-lg max-w-md w-full text-center" 
     style="display: none;"
   >
-    <!-- Booking Available Message -->
-    <div 
-      x-show="showMessage" 
-      class="bg-green-600 text-white px-6 py-4 rounded shadow-lg max-w-md w-full text-center" 
-      style="display: none;"
+    <div class="text-lg font-semibold mb-4">Booking Available</div>
+    <button
+      @click="showMessage = false; showForm = true"
+      class="bg-white text-blue-900 px-4 py-2 rounded hover:bg-gray-200"
     >
-      <div class="text-lg font-semibold mb-4">Booking Available</div>
-      <button
-        @click="showMessage = false; showForm = true"
-        class="bg-white text-green-700 px-4 py-2 rounded hover:bg-gray-200"
-      >
-        Fill Details
-      </button>
-    </div>
-
-    <!-- Booking Form Modal -->
-    <div
-      x-show="showForm"
-      class="bg-white rounded-lg p-6 w-full max-w-md shadow-lg"
-      style="display: none;"
-    >
-      <h2 class="text-xl font-bold mb-4 text-center">Confirm Booking</h2>
-        <form id="bookingForm" method="POST" action="/book">
-        <input type="text" name="name" placeholder="Your Name" required class="w-full border p-2 mb-3 rounded">
-        <input type="text" name="mobile" placeholder="Mobile Number" required class="w-full border p-2 mb-3 rounded">
-        <input type="text" name="pickup" placeholder="Pickup Address" required class="w-full border p-2 mb-3 rounded">
-        <input type="text" name="drop" placeholder="Drop Address" required class="w-full border p-2 mb-3 rounded">
-        <button type="submit" class="w-full bg-green-600 text-white py-2 rounded mb-2">Book Ride</button>
-        <button type="button" @click="showForm = false; showMessage = true" class="w-full text-sm text-red-500 underline">Cancel</button>
-      </form>
-    </div>
+      Fill Details
+    </button>
   </div>
-</section>
+
+  <!-- Booking Form Modal -->
+  <div
+    x-show="showForm"
+    class="bg-white rounded-lg p-6 w-full max-w-md shadow-lg"
+    style="display: none;"
+  >
+    <h2 class="text-xl font-bold mb-4 text-center text-blue-900">Confirm Booking</h2>
+    <form method="POST" action="/book">
+      <input type="text" name="name" placeholder="Your Name" required class="w-full border p-2 mb-3 rounded">
+      <input type="text" name="mobile" placeholder="Mobile Number" required class="w-full border p-2 mb-3 rounded">
+      <input type="text" name="pickupaddress" value="Pickup Address" placeholder="Pickup Address" required class="w-full border p-2 mb-3 rounded">
+      <input type="text" name="dropaddress" value="Drop Address" placeholder="Drop Address" required class="w-full border p-2 mb-3 rounded">
+      <input type="date" name="date" :value="date" hidden>
+      <input type="time" name="time" :value="time" hidden>
+      <input type="number" name="passengers" :value="passengers" hidden>
+      <input type="text" name="cab_type" :value="cabType" hidden>
+
+      <button type="submit" class="w-full bg-blue-900 text-white py-2 rounded mb-2">Book Ride</button>
+      <button type="button" @click="showForm = false; showMessage = true" class="w-full text-sm text-red-500 underline">Cancel</button>
+    </form>
+  </div>
+</div>
+
+
 
 <!-- Popup message code goes here -->
   {% if status == 'success' or status == 'fail' %}

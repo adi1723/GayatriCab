@@ -18,32 +18,37 @@ def home():
 def book():
     name = request.form.get('name')
     mobile = request.form.get('mobile')
-    pickup = request.form.get('pickup')
-    drop = request.form.get('destination')
+    pickup = request.form.get('pickupaddress')
+    drop = request.form.get('dropaddress')
     date = request.form.get('date')
     time = request.form.get('time')
     passengers = request.form.get('passengers')
     cab_type = request.form.get('cab_type')
 
+
     subject = 'New Cab Booking Confirmation'
     body = f"""
-Hello {name},
+Subject: 🚖 New Booking Received Gayatri Tours and Travels
 
-Thank you for choosing Gayatri Tours and Travels. Your booking has been received with the following details:
+Message:
+
+Hello Admin,
+
+A new booking has been received via the Gayatri Tours and Travels website. Below are the customer details:
 
 Name: {name}
 Mobile: {mobile}
-Pickup: {pickup}
-Drop: {drop}
+Pickup Address: {pickup}
+Drop Address: {drop}
 Date: {date}
 Time: {time}
-Passengers: {passengers}
+Number of Passengers: {passengers}
 Cab Type: {cab_type}
 
-We will contact you shortly to confirm your ride.
+Please review the booking and contact the customer at your earliest convenience to confirm the ride.
 
 Regards,
-Gayatri Tours and Travels
+Gayatri Tours and Travels System
 """
 
     try:
