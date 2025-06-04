@@ -217,54 +217,67 @@ cursor: pointer;
 </div>
 </section>
 <!-- Booking Section with Alpine.js -->
+<!-- Booking Section with Alpine.js -->
 <section 
   id="book-ride"
-  x-data="{
-    popupVisible: false,
-    showMessage: true,
-    showForm: false,
-    pickup: '',
-    destination: '',
-    date: '',
-    time: '',
-    passengers: 1,
-    cabType: 'AC'
-  }"
+  x-data="bookRide()"
   class="py-16 bg-white"
 >
   <div class="container mx-auto px-4">
     <div class="max-w-5xl mx-auto bg-white shadow-xl rounded-lg -mt-24 relative z-10 p-6 md:p-8">
       <h2 class="text-2xl font-bold text-primary mb-6">Book Your Ride</h2>
-      <form class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <form class="grid grid-cols-1 md:grid-cols-2 gap-6" @submit.prevent>
         <div>
-          <label class="block text-gray-700 mb-2">Pickup Location</label>
-          <input type="text" name="pickup" x-model="pickup" placeholder="Enter pickup location" class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded">
+          <input 
+            list="pickup-list"
+            type="text"
+            id="pickup"
+            name="pickup"
+            placeholder="Enter pickup location"
+            class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded"
+            x-model="pickup"
+            @input.debounce.500ms="fetchSuggestions('pickup')"
+          />
+          <datalist id="pickup-list" 
+            x-html="pickupSuggestions.map(p => `<option value='${p}'></option>`).join('')">
+          </datalist>
         </div>
 
         <div>
-          <label class="block text-gray-700 mb-2">Destination</label>
-          <input type="text" name="destination" x-model="destination" placeholder="Enter destination" class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded">
+          <input 
+            list="destination-list"
+            type="text"
+            id="destination"
+            name="destination"
+            placeholder="Enter destination"
+            class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded"
+            x-model="destination"
+            @input.debounce.500ms="fetchSuggestions('destination')"
+          />
+          <datalist id="destination-list" 
+            x-html="destinationSuggestions.map(d => `<option value='${d}'></option>`).join('')">
+          </datalist>
         </div>
 
         <div>
           <label class="block text-gray-700 mb-2">Date</label>
-          <input type="date" name="date" x-model="date" class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded">
+          <input type="date" name="date" x-model="date" class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded" />
         </div>
 
         <div>
           <label class="block text-gray-700 mb-2">Time</label>
-          <input type="time" name="time" x-model="time" class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded">
+          <input type="time" name="time" x-model="time" class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded" />
         </div>
 
         <div>
           <label class="block text-gray-700 mb-2">Cab Type</label>
           <div class="grid grid-cols-2 gap-4">
             <label class="flex items-center space-x-2">
-              <input type="radio" name="cab_type" value="AC" x-model="cabType" checked>
+              <input type="radio" name="cab_type" value="AC" x-model="cabType" checked />
               <span>AC Cab (₹25/km)</span>
             </label>
             <label class="flex items-center space-x-2">
-              <input type="radio" name="cab_type" value="Non-AC" x-model="cabType">
+              <input type="radio" name="cab_type" value="Non-AC" x-model="cabType" />
               <span>Non-AC Cab (₹21/km)</span>
             </label>
           </div>
@@ -272,13 +285,13 @@ cursor: pointer;
 
         <div>
           <label class="block text-gray-700 mb-2">Number of Passengers</label>
-          <input type="number" name="passengers" x-model="passengers" min="1" max="4" class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded">
+          <input type="number" name="passengers" x-model="passengers" min="1" max="4" class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded" />
         </div>
 
         <div class="md:col-span-2">
           <button 
             type="button"
-            @click="popupVisible = true; showMessage = true; showForm = false"
+            @click="calculateFare()"
             class="w-full bg-primary text-white py-3 font-medium rounded hover:bg-primary/90 transition-colors"
           >
             Search Available Cabs
@@ -288,53 +301,58 @@ cursor: pointer;
     </div>
   </div>
 
- <!-- Popup Overlay -->
-<div 
-  x-show="popupVisible"
-  class="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-30"
-  style="display: none;"
->
-  <!-- Booking Available Message -->
+  <!-- Popup Overlay -->
   <div 
-    x-show="showMessage" 
-    class="bg-blue-900 text-white px-6 py-4 rounded shadow-lg max-w-md w-full text-center" 
+    x-show="popupVisible"
+    class="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-30"
     style="display: none;"
   >
-    <div class="text-lg font-semibold mb-4">Booking Available</div>
-    <button
-      @click="showMessage = false; showForm = true"
-      class="bg-white text-blue-900 px-4 py-2 rounded hover:bg-gray-200"
+    <!-- Booking Available Message -->
+    <div 
+      x-show="showMessage" 
+      class="bg-blue-900 text-white px-6 py-4 rounded shadow-lg max-w-md w-full text-center" 
+      style="display: none;"
     >
-      Fill Details
-    </button>
+      <div class="text-lg font-semibold mb-4">Booking Available</div>
+
+      <div id="fare-output" class="mb-4 text-sm space-y-1">
+        <p>Estimated Distance: <strong x-text="distance ? distance.toFixed(2) + ' km' : '-'"></strong></p>
+        <p>Estimated Fare: <strong x-text="fare ? '₹' + fare : '-'"></strong></p>
+        <p>Discount Applied: <strong x-text="discountPercent + '%'"></strong></p>
+      </div>
+
+      <button
+        @click="showMessage = false; showForm = true"
+        class="bg-white text-blue-900 px-4 py-2 rounded hover:bg-gray-200"
+      >
+        Fill Details
+      </button>
+    </div>
+
+    <!-- Booking Form Modal -->
+    <div
+      x-show="showForm"
+      class="bg-white rounded-lg p-6 w-full max-w-md shadow-lg"
+      style="display: none;"
+    >
+      <h2 class="text-xl font-bold mb-4 text-center text-blue-900">Confirm Booking</h2>
+      <form method="POST" action="/book">
+        <input type="text" name="name" placeholder="Your Name" required class="w-full border p-2 mb-3 rounded" />
+        <input type="text" name="mobile" placeholder="Mobile Number" required class="w-full border p-2 mb-3 rounded" />
+        <input type="text" name="pickupaddress" placeholder="Pickup Address" required class="w-full border p-2 mb-3 rounded" />
+        <input type="text" name="dropaddress" placeholder="Drop Address"  required class="w-full border p-2 mb-3 rounded" />
+        <input type="date" name="date" :value="date" hidden />
+        <input type="time" name="time" :value="time" hidden />
+        <input type="number" name="passengers" :value="passengers" hidden />
+        <input type="text" name="cab_type" :value="cabType" hidden />
+
+        <button type="submit" class="w-full bg-blue-900 text-white py-2 rounded mb-2">Book Ride</button>
+        <button type="button" @click="showForm = false; showMessage = true" class="w-full text-sm text-red-500 underline">Cancel</button>
+      </form>
+    </div>
   </div>
 
-  <!-- Booking Form Modal -->
-  <div
-    x-show="showForm"
-    class="bg-white rounded-lg p-6 w-full max-w-md shadow-lg"
-    style="display: none;"
-  >
-    <h2 class="text-xl font-bold mb-4 text-center text-blue-900">Confirm Booking</h2>
-    <form method="POST" action="/book">
-      <input type="text" name="name" placeholder="Your Name" required class="w-full border p-2 mb-3 rounded">
-      <input type="text" name="mobile" placeholder="Mobile Number" required class="w-full border p-2 mb-3 rounded">
-      <input type="text" name="pickupaddress"  placeholder="Pickup Address" required class="w-full border p-2 mb-3 rounded">
-      <input type="text" name="dropaddress"  placeholder="Drop Address" required class="w-full border p-2 mb-3 rounded">
-      <input type="date" name="date" :value="date" hidden>
-      <input type="time" name="time" :value="time" hidden>
-      <input type="number" name="passengers" :value="passengers" hidden>
-      <input type="text" name="cab_type" :value="cabType" hidden>
-
-      <button type="submit" class="w-full bg-blue-900 text-white py-2 rounded mb-2">Book Ride</button>
-      <button type="button" @click="showForm = false; showMessage = true" class="w-full text-sm text-red-500 underline">Cancel</button>
-    </form>
-  </div>
-</div>
-
-
-
-<!-- Popup message code goes here -->
+  <!-- Popup message on booking success/fail -->
   {% if status == 'success' or status == 'fail' %}
     <div id="popup" style="
       position: fixed;
@@ -356,7 +374,6 @@ cursor: pointer;
     </div>
 
     <script>
-      // Hide popup after 3 seconds
       setTimeout(() => {
         const popup = document.getElementById('popup');
         if (popup) {
@@ -365,6 +382,114 @@ cursor: pointer;
       }, 3000);
     </script>
   {% endif %}
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+
+<script>
+  // Haversine formula to calculate distance in km
+  function getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
+    const R = 6371; // Radius of the earth in km
+    const dLat = (lat2 - lat1) * Math.PI / 180;
+    const dLon = (lon2 - lon1) * Math.PI / 180;
+    const a = 
+      Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+      Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+      Math.sin(dLon / 2) * Math.sin(dLon / 2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    return R * c; // Distance in km
+  }
+
+  document.addEventListener('alpine:init', () => {
+    Alpine.data('bookRide', () => ({
+      popupVisible: false,
+      showMessage: true,
+      showForm: false,
+
+      pickup: '',
+      destination: '',
+      pickupSuggestions: [],
+      destinationSuggestions: [],
+
+      date: '',
+      time: '',
+      passengers: 1,
+      cabType: 'AC',
+      fare: null,
+      distance: null,
+      discountPercent: 10,
+
+      async fetchSuggestions(type) {
+        const query = this[type];
+        if (query.length < 3) {
+          if (type === 'pickup') this.pickupSuggestions = [];
+          else this.destinationSuggestions = [];
+          return;
+        }
+
+        try {
+          const url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(query)}&limit=5`;
+          const response = await fetch(url, {
+            headers: { 'User-Agent': 'GayatriCab/1.0 (admin@gayatricab.com)' }
+          });
+          const data = await response.json();
+          const suggestions = data.map(item => item.display_name);
+          if (type === 'pickup') {
+            this.pickupSuggestions = suggestions;
+          } else {
+            this.destinationSuggestions = suggestions;
+          }
+        } catch (error) {
+          console.error(`Error fetching ${type} suggestions:`, error);
+        }
+      },
+
+      async calculateFare() {
+        if (!this.pickup || !this.destination) {
+          alert('Please enter both pickup and destination locations');
+          return;
+        }
+
+        const getCoords = async (place) => {
+          const url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(place)}&limit=1`;
+          const response = await fetch(url, {
+            headers: { 'User-Agent': 'GayatriCab/1.0 (admin@gayatricab.com)' }
+          });
+          const data = await response.json();
+          if (data.length === 0) throw new Error(`Location not found: ${place}`);
+          return { lat: parseFloat(data[0].lat), lon: parseFloat(data[0].lon) };
+        };
+
+        try {
+          const pickupCoords = await getCoords(this.pickup);
+          const destinationCoords = await getCoords(this.destination);
+
+          this.distance = getDistanceFromLatLonInKm(
+            pickupCoords.lat, pickupCoords.lon,
+            destinationCoords.lat, destinationCoords.lon
+          );
+
+          // Calculate fare based on cab type
+          const rates = { 'AC': 25, 'Non-AC': 21 };
+          const baseFare = this.distance * rates[this.cabType];
+
+          // Apply discount
+          const discountedFare = baseFare * (1 - this.discountPercent / 100);
+
+          this.fare = discountedFare.toFixed(2);
+          this.popupVisible = true;
+          this.showMessage = true;
+          this.showForm = false;
+        } catch (error) {
+          alert(error.message);
+          this.fare = null;
+          this.distance = null;
+        }
+      }
+    }));
+  });
+</script>
+
 
 
 <!-- Popular Packages -->
@@ -381,124 +506,257 @@ cursor: pointer;
 <button class="bg-white text-gray-700 px-4 py-2 !rounded-button whitespace-nowrap hover:bg-gray-100 transition-colors">Long Distance</button>
 <button class="bg-white text-gray-700 px-4 py-2 !rounded-button whitespace-nowrap hover:bg-gray-100 transition-colors">Airport Transfer</button>
 </div>
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-<!-- Package 1 -->
+<!-- Wrapper for Alpine.js component -->
+<div
+  x-data="{
+    showModal: false,
+    selectedPackage: null,
+    openModal(packageName) {
+      this.selectedPackage = packageName;
+      this.showModal = true;
+    },
+    closeModal() {
+      this.showModal = false;
+      this.selectedPackage = null;
+    }
+  }"
+  class="py-16"
+>
+  <div class="container mx-auto px-4">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+      <!-- Repeat this structure for each package -->
+      <!-- Package 1: Pune to Mumbai -->
+      <div class="bg-white rounded-lg overflow-hidden shadow-lg transition-transform hover:transform hover:scale-105">
+        <div class="h-48 overflow-hidden">
+          <img
+            src="https://readdy.ai/api/search-image?query=Mumbai%20skyline%20with%20iconic%20Gateway%20of%20India%20and%20modern%20buildings%2C%20clear%20blue%20sky%2C%20professional%20photography%2C%20travel%20destination%2C%20high%20resolution%2C%20no%20people%2C%20daytime&width=600&height=400&seq=2&orientation=landscape"
+            alt="Pune to Mumbai"
+            class="w-full h-full object-cover object-top"
+          />
+        </div>
+        <div class="p-6">
+          <span class="bg-secondary/20 text-primary px-3 py-1 rounded-full text-sm font-medium">One Way</span>
+          <h3 class="text-xl font-bold mt-3 mb-2">Pune to Mumbai</h3>
+          <p class="text-gray-600 mb-4">Enjoy a comfortable ride to the financial capital of India.</p>
+          <div class="flex justify-between items-center">
+            <div>
+              <span class="text-gray-500 text-sm">Starting from</span>
+              <p class="text-primary font-bold text-xl">₹3,200</p>
+              <span class="text-gray-500 text-xs">*Excluding tolls & local charges</span>
+            </div>
+            <button
+        @click="openModal('Pune to Nandurbar')"
+        class="px-4 py-2 rounded whitespace-nowrap transition-colors"
+        style="background-color: #0a2463; color: white;"
+        onmouseover="this.style.backgroundColor='#081c4f'"
+        onmouseout="this.style.backgroundColor='#0a2463'"
+      >
+              Book Now
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Package 2: Pune to Lonavala -->
+      <div class="bg-white rounded-lg overflow-hidden shadow-lg transition-transform hover:transform hover:scale-105">
+        <div class="h-48 overflow-hidden">
+          <img
+            src="https://readdy.ai/api/search-image?query=Lonavala%20hill%20station%20with%20lush%20green%20valleys%2C%20misty%20mountains%2C%20waterfalls%2C%20professional%20photography%2C%20travel%20destination%2C%20high%20resolution%2C%20no%20people%2C%20scenic%20beauty&width=600&height=400&seq=3&orientation=landscape"
+            alt="Pune to Lonavala"
+            class="w-full h-full object-cover object-top"
+          />
+        </div>
+        <div class="p-6">
+          <span class="bg-secondary/20 text-primary px-3 py-1 rounded-full text-sm font-medium">Weekend Getaway</span>
+          <h3 class="text-xl font-bold mt-3 mb-2">Pune to Lonavala</h3>
+          <p class="text-gray-600 mb-4">Escape to the scenic beauty of Lonavala hills.</p>
+          <div class="flex justify-between items-center">
+            <div>
+              <span class="text-gray-500 text-sm">Starting from</span>
+              <p class="text-primary font-bold text-xl">₹1,800</p>
+              <span class="text-gray-500 text-xs">*Excluding tolls & local charges</span>
+            </div>
+            <button
+        @click="openModal('Pune to Nandurbar')"
+        class="px-4 py-2 rounded whitespace-nowrap transition-colors"
+        style="background-color: #0a2463; color: white;"
+        onmouseover="this.style.backgroundColor='#081c4f'"
+        onmouseout="this.style.backgroundColor='#0a2463'"
+      >
+              Book Now
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Package 3: Pune to Mahabaleshwar -->
+      <div class="bg-white rounded-lg overflow-hidden shadow-lg transition-transform hover:transform hover:scale-105">
+        <div class="h-48 overflow-hidden">
+          <img
+            src="https://readdy.ai/api/search-image?query=Mahabaleshwar%20hill%20station%20with%20strawberry%20farms%2C%20lush%20green%20valleys%2C%20viewpoints%2C%20professional%20photography%2C%20travel%20destination%2C%20high%20resolution%2C%20no%20people%2C%20scenic%20beauty&width=600&height=400&seq=4&orientation=landscape"
+            alt="Pune to Mahabaleshwar"
+            class="w-full h-full object-cover object-top"
+          />
+        </div>
+        <div class="p-6">
+          <span class="bg-secondary/20 text-primary px-3 py-1 rounded-full text-sm font-medium">Weekend Getaway</span>
+          <h3 class="text-xl font-bold mt-3 mb-2">Pune to Mahabaleshwar</h3>
+          <p class="text-gray-600 mb-4">Scenic hill station with strawberries and views.</p>
+          <div class="flex justify-between items-center">
+            <div>
+              <span class="text-gray-500 text-sm">Starting from</span>
+              <p class="text-primary font-bold text-xl">₹2,800</p>
+              <span class="text-gray-500 text-xs">*Excluding tolls & local charges</span>
+            </div>
+            <button
+        @click="openModal('Pune to Nandurbar')"
+        class="px-4 py-2 rounded whitespace-nowrap transition-colors"
+        style="background-color: #0a2463; color: white;"
+        onmouseover="this.style.backgroundColor='#081c4f'"
+        onmouseout="this.style.backgroundColor='#0a2463'"
+      >
+              Book Now
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Package 4: Pune to Shirdi -->
+      <div class="bg-white rounded-lg overflow-hidden shadow-lg transition-transform hover:transform hover:scale-105">
+        <div class="h-48 overflow-hidden">
+          <img
+            src="https://readdy.ai/api/search-image?query=Shirdi%20Sai%20Baba%20temple%20with%20devotees%2C%20spiritual%20atmosphere%2C%20professional%20photography%2C%20travel%20destination%2C%20high%20resolution%2C%20religious%20place&width=600&height=400&seq=5&orientation=landscape"
+            alt="Pune to Shirdi"
+            class="w-full h-full object-cover object-top"
+          />
+        </div>
+        <div class="p-6">
+          <span class="bg-secondary/20 text-primary px-3 py-1 rounded-full text-sm font-medium">Religious Tour</span>
+          <h3 class="text-xl font-bold mt-3 mb-2">Pune to Shirdi</h3>
+          <p class="text-gray-600 mb-4">Visit the sacred town of Sai Baba.</p>
+          <div class="flex justify-between items-center">
+            <div>
+              <span class="text-gray-500 text-sm">Starting from</span>
+              <p class="text-primary font-bold text-xl">₹3,500</p>
+              <span class="text-gray-500 text-xs">*Excluding tolls & local charges</span>
+            </div>
+           <button
+        @click="openModal('Pune to Nandurbar')"
+        class="px-4 py-2 rounded whitespace-nowrap transition-colors"
+        style="background-color: #0a2463; color: white;"
+        onmouseover="this.style.backgroundColor='#081c4f'"
+        onmouseout="this.style.backgroundColor='#0a2463'"
+      >
+              Book Now
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Package 5: Pune to Goa -->
+      <div class="bg-white rounded-lg overflow-hidden shadow-lg transition-transform hover:transform hover:scale-105">
+        <div class="h-48 overflow-hidden">
+          <img
+            src="https://readdy.ai/api/search-image?query=Goa%20beaches%20with%20palm%20trees%2C%20shacks%2C%20clear%20blue%20water%2C%20professional%20photography%2C%20travel%20destination%2C%20high%20resolution%2C%20no%20people%2C%20scenic%20beauty&width=600&height=400&seq=6&orientation=landscape"
+            alt="Pune to Goa"
+            class="w-full h-full object-cover object-top"
+          />
+        </div>
+        <div class="p-6">
+          <span class="bg-secondary/20 text-primary px-3 py-1 rounded-full text-sm font-medium">Long Distance</span>
+          <h3 class="text-xl font-bold mt-3 mb-2">Pune to Goa</h3>
+          <p class="text-gray-600 mb-4">Beach paradise of India in comfort.</p>
+          <div class="flex justify-between items-center">
+            <div>
+              <span class="text-gray-500 text-sm">Starting from</span>
+              <p class="text-primary font-bold text-xl">₹6,500</p>
+              <span class="text-gray-500 text-xs">*Excluding tolls & local charges</span>
+            </div>
+            <button
+        @click="openModal('Pune to Nandurbar')"
+        class="px-4 py-2 rounded whitespace-nowrap transition-colors"
+        style="background-color: #0a2463; color: white;"
+        onmouseover="this.style.backgroundColor='#081c4f'"
+        onmouseout="this.style.backgroundColor='#0a2463'"
+      >
+              Book Now
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- Package 6: Pune to Nandurbar -->
 <div class="bg-white rounded-lg overflow-hidden shadow-lg transition-transform hover:transform hover:scale-105">
-<div class="h-48 overflow-hidden">
-<img src="https://readdy.ai/api/search-image?query=Mumbai%20skyline%20with%20iconic%20Gateway%20of%20India%20and%20modern%20buildings%2C%20clear%20blue%20sky%2C%20professional%20photography%2C%20travel%20destination%2C%20high%20resolution%2C%20no%20people%2C%20daytime&width=600&height=400&seq=2&orientation=landscape" alt="Pune to Mumbai" class="w-full h-full object-cover object-top">
+  <div class="h-48 overflow-hidden">
+    <img
+      src="https://e2p8rtixif5.exactdn.com/wp-content/uploads/2023/11/Nandurbar.webp"
+      alt="Pune to Nandurbar"
+      class="w-full h-full object-cover object-top"
+    />
+  </div>
+  <div class="p-6">
+    <span class="bg-secondary/20 text-primary px-3 py-1 rounded-full text-sm font-medium">Long Distance</span>
+    <h3 class="text-xl font-bold mt-3 mb-2">Pune to Nandurbar</h3>
+    <p class="text-gray-600 mb-4">Travel to northern Maharashtra’s tribal and scenic district with ease.</p>
+    <div class="flex justify-between items-center">
+      <div>
+        <span class="text-gray-500 text-sm">Starting from</span>
+        <p class="text-primary font-bold text-xl">₹5,800</p>
+        <span class="text-gray-500 text-xs">*Excluding tolls & local charges</span>
+      </div>
+      <button
+        @click="openModal('Pune to Nandurbar')"
+        class="px-4 py-2 rounded whitespace-nowrap transition-colors"
+        style="background-color: #0a2463; color: white;"
+        onmouseover="this.style.backgroundColor='#081c4f'"
+        onmouseout="this.style.backgroundColor='#0a2463'"
+      >
+        Book Now
+      </button>
+    </div>
+  </div>
 </div>
-<div class="p-6">
-<span class="bg-secondary/20 text-primary px-3 py-1 rounded-full text-sm font-medium">One Way</span>
-<h3 class="text-xl font-bold mt-3 mb-2">Pune to Mumbai</h3>
-<p class="text-gray-600 mb-4">Enjoy a comfortable ride to the financial capital of India with our premium cab service.</p>
-<div class="flex justify-between items-center">
-<div>
-<span class="text-gray-500 text-sm">Starting from</span>
-<p class="text-primary font-bold text-xl">₹3,200</p>
-<span class="text-gray-500 text-xs">*Excluding tolls & local charges</span>
+
+
+    </div>
+
+    <!-- Modal Form -->
+    <div
+      x-show="showModal"
+      style="background: rgba(0,0,0,0.5)"
+      class="fixed inset-0 flex items-center justify-center z-50"
+      x-transition.opacity
+    >
+      <div
+        class="bg-white rounded-lg p-6 w-full max-w-md mx-4"
+        @click.away="closeModal"
+      >
+        <h2 class="text-xl font-bold mb-4">
+          Book: <span x-text="selectedPackage"></span>
+        </h2>
+        <form method="POST" action="/book" class="space-y-4">
+          <input type="hidden" name="package" :value="selectedPackage" />
+          <div>
+            <label for="name" class="block mb-1 font-medium">Name</label>
+            <input type="text" id="name" name="name" required class="w-full border rounded px-3 py-2" placeholder="Enter your name" />
+          </div>
+          <div>
+            <label for="mobile" class="block mb-1 font-medium">Mobile Number</label>
+            <input type="tel" id="mobile" name="mobile" required pattern="[0-9]{10}" class="w-full border rounded px-3 py-2" placeholder="Enter 10-digit mobile number" />
+          </div>
+          <div class="flex justify-end space-x-3">
+            <button type="button" @click="closeModal" class="px-4 py-2 rounded border border-gray-300 hover:bg-gray-100">Cancel</button>
+            <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Book Ride</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
 </div>
-<button class="bg-primary text-white px-4 py-2 !rounded-button whitespace-nowrap hover:bg-primary/90 transition-colors">Book Now</button>
-</div>
-</div>
-</div>
-<!-- Package 2 -->
-<div class="bg-white rounded-lg overflow-hidden shadow-lg transition-transform hover:transform hover:scale-105">
-<div class="h-48 overflow-hidden">
-<img src="https://readdy.ai/api/search-image?query=Lonavala%20hill%20station%20with%20lush%20green%20valleys%2C%20misty%20mountains%2C%20waterfalls%2C%20professional%20photography%2C%20travel%20destination%2C%20high%20resolution%2C%20no%20people%2C%20scenic%20beauty&width=600&height=400&seq=3&orientation=landscape" alt="Pune to Lonavala" class="w-full h-full object-cover object-top">
-</div>
-<div class="p-6">
-<span class="bg-secondary/20 text-primary px-3 py-1 rounded-full text-sm font-medium">Weekend Getaway</span>
-<h3 class="text-xl font-bold mt-3 mb-2">Pune to Lonavala</h3>
-<p class="text-gray-600 mb-4">Escape to the scenic beauty of Lonavala hills with our comfortable cab service.</p>
-<div class="flex justify-between items-center">
-<div>
-<span class="text-gray-500 text-sm">Starting from</span>
-<p class="text-primary font-bold text-xl">₹1,800</p>
-<span class="text-gray-500 text-xs">*Excluding tolls & local charges</span>
-</div>
-<button class="bg-primary text-white px-4 py-2 !rounded-button whitespace-nowrap hover:bg-primary/90 transition-colors">Book Now</button>
-</div>
-</div>
-</div>
-<!-- Package 3 -->
-<div class="bg-white rounded-lg overflow-hidden shadow-lg transition-transform hover:transform hover:scale-105">
-<div class="h-48 overflow-hidden">
-<img src="https://readdy.ai/api/search-image?query=Mahabaleshwar%20hill%20station%20with%20strawberry%20farms%2C%20lush%20green%20valleys%2C%20viewpoints%2C%20professional%20photography%2C%20travel%20destination%2C%20high%20resolution%2C%20no%20people%2C%20scenic%20beauty&width=600&height=400&seq=4&orientation=landscape" alt="Pune to Mahabaleshwar" class="w-full h-full object-cover object-top">
-</div>
-<div class="p-6">
-<span class="bg-secondary/20 text-primary px-3 py-1 rounded-full text-sm font-medium">Weekend Getaway</span>
-<h3 class="text-xl font-bold mt-3 mb-2">Pune to Mahabaleshwar</h3>
-<p class="text-gray-600 mb-4">Visit the scenic hill station known for its strawberries and breathtaking views.</p>
-<div class="flex justify-between items-center">
-<div>
-<span class="text-gray-500 text-sm">Starting from</span>
-<p class="text-primary font-bold text-xl">₹2,800</p>
-<span class="text-gray-500 text-xs">*Excluding tolls & local charges</span>
-</div>
-<button class="bg-primary text-white px-4 py-2 !rounded-button whitespace-nowrap hover:bg-primary/90 transition-colors">Book Now</button>
-</div>
-</div>
-</div>
-<!-- Package 4 -->
-<div class="bg-white rounded-lg overflow-hidden shadow-lg transition-transform hover:transform hover:scale-105">
-<div class="h-48 overflow-hidden">
-<img src="https://readdy.ai/api/search-image?query=Shirdi%20Sai%20Baba%20temple%20with%20devotees%2C%20spiritual%20atmosphere%2C%20professional%20photography%2C%20travel%20destination%2C%20high%20resolution%2C%20religious%20place&width=600&height=400&seq=5&orientation=landscape" alt="Pune to Shirdi" class="w-full h-full object-cover object-top">
-</div>
-<div class="p-6">
-<span class="bg-secondary/20 text-primary px-3 py-1 rounded-full text-sm font-medium">Religious Tour</span>
-<h3 class="text-xl font-bold mt-3 mb-2">Pune to Shirdi</h3>
-<p class="text-gray-600 mb-4">Visit the sacred town of Shirdi, home to the revered Sai Baba temple.</p>
-<div class="flex justify-between items-center">
-<div>
-<span class="text-gray-500 text-sm">Starting from</span>
-<p class="text-primary font-bold text-xl">₹3,500</p>
-<span class="text-gray-500 text-xs">*Excluding tolls & local charges</span>
-</div>
-<button class="bg-primary text-white px-4 py-2 !rounded-button whitespace-nowrap hover:bg-primary/90 transition-colors">Book Now</button>
-</div>
-</div>
-</div>
-<!-- Package 5 -->
-<div class="bg-white rounded-lg overflow-hidden shadow-lg transition-transform hover:transform hover:scale-105">
-<div class="h-48 overflow-hidden">
-<img src="https://readdy.ai/api/search-image?query=Goa%20beaches%20with%20palm%20trees%2C%20shacks%2C%20clear%20blue%20water%2C%20professional%20photography%2C%20travel%20destination%2C%20high%20resolution%2C%20no%20people%2C%20scenic%20beauty&width=600&height=400&seq=6&orientation=landscape" alt="Pune to Goa" class="w-full h-full object-cover object-top">
-</div>
-<div class="p-6">
-<span class="bg-secondary/20 text-primary px-3 py-1 rounded-full text-sm font-medium">Long Distance</span>
-<h3 class="text-xl font-bold mt-3 mb-2">Pune to Goa</h3>
-<p class="text-gray-600 mb-4">Travel to the beach paradise of Goa in comfort with our premium cab service.</p>
-<div class="flex justify-between items-center">
-<div>
-<span class="text-gray-500 text-sm">Starting from</span>
-<p class="text-primary font-bold text-xl">₹6,500</p>
-<span class="text-gray-500 text-xs">*Excluding tolls & local charges</span>
-</div>
-<button class="bg-primary text-white px-4 py-2 !rounded-button whitespace-nowrap hover:bg-primary/90 transition-colors">Book Now</button>
-</div>
-</div>
-</div>
-<!-- Package 6 -->
-<div class="bg-white rounded-lg overflow-hidden shadow-lg transition-transform hover:transform hover:scale-105">
-<div class="h-48 overflow-hidden">
-<img src="https://readdy.ai/api/search-image?query=Aurangabad%20Ajanta%20Ellora%20caves%2C%20ancient%20rock-cut%20architecture%2C%20professional%20photography%2C%20travel%20destination%2C%20high%20resolution%2C%20no%20people%2C%20historical%20site&width=600&height=400&seq=7&orientation=landscape" alt="Pune to Aurangabad" class="w-full h-full object-cover object-top">
-</div>
-<div class="p-6">
-<span class="bg-secondary/20 text-primary px-3 py-1 rounded-full text-sm font-medium">Historical Tour</span>
-<h3 class="text-xl font-bold mt-3 mb-2">Pune to Aurangabad</h3>
-<p class="text-gray-600 mb-4">Explore the historical Ajanta and Ellora caves with our comfortable cab service.</p>
-<div class="flex justify-between items-center">
-<div>
-<span class="text-gray-500 text-sm">Starting from</span>
-<p class="text-primary font-bold text-xl">₹4,200</p>
-<span class="text-gray-500 text-xs">*Excluding tolls & local charges</span>
-</div>
-<button class="bg-primary text-white px-4 py-2 !rounded-button whitespace-nowrap hover:bg-primary/90 transition-colors">Book Now</button>
-</div>
-</div>
-</div>
+
 </div>
 <div class="text-center mt-10">
-<a href="packages.html" data-readdy="true" class="inline-flex items-center text-primary font-medium hover:underline">
+<a href="{{ url_for('packages') }}" data-readdy="true" class="inline-flex items-center text-primary font-medium hover:underline">
 View All Packages
 <div class="w-5 h-5 flex items-center justify-center ml-1">
 <i class="ri-arrow-right-line"></i>
@@ -1060,5 +1318,7 @@ updateSlider(e);
   });
 
 </script>
+
+
 </body>
 </html>
