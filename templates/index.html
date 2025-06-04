@@ -182,13 +182,14 @@ cursor: pointer;
 <!-- Header -->
 <header class="bg-white shadow-md fixed w-full top-0 z-50">
 <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-<a href="index.html" class="text-2xl font-['Pacifico'] text-primary">Gayatri Tours & Travels</a>   
+<a href="{{ url_for('home') }}" class="text-2xl font-['Pacifico'] text-primary">Gayatri Tours & Travels</a>   
 <nav class="hidden lg:flex items-center space-x-6">
-<a href="index.html" class="text-primary font-medium border-b-2 border-primary">Home</a>
-<a href="about.html" class="text-gray-700 hover:text-primary transition-colors">About</a>
-<a href="packages.html" class="text-gray-700 hover:text-primary transition-colors">Packages</a>
-<a href="contact.html" class="text-gray-700 hover:text-primary transition-colors">Contact</a>
+  <a href="{{ url_for('home') }}" class="text-primary font-medium border-b-2 border-primary">Home</a>
+  <a href="{{ url_for('about') }}" class="text-gray-700 hover:text-primary transition-colors">About</a>
+  <a href="{{ url_for('packages') }}" class="text-gray-700 hover:text-primary transition-colors">Packages</a>
+  <a href="{{ url_for('contact') }}" class="text-gray-700 hover:text-primary transition-colors">Contact</a>
 </nav>
+
 <div class="hidden lg:flex items-center space-x-4">
 <a href="tel:+919405597993" class="text-primary font-medium flex items-center whitespace-nowrap">
 <div class="w-5 h-5 flex items-center justify-center mr-1">

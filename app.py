@@ -66,5 +66,17 @@ def send_email(subject, body, recipient):
     server.send_message(msg)
     server.quit()
 
+@app.route('/about')
+def about():
+    return render_template('about.html')
+
+@app.route('/packages')
+def packages():
+    return render_template('packages.html')
+
+@app.route('/contact')
+def contact():
+    return render_template('contact.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
