@@ -4,9 +4,22 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Contact Us - Gayatri Tours & Travels</title>
-  
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
   <!-- Tailwind CSS CDN -->
   <script>
+
+    // tailwind.config.js
+module.exports = {
+  theme: {
+    extend: {
+      colors: {
+        primary: '#0a2463',  // तुमचा navy blue किंवा हवा तो color
+      },
+    },
+  },
+}
+
     tailwind.config = {
       theme: {
         extend: {
@@ -271,10 +284,113 @@
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="bg-blue-50 py-8 text-center text-blue-700">
-    &copy; 2025 Gayatri Tours & Travels. All rights reserved.
-  </footer>
-
+ <!-- Footer -->
+<footer class="bg-primary text-white pt-16 pb-8">
+<div class="container mx-auto px-4">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+<!-- Company Info -->
+<div>
+<h3 class="text-xl font-bold mb-4">Gayatri Tours and Travels</h3>
+<p class="text-white/80 mb-4">Your trusted partner for comfortable and reliable cab services across India.</p>
+<div class="flex items-start mb-2">
+<div class="w-5 h-5 flex items-center justify-center mr-2 mt-1">
+<i class="ri-map-pin-line"></i>
+</div>
+<p class="text-white/80">Flat No 202, Swapnshilp Apartment, Abhinav College Road, Narhe, Pune 411041</p>
+</div>
+<div class="flex items-center mb-2">
+<div class="w-5 h-5 flex items-center justify-center mr-2">
+<i class="ri-phone-line"></i>
+</div>
+<a href="tel:+919405597993" class="text-white/80 hover:text-white">+91 9405597993</a>
+</div>
+<div class="flex items-center mb-2">
+<div class="w-5 h-5 flex items-center justify-center mr-2">
+<i class="ri-mail-line"></i>
+</div>
+<a href="mailto:gayatritoursandtravels@gmail.com" class="text-white/80 hover:text-white">gayatritoursandtravels@gmail.com</a>
+</div>
+</div>
+<!-- Quick Links -->
+<div>
+<h3 class="text-xl font-bold mb-4">Quick Links</h3>
+<ul class="space-y-2">
+<li><a href="https://readdy.ai/home/64319105-0b5e-4a51-af8b-8c85364cc76f/91671dcd-a745-4183-a82b-932bcd6286ff" data-readdy="true" class="text-white/80 hover:text-white">Home</a></li>
+<li><a href="{{ url_for('home') }}" class="text-white/80 hover:text-white">Home</a></li>
+<li><a href="{{ url_for('about') }}" class="text-white/80 hover:text-white">About Us</a></li>
+<li><a href="{{ url_for('packages') }}" class="text-white/80 hover:text-white">Packages</a></li>
+<li><a href="{{ url_for('contact') }}" class="text-white/80 hover:text-white">Contact Us</a></li>
+<li><a href="#faq-section" class="text-white/80 hover:text-white">FAQs</a></li>
+<li><a href="#" class="text-white/80 hover:text-white">Terms & Conditions</a></li>
+<li><a href="#" class="text-white/80 hover:text-white">Privacy Policy</a></li>
+</ul>
+</div>
+<!-- Popular Destinations -->
+<div>
+<h3 class="text-xl font-bold mb-4">Popular Destinations</h3>
+<ul class="space-y-2">
+<li><a href="#" class="text-white/80 hover:text-white">Pune to Mumbai</a></li>
+<li><a href="#" class="text-white/80 hover:text-white">Pune to Lonavala</a></li>
+<li><a href="#" class="text-white/80 hover:text-white">Pune to Mahabaleshwar</a></li>
+<li><a href="#" class="text-white/80 hover:text-white">Pune to Shirdi</a></li>
+<li><a href="#" class="text-white/80 hover:text-white">Pune to Goa</a></li>
+<li><a href="#" class="text-white/80 hover:text-white">Pune to Aurangabad</a></li>
+<li><a href="#" class="text-white/80 hover:text-white">Pune to Nashik</a></li>
+<li><a href="#" class="text-white/80 hover:text-white">Pune to Kolhapur</a></li>
+</ul>
+</div>
+<!-- Connect With Us -->
+<div>
+<h3 class="text-xl font-bold mb-4">Connect With Us</h3>
+<div class="flex space-x-4 mb-6">
+<a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors">
+<i class="ri-facebook-fill"></i>
+</a>
+<a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors">
+<i class="ri-instagram-line"></i>
+</a>
+<a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors">
+<i class="ri-twitter-x-line"></i>
+</a>
+<a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors">
+<i class="ri-linkedin-fill"></i>
+</a>
+</div>
+<h3 class="text-xl font-bold mb-4">We Accept</h3>
+<div class="flex flex-wrap gap-3">
+<div class="w-10 h-6 bg-white rounded flex items-center justify-center">
+<i class="ri-visa-fill text-blue-700"></i>
+</div>
+<div class="w-10 h-6 bg-white rounded flex items-center justify-center">
+<i class="ri-mastercard-fill text-orange-600"></i>
+</div>
+<div class="w-10 h-6 bg-white rounded flex items-center justify-center">
+<i class="ri-paypal-fill text-blue-600"></i>
+</div>
+<div class="w-10 h-6 bg-white rounded flex items-center justify-center">
+<i class="ri-google-fill text-red-500"></i>
+</div>
+<div class="w-10 h-6 bg-white rounded flex items-center justify-center">
+<i class="ri-amazon-pay-fill text-blue-900"></i>
+</div>
+</div>
+</div>
+</div>
+<div class="border-t border-white/20 pt-8">
+<div class="flex flex-col md:flex-row justify-between items-center">
+<p class="text-white/80 mb-4 md:mb-0">© 2025 Gayatri Tours and Travels. All rights reserved.</p>
+<div class="flex space-x-4">
+<a href="#" class="text-white/80 hover:text-white text-sm">Terms & Conditions</a>
+<a href="#" class="text-white/80 hover:text-white text-sm">Privacy Policy</a>
+<a href="#" class="text-white/80 hover:text-white text-sm">Refund Policy</a>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<!-- WhatsApp Button -->
+<a href="https://wa.me/919405597993" class="fixed bottom-6 right-6 w-14 h-14 bg-green-500 rounded-full flex items-center justify-center shadow-lg z-50 hover:bg-green-600 transition-colors">
+<i class="ri-whatsapp-line text-white text-2xl"></i>
+</a>
 </body>
 </html>
