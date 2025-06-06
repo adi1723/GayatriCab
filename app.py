@@ -86,6 +86,11 @@ def packages():
 def contact():
     return render_template('contact.html')
 
+@app.route('/packages2')
+def packages2():
+    return render_template('packages2.html')
+
+
 # Location search for autocomplete
 @app.route('/search_location')
 def search_location():
