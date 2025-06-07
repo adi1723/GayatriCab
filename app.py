@@ -104,6 +104,18 @@ def cancel():
     print("User cancelled booking")
     return redirect(url_for('home'))
 
+@app.route('/privacy-policy')
+def privacy_policy():
+    return render_template('privacy&policy.html')
+
+@app.route('/refund-policy')
+def refund_policy():
+    return render_template('RefundPolicy.html')
+
+@app.route('/faq')
+def faq():
+    return render_template('FAQ.html')
+
 # Location search for autocomplete
 @app.route('/search_location')
 def search_location():

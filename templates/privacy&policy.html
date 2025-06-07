@@ -1,0 +1,600 @@
+!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy And Policy - Gayatri Tours and Travels</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#0a2463',secondary:'#ffc857'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+.page-header {
+    background-image: linear-gradient(rgba(10, 36, 99, 0.8), rgba(10, 36, 99, 0.8)), url('https://readdy.ai/api/search-image?query=professional%2520travel%2520agency%2520office%2520with%2520modern%2520design%252C%2520travel%2520brochures%252C%2520world%2520map%2520on%2520wall%252C%2520friendly%2520staff%2520helping%2520customers%252C%2520high%2520quality%2520professional%2520photography%252C%2520bright%2520lighting%252C%2520clean%2520environment&width=1920&height=400&seq=20&orientation=landscape');
+    background-size: cover;
+    background-position: center;
+}
+.value-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.value-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+.timeline-item {
+    position: relative;
+}
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 19px;
+    height: 100%;
+    width: 2px;
+    background-color: #e5e7eb;
+    z-index: 0;
+}
+.timeline-item:last-child::before {
+    height: 50%;
+}
+.timeline-item:first-child::before {
+    top: 50%;
+    height: 50%;
+}
+.timeline-dot {
+    position: relative;
+    z-index: 1;
+    background-color: white;
+}
+.counter-item {
+    position: relative;
+}
+.counter-item::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    height: 50px;
+    width: 1px;
+    background-color: #e5e7eb;
+}
+.counter-item:last-child::after {
+    display: none;
+}
+.testimonial-card {
+    transition: transform 0.3s ease;
+}
+.testimonial-card.active {
+    transform: scale(1.05);
+}
+.service-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+.cta-section {
+    background-image: linear-gradient(to right, rgba(10, 36, 99, 0.9), rgba(10, 36, 99, 0.7)), url('https://readdy.ai/api/search-image?query=luxury%2520travel%2520concept%2520with%2520world%2520map%252C%2520passport%252C%2520tickets%252C%2520camera%252C%2520sunglasses%2520on%2520wooden%2520table%252C%2520professional%2520photography%252C%2520top%2520view%252C%2520travel%2520planning%2520concept%252C%2520high%2520resolution&width=1920&height=600&seq=21&orientation=landscape');
+    background-size: cover;
+    background-position: center;
+}
+</style>
+</head>
+<body class="bg-white">
+<!-- Header -->
+<header class="bg-white shadow-md fixed w-full top-0 z-50">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+        <a href="{{ url_for('home') }}" class="text-2xl font-['Pacifico'] text-primary">Gayatri Tours & Travels</a>   
+        <nav class="hidden lg:flex items-center space-x-6">
+            <a href="{{ url_for('home') }}" class="text-gray-700 hover:text-primary transition-colors">Home</a>
+            <a href="{{ url_for('about') }}" class="text-gray-700 hover:text-primary transition-colors">About</a>
+            <a href="{{ url_for('packages') }}" class="text-gray-700 hover:text-primary transition-colors">Packages</a>
+            <a href="{{ url_for('contact') }}" class="text-gray-700 hover:text-primary transition-colors">Contact</a>
+        </nav>
+        <div class="hidden lg:flex items-center space-x-4">
+            <a href="tel:+919405597993" class="text-primary font-medium flex items-center whitespace-nowrap">
+                <div class="w-5 h-5 flex items-center justify-center mr-1">
+                    <i class="ri-phone-line"></i>
+                </div>
+                +91 9405597393
+            </a>
+        </div>
+        <button class="lg:hidden w-10 h-10 flex items-center justify-center text-primary">
+            <i class="ri-menu-line text-2xl"></i>
+        </button>
+    </div>
+</header>
+
+<!-- Page Header -->
+<section class="relative pt-28 pb-16">
+  <!-- Background Image -->
+  <div class="absolute inset-0 bg-cover bg-center z-0" 
+       style="background-image: url('https://sdmntprsouthcentralus.oaiusercontent.com/files/00000000-9618-61f7-a0cb-c4ac33abfa1f/raw?se=2025-06-07T08%3A54%3A48Z&sp=r&sv=2024-08-04&sr=b&scid=caa45d97-9dac-543f-987b-2f5770b8bb10&skoid=9ccea605-1409-4478-82eb-9c83b25dc1b0&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-06-07T01%3A14%3A56Z&ske=2025-06-08T01%3A14%3A56Z&sks=b&skv=2024-08-04&sig=89qePy85/Lha13Gmzu/t1Tr7R47RsaLqf%2B2PAfK4OaY%3D');">
+  </div>
+
+  <!-- Optional dark overlay -->
+  <div class="absolute inset-0 bg-black/40 z-10"></div>
+
+  <!-- Content -->
+ <div class="relative z-20 container mx-auto px-4 text-white">
+  <div class="max-w-3xl p-6">
+    <h1 class="text-3xl md:text-4xl font-bold mb-4">Privacy Policy</h1>
+    <p class="text-lg mb-6">
+      Please read the <strong>privacy policy</strong> carefully before sharing your personal information with us.<br>
+      These policies ensure your data is handled safely by <strong>Gayatri Tours & Travels</strong>.
+    </p>
+    <nav class="flex" aria-label="Breadcrumb">
+      <ol class="inline-flex items-center space-x-1 md:space-x-3">
+        <li class="inline-flex items-center">
+          <a href="/" class="inline-flex items-center text-white hover:text-gray-200">
+            <i class="ri-home-line mr-2"></i> Home
+          </a>
+        </li>
+        <li>
+          <div class="flex items-center text-white">
+            <i class="ri-arrow-right-s-line mx-2"></i>
+            <span>Privacy Policy</span>
+          </div>
+        </li>
+      </ol>
+    </nav>
+  </div>
+</div>
+
+</section>
+<style>
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 7rem; /* if header is 112px tall */
+  }
+</style>
+    <!-- Main Content -->
+    <div class="container mx-auto px-4 py-12 flex flex-col md:flex-row gap-8">
+        <!-- Table of Contents -->
+        <aside class="md:w-1/4 md:sticky md:top-24 h-fit bg-white rounded-lg shadow-sm p-6">
+  <h2 class="text-xl font-semibold text-black mb-4">Table of Contents</h2>
+  <ul class="space-y-2">
+    <li><a href="#introduction" class="group inline-block text-black transition-all duration-300 ease-in-out hover:text-[#001f3f] hover:font-medium">
+      <span class="border-b border-transparent group-hover:border-[#001f3f] pb-0.5 transition-all">1. Introduction</span></a>
+    </li>
+    <li><a href="#information-collection" class="group inline-block text-black transition-all duration-300 ease-in-out hover:text-[#001f3f] hover:font-medium">
+      <span class="border-b border-transparent group-hover:border-[#001f3f] pb-0.5 transition-all">2. Information Collection</span></a>
+    </li>
+    <li><a href="#use-of-information" class="group inline-block text-black transition-all duration-300 ease-in-out hover:text-[#001f3f] hover:font-medium">
+      <span class="border-b border-transparent group-hover:border-[#001f3f] pb-0.5 transition-all">3. Use of Information</span></a>
+    </li>
+    <li><a href="#data-protection" class="group inline-block text-black transition-all duration-300 ease-in-out hover:text-[#001f3f] hover:font-medium">
+      <span class="border-b border-transparent group-hover:border-[#001f3f] pb-0.5 transition-all">4. Data Protection</span></a>
+    </li>
+    <li><a href="#cookie-policy" class="group inline-block text-black transition-all duration-300 ease-in-out hover:text-[#001f3f] hover:font-medium">
+      <span class="border-b border-transparent group-hover:border-[#001f3f] pb-0.5 transition-all">5. Cookie Policy</span></a>
+    </li>
+    <li><a href="#user-rights" class="group inline-block text-black transition-all duration-300 ease-in-out hover:text-[#001f3f] hover:font-medium">
+      <span class="border-b border-transparent group-hover:border-[#001f3f] pb-0.5 transition-all">6. User Rights</span></a>
+    </li>
+    <li><a href="#third-party-services" class="group inline-block text-black transition-all duration-300 ease-in-out hover:text-[#001f3f] hover:font-medium">
+      <span class="border-b border-transparent group-hover:border-[#001f3f] pb-0.5 transition-all">7. Third-Party Services</span></a>
+    </li>
+    <li><a href="#international-transfers" class="group inline-block text-black transition-all duration-300 ease-in-out hover:text-[#001f3f] hover:font-medium">
+      <span class="border-b border-transparent group-hover:border-[#001f3f] pb-0.5 transition-all">8. International Transfers</span></a>
+    </li>
+    <li><a href="#changes-to-policy" class="group inline-block text-black transition-all duration-300 ease-in-out hover:text-[#001f3f] hover:font-medium">
+      <span class="border-b border-transparent group-hover:border-[#001f3f] pb-0.5 transition-all">9. Changes to Policy</span></a>
+    </li>
+    <li><a href="#contact-information" class="group inline-block text-black transition-all duration-300 ease-in-out hover:text-[#001f3f] hover:font-medium">
+      <span class="border-b border-transparent group-hover:border-[#001f3f] pb-0.5 transition-all">10. Contact Information</span></a>
+    </li>
+  </ul>
+
+  <div class="mt-6 pt-6 border-t border-gray-200">
+    <button id="print-button" class="flex items-center gap-2 text-black hover:text-[#001f3f] hover:font-medium transition-colors duration-300">
+      <i class="ri-printer-line"></i>
+      <span>Print this policy</span>
+    </button>
+  </div>
+</aside>
+
+
+
+        <!-- Content Sections -->
+        <div class="md:w-3/4 bg-white rounded-lg shadow-sm p-6 md:p-8">
+            <section id="introduction" class="mb-10 section-content scroll-mt-28">
+  <h2 class="text-2xl font-bold text-primary mb-4">1. Introduction</h2>
+  <p class="mb-4">
+    Welcome to Gayatri Tours And Travels. We value your privacy and are committed to protecting your personal information.
+  </p>
+  <p>
+    This policy explains how we collect, use, and protect your data when you interact with our website and services.
+  </p>
+</section>
+
+
+            <section id="information-collection" class="mb-10 section-content scroll-mt-28">
+  <h2 class="text-2xl font-bold text-primary mb-4">2. Information Collection</h2>
+  <p class="mb-4">
+    We collect personal and technical details to serve you better. This includes:
+  </p>
+  <ul class="list-disc pl-6 mb-4 space-y-2">
+    <li>Name and contact information (for bookings).</li>
+    <li>Payment information (used only for transactions).</li>
+    <li>Travel preferences and booking details.</li>
+  </ul>
+  <p>
+    Data is collected directly from you, through website usage, or from trusted partners.
+  </p>
+</section>
+
+
+         <section id="use-of-information" class="mb-10 section-content scroll-mt-28">
+  <h2 class="text-2xl font-bold text-primary mb-4">3. Use of Information</h2>
+  <p class="mb-4">
+    We use your information to:
+  </p>
+  <ul class="list-disc pl-6 mb-4 space-y-2">
+    <li>Book and manage your travel plans.</li>
+    <li>Provide support and manage your account.</li>
+    <li>Offer personalized content and recommendations.</li>
+    <li>Improve our services and website.</li>
+    <li>Send updates, offers, and relevant news.</li>
+    <li>Ensure safety and meet legal requirements.</li>
+  </ul>
+  <p>
+    We use your data only for relevant and lawful purposes.
+  </p>
+</section>
+
+
+           <section id="data-protection" class="mb-10 section-content scroll-mt-28">
+  <h2 class="text-2xl font-bold text-primary mb-4">4. Data Protection</h2>
+  <p class="mb-4">
+    We use strong security measures to protect your personal data, including:
+  </p>
+  <ul class="list-disc pl-6 mb-4 space-y-2">
+    <li>Encrypting sensitive information.</li>
+    <li>Regular security checks and testing.</li>
+    <li>Strict access controls for staff.</li>
+    <li>Regular data backups.</li>
+    <li>Staff training on privacy.</li>
+  </ul>
+  <p class="mb-4">
+    Only authorized people can access your data, and they follow strict confidentiality rules.
+  </p>
+  <p>
+    We have procedures to handle data breaches and will inform you and authorities if required.
+  </p>
+</section>
+
+           <section id="cookie-policy" class="mb-10 section-content scroll-mt-28">
+  <h2 class="text-2xl font-bold text-primary mb-4">5. Cookie Policy</h2>
+  <p class="mb-4">
+    We use cookies to improve your experience and help our website work better.
+  </p>
+  <h3 class="text-xl font-semibold text-primary mb-2">Types of Cookies We Use:</h3>
+  <ul class="list-disc pl-6 mb-4 space-y-2">
+    <li><strong>Essential Cookies:</strong> Needed for basic site functions.</li>
+    <li><strong>Analytical Cookies:</strong> Help us understand how visitors use our site.</li>
+    <li><strong>Functionality Cookies:</strong> Remember your preferences when you return.</li>
+    <li><strong>Targeting Cookies:</strong> Make ads and content more relevant to you.</li>
+  </ul>
+  <p class="mb-4">
+    You can control cookies in your browser settings, but disabling some may affect how the site works.
+  </p>
+  <div class="bg-gray-50 p-4 rounded-lg">
+    <h3 class="text-lg font-semibold text-primary mb-2">Cookie Preferences</h3>
+    <p class="mb-4">Manage your preferences below:</p>
+    <div class="space-y-3">
+      <div class="flex items-center">
+        <input type="checkbox" id="essential-cookies" checked disabled class="mr-3">
+        <label for="essential-cookies" class="text-gray-800">Essential Cookies (Required)</label>
+      </div>
+      <div class="flex items-center">
+        <input type="checkbox" id="analytical-cookies" checked class="mr-3">
+        <label for="analytical-cookies" class="text-gray-800">Analytical Cookies</label>
+      </div>
+      <div class="flex items-center">
+        <input type="checkbox" id="functional-cookies" checked class="mr-3">
+        <label for="functional-cookies" class="text-gray-800">Functionality Cookies</label>
+      </div>
+      <div class="flex items-center">
+        <input type="checkbox" id="targeting-cookies" class="mr-3">
+        <label for="targeting-cookies" class="text-gray-800">Targeting Cookies</label>
+      </div>
+      <button class="mt-2 bg-primary text-white px-4 py-2 rounded-button whitespace-nowrap">Save Preferences</button>
+    </div>
+  </div>
+</section>
+
+<section id="user-rights" class="mb-10 section-content scroll-mt-28">
+  <h2 class="text-2xl font-bold text-primary mb-4">6. User Rights</h2>
+  <p class="mb-4">
+    Depending on where you live, you may have rights regarding your personal data, such as:
+  </p>
+  <ul class="list-disc pl-6 mb-4 space-y-2">
+    <li><strong>Access:</strong> Request a copy of your data.</li>
+    <li><strong>Correction:</strong> Ask us to fix any mistakes.</li>
+    <li><strong>Deletion:</strong> Request deletion of your data in some cases.</li>
+    <li><strong>Restriction:</strong> Limit how we use your data.</li>
+    <li><strong>Portability:</strong> Get your data or have it sent elsewhere.</li>
+    <li><strong>Objection:</strong> Object to certain uses of your data.</li>
+    <li><strong>Automated Decisions:</strong> Opt out of decisions made without human involvement.</li>
+  </ul>
+  <p class="mb-4">
+    To exercise these rights, please contact us. We may ask for details to confirm your identity.
+  </p>
+  <p>
+    We aim to respond within one month, but complex requests might take longer.
+  </p>
+</section>
+
+<section id="third-party-services" class="mb-10 section-content scroll-mt-28">
+  <h2 class="text-2xl font-bold text-primary mb-4">7. Third-Party Services</h2>
+  <p class="mb-4">
+    Our website may link to third-party sites and services. Clicking these links may allow third parties to collect or share data about you. We don’t control these sites and are not responsible for their privacy policies.
+  </p>
+  <p class="mb-4">
+    We may share your information with third-party providers to help operate our services, including cab service providers, only with your permission.
+  </p>
+  <p>
+    Please review their privacy policies as they handle your data independently.
+  </p>
+</section>
+
+
+            <section id="international-transfers" class="mb-10 section-content">
+  <h2 class="text-2xl font-bold text-primary mb-4">8. International Transfers</h2>
+  <p class="mb-4">
+    We may transfer your personal information to countries outside your residence, including countries with different data protection laws.
+  </p>
+  <p class="mb-4">
+    When we do this, we take steps to keep your information safe, such as:
+  </p>
+  <ul class="list-disc pl-6 mb-4 space-y-2">
+    <li>Transferring to countries with adequate data protection.</li>
+    <li>Using approved contracts to ensure your data is protected.</li>
+    <li>Applying technical and organizational safeguards.</li>
+  </ul>
+  <p>
+    By using our services, you agree that your data may be transferred and processed internationally.
+  </p>
+</section>
+
+
+           <section id="changes-to-policy" class="mb-10 section-content">
+  <h2 class="text-2xl font-bold text-primary mb-4">9. Changes to Policy</h2>
+  <p class="mb-4">
+    We may update this privacy policy from time to time due to legal, technical, or business reasons. When we do, we will inform you based on how important the changes are.
+  </p>
+  <p class="mb-4">
+    If required by law, we will ask for your consent to major changes. You can check the “last updated” date at the top of this policy to see the latest version.
+  </p>
+  <p>
+    Please review this page regularly for updates on how we protect your privacy.
+  </p>
+</section>
+
+
+           <section id="contact-information" class="section-content">
+  <h2 class="text-2xl font-bold text-primary mb-4">10. Contact Information</h2>
+  <p class="mb-4">
+    If you have any questions about this privacy policy or our privacy practices, please contact our Data Protection Officer:
+  </p>
+  <div class="bg-gray-50 p-6 rounded-lg">
+    <h3 class="text-xl font-semibold text-primary mb-2">Gayatri Tours And Travels</h3>
+    <ul class="space-y-2">
+      <li class="flex items-start gap-2">
+        <div class="w-5 h-5 flex items-center justify-center mt-1">
+          <i class="ri-map-pin-line text-primary" aria-hidden="true"></i>
+        </div>
+        <span>Flat No 202, Swapnshilp Apartment, Abhinav College Road, Narhe, Pune 411041</span>
+      </li>
+      <li class="flex items-start gap-2">
+        <div class="w-5 h-5 flex items-center justify-center mt-1">
+          <i class="ri-mail-line text-primary" aria-hidden="true"></i>
+        </div>
+        <a href="mailto:gayatritoursandtravels@gmail.com" class="underline text-primary">gayatritoursandtravels@gmail.com</a>
+      </li>
+      <li class="flex items-start gap-2">
+        <div class="w-5 h-5 flex items-center justify-center mt-1">
+          <i class="ri-phone-line text-primary" aria-hidden="true"></i>
+        </div>
+        <a href="tel:+919405597393" class="underline text-primary">+91 94055 97393</a>
+      </li>
+    </ul>
+    <div class="mt-6">
+      <h4 class="font-medium text-primary mb-2">Contact Form</h4>
+      <form class="space-y-4" aria-label="Contact form">
+        <div>
+          <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Name</label>
+          <input type="text" id="name" name="name" required
+            class="w-full px-4 py-2 border border-gray-300 rounded-button focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" />
+        </div>
+        <div>
+          <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+          <input type="email" id="email" name="email" required
+            class="w-full px-4 py-2 border border-gray-300 rounded-button focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" />
+        </div>
+        <div>
+          <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Message</label>
+          <textarea id="message" name="message" rows="4" required
+            class="w-full px-4 py-2 border border-gray-300 rounded-button focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"></textarea>
+        </div>
+        <button type="submit"
+          class="bg-primary text-white px-6 py-2 rounded-button hover:bg-opacity-90 transition-colors whitespace-nowrap">Send
+          Message</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+        </div>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="back-to-top hidden bg-primary text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg">
+        <i class="ri-arrow-up-line ri-lg"></i>
+    </button>
+
+ <!-- Footer -->
+<footer class="bg-primary text-white pt-16 pb-8">
+<div class="container mx-auto px-4">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+<!-- Company Info -->
+<div>
+<h3 class="text-xl font-bold mb-4">Gayatri Tours and Travels</h3>
+<p class="text-white/80 mb-4">Your trusted partner for comfortable and reliable cab services across India.</p>
+<div class="flex items-start mb-2">
+<div class="w-5 h-5 flex items-center justify-center mr-2 mt-1">
+<i class="ri-map-pin-line"></i>
+</div>
+<p class="text-white/80">Flat No 202, Swapnshilp Apartment, Abhinav College Road, Narhe, Pune 411041</p>
+</div>
+<div class="flex items-center mb-2">
+<div class="w-5 h-5 flex items-center justify-center mr-2">
+<i class="ri-phone-line"></i>
+</div>
+<a href="tel:+919405597393" class="text-white/80 hover:text-white">+91 9405597393</a>
+</div>
+<div class="flex items-center mb-2">
+<div class="w-5 h-5 flex items-center justify-center mr-2">
+<i class="ri-mail-line"></i>
+</div>
+<a href="mailto:gayatritoursandtravels@gmail.com" class="text-white/80 hover:text-white">gayatritoursandtravels@gmail.com</a>
+</div>
+</div>
+<!-- Quick Links -->
+<div>
+<h3 class="text-xl font-bold mb-4">Quick Links</h3>
+<ul class="space-y-2">
+<li><a href="{{ url_for('home') }}" class="text-white/80 hover:text-white">Home</a></li>
+<li><a href="{{ url_for('about') }}" class="text-white/80 hover:text-white">About Us</a></li>
+<li><a href="{{ url_for('packages') }}" class="text-white/80 hover:text-white">Packages</a></li>
+<li><a href="{{ url_for('contact') }}" class="text-white/80 hover:text-white">Contact Us</a></li>
+<li><a href="{{ url_for('faq') }}" class="text-white/80 hover:text-white">FAQs</a></li>
+<li><a href="{{ url_for('terms_and_conditions') }}" class="text-white/80 hover:text-white">Terms & Conditions</a></li>
+<li><a href="{{ url_for('privacy_policy') }}" class="text-white/80 hover:text-white">Privacy Policy</a></li>
+</ul>
+</div>
+<!-- Popular Destinations -->
+<div>
+<h3 class="text-xl font-bold mb-4">Popular Destinations</h3>
+<ul class="space-y-2">
+<li><a href="#" class="text-white/80 hover:text-white">Pune to Mumbai</a></li>
+<li><a href="#" class="text-white/80 hover:text-white">Pune to Lonavala</a></li>
+<li><a href="#" class="text-white/80 hover:text-white">Pune to Mahabaleshwar</a></li>
+<li><a href="#" class="text-white/80 hover:text-white">Pune to Shirdi</a></li>
+<li><a href="#" class="text-white/80 hover:text-white">Pune to Goa</a></li>
+<li><a href="#" class="text-white/80 hover:text-white">Pune to Aurangabad</a></li>
+<li><a href="#" class="text-white/80 hover:text-white">Pune to Nashik</a></li>
+<li><a href="#" class="text-white/80 hover:text-white">Pune to Kolhapur</a></li>
+</ul>
+</div>
+<!-- Connect With Us -->
+<div>
+<h3 class="text-xl font-bold mb-4">Connect With Us</h3>
+<div class="flex space-x-4 mb-6">
+<a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors">
+<i class="ri-facebook-fill"></i>
+</a>
+<a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors">
+<i class="ri-instagram-line"></i>
+</a>
+<a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors">
+<i class="ri-twitter-x-line"></i>
+</a>
+<a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors">
+<i class="ri-linkedin-fill"></i>
+</a>
+</div>
+<h3 class="text-xl font-bold mb-4">We Accept</h3>
+<div class="flex flex-wrap gap-3">
+<div class="w-10 h-6 bg-white rounded flex items-center justify-center">
+<i class="ri-visa-fill text-blue-700"></i>
+</div>
+<div class="w-10 h-6 bg-white rounded flex items-center justify-center">
+<i class="ri-mastercard-fill text-orange-600"></i>
+</div>
+<div class="w-10 h-6 bg-white rounded flex items-center justify-center">
+<i class="ri-paypal-fill text-blue-600"></i>
+</div>
+<div class="w-10 h-6 bg-white rounded flex items-center justify-center">
+<i class="ri-google-fill text-red-500"></i>
+</div>
+<div class="w-10 h-6 bg-white rounded flex items-center justify-center">
+<i class="ri-amazon-pay-fill text-blue-900"></i>
+</div>
+</div>
+</div>
+</div>
+<div class="border-t border-white/20 pt-8">
+<div class="flex flex-col md:flex-row justify-between items-center">
+<p class="text-white/80 mb-4 md:mb-0">© 2025 Gayatri Tours and Travels. All rights reserved.</p>
+<div class="flex space-x-4">
+<a href="{{ url_for('terms_and_conditions') }}" class="text-white/80 hover:text-white text-sm">Terms & Conditions</a>
+<a href="{{ url_for('privacy_policy') }}" class="text-white/80 hover:text-white text-sm">Privacy Policy</a>
+<a href="{{ url_for('refund_policy') }}" class="text-white/80 hover:text-white text-sm">Refund Policy</a>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<!-- WhatsApp Button -->
+<a href="https://wa.me/919405597393" class="fixed bottom-6 right-6 w-14 h-14 bg-green-500 rounded-full flex items-center justify-center shadow-lg z-50 hover:bg-green-600 transition-colors">
+<i class="ri-whatsapp-line text-white text-2xl"></i>
+</a>
+
+    <script id="back-to-top-script">
+        document.addEventListener('DOMContentLoaded', function() {
+            const backToTopButton = document.getElementById('back-to-top');
+            
+            window.addEventListener('scroll', function() {
+                if (window.pageYOffset > 300) {
+                    backToTopButton.classList.remove('hidden');
+                } else {
+                    backToTopButton.classList.add('hidden');
+                }
+            });
+            
+            backToTopButton.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+
+    <script id="print-functionality">
+        document.addEventListener('DOMContentLoaded', function() {
+            const printButton = document.getElementById('print-button');
+            
+            printButton.addEventListener('click', function() {
+                window.print();
+            });
+        });
+    </script>
+
+    <script id="cookie-preferences">
+        document.addEventListener('DOMContentLoaded', function() {
+            const cookieCheckboxes = document.querySelectorAll('input[type="checkbox"]');
+            
+            cookieCheckboxes.forEach(checkbox => {
+                if (!checkbox.disabled) {
+                    checkbox.addEventListener('change', function() {
+                        // In a real implementation, this would save the cookie preferences
+                        console.log(`${checkbox.id} preference changed to: ${checkbox.checked}`);
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

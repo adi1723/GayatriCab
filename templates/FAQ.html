@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FAQ - Gayatri Tours and Travels</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#0a2463',secondary:'#ffc857'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+.page-header {
+    background-image: linear-gradient(rgba(10, 36, 99, 0.8), rgba(10, 36, 99, 0.8)), url('https://readdy.ai/api/search-image?query=professional%2520travel%2520agency%2520office%2520with%2520modern%2520design%252C%2520travel%2520brochures%252C%2520world%2520map%2520on%2520wall%252C%2520friendly%2520staff%2520helping%2520customers%252C%2520high%2520quality%2520professional%2520photography%252C%2520bright%2520lighting%252C%2520clean%2520environment&width=1920&height=400&seq=20&orientation=landscape');
+    background-size: cover;
+    background-position: center;
+}
+.value-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.value-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+.timeline-item {
+    position: relative;
+}
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 19px;
+    height: 100%;
+    width: 2px;
+    background-color: #e5e7eb;
+    z-index: 0;
+}
+.timeline-item:last-child::before {
+    height: 50%;
+}
+.timeline-item:first-child::before {
+    top: 50%;
+    height: 50%;
+}
+.timeline-dot {
+    position: relative;
+    z-index: 1;
+    background-color: white;
+}
+.counter-item {
+    position: relative;
+}
+.counter-item::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    height: 50px;
+    width: 1px;
+    background-color: #e5e7eb;
+}
+.counter-item:last-child::after {
+    display: none;
+}
+.testimonial-card {
+    transition: transform 0.3s ease;
+}
+.testimonial-card.active {
+    transform: scale(1.05);
+}
+.service-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+.cta-section {
+    background-image: linear-gradient(to right, rgba(10, 36, 99, 0.9), rgba(10, 36, 99, 0.7)), url('https://readdy.ai/api/search-image?query=luxury%2520travel%2520concept%2520with%2520world%2520map%252C%2520passport%252C%2520tickets%252C%2520camera%252C%2520sunglasses%2520on%2520wooden%2520table%252C%2520professional%2520photography%252C%2520top%2520view%252C%2520travel%2520planning%2520concept%252C%2520high%2520resolution&width=1920&height=600&seq=21&orientation=landscape');
+    background-size: cover;
+    background-position: center;
+}
+</style>
+</head>
+<body class="bg-white">
+<!-- Header -->
+<header class="bg-white shadow-md fixed w-full top-0 z-50">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+        <a href="{{ url_for('home') }}" class="text-2xl font-['Pacifico'] text-primary">Gayatri Tours & Travels</a>   
+        <nav class="hidden lg:flex items-center space-x-6">
+            <a href="{{ url_for('home') }}" class="text-gray-700 hover:text-primary transition-colors">Home</a>
+            <a href="{{ url_for('about') }}" class="text-gray-700 hover:text-primary transition-colors">About</a>
+            <a href="{{ url_for('packages') }}" class="text-gray-700 hover:text-primary transition-colors">Packages</a>
+            <a href="{{ url_for('contact') }}" class="text-gray-700 hover:text-primary transition-colors">Contact</a>
+        </nav>
+        <div class="hidden lg:flex items-center space-x-4">
+            <a href="tel:+919405597993" class="text-primary font-medium flex items-center whitespace-nowrap">
+                <div class="w-5 h-5 flex items-center justify-center mr-1">
+                    <i class="ri-phone-line"></i>
+                </div>
+                +91 9405597393
+            </a>
+        </div>
+        <button class="lg:hidden w-10 h-10 flex items-center justify-center text-primary">
+            <i class="ri-menu-line text-2xl"></i>
+        </button>
+    </div>
+</header>
+
+<!-- Page Header -->
+<section class="page-header pt-28 pb-16">
+  <div class="container mx-auto px-4 text-white">
+    <div class="max-w-3xl">
+      <h1 class="text-3xl md:text-4xl font-bold mb-4">Frequently Asked Questions (FAQs)</h1>
+      <p class="text-lg mb-6">Find answers to the most common questions about our services, bookings, and policies.</p>
+      <nav class="flex" aria-label="Breadcrumb">
+        <ol class="inline-flex items-center space-x-1 md:space-x-3">
+          <li class="inline-flex items-center">
+            <a href="https://readdy.ai/home/64319105-0b5e-4a51-af8b-8c85364cc76f/91671dcd-a745-4183-a82b-932bcd6286ff" data-readdy="true" class="inline-flex items-center text-white hover:text-gray-200">
+              <div class="w-4 h-4 flex items-center justify-center mr-2">
+                <i class="ri-home-line"></i>
+              </div>
+              Home
+            </a>
+          </li>
+          <li>
+            <div class="flex items-center">
+              <div class="w-4 h-4 flex items-center justify-center mx-1">
+                <i class="ri-arrow-right-s-line"></i>
+              </div>
+              <span class="text-white">FAQs</span>
+            </div>
+          </li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+</section>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-12">
+        <!-- Hero Section -->
+        <div class="text-center mb-16">
+            <h1 class="text-4xl font-bold mb-4">Frequently Asked Questions</h1>
+            <p class="text-gray-600 max-w-2xl mx-auto">Find answers to common questions about our cab services. Can't find what you're looking for? Submit your question below.</p>
+            
+            <!-- Search Bar -->
+            <div class="mt-8 max-w-xl mx-auto relative">
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <i class="ri-search-line text-gray-400"></i>
+                </div>
+                <input type="text" class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-button focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="Search FAQs...">
+            </div>
+        </div>
+
+        <div class="flex flex-col lg:flex-row gap-8">
+            <!-- FAQ Section -->
+            <div class="w-full lg:w-2/3">
+                <!-- Category Tabs -->
+                <div class="mb-8 border-b border-gray-200">
+                    <div class="flex overflow-x-auto">
+                        <button class="category-tab whitespace-nowrap px-6 py-3 font-medium text-primary border-b-2 border-primary" data-category="booking">Booking Process</button>
+                        <button class="category-tab whitespace-nowrap px-6 py-3 font-medium text-gray-500 hover:text-gray-700" data-category="service">Service Details</button>
+                        <button class="category-tab whitespace-nowrap px-6 py-3 font-medium text-gray-500 hover:text-gray-700" data-category="payment">Payment Information</button>
+                        <button class="category-tab whitespace-nowrap px-6 py-3 font-medium text-gray-500 hover:text-gray-700" data-category="cancellation">Cancellation & Refunds</button>
+                    </div>
+                </div>
+
+                <!-- FAQ Accordion -->
+               <div class="category-content" id="booking">
+  <div class="accordion-item mb-4 border border-gray-200 rounded-md overflow-hidden">
+    <button class="accordion-header w-full flex justify-between items-center p-4 bg-white hover:bg-gray-50 text-left" onclick="toggleAccordion(this)">
+      <span class="font-medium">How can I book a cab with Gayatri Tours and Travels?</span>
+      <i class="ri-arrow-down-s-line text-xl transition-transform duration-200"></i>
+    </button>
+    <div class="accordion-content bg-gray-50 px-4 pb-4 hidden">
+      <p class="text-gray-600">You can easily book a cab via our website, mobile app, or by calling our 24/7 helpline at +91 94055 97393. Select your pickup point, destination, preferred vehicle, and travel date. Once booked, you’ll receive an instant confirmation by email and SMS.</p>
+    </div>
+  </div>
+
+  <div class="accordion-item mb-4 border border-gray-200 rounded-md overflow-hidden">
+    <button class="accordion-header w-full flex justify-between items-center p-4 bg-white hover:bg-gray-50 text-left" onclick="toggleAccordion(this)">
+      <span class="font-medium">What is the recommended advance booking time?</span>
+      <i class="ri-arrow-down-s-line text-xl transition-transform duration-200"></i>
+    </button>
+    <div class="accordion-content bg-gray-50 px-4 pb-4 hidden">
+      <p class="text-gray-600">For city rides, we suggest booking at least 2 hours in advance. For outstation or airport trips, booking a day ahead ensures availability and smooth service. However, immediate bookings are possible depending on cab availability.</p>
+    </div>
+  </div>
+
+  <div class="accordion-item mb-4 border border-gray-200 rounded-md overflow-hidden">
+    <button class="accordion-header w-full flex justify-between items-center p-4 bg-white hover:bg-gray-50 text-left" onclick="toggleAccordion(this)">
+      <span class="font-medium">Can I schedule rides for future dates?</span>
+      <i class="ri-arrow-down-s-line text-xl transition-transform duration-200"></i>
+    </button>
+    <div class="accordion-content bg-gray-50 px-4 pb-4 hidden">
+      <p class="text-gray-600">Yes! You can schedule rides up to 30 days in advance. This helps especially for planned trips, airport transfers, and events. We also send reminders before your scheduled pickup.</p>
+    </div>
+  </div>
+
+  <div class="accordion-item mb-4 border border-gray-200 rounded-md overflow-hidden">
+    <button class="accordion-header w-full flex justify-between items-center p-4 bg-white hover:bg-gray-50 text-left" onclick="toggleAccordion(this)">
+      <span class="font-medium">What details do I need to provide during booking?</span>
+      <i class="ri-arrow-down-s-line text-xl transition-transform duration-200"></i>
+    </button>
+    <div class="accordion-content bg-gray-50 px-4 pb-4 hidden">
+      <p class="text-gray-600">We require your full name, contact number, pickup and drop locations, date and time of travel, and vehicle preference. For airport rides, please share your flight details. Any special needs like child seats or wheelchair access can be noted in the booking comments.</p>
+    </div>
+  </div>
+
+  <div class="accordion-item mb-4 border border-gray-200 rounded-md overflow-hidden">
+    <button class="accordion-header w-full flex justify-between items-center p-4 bg-white hover:bg-gray-50 text-left" onclick="toggleAccordion(this)">
+      <span class="font-medium">How will I receive confirmation and updates?</span>
+      <i class="ri-arrow-down-s-line text-xl transition-transform duration-200"></i>
+    </button>
+    <div class="accordion-content bg-gray-50 px-4 pb-4 hidden">
+      <p class="text-gray-600">After booking, you will receive confirmation via email and SMS with all details including booking ID, pickup info, and estimated fare. For scheduled rides, reminders and driver details are sent 2 hours prior to pickup.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+  function toggleAccordion(button) {
+    const content = button.nextElementSibling;
+    const icon = button.querySelector('i');
+
+    if (content.classList.contains('hidden')) {
+      content.classList.remove('hidden');
+      icon.classList.add('rotate-180');  // rotate arrow up
+    } else {
+      content.classList.add('hidden');
+      icon.classList.remove('rotate-180');  // rotate arrow down
+    }
+  }
+</script>
+
+<div class="category-content hidden" id="service">
+  <!-- FAQ Item 1 -->
+  <div class="accordion-item mb-4 border border-gray-200 rounded-md overflow-hidden">
+    <button class="accordion-header w-full flex justify-between items-center p-4 bg-white hover:bg-gray-50 text-left" onclick="toggleAccordion(this)">
+      <span class="font-medium">What types of vehicles are available?</span>
+      <i class="ri-arrow-down-s-line text-xl transition-transform duration-200"></i>
+    </button>
+    <div class="accordion-content bg-gray-50 px-4 pb-4 hidden">
+      <p class="text-gray-600">We offer a range of vehicles to suit different needs: Economy (hatchbacks), Comfort (sedans), Premium (SUVs), and Luxury (premium sedans and SUVs). All our vehicles are well-maintained, clean, and equipped with AC. For group travel, we also offer larger vehicles like Innova, Tempo Traveller, and mini-buses.</p>
+    </div>
+  </div>
+
+  <!-- FAQ Item 2 -->
+  <div class="accordion-item mb-4 border border-gray-200 rounded-md overflow-hidden">
+    <button class="accordion-header w-full flex justify-between items-center p-4 bg-white hover:bg-gray-50 text-left" onclick="toggleAccordion(this)">
+      <span class="font-medium">Do you offer outstation services?</span>
+      <i class="ri-arrow-down-s-line text-xl transition-transform duration-200"></i>
+    </button>
+    <div class="accordion-content bg-gray-50 px-4 pb-4 hidden">
+      <p class="text-gray-600">Yes, we offer one-way and round-trip outstation services to various destinations. Our outstation packages include experienced drivers familiar with the routes, all tolls and parking fees, and 24/7 customer support. You can choose between hourly packages or fixed destination packages depending on your travel needs.</p>
+    </div>
+  </div>
+
+  <!-- FAQ Item 3 -->
+  <div class="accordion-item mb-4 border border-gray-200 rounded-md overflow-hidden">
+    <button class="accordion-header w-full flex justify-between items-center p-4 bg-white hover:bg-gray-50 text-left" onclick="toggleAccordion(this)">
+      <span class="font-medium">What safety measures do you have in place?</span>
+      <i class="ri-arrow-down-s-line text-xl transition-transform duration-200"></i>
+    </button>
+    <div class="accordion-content bg-gray-50 px-4 pb-4 hidden">
+      <p class="text-gray-600">Safety is our top priority. All our drivers undergo thorough background checks and regular training. Vehicles are equipped with GPS tracking, and we have a 24/7 emergency support team. We follow strict COVID-19 safety protocols including regular sanitization of vehicles, mandatory masks, and temperature checks for drivers. Our app also includes an SOS button for immediate assistance.</p>
+    </div>
+  </div>
+
+  <!-- FAQ Item 4 -->
+  <div class="accordion-item mb-4 border border-gray-200 rounded-md overflow-hidden">
+    <button class="accordion-header w-full flex justify-between items-center p-4 bg-white hover:bg-gray-50 text-left" onclick="toggleAccordion(this)">
+      <span class="font-medium">Do you provide airport transfer services?</span>
+      <i class="ri-arrow-down-s-line text-xl transition-transform duration-200"></i>
+    </button>
+    <div class="accordion-content bg-gray-50 px-4 pb-4 hidden">
+      <p class="text-gray-600">Yes, we specialize in airport transfers with both pickup and drop services. Our drivers track flight arrivals in real-time to adjust for any delays. For airport pickups, the driver will wait with a name placard at the designated meeting point. We offer a complimentary waiting time of 30 minutes for domestic flights and 60 minutes for international flights.</p>
+    </div>
+  </div>
+
+  <!-- FAQ Item 5 -->
+  <div class="accordion-item mb-4 border border-gray-200 rounded-md overflow-hidden">
+    <button class="accordion-header w-full flex justify-between items-center p-4 bg-white hover:bg-gray-50 text-left" onclick="toggleAccordion(this)">
+      <span class="font-medium">Can I request a specific driver?</span>
+      <i class="ri-arrow-down-s-line text-xl transition-transform duration-200"></i>
+    </button>
+    <div class="accordion-content bg-gray-50 px-4 pb-4 hidden">
+      <p class="text-gray-600">Yes, if you've had a positive experience with a particular driver, you can request them for future bookings. This is subject to the driver's availability. You can save your preferred drivers in your account or mention their ID during booking. We try our best to accommodate such requests, especially for regular customers.</p>
+    </div>
+  </div>
+</div>
+
+<div class="category-content hidden" id="payment">
+  <!-- FAQ 1 -->
+  <div class="accordion-item mb-4 border border-gray-200 rounded-md overflow-hidden">
+    <button class="accordion-header w-full flex justify-between items-center p-4 bg-white hover:bg-gray-50 text-left" onclick="toggleAccordion(this)">
+      <span class="font-medium">What payment methods do you accept?</span>
+      <i class="ri-arrow-down-s-line text-xl transition-transform duration-200"></i>
+    </button>
+    <div class="accordion-content bg-gray-50 px-4 pb-4 hidden">
+      <p class="text-gray-600">We accept multiple payment methods including credit/debit cards, net banking, UPI (Google Pay, PhonePe, Paytm), and cash. For corporate accounts, we also offer monthly invoicing options. All online transactions are secured with industry-standard encryption to ensure your payment information remains safe.</p>
+    </div>
+  </div>
+
+  <!-- FAQ 2 -->
+  <div class="accordion-item mb-4 border border-gray-200 rounded-md overflow-hidden">
+    <button class="accordion-header w-full flex justify-between items-center p-4 bg-white hover:bg-gray-50 text-left" onclick="toggleAccordion(this)">
+      <span class="font-medium">How is the fare calculated?</span>
+      <i class="ri-arrow-down-s-line text-xl transition-transform duration-200"></i>
+    </button>
+    <div class="accordion-content bg-gray-50 px-4 pb-4 hidden">
+      <p class="text-gray-600">Our fare is calculated based on the distance traveled, time taken, vehicle type, and any additional services requested. For local city rides, we charge a base fare plus per-kilometer and per-minute rates. For outstation trips, we offer package rates based on distance or duration. All applicable taxes, tolls, and parking fees are additional unless specified otherwise.</p>
+    </div>
+  </div>
+
+  <!-- FAQ 3 -->
+  <div class="accordion-item mb-4 border border-gray-200 rounded-md overflow-hidden">
+    <button class="accordion-header w-full flex justify-between items-center p-4 bg-white hover:bg-gray-50 text-left" onclick="toggleAccordion(this)">
+      <span class="font-medium">Do you have any hidden charges?</span>
+      <i class="ri-arrow-down-s-line text-xl transition-transform duration-200"></i>
+    </button>
+    <div class="accordion-content bg-gray-50 px-4 pb-4 hidden">
+      <p class="text-gray-600">No, we believe in complete transparency. The fare estimate provided during booking includes all base charges. Additional charges like tolls, parking, interstate taxes (for outstation trips), and waiting charges are clearly communicated. Night charges (10 PM to 6 AM) may apply for certain bookings, which will be specified during the booking process.</p>
+    </div>
+  </div>
+
+  <!-- FAQ 4 -->
+  <div class="accordion-item mb-4 border border-gray-200 rounded-md overflow-hidden">
+    <button class="accordion-header w-full flex justify-between items-center p-4 bg-white hover:bg-gray-50 text-left" onclick="toggleAccordion(this)">
+      <span class="font-medium">Do I need to pay in advance?</span>
+      <i class="ri-arrow-down-s-line text-xl transition-transform duration-200"></i>
+    </button>
+    <div class="accordion-content bg-gray-50 px-4 pb-4 hidden">
+      <p class="text-gray-600">For local city rides, advance payment is optional. For outstation trips and airport transfers, we require a 25% advance payment to confirm your booking. Corporate accounts with approved credit terms can opt for post-service payment. For special events or peak season bookings, full advance payment may be required.</p>
+    </div>
+  </div>
+
+  <!-- FAQ 5 -->
+  <div class="accordion-item mb-4 border border-gray-200 rounded-md overflow-hidden">
+    <button class="accordion-header w-full flex justify-between items-center p-4 bg-white hover:bg-gray-50 text-left" onclick="toggleAccordion(this)">
+      <span class="font-medium">Do you offer any discounts or loyalty programs?</span>
+      <i class="ri-arrow-down-s-line text-xl transition-transform duration-200"></i>
+    </button>
+    <div class="accordion-content bg-gray-50 px-4 pb-4 hidden">
+      <p class="text-gray-600">Yes, we have a loyalty program called "Gayatri Rewards" where you earn points for every ride. These points can be redeemed for discounts on future bookings. We also offer seasonal promotions, first-time user discounts, and special rates for corporate clients. Sign up for our newsletter to stay updated on our latest offers.</p>
+    </div>
+  </div>
+</div>
+
+<div class="category-content hidden" id="cancellation">
+  <!-- FAQ 1 -->
+  <div class="accordion-item mb-4 border border-gray-200 rounded-md overflow-hidden">
+    <button class="accordion-header w-full flex justify-between items-center p-4 bg-white hover:bg-gray-50 text-left" onclick="toggleAccordion(this)">
+      <span class="font-medium">What is your cancellation policy?</span>
+      <i class="ri-arrow-down-s-line text-xl transition-transform duration-200"></i>
+    </button>
+    <div class="accordion-content bg-gray-50 px-4 pb-4 hidden">
+      <p class="text-gray-600">For local city rides, cancellations made more than 1 hour before pickup are free. For cancellations within 1 hour, a nominal fee applies. For outstation trips, free cancellation is available up to 24 hours before the scheduled departure. Cancellations within 24 hours incur a 15% charge, and within 6 hours incur a 25% charge. No-shows are charged at 50% of the booking amount.</p>
+    </div>
+  </div>
+
+  <!-- FAQ 2 -->
+  <div class="accordion-item mb-4 border border-gray-200 rounded-md overflow-hidden">
+    <button class="accordion-header w-full flex justify-between items-center p-4 bg-white hover:bg-gray-50 text-left" onclick="toggleAccordion(this)">
+      <span class="font-medium">How do I cancel my booking?</span>
+      <i class="ri-arrow-down-s-line text-xl transition-transform duration-200"></i>
+    </button>
+    <div class="accordion-content bg-gray-50 px-4 pb-4 hidden">
+      <p class="text-gray-600">You can cancel your booking through our website or app by going to "My Bookings" and selecting the "Cancel" option. Alternatively, you can call our customer service at +91 98765 43210. Please have your booking ID ready for faster processing. Once cancelled, you'll receive a confirmation email and SMS.</p>
+    </div>
+  </div>
+
+  <!-- FAQ 3 -->
+  <div class="accordion-item mb-4 border border-gray-200 rounded-md overflow-hidden">
+    <button class="accordion-header w-full flex justify-between items-center p-4 bg-white hover:bg-gray-50 text-left" onclick="toggleAccordion(this)">
+      <span class="font-medium">How long does it take to process refunds?</span>
+      <i class="ri-arrow-down-s-line text-xl transition-transform duration-200"></i>
+    </button>
+    <div class="accordion-content bg-gray-50 px-4 pb-4 hidden">
+      <p class="text-gray-600">Refunds are processed within 3-5 business days after the cancellation is confirmed. The actual time for the amount to reflect in your account depends on your bank or payment provider. Credit card refunds typically take 5-7 business days, while UPI and net banking refunds are usually faster (2-3 business days).</p>
+    </div>
+  </div>
+
+  <!-- FAQ 4 -->
+  <div class="accordion-item mb-4 border border-gray-200 rounded-md overflow-hidden">
+    <button class="accordion-header w-full flex justify-between items-center p-4 bg-white hover:bg-gray-50 text-left" onclick="toggleAccordion(this)">
+      <span class="font-medium">What if the driver cancels or doesn't show up?</span>
+      <i class="ri-arrow-down-s-line text-xl transition-transform duration-200"></i>
+    </button>
+    <div class="accordion-content bg-gray-50 px-4 pb-4 hidden">
+      <p class="text-gray-600">In the rare event that a driver cancels or doesn't show up, we immediately arrange an alternative vehicle with minimal delay. You'll be notified via call, SMS, and app notification. If the delay exceeds 15 minutes, we offer a 10% discount on your current booking. If we're unable to provide service, a full refund is processed automatically within 24 hours.</p>
+    </div>
+  </div>
+
+  <!-- FAQ 5 -->
+  <div class="accordion-item mb-4 border border-gray-200 rounded-md overflow-hidden">
+    <button class="accordion-header w-full flex justify-between items-center p-4 bg-white hover:bg-gray-50 text-left" onclick="toggleAccordion(this)">
+      <span class="font-medium">Can I modify my booking instead of cancelling?</span>
+      <i class="ri-arrow-down-s-line text-xl transition-transform duration-200"></i>
+    </button>
+    <div class="accordion-content bg-gray-50 px-4 pb-4 hidden">
+      <p class="text-gray-600">Yes, you can modify your booking up to 2 hours before the scheduled pickup for local rides and 12 hours for outstation trips. Modifications can include changes to pickup time, location, or vehicle type (subject to availability). There's no charge for the first modification, but subsequent changes may incur a small administrative fee.</p>
+    </div>
+  </div>
+</div>
+
+            </div>
+
+            <!-- Ask a Question Form -->
+            <div class="w-full lg:w-1/3">
+                <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+                    <h2 class="text-xl font-semibold mb-4">Ask a Question</h2>
+                    <p class="text-gray-600 mb-6">Can't find what you're looking for? Submit your question and we'll get back to you within 24 hours.</p>
+                    
+                    <form id="question-form">
+                        <div class="mb-4">
+                            <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Full Name*</label>
+                            <input type="text" id="name" class="w-full px-3 py-2 border border-gray-300 rounded-button focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" required>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email Address*</label>
+                            <input type="email" id="email" class="w-full px-3 py-2 border border-gray-300 rounded-button focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" required>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label for="category" class="block text-sm font-medium text-gray-700 mb-1">Category</label>
+                            <div class="relative">
+                                <select id="category" class="w-full px-3 py-2 border border-gray-300 rounded-button focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent appearance-none pr-8">
+                                    <option value="booking">Booking Process</option>
+                                    <option value="service">Service Details</option>
+                                    <option value="payment">Payment Information</option>
+                                    <option value="cancellation">Cancellation & Refunds</option>
+                                    <option value="other">Other</option>
+                                </select>
+                                <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                                    <i class="ri-arrow-down-s-line text-gray-400"></i>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label for="question" class="block text-sm font-medium text-gray-700 mb-1">Your Question*</label>
+                            <textarea id="question" rows="4" class="w-full px-3 py-2 border border-gray-300 rounded-button focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent resize-none" maxlength="500" required></textarea>
+                            <div class="flex justify-end mt-1">
+                                <span id="char-count" class="text-xs text-gray-500">0/500 characters</span>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="w-full bg-primary text-white py-3 px-4 rounded-button hover:bg-primary/90 transition-colors font-medium !rounded-button whitespace-nowrap">Submit Question</button>
+                    </form>
+
+                    <!-- Query Tracking -->
+                    <div id="query-tracking" class="mt-8 hidden">
+                        <h3 class="text-lg font-medium mb-3">Query Status</h3>
+                        <div class="bg-gray-50 p-4 rounded-md">
+                            <div class="flex items-center mb-2">
+                                <span class="text-sm font-medium">Reference ID:</span>
+                                <span id="reference-id" class="text-sm ml-2 text-gray-600">GTT-25060701</span>
+                            </div>
+                            <div class="flex items-center mb-4">
+                                <span class="text-sm font-medium">Estimated Response:</span>
+                                <span class="text-sm ml-2 text-gray-600">Within 24 hours</span>
+                            </div>
+                            
+                            <div class="relative">
+                                <div class="flex mb-2">
+                                    <div class="w-1/3 text-center">
+                                        <span class="text-xs font-medium">Submitted</span>
+                                    </div>
+                                    <div class="w-1/3 text-center">
+                                        <span class="text-xs font-medium">Under Review</span>
+                                    </div>
+                                    <div class="w-1/3 text-center">
+                                        <span class="text-xs font-medium">Answered</span>
+                                    </div>
+                                </div>
+                                <div class="h-2 bg-gray-200 rounded-full mb-2">
+                                    <div id="progress-bar" class="h-2 bg-primary rounded-full w-1/3"></div>
+                                </div>
+                                <div class="flex">
+                                    <div class="w-1/3 flex justify-center">
+                                        <div class="w-4 h-4 rounded-full bg-primary"></div>
+                                    </div>
+                                    <div class="w-1/3 flex justify-center">
+                                        <div class="w-4 h-4 rounded-full bg-gray-300"></div>
+                                    </div>
+                                    <div class="w-1/3 flex justify-center">
+                                        <div class="w-4 h-4 rounded-full bg-gray-300"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Popular Questions -->
+                <div class="mt-6 bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+                    <h3 class="text-lg font-medium mb-4">Popular Questions</h3>
+                    <ul class="space-y-3">
+                        <li>
+                            <a href="#" class="text-primary hover:underline flex items-start">
+                                <i class="ri-question-line mr-2 mt-1"></i>
+                                <span>How do I track my driver's location?</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-primary hover:underline flex items-start">
+                                <i class="ri-question-line mr-2 mt-1"></i>
+                                <span>What if I need to change my destination during the trip?</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-primary hover:underline flex items-start">
+                                <i class="ri-question-line mr-2 mt-1"></i>
+                                <span>Do you provide child seats upon request?</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-primary hover:underline flex items-start">
+                                <i class="ri-question-line mr-2 mt-1"></i>
+                                <span>What is your pet policy for cab rides?</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+<!-- Footer -->
+<footer class="bg-primary text-white pt-16 pb-8">
+    <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+            <!-- Company Info -->
+            <div>
+                <h3 class="text-xl font-bold mb-4">Gayatri Tours and Travels</h3>
+                <p class="text-white/80 mb-4">Your trusted partner for comfortable and reliable cab services across India.</p>
+                <div class="flex items-start mb-2">
+                    <div class="w-5 h-5 flex items-center justify-center mr-2 mt-1">
+                        <i class="ri-map-pin-line"></i>
+                    </div>
+                    <p class="text-white/80">Flat No 202, Swapnshilp Apartment, Abhinav College Road, Narhe, Pune 411041</p>
+                </div>
+                <div class="flex items-center mb-2">
+                    <div class="w-5 h-5 flex items-center justify-center mr-2">
+                        <i class="ri-phone-line"></i>
+                    </div>
+                    <a href="tel:+919405597393" class="text-white/80 hover:text-white">+91 9405597393</a>
+                </div>
+                <div class="flex items-center mb-2">
+                    <div class="w-5 h-5 flex items-center justify-center mr-2">
+                        <i class="ri-mail-line"></i>
+                    </div>
+                    <a href="mailto:gayatritoursandtravels@gmail.com" class="text-white/80 hover:text-white">gayatritoursandtravels@gmail.com</a>
+                </div>
+            </div>
+            <!-- Quick Links -->
+            <div>
+                <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+                <ul class="space-y-2">
+                    <li><a href="{{ url_for('home') }}" class="text-white/80 hover:text-white">Home</a></li>
+                    <li><a href="{{ url_for('about') }}" class="text-white/80 hover:text-white">About Us</a></li>
+                    <li><a href="{{ url_for('packages') }}" class="text-white/80 hover:text-white">Packages</a></li>
+                    <li><a href="{{ url_for('contact') }}" class="text-white/80 hover:text-white">Contact Us</a></li>
+                    <li><a href="{{ url_for('faq') }}" class="text-white/80 hover:text-white">FAQs</a></li>
+                    <li><a href="{{ url_for('terms_and_conditions') }}" class="text-white/80 hover:text-white">Terms & Conditions</a></li>
+                    <li><a href="{{ url_for('privacy_policy') }}" class="text-white/80 hover:text-white">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <!-- Popular Destinations -->
+            <div>
+                <h3 class="text-xl font-bold mb-4">Popular Destinations</h3>
+                <ul class="space-y-2">
+                    <li><a href="#" class="text-white/80 hover:text-white">Pune to Mumbai</a></li>
+                    <li><a href="#" class="text-white/80 hover:text-white">Pune to Lonavala</a></li>
+                    <li><a href="#" class="text-white/80 hover:text-white">Pune to Mahabaleshwar</a></li>
+                    <li><a href="#" class="text-white/80 hover:text-white">Pune to Shirdi</a></li>
+                    <li><a href="#" class="text-white/80 hover:text-white">Pune to Goa</a></li>
+                    <li><a href="#" class="text-white/80 hover:text-white">Pune to Aurangabad</a></li>
+                    <li><a href="#" class="text-white/80 hover:text-white">Pune to Nashik</a></li>
+                    <li><a href="#" class="text-white/80 hover:text-white">Pune to Kolhapur</a></li>
+                </ul>
+            </div>
+            <!-- Connect With Us -->
+            <div>
+                <h3 class="text-xl font-bold mb-4">Connect With Us</h3>
+                <div class="flex space-x-4 mb-6">
+                    <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors">
+                        <i class="ri-facebook-fill"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors">
+                        <i class="ri-instagram-line"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors">
+                        <i class="ri-twitter-x-line"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors">
+                        <i class="ri-linkedin-fill"></i>
+                    </a>
+                </div>
+                <h3 class="text-xl font-bold mb-4">We Accept</h3>
+                <div class="flex flex-wrap gap-3">
+                    <div class="w-10 h-6 bg-white rounded flex items-center justify-center">
+                        <i class="ri-visa-fill text-blue-700"></i>
+                    </div>
+                    <div class="w-10 h-6 bg-white rounded flex items-center justify-center">
+                        <i class="ri-mastercard-fill text-orange-600"></i>
+                    </div>
+                    <div class="w-10 h-6 bg-white rounded flex items-center justify-center">
+                        <i class="ri-paypal-fill text-blue-600"></i>
+                    </div>
+                    <div class="w-10 h-6 bg-white rounded flex items-center justify-center">
+                        <i class="ri-google-fill text-red-500"></i>
+                    </div>
+                    <div class="w-10 h-6 bg-white rounded flex items-center justify-center">
+                        <i class="ri-amazon-pay-fill text-blue-900"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="border-t border-white/20 pt-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <p class="text-white/80 mb-4 md:mb-0">© 2025 Gayatri Tours and Travels. All rights reserved.</p>
+                <div class="flex space-x-4">
+                    <a href="{{ url_for('terms_and_conditions') }}" class="text-white/80 hover:text-white text-sm">Terms & Conditions</a>
+                    <a href="{{ url_for('privacy_policy') }}" class="text-white/80 hover:text-white text-sm">Privacy Policy</a>
+                    <a href="{{ url_for('refund_policy') }}" class="text-white/80 hover:text-white text-sm">Refund Policy</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- WhatsApp Button -->
+<a href="https://wa.me/919405597393" class="fixed bottom-6 right-6 w-14 h-14 bg-green-500 rounded-full flex items-center justify-center shadow-lg z-50 hover:bg-green-600 transition-colors">
+    <i class="ri-whatsapp-line text-white text-2xl"></i>
+</a>
+
+    <!-- Scripts -->
+    <script id="accordion-script">
+        document.addEventListener('DOMContentLoaded', function() {
+            // Accordion functionality
+            const accordionHeaders = document.querySelectorAll('.accordion-header');
+            
+            accordionHeaders.forEach(header => {
+                header.addEventListener('click', function() {
+                    const content = this.nextElementSibling;
+                    const icon = this.querySelector('i');
+                    
+                    // Toggle active class
+                    content.classList.toggle('active');
+                    
+                    // Rotate icon
+                    if (content.classList.contains('active')) {
+                        icon.style.transform = 'rotate(180deg)';
+                    } else {
+                        icon.style.transform = 'rotate(0)';
+                    }
+                });
+            });
+        });
+    </script>
+
+    <script id="category-tabs-script">
+        document.addEventListener('DOMContentLoaded', function() {
+            // Category tabs functionality
+            const categoryTabs = document.querySelectorAll('.category-tab');
+            const categoryContents = document.querySelectorAll('.category-content');
+            
+            categoryTabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const category = this.getAttribute('data-category');
+                    
+                    // Remove active class from all tabs
+                    categoryTabs.forEach(t => {
+                        t.classList.remove('text-primary', 'border-primary');
+                        t.classList.add('text-gray-500');
+                    });
+                    
+                    // Add active class to clicked tab
+                    this.classList.add('text-primary', 'border-b-2', 'border-primary');
+                    this.classList.remove('text-gray-500');
+                    
+                    // Hide all content sections
+                    categoryContents.forEach(content => {
+                        content.classList.add('hidden');
+                    });
+                    
+                    // Show selected content section
+                    document.getElementById(category).classList.remove('hidden');
+                });
+            });
+        });
+    </script>
+
+    <script id="form-script">
+        document.addEventListener('DOMContentLoaded', function() {
+            // Character counter for textarea
+            const questionTextarea = document.getElementById('question');
+            const charCount = document.getElementById('char-count');
+            
+            questionTextarea.addEventListener('input', function() {
+                const currentLength = this.value.length;
+                charCount.textContent = `${currentLength}/500 characters`;
+            });
+            
+            // Form submission
+            const questionForm = document.getElementById('question-form');
+            const queryTracking = document.getElementById('query-tracking');
+            
+            questionForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Simple validation
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                const question = document.getElementById('question').value;
+                
+                if (name && email && question) {
+                    // Show success message and tracking info
+                    queryTracking.classList.remove('hidden');
+                    
+                    // Reset form
+                    questionForm.reset();
+                    charCount.textContent = '0/500 characters';
+                    
+                    // Scroll to tracking section
+                    queryTracking.scrollIntoView({ behavior: 'smooth' });
+                    
+                    // Generate random reference ID (in real app this would come from server)
+                    const date = new Date();
+                    const refId = `GTT-${date.getFullYear().toString().substr(-2)}${(date.getMonth() + 1).toString().padStart(2, '0')}${date.getDate().toString().padStart(2, '0')}${Math.floor(Math.random() * 100).toString().padStart(2, '0')}`;
+                    document.getElementById('reference-id').textContent = refId;
+                }
+            });
+        });
+    </script>
+</body>
+</html>

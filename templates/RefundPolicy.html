@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Refund Policy - Gayatri Tours and Travels</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#0a2463',secondary:'#ffc857'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+<script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: { primary: "#4F46E5", secondary: "#8B5CF6" },
+            borderRadius: {
+              none: "0px",
+              sm: "4px",
+              DEFAULT: "8px",
+              md: "12px",
+              lg: "16px",
+              xl: "20px",
+              "2xl": "24px",
+              "3xl": "32px",
+              full: "9999px",
+              button: "8px",
+            },
+          },
+        },
+      };
+    </script>
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+.page-header {
+    background-image: linear-gradient(rgba(10, 36, 99, 0.8), rgba(10, 36, 99, 0.8)), url('https://readdy.ai/api/search-image?query=professional%2520travel%2520agency%2520office%2520with%2520modern%2520design%252C%2520travel%2520brochures%252C%2520world%2520map%2520on%2520wall%252C%2520friendly%2520staff%2520helping%2520customers%252C%2520high%2520quality%2520professional%2520photography%252C%2520bright%2520lighting%252C%2520clean%2520environment&width=1920&height=400&seq=20&orientation=landscape');
+    background-size: cover;
+    background-position: center;
+}
+.value-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.value-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+.timeline-item {
+    position: relative;
+}
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 19px;
+    height: 100%;
+    width: 2px;
+    background-color: #e5e7eb;
+    z-index: 0;
+}
+.timeline-item:last-child::before {
+    height: 50%;
+}
+.timeline-item:first-child::before {
+    top: 50%;
+    height: 50%;
+}
+.timeline-dot {
+    position: relative;
+    z-index: 1;
+    background-color: white;
+}
+.counter-item {
+    position: relative;
+}
+.counter-item::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    height: 50px;
+    width: 1px;
+    background-color: #e5e7eb;
+}
+.counter-item:last-child::after {
+    display: none;
+}
+.testimonial-card {
+    transition: transform 0.3s ease;
+}
+.testimonial-card.active {
+    transform: scale(1.05);
+}
+.service-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+.cta-section {
+    background-image: linear-gradient(to right, rgba(10, 36, 99, 0.9), rgba(10, 36, 99, 0.7)), url('https://readdy.ai/api/search-image?query=luxury%2520travel%2520concept%2520with%2520world%2520map%252C%2520passport%252C%2520tickets%252C%2520camera%252C%2520sunglasses%2520on%2520wooden%2520table%252C%2520professional%2520photography%252C%2520top%2520view%252C%2520travel%2520planning%2520concept%252C%2520high%2520resolution&width=1920&height=600&seq=21&orientation=landscape');
+    background-size: cover;
+    background-position: center;
+}
+body {
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      }
+      .policy-container {
+      max-width: 1024px;
+      margin: 0 auto;
+      padding: 2rem;
+      }
+
+      .hover-navy:hover {
+  color: #0a2463 !important;
+}
+
+</style>
+
+</head>
+<body class="bg-white">
+<!-- Header -->
+<header class="bg-white shadow-md fixed w-full top-0 z-50">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+<a href="{{ url_for('home') }}" 
+   class="text-2xl font-['Pacifico']" 
+   style="color: #0a2463;">
+   Gayatri Tours & Travels
+</a>
+        <nav class="hidden lg:flex items-center space-x-6">
+           <nav class="hidden lg:flex items-center space-x-6">
+  <a href="{{ url_for('home') }}" class="text-gray-700 transition-colors"
+     onmouseover="this.style.color='#0a2463';" onmouseout="this.style.color='';">Home</a>
+  <a href="{{ url_for('about') }}" class="text-gray-700 transition-colors"
+     onmouseover="this.style.color='#0a2463';" onmouseout="this.style.color='';">About</a>
+  <a href="{{ url_for('packages') }}" class="text-gray-700 transition-colors"
+     onmouseover="this.style.color='#0a2463';" onmouseout="this.style.color='';">Packages</a>
+  <a href="{{ url_for('contact') }}" class="text-gray-700 transition-colors"
+     onmouseover="this.style.color='#0a2463';" onmouseout="this.style.color='';">Contact</a>
+</nav>
+
+        </nav>
+        <div class="hidden lg:flex items-center space-x-4">
+           <a href="tel:+919405597993" class="font-medium flex items-center whitespace-nowrap" style="color: #0a2463;">
+    <div class="w-5 h-5 flex items-center justify-center mr-1">
+        <i class="ri-phone-line"></i>
+    </div>
+    +91 9405597393
+</a>
+
+        </div>
+        <button class="lg:hidden w-10 h-10 flex items-center justify-center text-primary">
+            <i class="ri-menu-line text-2xl"></i>
+        </button>
+    </div>
+</header>
+
+<!-- Page Header -->
+<section class="relative pt-28 pb-16">
+  <!-- Background Image -->
+  <div class="absolute inset-0 bg-cover bg-center z-0" 
+       style="background-image: url('https://images.unsplash.com/photo-1581092795363-96d39e9f0c37?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80');">
+  </div>
+
+  <!-- Optional dark overlay -->
+  <div class="absolute inset-0 bg-black/40 z-10"></div>
+
+  <!-- Content -->
+  <div class="relative z-20 container mx-auto px-4 text-white">
+    <div class="max-w-3xl p-6">
+      <h1 class="text-3xl md:text-4xl font-bold mb-4">Refund Policy</h1>
+      <p class="text-lg mb-6">
+        Please review our <strong>refund policy</strong> carefully to understand your rights and the procedures involved.<br>
+        We aim to provide a clear and fair process for all cancellations and refunds at <strong>Gayatri Tours & Travels</strong>.
+      </p>
+      <nav class="flex" aria-label="Breadcrumb">
+        <ol class="inline-flex items-center space-x-1 md:space-x-3">
+          <li class="inline-flex items-center">
+            <a href="/" class="inline-flex items-center text-white hover:text-gray-200">
+              <i class="ri-home-line mr-2"></i> Home
+            </a>
+          </li>
+          <li>
+            <div class="flex items-center text-white">
+              <i class="ri-arrow-right-s-line mx-2"></i>
+              <span>Refund Policy</span>
+            </div>
+          </li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+</section>
+
+
+<main class="policy-container py-8">
+<h1 class="text-4xl font-bold text-center mb-8">Refund Policy</h1>
+<div class="border-b border-gray-200 mb-8"></div>
+<p class="text-lg mb-8">
+At Gayatri Tours and Travels, we strive to ensure your complete satisfaction with our cab services. This Refund Policy outlines the terms and conditions regarding cancellations and refunds. Please read this policy carefully before making a booking.
+</p>
+<section class="mb-10">
+<h2 class="text-2xl font-semibold mb-4 flex items-center">
+<div class="w-8 h-8 flex items-center justify-center bg-primary rounded-full text-white mr-3">
+<i class="ri-time-line"></i>
+</div>
+Cancellation Window
+</h2>
+<div class="pl-11">
+<p class="mb-4">
+We understand that plans can change. Our cancellation policy is designed to be fair while maintaining service quality.
+</p>
+<div class="notice-box rounded">
+<p class="font-medium">Cancellation Timeline:</p>
+<ul class="list-none space-y-2 mt-2">
+<li class="flex items-start">
+<div class="w-6 h-6 flex items-center justify-center text-primary mr-2 mt-0.5">
+<i class="ri-check-line"></i>
+</div>
+<span>More than 24 hours before pickup: Full refund</span>
+</li>
+<li class="flex items-start">
+<div class="w-6 h-6 flex items-center justify-center text-primary mr-2 mt-0.5">
+<i class="ri-check-line"></i>
+</div>
+<span>12-24 hours before pickup: 75% refund</span>
+</li>
+<li class="flex items-start">
+<div class="w-6 h-6 flex items-center justify-center text-primary mr-2 mt-0.5">
+<i class="ri-check-line"></i>
+</div>
+<span>4-12 hours before pickup: 50% refund</span>
+</li>
+<li class="flex items-start">
+<div class="w-6 h-6 flex items-center justify-center text-primary mr-2 mt-0.5">
+<i class="ri-check-line"></i>
+</div>
+<span>Less than 4 hours before pickup: No refund</span>
+</li>
+</ul>
+</div>
+<p class="mt-4">
+For package tours and long-distance travel, special cancellation terms may apply. Please refer to the specific booking terms provided at the time of reservation.
+</p>
+</div>
+</section>
+<section class="mb-10">
+<h2 class="text-2xl font-semibold mb-4 flex items-center">
+<div class="w-8 h-8 flex items-center justify-center bg-primary rounded-full text-white mr-3">
+<i class="ri-checkbox-circle-line"></i>
+</div>
+Refund Eligibility
+</h2>
+<div class="pl-11">
+<p class="mb-4">To be eligible for a refund, your cancellation must meet the following criteria:</p>
+<ul class="list-none space-y-3 mb-6">
+<li class="flex items-start">
+<div class="w-6 h-6 flex items-center justify-center text-primary mr-2 mt-0.5">
+<i class="ri-check-line"></i>
+</div>
+<span>The booking must be cancelled within the specified cancellation window</span>
+</li>
+<li class="flex items-start">
+<div class="w-6 h-6 flex items-center justify-center text-primary mr-2 mt-0.5">
+<i class="ri-check-line"></i>
+</div>
+<span>You must provide your booking ID and verification details</span>
+</li>
+<li class="flex items-start">
+<div class="w-6 h-6 flex items-center justify-center text-primary mr-2 mt-0.5">
+<i class="ri-check-line"></i>
+</div>
+<span>The booking must not be in a "no-show" status</span>
+</li>
+</ul>
+<p>
+Please note that special events, peak season bookings, and certain promotional rides may have different cancellation policies. These will be clearly communicated during the booking process.
+</p>
+</div>
+</section>
+<section class="mb-10">
+  <h2 class="text-2xl font-semibold mb-4 flex items-center">
+    <div class="w-8 h-8 flex items-center justify-center bg-primary rounded-full text-white mr-3">
+      <i class="ri-list-check-2"></i>
+    </div>
+    Process Steps
+  </h2>
+  <div class="pl-11">
+    <p class="mb-4">To book and use our cab service, please follow these steps:</p>
+    <div class="mb-8">
+      <div class="flex mb-6">
+        <div class="w-10 h-10 flex items-center justify-center bg-gray-100 rounded-full text-primary font-bold mr-4">
+          1
+        </div>
+        <div class="flex-1">
+          <h3 class="text-lg font-medium mb-2">Contact Customer Support</h3>
+          <p>Call us at +91 9405597393 or email gayatritoursandtravels@gmail.com to book your cab or inquire about availability.</p>
+        </div>
+      </div>
+      <div class="flex mb-6">
+        <div class="w-10 h-10 flex items-center justify-center bg-gray-100 rounded-full text-primary font-bold mr-4">
+          2
+        </div>
+        <div class="flex-1">
+          <h3 class="text-lg font-medium mb-2">Provide Booking Details</h3>
+          <p>Share your pick-up and drop-off locations, preferred time, and any special requests or requirements.</p>
+        </div>
+      </div>
+      <div class="flex mb-6">
+        <div class="w-10 h-10 flex items-center justify-center bg-gray-100 rounded-full text-primary font-bold mr-4">
+          3
+        </div>
+        <div class="flex-1">
+          <h3 class="text-lg font-medium mb-2">Confirm Booking</h3>
+          <p>Our team will confirm your booking details, fare estimate, and driver information.</p>
+        </div>
+      </div>
+      <div class="flex">
+        <div class="w-10 h-10 flex items-center justify-center bg-gray-100 rounded-full text-primary font-bold mr-4">
+          4
+        </div>
+        <div class="flex-1">
+          <h3 class="text-lg font-medium mb-2">Ride and Payment</h3>
+          <p>Enjoy your ride! Payment can be made to the driver directly or as agreed during booking. Receipts will be provided upon request.</p>
+        </div>
+      </div>
+    </div>
+    <div class="notice-box rounded bg-yellow-100 p-4 border-l-4 border-yellow-400">
+      <p class="font-medium mb-2">Please Note:</p>
+      <p>Booking confirmation depends on cab availability. Cancellation policies and fare details will be provided during booking.</p>
+    </div>
+  </div>
+</section>
+
+<section class="mb-10">
+  <h2 class="text-2xl font-semibold mb-4 flex items-center">
+    <div class="w-8 h-8 flex items-center justify-center bg-primary rounded-full text-white mr-3">
+      <i class="ri-error-warning-line"></i>
+    </div>
+    Non-Refundable Situations
+  </h2>
+  <div class="pl-11">
+    <p class="mb-4">Refunds will not be provided in the following situations:</p>
+    <ul class="list-none space-y-3 mb-6">
+      <li class="flex items-start">
+        <div class="w-6 h-6 flex items-center justify-center text-red-500 mr-2 mt-0.5">
+          <i class="ri-close-circle-line"></i>
+        </div>
+        <span>No-show cases where the customer fails to appear at the pickup location</span>
+      </li>
+      <li class="flex items-start">
+        <div class="w-6 h-6 flex items-center justify-center text-red-500 mr-2 mt-0.5">
+          <i class="ri-close-circle-line"></i>
+        </div>
+        <span>Cancellations made less than 4 hours before the scheduled pickup time</span>
+      </li>
+      <li class="flex items-start">
+        <div class="w-6 h-6 flex items-center justify-center text-red-500 mr-2 mt-0.5">
+          <i class="ri-close-circle-line"></i>
+        </div>
+        <span>Special event or peak season bookings marked as non-refundable</span>
+      </li>
+      <li class="flex items-start">
+        <div class="w-6 h-6 flex items-center justify-center text-red-500 mr-2 mt-0.5">
+          <i class="ri-close-circle-line"></i>
+        </div>
+        <span>Rides that have already begun or been completed</span>
+      </li>
+      <li class="flex items-start">
+        <div class="w-6 h-6 flex items-center justify-center text-red-500 mr-2 mt-0.5">
+          <i class="ri-close-circle-line"></i>
+        </div>
+        <span>Bookings made using special promotional offers or discount vouchers</span>
+      </li>
+    </ul>
+    <p class="mb-4">
+      Additionally, we reserve the right to deny refunds in the following situations:
+    </p>
+    <ul class="list-none space-y-3 mb-6">
+      <li class="flex items-start">
+        <div class="w-6 h-6 flex items-center justify-center text-amber-500 mr-2 mt-0.5">
+          <i class="ri-alert-line"></i>
+        </div>
+        <span>Cancellation requests made after the allowed refund period</span>
+      </li>
+      <li class="flex items-start">
+        <div class="w-6 h-6 flex items-center justify-center text-amber-500 mr-2 mt-0.5">
+          <i class="ri-alert-line"></i>
+        </div>
+        <span>Incomplete or missing booking details during the refund request</span>
+      </li>
+      <li class="flex items-start">
+        <div class="w-6 h-6 flex items-center justify-center text-amber-500 mr-2 mt-0.5">
+          <i class="ri-alert-line"></i>
+        </div>
+        <span>Evidence of abuse or fraudulent booking activity</span>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section class="mb-10">
+  <h2 class="text-2xl font-semibold mb-4 flex items-center">
+    <div class="w-8 h-8 flex items-center justify-center bg-primary rounded-full text-white mr-3">
+      <i class="ri-question-line"></i>
+    </div>
+    Frequently Asked Questions
+  </h2>
+  <div class="pl-11 space-y-6">
+    <div class="border border-gray-200 rounded">
+      <button class="w-full text-left px-6 py-4 font-medium flex justify-between items-center focus:outline-none" id="faq-btn-1" aria-expanded="false" aria-controls="faq-content-1">
+        <span>How long does it take to process my refund?</span>
+        <i class="ri-arrow-down-s-line transition-transform" id="faq-icon-1"></i>
+      </button>
+      <div class="px-6 pb-4 hidden" id="faq-content-1" role="region" aria-labelledby="faq-btn-1">
+        <p>Refunds are processed within 5-10 business days after we receive and verify your cancellation request or return authorization.</p>
+      </div>
+    </div>
+    <div class="border border-gray-200 rounded">
+      <button class="w-full text-left px-6 py-4 font-medium flex justify-between items-center focus:outline-none" id="faq-btn-2" aria-expanded="false" aria-controls="faq-content-2">
+        <span>Can I change or reschedule my booking instead of cancelling?</span>
+        <i class="ri-arrow-down-s-line transition-transform" id="faq-icon-2"></i>
+      </button>
+      <div class="px-6 pb-4 hidden" id="faq-content-2" role="region" aria-labelledby="faq-btn-2">
+        <p>Yes, you can request to change your booking date or time by contacting our customer support. Changes are subject to vehicle availability.</p>
+      </div>
+    </div>
+    <div class="border border-gray-200 rounded">
+      <button class="w-full text-left px-6 py-4 font-medium flex justify-between items-center focus:outline-none" id="faq-btn-3" aria-expanded="false" aria-controls="faq-content-3">
+        <span>What happens if the driver is late or the cab doesn’t arrive?</span>
+        <i class="ri-arrow-down-s-line transition-transform" id="faq-icon-3"></i>
+      </button>
+      <div class="px-6 pb-4 hidden" id="faq-content-3" role="region" aria-labelledby="faq-btn-3">
+        <p>If your cab is late or fails to arrive, please contact our support immediately. We will arrange a replacement or offer a refund as applicable.</p>
+      </div>
+    </div>
+    <div class="border border-gray-200 rounded">
+      <button class="w-full text-left px-6 py-4 font-medium flex justify-between items-center focus:outline-none" id="faq-btn-4" aria-expanded="false" aria-controls="faq-content-4">
+        <span>Do you offer refunds for partially completed rides?</span>
+        <i class="ri-arrow-down-s-line transition-transform" id="faq-icon-4"></i>
+      </button>
+      <div class="px-6 pb-4 hidden" id="faq-content-4" role="region" aria-labelledby="faq-btn-4">
+        <p>Refunds for partially completed rides are considered on a case-by-case basis. Please contact support with details for review.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="mb-10">
+  <h2 class="text-2xl font-semibold mb-4 flex items-center">
+    <div class="w-8 h-8 flex items-center justify-center bg-primary rounded-full text-white mr-3">
+      <i class="ri-customer-service-2-line"></i>
+    </div>
+    Contact Support
+  </h2>
+  <div class="pl-11">
+    <p class="mb-6">
+      If you have any questions or concerns about our refund policy, please don't hesitate to contact our customer support team:
+    </p>
+    <div class="grid md:grid-cols-3 gap-6 mb-8">
+  <div class="bg-white shadow-sm rounded-lg p-6 text-center hover:shadow-md transition-shadow">
+    <div class="w-12 h-12 flex items-center justify-center rounded-full mx-auto mb-4" style="background-color: rgba(10, 36, 99, 0.1); color: #0a2463;">
+      <i class="ri-mail-line ri-lg"></i>
+    </div>
+    <h3 class="font-medium mb-2" style="color: #0a2463;">Email</h3>
+    <p class="text-gray-600">gayatritoursandtravels@gmail.com</p>
+  </div>
+  <div class="bg-white shadow-sm rounded-lg p-6 text-center hover:shadow-md transition-shadow">
+    <div class="w-12 h-12 flex items-center justify-center rounded-full mx-auto mb-4" style="background-color: rgba(10, 36, 99, 0.1); color: #0a2463;">
+      <i class="ri-phone-line ri-lg"></i>
+    </div>
+    <h3 class="font-medium mb-2" style="color: #0a2463;">24/7 Helpline</h3>
+    <p class="text-gray-600">+91 94055 97393</p>
+  </div>
+  <div class="bg-white shadow-sm rounded-lg p-6 text-center hover:shadow-md transition-shadow">
+    <div class="w-12 h-12 flex items-center justify-center rounded-full mx-auto mb-4" style="background-color: rgba(10, 36, 99, 0.1); color: #0a2463;">
+      <i class="ri-whatsapp-line ri-lg"></i>
+    </div>
+    <h3 class="font-medium mb-2" style="color: #0a2463;">WhatsApp</h3>
+    <p class="text-gray-600">+91 94055 97393</p>
+  </div>
+</div>
+
+    <p class="mb-6 text-gray-700 max-w-lg mx-auto">
+      Address: Flat No 202, Swapnshilp Apartment, Abhinav College Road, Narhe, Pune 411041
+    </p>
+   <div class="flex justify-center">
+  <button class="bg-[#0a2463] text-white px-6 py-3 rounded-button font-medium hover:bg-[#082047] transition-colors flex items-center whitespace-nowrap">
+    <i class="ri-customer-service-line mr-2"></i>
+    Contact Support Now
+  </button>
+</div>
+</div>
+</section>
+<div class="border-t border-gray-200 pt-8 mt-12">
+  <p class="text-gray-500 text-sm">
+    Last Updated: June 7, 2025
+  </p>
+  <div class="flex justify-between items-center mt-4">
+    <div class="flex space-x-4">
+      <a href="{{ url_for('terms_and_conditions') }}" class="text-[#0a2463] hover:underline text-sm">Terms And Conditions</a>
+      <a href="{{ url_for('privacy_policy') }}" class="text-[#0a2463] hover:underline text-sm">Privacy Policy</a>
+    </div>
+    <button class="text-gray-500 hover:text-[#0a2463] flex items-center text-sm no-print" id="print-button">
+      <i class="ri-printer-line mr-1"></i>
+      Print Policy
+    </button>
+  </div>
+</div>
+</main>
+
+<button id="back-to-top" class="back-to-top w-12 h-12 flex items-center justify-center bg-[#0a2463] text-white rounded-full shadow-lg opacity-0">
+  <i class="ri-arrow-up-line ri-lg"></i>
+</button>
+
+<!-- Footer -->
+<footer style="background-color:#0a2463;" class="text-white pt-16 pb-8">
+  <div class="container mx-auto px-4">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+      <!-- Company Info -->
+      <div>
+        <h3 class="text-xl font-bold mb-4">Gayatri Tours and Travels</h3>
+        <p class="text-white/80 mb-4">Your trusted partner for comfortable and reliable cab services across India.</p>
+        <div class="flex items-start mb-2">
+          <div class="w-5 h-5 flex items-center justify-center mr-2 mt-1">
+            <i class="ri-map-pin-line"></i>
+          </div>
+          <p class="text-white/80">Flat No 202, Swapnshilp Apartment, Abhinav College Road, Narhe, Pune 411041</p>
+        </div>
+        <div class="flex items-center mb-2">
+          <div class="w-5 h-5 flex items-center justify-center mr-2">
+            <i class="ri-phone-line"></i>
+          </div>
+          <a href="tel:+919405597393" class="text-white/80 hover:text-white">+91 9405597393</a>
+        </div>
+        <div class="flex items-center mb-2">
+          <div class="w-5 h-5 flex items-center justify-center mr-2">
+            <i class="ri-mail-line"></i>
+          </div>
+          <a href="mailto:gayatritoursandtravels@gmail.com" class="text-white/80 hover:text-white">gayatritoursandtravels@gmail.com</a>
+        </div>
+      </div>
+      <!-- Quick Links -->
+      <div>
+        <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+        <ul class="space-y-2">
+          <li><a href="{{ url_for('home') }}" class="text-white/80 hover:text-white">Home</a></li>
+          <li><a href="{{ url_for('about') }}" class="text-white/80 hover:text-white">About Us</a></li>
+          <li><a href="{{ url_for('packages') }}" class="text-white/80 hover:text-white">Packages</a></li>
+          <li><a href="{{ url_for('contact') }}" class="text-white/80 hover:text-white">Contact Us</a></li>
+          <li><a href="{{ url_for('faq') }}" class="text-white/80 hover:text-white">FAQs</a></li>
+          <li><a href="{{ url_for('terms_and_conditions') }}" class="text-white/80 hover:text-white">Terms & Conditions</a></li>
+          <li><a href="{{ url_for('privacy_policy') }}" class="text-white/80 hover:text-white">Privacy Policy</a></li>
+        </ul>
+      </div>
+      <!-- Popular Destinations -->
+      <div>
+        <h3 class="text-xl font-bold mb-4">Popular Destinations</h3>
+        <ul class="space-y-2">
+          <li><a href="#" class="text-white/80 hover:text-white">Pune to Mumbai</a></li>
+          <li><a href="#" class="text-white/80 hover:text-white">Pune to Lonavala</a></li>
+          <li><a href="#" class="text-white/80 hover:text-white">Pune to Mahabaleshwar</a></li>
+          <li><a href="#" class="text-white/80 hover:text-white">Pune to Shirdi</a></li>
+          <li><a href="#" class="text-white/80 hover:text-white">Pune to Goa</a></li>
+          <li><a href="#" class="text-white/80 hover:text-white">Pune to Aurangabad</a></li>
+          <li><a href="#" class="text-white/80 hover:text-white">Pune to Nashik</a></li>
+          <li><a href="#" class="text-white/80 hover:text-white">Pune to Kolhapur</a></li>
+        </ul>
+      </div>
+      <!-- Connect With Us -->
+      <div>
+        <h3 class="text-xl font-bold mb-4">Connect With Us</h3>
+        <div class="flex space-x-4 mb-6">
+          <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors">
+            <i class="ri-facebook-fill"></i>
+          </a>
+          <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors">
+            <i class="ri-instagram-line"></i>
+          </a>
+          <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors">
+            <i class="ri-twitter-x-line"></i>
+          </a>
+          <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors">
+            <i class="ri-linkedin-fill"></i>
+          </a>
+        </div>
+        <h3 class="text-xl font-bold mb-4">We Accept</h3>
+        <div class="flex flex-wrap gap-3">
+          <div class="w-10 h-6 bg-white rounded flex items-center justify-center">
+            <i class="ri-visa-fill text-blue-700"></i>
+          </div>
+          <div class="w-10 h-6 bg-white rounded flex items-center justify-center">
+            <i class="ri-mastercard-fill text-orange-600"></i>
+          </div>
+          <div class="w-10 h-6 bg-white rounded flex items-center justify-center">
+            <i class="ri-paypal-fill text-blue-600"></i>
+          </div>
+          <div class="w-10 h-6 bg-white rounded flex items-center justify-center">
+            <i class="ri-google-fill text-red-500"></i>
+          </div>
+          <div class="w-10 h-6 bg-white rounded flex items-center justify-center">
+            <i class="ri-amazon-pay-fill text-blue-900"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="border-t border-white/20 pt-8">
+      <div class="flex flex-col md:flex-row justify-between items-center">
+        <p class="text-white/80 mb-4 md:mb-0">© 2025 Gayatri Tours and Travels. All rights reserved.</p>
+        <div class="flex space-x-4">
+          <a href="{{ url_for('terms_and_conditions') }}" class="text-white/80 hover:text-white text-sm">Terms & Conditions</a>
+          <a href="{{ url_for('privacy_policy') }}" class="text-white/80 hover:text-white text-sm">Privacy Policy</a>
+          <a href="{{ url_for('refund_policy') }}" class="text-white/80 hover:text-white text-sm">Refund Policy</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- WhatsApp Button -->
+<a href="https://wa.me/919405597393" 
+   class="fixed bottom-6 right-6 w-14 h-14 rounded-full flex items-center justify-center shadow-lg z-50 bg-[#25D366] hover:bg-[#082047] transition-colors">
+  <i class="ri-whatsapp-line text-white text-2xl"></i>
+</a>
+
+
+<button id="back-to-top" class="back-to-top w-12 h-12 flex items-center justify-center bg-[#0a2463] text-white rounded-full shadow-lg opacity-0">
+  <i class="ri-arrow-up-line ri-lg"></i>
+</button>
+
+<script id="faq-accordion">
+document.addEventListener('DOMContentLoaded', function() {
+const faqButtons = document.querySelectorAll('[id^="faq-btn-"]');
+faqButtons.forEach(button => {
+button.addEventListener('click', function() {
+const id = this.id.split('-')[2];
+const content = document.getElementById(`faq-content-${id}`);
+const icon = document.getElementById(`faq-icon-${id}`);
+content.classList.toggle('hidden');
+icon.classList.toggle('rotate-180');
+});
+});
+});
+</script>
+<script id="back-to-top-script">
+document.addEventListener('DOMContentLoaded', function() {
+const backToTopButton = document.getElementById('back-to-top');
+window.addEventListener('scroll', function() {
+if (window.pageYOffset > 300) {
+backToTopButton.style.display = 'flex';
+setTimeout(() => {
+backToTopButton.style.opacity = '1';
+}, 10);
+} else {
+backToTopButton.style.opacity = '0';
+setTimeout(() => {
+backToTopButton.style.display = 'none';
+}, 300);
+}
+});
+backToTopButton.addEventListener('click', function() {
+window.scrollTo({
+top: 0,
+behavior: 'smooth'
+});
+});
+});
+</script>
+<script id="print-policy-script">
+document.addEventListener('DOMContentLoaded', function() {
+const printButton = document.getElementById('print-button');
+printButton.addEventListener('click', function() {
+window.print();
+});
+});
+</script>
+</body>
+</html>

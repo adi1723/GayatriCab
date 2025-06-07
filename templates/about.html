@@ -631,9 +631,9 @@ body {
                     <li><a href="{{ url_for('about') }}" class="text-white/80 hover:text-white">About Us</a></li>
                     <li><a href="{{ url_for('packages') }}" class="text-white/80 hover:text-white">Packages</a></li>
                     <li><a href="{{ url_for('contact') }}" class="text-white/80 hover:text-white">Contact Us</a></li>
-                    <li><a href="#faq-section" class="text-white/80 hover:text-white">FAQs</a></li>
+                    <li><a href="{{ url_for('faq') }}" class="text-white/80 hover:text-white">FAQs</a></li>
                     <li><a href="{{ url_for('terms_and_conditions') }}" class="text-white/80 hover:text-white">Terms & Conditions</a></li>
-                    <li><a href="#" class="text-white/80 hover:text-white">Privacy Policy</a></li>
+                    <li><a href="{{ url_for('privacy_policy') }}" class="text-white/80 hover:text-white">Privacy Policy</a></li>
                 </ul>
             </div>
             <!-- Popular Destinations -->
@@ -692,8 +692,8 @@ body {
                 <p class="text-white/80 mb-4 md:mb-0">© 2025 Gayatri Tours and Travels. All rights reserved.</p>
                 <div class="flex space-x-4">
                     <a href="{{ url_for('terms_and_conditions') }}" class="text-white/80 hover:text-white text-sm">Terms & Conditions</a>
-                    <a href="#" class="text-white/80 hover:text-white text-sm">Privacy Policy</a>
-                    <a href="#" class="text-white/80 hover:text-white text-sm">Refund Policy</a>
+                    <a href="{{ url_for('privacy_policy') }}" class="text-white/80 hover:text-white text-sm">Privacy Policy</a>
+                    <a href="{{ url_for('refund_policy') }}" class="text-white/80 hover:text-white text-sm">Refund Policy</a>
                 </div>
             </div>
         </div>
