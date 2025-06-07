@@ -4,3 +4,8 @@ python-dotenv==1.0.1
 gunicorn==21.2.0
 requests==2.31.0
 
+'''
+git add .
+git commit -m "Your message"
+git push
+'''

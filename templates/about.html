@@ -146,61 +146,83 @@ body {
 
 <!-- Company Overview Section -->
 <section class="py-16 bg-white">
-    <div class="container mx-auto px-4">
-        <div class="flex flex-col lg:flex-row items-center gap-12">
-            <div class="lg:w-1/2">
-                <img src="https://readdy.ai/api/search-image?query=professional%2520travel%2520agency%2520team%2520in%2520modern%2520office%252C%2520diverse%2520staff%2520working%2520together%252C%2520planning%2520travel%2520itineraries%252C%2520using%2520computers%252C%2520maps%2520and%2520brochures%2520visible%252C%2520friendly%2520atmosphere%252C%2520high%2520quality%2520professional%2520photography&width=600&height=500&seq=22&orientation=landscape" alt="About Gayatri Tours and Travels" class="rounded-lg shadow-xl w-full h-auto object-cover object-top">
+  <div class="container mx-auto px-4">
+    <div class="flex flex-col lg:flex-row items-start gap-12">
+      
+      <!-- Video container with fixed width -->
+      <div class="w-full lg:w-[400px] flex justify-center items-center" style="height: 500px;">
+        <video 
+          autoplay 
+          muted 
+          loop 
+          playsinline 
+          class="rounded-lg shadow-xl object-cover object-top"
+          style="height: 100%; width: 100%;">
+          <source src="{{ url_for('static', filename='videos/Aura_video.mp4') }}" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+
+      <!-- Text container with remaining width -->
+      <div class="w-full lg:flex-1">
+        <h2 class="text-3xl font-bold text-primary mb-6">
+          Your Trusted Travel Partner for Every Journey
+        </h2>
+        <p class="text-gray-700 mb-6 leading-relaxed">
+          At Gayatri Tours and Travels, we’re driven by a passion to offer reliable, comfortable, and memorable travel experiences. Though newly established, our commitment to quality service and customer satisfaction sets us apart from the start.
+        </p>
+        <p class="text-gray-700 mb-6 leading-relaxed">
+          With a growing fleet of clean, well-maintained vehicles and courteous, professional drivers, we’re here to make your journeys smooth and stress-free. Whether it’s a weekend getaway, a family trip, or a temple tour, we offer flexible and affordable travel solutions tailored just for you.
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-4 mt-8">
+          <div class="flex items-center">
+            <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mr-4">
+              <i class="ri-car-line text-primary text-2xl"></i>
             </div>
-            <div class="lg:w-1/2">
-                <h2 class="text-3xl font-bold text-primary mb-6">Your Trusted Travel Partner for Every Journey</h2>
-                <p class="text-gray-700 mb-6 leading-relaxed">At Gayatri Tours and Travels, we’re driven by a passion to offer reliable, comfortable, and memorable travel experiences. Though newly established, our commitment to quality service and customer satisfaction sets us apart from the start.</p>
-                <p class="text-gray-700 mb-6 leading-relaxed">With a growing fleet of clean, well-maintained vehicles and courteous, professional drivers, we’re here to make your journeys smooth and stress-free. Whether it’s a weekend getaway, a family trip, or a temple tour, we offer flexible and affordable travel solutions tailored just for you.</p>
-
-               <div class="flex flex-col sm:flex-row gap-4 mt-8">
-  <div class="flex items-center">
-    <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mr-4">
-      <i class="ri-car-line text-primary text-2xl"></i>
-    </div>
-    <div>
-      <h4 class="font-bold text-gray-900">Fleet</h4>
-      <p class="text-gray-600">Clean & comfortable rides</p>
-    </div>
-  </div>
-  <div class="flex items-center">
-    <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mr-4">
-      <i class="ri-map-pin-line text-primary text-2xl"></i>
-    </div>
-    <div>
-      <h4 class="font-bold text-gray-900">Destinations</h4>
-      <p class="text-gray-600">Across Maharashtra</p>
-    </div>
-  </div>
-</div>
-
-<div class="flex flex-col sm:flex-row gap-4 mt-4">
-  <div class="flex items-center">
-    <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mr-4">
-      <i class="ri-user-smile-line text-primary text-2xl"></i>
-    </div>
-    <div>
-      <h4 class="font-bold text-gray-900">Service</h4>
-      <p class="text-gray-600">Customer-first approach</p>
-    </div>
-  </div>
-  <div class="flex items-center">
-    <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mr-4">
-      <i class="ri-award-line text-primary text-2xl"></i>
-    </div>
-    <div>
-      <h4 class="font-bold text-gray-900">Trust</h4>
-      <p class="text-gray-600">New, yet committed</p>
-    </div>
-  </div>
-</div>
-
+            <div>
+              <h4 class="font-bold text-gray-900">Fleet</h4>
+              <p class="text-gray-600">Clean & comfortable rides</p>
+            </div>
+          </div>
+          <div class="flex items-center">
+            <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mr-4">
+              <i class="ri-map-pin-line text-primary text-2xl"></i>
+            </div>
+            <div>
+              <h4 class="font-bold text-gray-900">Destinations</h4>
+              <p class="text-gray-600">Across Maharashtra</p>
+            </div>
+          </div>
         </div>
+
+        <div class="flex flex-col sm:flex-row gap-4 mt-4">
+          <div class="flex items-center">
+            <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mr-4">
+              <i class="ri-user-smile-line text-primary text-2xl"></i>
+            </div>
+            <div>
+              <h4 class="font-bold text-gray-900">Service</h4>
+              <p class="text-gray-600">Customer-first approach</p>
+            </div>
+          </div>
+          <div class="flex items-center">
+            <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mr-4">
+              <i class="ri-award-line text-primary text-2xl"></i>
+            </div>
+            <div>
+              <h4 class="font-bold text-gray-900">Trust</h4>
+              <p class="text-gray-600">New, yet committed</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
+  </div>
 </section>
+
+
 
 <!-- Mission & Values Section -->
 <section class="py-16 bg-gray-50">
@@ -610,7 +632,7 @@ body {
                     <li><a href="{{ url_for('packages') }}" class="text-white/80 hover:text-white">Packages</a></li>
                     <li><a href="{{ url_for('contact') }}" class="text-white/80 hover:text-white">Contact Us</a></li>
                     <li><a href="#faq-section" class="text-white/80 hover:text-white">FAQs</a></li>
-                    <li><a href="#" class="text-white/80 hover:text-white">Terms & Conditions</a></li>
+                    <li><a href="{{ url_for('terms_and_conditions') }}" class="text-white/80 hover:text-white">Terms & Conditions</a></li>
                     <li><a href="#" class="text-white/80 hover:text-white">Privacy Policy</a></li>
                 </ul>
             </div>
@@ -669,7 +691,7 @@ body {
             <div class="flex flex-col md:flex-row justify-between items-center">
                 <p class="text-white/80 mb-4 md:mb-0">© 2025 Gayatri Tours and Travels. All rights reserved.</p>
                 <div class="flex space-x-4">
-                    <a href="#" class="text-white/80 hover:text-white text-sm">Terms & Conditions</a>
+                    <a href="{{ url_for('terms_and_conditions') }}" class="text-white/80 hover:text-white text-sm">Terms & Conditions</a>
                     <a href="#" class="text-white/80 hover:text-white text-sm">Privacy Policy</a>
                     <a href="#" class="text-white/80 hover:text-white text-sm">Refund Policy</a>
                 </div>

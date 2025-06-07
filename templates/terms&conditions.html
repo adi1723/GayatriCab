@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terms And Conditions - Gayatri Tours and Travels</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#0a2463',secondary:'#ffc857'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+.page-header {
+    background-image: linear-gradient(rgba(10, 36, 99, 0.8), rgba(10, 36, 99, 0.8)), url('https://readdy.ai/api/search-image?query=professional%2520travel%2520agency%2520office%2520with%2520modern%2520design%252C%2520travel%2520brochures%252C%2520world%2520map%2520on%2520wall%252C%2520friendly%2520staff%2520helping%2520customers%252C%2520high%2520quality%2520professional%2520photography%252C%2520bright%2520lighting%252C%2520clean%2520environment&width=1920&height=400&seq=20&orientation=landscape');
+    background-size: cover;
+    background-position: center;
+}
+.value-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.value-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+.timeline-item {
+    position: relative;
+}
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 19px;
+    height: 100%;
+    width: 2px;
+    background-color: #e5e7eb;
+    z-index: 0;
+}
+.timeline-item:last-child::before {
+    height: 50%;
+}
+.timeline-item:first-child::before {
+    top: 50%;
+    height: 50%;
+}
+.timeline-dot {
+    position: relative;
+    z-index: 1;
+    background-color: white;
+}
+.counter-item {
+    position: relative;
+}
+.counter-item::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    height: 50px;
+    width: 1px;
+    background-color: #e5e7eb;
+}
+.counter-item:last-child::after {
+    display: none;
+}
+.testimonial-card {
+    transition: transform 0.3s ease;
+}
+.testimonial-card.active {
+    transform: scale(1.05);
+}
+.service-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+.cta-section {
+    background-image: linear-gradient(to right, rgba(10, 36, 99, 0.9), rgba(10, 36, 99, 0.7)), url('https://readdy.ai/api/search-image?query=luxury%2520travel%2520concept%2520with%2520world%2520map%252C%2520passport%252C%2520tickets%252C%2520camera%252C%2520sunglasses%2520on%2520wooden%2520table%252C%2520professional%2520photography%252C%2520top%2520view%252C%2520travel%2520planning%2520concept%252C%2520high%2520resolution&width=1920&height=600&seq=21&orientation=landscape');
+    background-size: cover;
+    background-position: center;
+}
+</style>
+</head>
+<body class="bg-white">
+<!-- Header -->
+<header class="bg-white shadow-md fixed w-full top-0 z-50">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+        <a href="{{ url_for('home') }}" class="text-2xl font-['Pacifico'] text-primary">Gayatri Tours & Travels</a>   
+        <nav class="hidden lg:flex items-center space-x-6">
+            <a href="{{ url_for('home') }}" class="text-gray-700 hover:text-primary transition-colors">Home</a>
+            <a href="{{ url_for('about') }}" class="text-gray-700 hover:text-primary transition-colors">About</a>
+            <a href="{{ url_for('packages') }}" class="text-gray-700 hover:text-primary transition-colors">Packages</a>
+            <a href="{{ url_for('contact') }}" class="text-gray-700 hover:text-primary transition-colors">Contact</a>
+        </nav>
+        <div class="hidden lg:flex items-center space-x-4">
+            <a href="tel:+919405597993" class="text-primary font-medium flex items-center whitespace-nowrap">
+                <div class="w-5 h-5 flex items-center justify-center mr-1">
+                    <i class="ri-phone-line"></i>
+                </div>
+                +91 9405597393
+            </a>
+        </div>
+        <button class="lg:hidden w-10 h-10 flex items-center justify-center text-primary">
+            <i class="ri-menu-line text-2xl"></i>
+        </button>
+    </div>
+</header>
+
+<!-- Page Header -->
+<section class="relative pt-28 pb-16">
+  <!-- Background Image -->
+  <div class="absolute inset-0 bg-cover bg-center z-0" 
+       style="background-image: url('https://sdmntprsouthcentralus.oaiusercontent.com/files/00000000-9618-61f7-a0cb-c4ac33abfa1f/raw?se=2025-06-07T08%3A54%3A48Z&sp=r&sv=2024-08-04&sr=b&scid=caa45d97-9dac-543f-987b-2f5770b8bb10&skoid=9ccea605-1409-4478-82eb-9c83b25dc1b0&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-06-07T01%3A14%3A56Z&ske=2025-06-08T01%3A14%3A56Z&sks=b&skv=2024-08-04&sig=89qePy85/Lha13Gmzu/t1Tr7R47RsaLqf%2B2PAfK4OaY%3D');">
+  </div>
+
+  <!-- Optional dark overlay -->
+  <div class="absolute inset-0 bg-black/40 z-10"></div>
+
+  <!-- Content -->
+  <div class="relative z-20 container mx-auto px-4 text-white">
+    <div class="max-w-3xl p-6">
+  <h1 class="text-3xl md:text-4xl font-bold mb-4">Terms & Conditions</h1>
+  <p class="text-lg mb-6">
+    Please read the <strong>terms and conditions</strong> carefully before booking with us.<br>
+    These guidelines ensure a smooth experience with <strong>Gayatri Tours & Travels</strong>.
+  </p>
+  <nav class="flex" aria-label="Breadcrumb">
+    <ol class="inline-flex items-center space-x-1 md:space-x-3">
+      <li class="inline-flex items-center">
+        <a href="/" class="inline-flex items-center text-white hover:text-gray-200">
+          <i class="ri-home-line mr-2"></i> Home
+        </a>
+      </li>
+      <li>
+        <div class="flex items-center text-white">
+          <i class="ri-arrow-right-s-line mx-2"></i>
+          <span>Terms & Conditions</span>
+        </div>
+      </li>
+    </ol>
+  </nav>
+</div>
+
+  </div>
+</section>
+
+<main class="container mx-auto px-6 py-12">
+<div class="max-w-4xl mx-auto">
+
+<div class="text-center mb-12">
+<h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Terms & Conditions</h1>
+<p class="text-gray-600 max-w-2xl mx-auto">Please read these terms and conditions carefully before using our ride-hailing and travel package services. By using our services, you agree to be bound by these terms.</p>
+<p class="text-gray-500 text-sm mt-2">Last updated: June 7, 2025</p>
+</div>
+<div class="flex flex-col md:flex-row gap-8">
+<!-- Table of Contents - Desktop -->
+<div class="hidden md:block w-64 shrink-0">
+<div class="bg-white rounded-lg shadow-sm border border-gray-100 p-4 sticky top-6">
+<h3 class="font-semibold text-gray-900 mb-3">Table of Contents</h3>
+<ul class="space-y-2">
+<li><a href="#introduction" class="toc-link block text-gray-600 hover:text-primary pl-3 border-l-2 border-transparent hover:border-primary py-1 text-sm">Introduction</a></li>
+<li><a href="#booking" class="toc-link block text-gray-600 hover:text-primary pl-3 border-l-2 border-transparent hover:border-primary py-1 text-sm">Ride Booking</a></li>
+<li><a href="#payment" class="toc-link block text-gray-600 hover:text-primary pl-3 border-l-2 border-transparent hover:border-primary py-1 text-sm">Payment Terms</a></li>
+<li><a href="#insurance" class="toc-link block text-gray-600 hover:text-primary pl-3 border-l-2 border-transparent hover:border-primary py-1 text-sm">Safety & Insurance</a></li>
+<li><a href="#usage" class="toc-link block text-gray-600 hover:text-primary pl-3 border-l-2 border-transparent hover:border-primary py-1 text-sm">Cab Usage Guidelines</a></li>
+<li><a href="#cancellation" class="toc-link block text-gray-600 hover:text-primary pl-3 border-l-2 border-transparent hover:border-primary py-1 text-sm">Cancellation Policy</a></li>
+<li><a href="#liability" class="toc-link block text-gray-600 hover:text-primary pl-3 border-l-2 border-transparent hover:border-primary py-1 text-sm">Liability Limitations</a></li>
+<li><a href="#privacy" class="toc-link block text-gray-600 hover:text-primary pl-3 border-l-2 border-transparent hover:border-primary py-1 text-sm">Privacy Practices</a></li>
+<li><a href="#modifications" class="toc-link block text-gray-600 hover:text-primary pl-3 border-l-2 border-transparent hover:border-primary py-1 text-sm">Modifications</a></li>
+<li><a href="#contact" class="toc-link block text-gray-600 hover:text-primary pl-3 border-l-2 border-transparent hover:border-primary py-1 text-sm">Contact Us</a></li>
+</ul>
+</div>
+</div>
+<!-- Table of Contents - Mobile -->
+<div class="md:hidden mb-6">
+<div class="bg-white rounded-lg shadow-sm border border-gray-100 p-4">
+<div class="flex items-center justify-between" id="toc-mobile-header">
+<h3 class="font-semibold text-gray-900">Table of Contents</h3>
+<button class="w-8 h-8 flex items-center justify-center text-gray-500">
+<i class="ri-arrow-down-s-line ri-lg" id="toc-icon"></i>
+</button>
+</div>
+<ul class="space-y-2 mt-3 hidden" id="toc-mobile-content">
+<li><a href="#introduction" class="block text-gray-600 hover:text-primary py-1 text-sm">Introduction</a></li>
+<li><a href="#booking" class="block text-gray-600 hover:text-primary py-1 text-sm">Ride Booking</a></li>
+<li><a href="#payment" class="block text-gray-600 hover:text-primary py-1 text-sm">Payment Terms</a></li>
+<li><a href="#insurance" class="block text-gray-600 hover:text-primary py-1 text-sm">Safety & Insurance</a></li>
+<li><a href="#usage" class="block text-gray-600 hover:text-primary py-1 text-sm">Cab Usage Guidelines</a></li>
+<li><a href="#cancellation" class="block text-gray-600 hover:text-primary py-1 text-sm">Cancellation Policy</a></li>
+<li><a href="#liability" class="block text-gray-600 hover:text-primary py-1 text-sm">Liability Limitations</a></li>
+<li><a href="#privacy" class="block text-gray-600 hover:text-primary py-1 text-sm">Privacy Practices</a></li>
+<li><a href="#modifications" class="block text-gray-600 hover:text-primary py-1 text-sm">Modifications</a></li>
+<li><a href="#contact" class="block text-gray-600 hover:text-primary py-1 text-sm">Contact Us</a></li>
+</ul>
+</div>
+</div>
+<!-- Main Content -->
+<div class="flex-1">
+<!-- Introduction -->
+<section id="introduction" class="bg-white rounded-lg shadow-sm border border-gray-100 p-6 mb-8">
+  <h2 class="text-2xl font-semibold text-gray-900 mb-4">1. Introduction</h2>
+  <p class="text-gray-600 mb-4">
+    Welcome to <strong>Gayatri Tours & Travels</strong>. These Terms and Conditions govern the use of our car travel services.
+  </p>
+  <p class="text-gray-600 mb-4">
+    We provide only <strong>Aura Car</strong> service, suitable for up to <strong>4 passengers</strong>. Customers may choose between <strong>AC</strong> and <strong>Non-AC</strong> options based on their preference.
+  </p>
+  <p class="text-gray-600 mb-4">
+    By booking our service, you agree to the following terms. If you do not agree with any part of these Terms and Conditions, please refrain from using our service.
+  </p>
+  <div class="bg-blue-50 border-l-4 border-primary p-4 rounded-r-md mt-6">
+    <div class="flex">
+      <div class="w-6 h-6 flex items-center justify-center text-primary mr-3">
+        <i class="ri-information-line"></i>
+      </div>
+      <p class="text-gray-700 text-sm">
+        These Terms and Conditions apply to all bookings made with Gayatri Tours & Travels, regardless of whether the reservation is made online, by phone, or in person.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Booking Requirements -->
+<section id="booking" class="bg-white rounded-lg shadow-sm border border-gray-100 p-6 mb-8">
+  <h2 class="text-2xl font-semibold text-gray-900 mb-4">2. Booking Requirements</h2>
+  <p class="text-gray-600 mb-4">
+    Booking a tour package with <strong>Gayatri Tours & Travels</strong> is simple and hassle-free. We provide experienced drivers and take care of all travel logistics.
+  </p>
+
+  <h3 class="text-lg font-medium text-gray-900 mb-3">2.1 Driver Eligibility</h3>
+  <p class="text-gray-600 mb-6">
+    No driver eligibility or license is required from customers, as all packages include a professional driver provided by us.
+  </p>
+
+  <h3 class="text-lg font-medium text-gray-900 mb-3">2.2 Required Documentation</h3>
+  <p class="text-gray-600 mb-6">
+    We do not require any documentation such as a driver's license, ID proof, or address proof. Just provide your basic contact details when booking.
+  </p>
+
+  <h3 class="text-lg font-medium text-gray-900 mb-3">2.3 Reservation Process</h3>
+  <p class="text-gray-600 mb-4">
+    Reservations can be made online, by phone, or in person. To confirm your booking, we require:
+  </p>
+  <ul class="list-disc pl-6 mb-6 text-gray-600 space-y-2">
+    <li>Your name and contact number</li>
+    <li>Preferred travel dates and destination</li>
+    <li>Advance payment of ₹1000 (non-refundable)</li>
+  </ul>
+
+  <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded-r-md mt-6">
+    <div class="flex">
+      <div class="w-6 h-6 flex items-center justify-center text-yellow-500 mr-3">
+        <i class="ri-alert-line"></i>
+      </div>
+      <p class="text-gray-700 text-sm">
+        Please note: Booking is only confirmed upon receipt of the ₹1000 advance. Full package details and itinerary will be shared after confirmation.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Payment Terms -->
+<section id="payment" class="bg-white rounded-lg shadow-sm border border-gray-100 p-6 mb-8">
+  <h2 class="text-2xl font-semibold text-gray-900 mb-4">3. Payment Terms</h2>
+
+  <h3 class="text-lg font-medium text-gray-900 mb-3">3.1 Package Charges</h3>
+  <p class="text-gray-600 mb-4">
+    <strong>Gayatri Tours & Travels</strong> offers only travel package services (no daily rentals). Pricing is based on distance traveled:
+  </p>
+  <ul class="list-disc pl-6 mb-6 text-gray-600 space-y-2">
+    <li>AC Car: ₹25 per kilometer</li>
+    <li>Non-AC Car: ₹21 per kilometer</li>
+    <li>Trips above 300 km are eligible for up to <strong>20% discount</strong></li>
+  </ul>
+
+  <h3 class="text-lg font-medium text-gray-900 mb-3">3.2 Additional Charges</h3>
+  <p class="text-gray-600 mb-4">
+    The following additional charges apply and are not included in the base per-kilometer fare:
+  </p>
+  <ul class="list-disc pl-6 mb-6 text-gray-600 space-y-2">
+    <li>Toll charges</li>
+    <li>Parking fees</li>
+    <li>Local taxes or entry charges (if applicable)</li>
+  </ul>
+
+  <h3 class="text-lg font-medium text-gray-900 mb-3">3.3 Advance Payment</h3>
+  <p class="text-gray-600 mb-6">
+    An advance payment of ₹1000 is required to confirm the booking. This is <strong>non-refundable</strong> and there is <strong>no security deposit</strong> required.
+  </p>
+
+  <h3 class="text-lg font-medium text-gray-900 mb-3">3.4 Payment Methods</h3>
+  <p class="text-gray-600 mb-4">We accept the following payment methods:</p>
+  <div class="flex flex-wrap gap-4 mb-6">
+    <div class="flex items-center bg-gray-50 px-4 py-2 rounded-md">
+      <i class="ri-smartphone-line ri-lg text-blue-600 mr-2"></i>
+      <span class="text-gray-700">PhonePe</span>
+    </div>
+    <div class="flex items-center bg-gray-50 px-4 py-2 rounded-md">
+      <i class="ri-google-fill ri-lg text-green-600 mr-2"></i>
+      <span class="text-gray-700">Google Pay (GPay)</span>
+    </div>
+    <div class="flex items-center bg-gray-50 px-4 py-2 rounded-md">
+      <i class="ri-bank-card-line ri-lg text-indigo-600 mr-2"></i>
+      <span class="text-gray-700">Credit / Debit Cards</span>
+    </div>
+    <div class="flex items-center bg-gray-50 px-4 py-2 rounded-md">
+      <i class="ri-wallet-3-line ri-lg text-blue-500 mr-2"></i>
+      <span class="text-gray-700">Paytm</span>
+    </div>
+  </div>
+
+  <p class="text-gray-600">
+    Payment should be completed before the start of the journey. Final charges will be calculated based on actual kilometers and any applicable tolls or local charges.
+  </p>
+</section>
+
+<!-- Insurance Coverage -->
+<section id="insurance" class="bg-white rounded-lg shadow-sm border border-gray-100 p-6 mb-8">
+  <h2 class="text-2xl font-semibold text-gray-900 mb-4">4. Travel Safety & Coverage</h2>
+
+  <h3 class="text-lg font-medium text-gray-900 mb-3">4.1 Standard Safety</h3>
+  <p class="text-gray-600 mb-4">
+    All cabs provided by <strong>Gayatri Tours & Travels</strong> are operated by experienced and professional drivers. Vehicles are regularly maintained and comply with all transport safety norms.
+  </p>
+  <ul class="list-disc pl-6 mb-6 text-gray-600 space-y-2">
+    <li>Drivers possess valid commercial driving licenses</li>
+    <li>Vehicles are insured as per government transport regulations</li>
+    <li>Regular vehicle health and safety checks</li>
+  </ul>
+
+  <h3 class="text-lg font-medium text-gray-900 mb-3">4.2 Passenger Responsibility</h3>
+  <p class="text-gray-600 mb-6">
+    While we prioritize your safety, passengers are advised to:
+  </p>
+  <ul class="list-disc pl-6 mb-6 text-gray-600 space-y-2">
+    <li>Fasten seat belts while traveling</li>
+    <li>Avoid distracting the driver</li>
+    <li>Inform us of any health issues that may require special attention</li>
+  </ul>
+
+  <div class="bg-blue-50 border-l-4 border-blue-400 p-4 rounded-r-md mt-6">
+    <div class="flex">
+      <div class="w-6 h-6 flex items-center justify-center text-blue-500 mr-3">
+        <i class="ri-information-line"></i>
+      </div>
+      <p class="text-gray-700 text-sm">
+        Please note: We do not provide personal travel insurance. Customers are encouraged to arrange their own coverage if needed.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Vehicle Usage -->
+<section id="usage" class="bg-white rounded-lg shadow-sm border border-gray-100 p-6 mb-8">
+  <h2 class="text-2xl font-semibold text-gray-900 mb-4">5. Cab Usage Guidelines</h2>
+
+  <h3 class="text-lg font-medium text-gray-900 mb-3">5.1 Permitted Use</h3>
+  <p class="text-gray-600 mb-4">
+    Our cab services are strictly for travel purposes. Permitted uses include:
+  </p>
+  <ul class="list-disc pl-6 mb-6 text-gray-600 space-y-2">
+    <li>Outstation or local sightseeing tours</li>
+    <li>Pilgrimage or leisure travel</li>
+    <li>Airport, railway station, or hotel transfers</li>
+    <li>Family or group travel</li>
+  </ul>
+
+  <h3 class="text-lg font-medium text-gray-900 mb-3">5.2 Restricted Use</h3>
+  <p class="text-gray-600 mb-4">
+    The following uses are not permitted:
+  </p>
+  <ul class="list-disc pl-6 mb-6 text-gray-600 space-y-2">
+    <li>Using the cab for commercial purposes like ride-sharing or delivery</li>
+    <li>Driving the vehicle yourself (only our drivers operate the cab)</li>
+    <li>Overloading the vehicle beyond seating capacity</li>
+    <li>Transporting illegal goods or hazardous items</li>
+    <li>Rash behavior or harassment of the driver</li>
+  </ul>
+
+  <h3 class="text-lg font-medium text-gray-900 mb-3">5.3 Distance Calculation</h3>
+  <p class="text-gray-600 mb-4">
+    All packages are billed based on the total kilometers traveled (starting from garage return point). Charges apply as follows:
+  </p>
+  <ul class="list-disc pl-6 mb-6 text-gray-600 space-y-2">
+    <li>AC Car: ₹25 per kilometer</li>
+    <li>Non-AC Car: ₹21 per kilometer</li>
+    <li>Additional charges: Toll, parking, and local permit fees</li>
+  </ul>
+
+  <div class="bg-red-50 border-l-4 border-red-400 p-4 rounded-r-md mt-6">
+    <div class="flex">
+      <div class="w-6 h-6 flex items-center justify-center text-red-500 mr-3">
+        <i class="ri-error-warning-line"></i>
+      </div>
+      <p class="text-gray-700 text-sm">
+        Any misuse of the cab service may result in cancellation of the trip without refund and potential blacklisting from future bookings.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Cancellation Policy -->
+<section id="cancellation" class="bg-white rounded-lg shadow-sm border border-gray-100 p-6 mb-8">
+  <h2 class="text-2xl font-semibold text-gray-900 mb-4">6. Cancellation & Modification Policy</h2>
+
+  <h3 class="text-lg font-medium text-gray-900 mb-3">6.1 Cancellations</h3>
+  <p class="text-gray-600 mb-4">We understand plans may change. Our cancellation charges are as follows:</p>
+  <ul class="list-disc pl-6 mb-6 text-gray-600 space-y-2">
+    <li><strong>48+ hours before scheduled pickup:</strong> No cancellation charge</li>
+    <li><strong>24–48 hours before pickup:</strong> 25% of the total booking amount</li>
+    <li><strong>Less than 24 hours before pickup:</strong> 50% of the total booking amount</li>
+    <li><strong>No-shows:</strong> 100% of the booking amount will be charged</li>
+  </ul>
+
+  <h3 class="text-lg font-medium text-gray-900 mb-3">6.2 Modifications</h3>
+  <p class="text-gray-600 mb-4">Changes to your booking can be made up to 24 hours before the scheduled trip time, subject to availability:</p>
+  <ul class="list-disc pl-6 mb-6 text-gray-600 space-y-2">
+    <li><strong>Date or time changes:</strong> Free if requested at least 24 hours in advance</li>
+    <li><strong>Destination changes:</strong> Charges may apply based on additional kilometers</li>
+    <li><strong>Pickup or drop-off point updates:</strong> Subject to route adjustment and fare recalculation</li>
+  </ul>
+
+  <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded-r-md mt-6">
+    <div class="flex">
+      <div class="w-6 h-6 flex items-center justify-center text-yellow-500 mr-3">
+        <i class="ri-time-line"></i>
+      </div>
+      <p class="text-gray-700 text-sm">
+        All cancellations and modifications must be made through our official contact number or website. Refunds (if applicable) are processed within 5-7 business days.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Liability Limitations -->
+<section id="liability" class="bg-white rounded-lg shadow-sm border border-gray-100 p-6 mb-8">
+  <h2 class="text-2xl font-semibold text-gray-900 mb-4">7. Liability Limitations</h2>
+
+  <h3 class="text-lg font-medium text-gray-900 mb-3">7.1 Customer Responsibilities</h3>
+  <p class="text-gray-600 mb-4">As a passenger using our cab services, you are expected to:</p>
+  <ul class="list-disc pl-6 mb-6 text-gray-600 space-y-2">
+    <li>Provide accurate pickup and drop-off details</li>
+    <li>Follow all safety guidelines during the ride (e.g., wearing seat belts)</li>
+    <li>Refrain from any illegal or unsafe activity during the journey</li>
+    <li>Pay for any damage caused to the cab’s interior or exterior due to negligence or misconduct</li>
+    <li>Respect the driver and maintain appropriate behavior</li>
+    <li>Ensure belongings are not left behind; the company is not liable for lost items</li>
+  </ul>
+
+  <h3 class="text-lg font-medium text-gray-900 mb-3">7.2 Company Liability</h3>
+  <p class="text-gray-600 mb-4">Our cab company’s liability is limited to:</p>
+  <ul class="list-disc pl-6 mb-6 text-gray-600 space-y-2">
+    <li>Providing a safe, roadworthy vehicle with a licensed driver</li>
+    <li>Ensuring timely service as per confirmed bookings, subject to conditions beyond our control (e.g., traffic, weather)</li>
+    <li>Responding promptly to customer complaints and feedback</li>
+  </ul>
+  <p class="text-gray-600 mb-4">We are not liable for:</p>
+  <ul class="list-disc pl-6 mb-6 text-gray-600 space-y-2">
+    <li>Delays due to traffic, roadblocks, or unforeseen events</li>
+    <li>Missed flights, trains, or appointments due to delays</li>
+    <li>Loss or damage of personal belongings during transit</li>
+    <li>Any indirect or consequential losses</li>
+    <li>Events outside our reasonable control (natural calamities, strikes, etc.)</li>
+  </ul>
+
+  <h3 class="text-lg font-medium text-gray-900 mb-3">7.3 Indemnification</h3>
+  <p class="text-gray-600">
+    By using our service, you agree to indemnify and hold our company, its drivers, and affiliates harmless from any claims, liabilities, damages, or expenses arising from your actions, misuse of the service, or breach of these terms.
+  </p>
+</section>
+
+<!-- Privacy Practices -->
+<section id="privacy" class="bg-white rounded-lg shadow-sm border border-gray-100 p-6 mb-8">
+  <h2 class="text-2xl font-semibold text-gray-900 mb-4">8. Privacy Practices</h2>
+
+  <h3 class="text-lg font-medium text-gray-900 mb-3">8.1 Information Collection</h3>
+  <p class="text-gray-600 mb-4">We collect personal information when you interact with our services, including:</p>
+  <ul class="list-disc pl-6 mb-6 text-gray-600 space-y-2">
+    <li>Full name, contact number, and email address</li>
+    <li>Pickup and drop-off locations</li>
+    <li>Payment and billing details</li>
+    <li>Ride history and preferences</li>
+    <li>Real-time GPS location during the ride (for safety and route optimization)</li>
+    <li>Feedback, support queries, and communication logs</li>
+  </ul>
+
+  <h3 class="text-lg font-medium text-gray-900 mb-3">8.2 Information Use</h3>
+  <p class="text-gray-600 mb-4">Your information is used to:</p>
+  <ul class="list-disc pl-6 mb-6 text-gray-600 space-y-2">
+    <li>Confirm bookings and process payments</li>
+    <li>Provide real-time driver and cab tracking</li>
+    <li>Send updates about ride status and arrival</li>
+    <li>Enhance customer support and service quality</li>
+    <li>Improve safety and optimize routes</li>
+    <li>Send promotional offers, deals, or surveys (with your consent)</li>
+    <li>Comply with legal obligations and regulatory requirements</li>
+  </ul>
+
+  <h3 class="text-lg font-medium text-gray-900 mb-3">8.3 Information Sharing</h3>
+  <p class="text-gray-600 mb-4">We may share data with trusted third parties for limited purposes:</p>
+  <ul class="list-disc pl-6 mb-6 text-gray-600 space-y-2">
+    <li>Cab drivers and fleet operators (limited to ride-related data)</li>
+    <li>Payment processors and financial institutions</li>
+    <li>Service partners helping us deliver our platform or support services</li>
+    <li>Law enforcement or government agencies when legally required</li>
+    <li>Insurance providers in the event of accidents or claims</li>
+  </ul>
+
+  <h3 class="text-lg font-medium text-gray-900 mb-3">8.4 Data Security</h3>
+  <p class="text-gray-600 mb-4">
+    We follow industry-standard security practices to safeguard your information. While we strive for full protection, no online transmission or storage system can be guaranteed to be completely secure.
+  </p>
+
+  <h3 class="text-lg font-medium text-gray-900 mb-3">8.5 Your Rights</h3>
+  <p class="text-gray-600 mb-4">Depending on your region and applicable laws, you may have the right to:</p>
+  <ul class="list-disc pl-6 mb-6 text-gray-600 space-y-2">
+    <li>Request access to your data</li>
+    <li>Correct or update inaccurate information</li>
+    <li>Request deletion of your personal data (where legally allowed)</li>
+    <li>Restrict or object to certain processing</li>
+    <li>Withdraw consent for promotional messages</li>
+    <li>Export your data in a readable format</li>
+  </ul>
+
+  <p class="text-gray-600">For more details, please refer to our comprehensive Privacy Policy or contact our support team.</p>
+</section>
+
+<!-- Modifications to Terms -->
+<section id="modifications" class="bg-white rounded-lg shadow-sm border border-gray-100 p-6 mb-8">
+  <h2 class="text-2xl font-semibold text-gray-900 mb-4">9. Modifications to Terms</h2>
+  <p class="text-gray-600 mb-4">
+    Aura Cabs reserves the right to update or change these Terms and Conditions at any time, at our sole discretion. Any modifications will become effective immediately upon being posted on our website or mobile app.
+  </p>
+  <p class="text-gray-600 mb-4">
+    Your continued use of our services (including app-based bookings, web reservations, or customer support interactions) after any changes are made constitutes your agreement to the updated terms.
+  </p>
+  <p class="text-gray-600 mb-4">
+    In case of significant changes, we will make reasonable efforts to notify you—such as through email alerts, push notifications, or prominent notices on our platform.
+  </p>
+  <p class="text-gray-600">
+    The version of the Terms in effect at the time you book your ride will apply to that specific trip, unless legal requirements dictate otherwise.
+  </p>
+</section>
+
+<!-- Contact Information -->
+<section id="contact" class="bg-white rounded-lg shadow-sm border border-gray-100 p-6 mb-8">
+  <h2 class="text-2xl font-semibold text-gray-900 mb-4">10. Contact Us</h2>
+  <p class="text-gray-600 mb-6">If you have any questions or concerns about these Terms and Conditions, please contact us:</p>
+  
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+    <!-- Address -->
+    <div class="bg-gray-50 p-6 rounded-lg flex items-start break-words">
+      <div class="w-12 h-12 flex items-center justify-center bg-blue-50 rounded-full mr-4 flex-shrink-0">
+        <i class="ri-map-pin-line text-primary text-2xl"></i>
+      </div>
+      <div>
+        <h3 class="font-medium text-gray-900 mb-2">Address</h3>
+        <p class="text-gray-600">
+          Flat No 202, Swapnshilp Apartment,<br>
+          Abhinav College Road, Narhe,<br>
+          Pune 411041
+        </p>
+      </div>
+    </div>
+
+    <!-- Email -->
+    <div class="bg-gray-50 p-6 rounded-lg flex items-start break-words">
+      <div class="w-12 h-12 flex items-center justify-center bg-blue-50 rounded-full mr-4 flex-shrink-0">
+        <i class="ri-mail-line text-primary text-2xl"></i>
+      </div>
+      <div class="min-w-0">
+        <h3 class="font-medium text-gray-900 mb-2">Email</h3>
+        <div class="text-gray-600 break-words max-w-full">gayatritoursandtravels@gmail.com</div>
+      </div>
+    </div>
+
+    <!-- Contact -->
+    <div class="bg-gray-50 p-6 rounded-lg flex items-start break-words">
+      <div class="w-12 h-12 flex items-center justify-center bg-blue-50 rounded-full mr-4 flex-shrink-0">
+        <i class="ri-phone-line text-primary text-2xl"></i>
+      </div>
+      <div>
+        <h3 class="font-medium text-gray-900 mb-2">Contact</h3>
+        <p class="text-gray-600">+91 94055 97393</p>
+      </div>
+    </div>
+
+    <!-- Office Time -->
+    <div class="bg-gray-50 p-6 rounded-lg flex items-start break-words">
+      <div class="w-12 h-12 flex items-center justify-center bg-blue-50 rounded-full mr-4 flex-shrink-0">
+        <i class="ri-time-line text-primary text-2xl"></i>
+      </div>
+      <div>
+        <h3 class="font-medium text-gray-900 mb-2">Office Time</h3>
+        <p class="text-gray-600">10 AM – 7 PM</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- Back to Home -->
+<div class="text-center mb-8">
+<a href="{{ url_for('home') }}" data-readdy="true" class="inline-flex items-center justify-center px-6 py-3 bg-primary text-white font-medium !rounded-button whitespace-nowrap">
+<i class="ri-arrow-left-line mr-2"></i>
+Return to Home Page
+</a>
+</div>
+</div>
+</div>
+</div>
+</main>
+
+ <!-- Footer -->
+<footer class="bg-primary text-white pt-16 pb-8">
+<div class="container mx-auto px-4">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+<!-- Company Info -->
+<div>
+<h3 class="text-xl font-bold mb-4">Gayatri Tours and Travels</h3>
+<p class="text-white/80 mb-4">Your trusted partner for comfortable and reliable cab services across India.</p>
+<div class="flex items-start mb-2">
+<div class="w-5 h-5 flex items-center justify-center mr-2 mt-1">
+<i class="ri-map-pin-line"></i>
+</div>
+<p class="text-white/80">Flat No 202, Swapnshilp Apartment, Abhinav College Road, Narhe, Pune 411041</p>
+</div>
+<div class="flex items-center mb-2">
+<div class="w-5 h-5 flex items-center justify-center mr-2">
+<i class="ri-phone-line"></i>
+</div>
+<a href="tel:+919405597393" class="text-white/80 hover:text-white">+91 9405597393</a>
+</div>
+<div class="flex items-center mb-2">
+<div class="w-5 h-5 flex items-center justify-center mr-2">
+<i class="ri-mail-line"></i>
+</div>
+<a href="mailto:gayatritoursandtravels@gmail.com" class="text-white/80 hover:text-white">gayatritoursandtravels@gmail.com</a>
+</div>
+</div>
+<!-- Quick Links -->
+<div>
+<h3 class="text-xl font-bold mb-4">Quick Links</h3>
+<ul class="space-y-2">
+<li><a href="{{ url_for('home') }}" class="text-white/80 hover:text-white">Home</a></li>
+<li><a href="{{ url_for('about') }}" class="text-white/80 hover:text-white">About Us</a></li>
+<li><a href="{{ url_for('packages') }}" class="text-white/80 hover:text-white">Packages</a></li>
+<li><a href="{{ url_for('contact') }}" class="text-white/80 hover:text-white">Contact Us</a></li>
+<li><a href="#faq-section" class="text-white/80 hover:text-white">FAQs</a></li>
+<li><a href="{{ url_for('terms_and_conditions') }}" class="text-white/80 hover:text-white">Terms & Conditions</a></li>
+<li><a href="#" class="text-white/80 hover:text-white">Privacy Policy</a></li>
+</ul>
+</div>
+<!-- Popular Destinations -->
+<div>
+<h3 class="text-xl font-bold mb-4">Popular Destinations</h3>
+<ul class="space-y-2">
+<li><a href="#" class="text-white/80 hover:text-white">Pune to Mumbai</a></li>
+<li><a href="#" class="text-white/80 hover:text-white">Pune to Lonavala</a></li>
+<li><a href="#" class="text-white/80 hover:text-white">Pune to Mahabaleshwar</a></li>
+<li><a href="#" class="text-white/80 hover:text-white">Pune to Shirdi</a></li>
+<li><a href="#" class="text-white/80 hover:text-white">Pune to Goa</a></li>
+<li><a href="#" class="text-white/80 hover:text-white">Pune to Aurangabad</a></li>
+<li><a href="#" class="text-white/80 hover:text-white">Pune to Nashik</a></li>
+<li><a href="#" class="text-white/80 hover:text-white">Pune to Kolhapur</a></li>
+</ul>
+</div>
+<!-- Connect With Us -->
+<div>
+<h3 class="text-xl font-bold mb-4">Connect With Us</h3>
+<div class="flex space-x-4 mb-6">
+<a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors">
+<i class="ri-facebook-fill"></i>
+</a>
+<a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors">
+<i class="ri-instagram-line"></i>
+</a>
+<a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors">
+<i class="ri-twitter-x-line"></i>
+</a>
+<a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors">
+<i class="ri-linkedin-fill"></i>
+</a>
+</div>
+<h3 class="text-xl font-bold mb-4">We Accept</h3>
+<div class="flex flex-wrap gap-3">
+<div class="w-10 h-6 bg-white rounded flex items-center justify-center">
+<i class="ri-visa-fill text-blue-700"></i>
+</div>
+<div class="w-10 h-6 bg-white rounded flex items-center justify-center">
+<i class="ri-mastercard-fill text-orange-600"></i>
+</div>
+<div class="w-10 h-6 bg-white rounded flex items-center justify-center">
+<i class="ri-paypal-fill text-blue-600"></i>
+</div>
+<div class="w-10 h-6 bg-white rounded flex items-center justify-center">
+<i class="ri-google-fill text-red-500"></i>
+</div>
+<div class="w-10 h-6 bg-white rounded flex items-center justify-center">
+<i class="ri-amazon-pay-fill text-blue-900"></i>
+</div>
+</div>
+</div>
+</div>
+<div class="border-t border-white/20 pt-8">
+<div class="flex flex-col md:flex-row justify-between items-center">
+<p class="text-white/80 mb-4 md:mb-0">© 2025 Gayatri Tours and Travels. All rights reserved.</p>
+<div class="flex space-x-4">
+<a href="{{ url_for('terms_and_conditions') }}" class="text-white/80 hover:text-white text-sm">Terms & Conditions</a>
+<a href="#" class="text-white/80 hover:text-white text-sm">Privacy Policy</a>
+<a href="#" class="text-white/80 hover:text-white text-sm">Refund Policy</a>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<!-- WhatsApp Button -->
+<a href="https://wa.me/919405597993" class="fixed bottom-6 right-6 w-14 h-14 bg-green-500 rounded-full flex items-center justify-center shadow-lg z-50 hover:bg-green-600 transition-colors">
+<i class="ri-whatsapp-line text-white text-2xl"></i>
+</a>
+<script id="mobileMenuScript">
+document.addEventListener('DOMContentLoaded', function() {
+const menuButton = document.querySelector('.ri-menu-line').parentElement;
+const nav = document.querySelector('nav');
+menuButton.addEventListener('click', function() {
+if (nav.classList.contains('hidden')) {
+nav.classList.remove('hidden');
+nav.classList.add('flex', 'flex-col', 'absolute', 'top-16', 'left-0', 'right-0', 'bg-white', 'p-4', 'shadow-md', 'z-50', 'space-y-4');
+menuButton.innerHTML = '<i class="ri-close-line ri-lg"></i>';
+} else {
+nav.classList.add('hidden');
+nav.classList.remove('flex', 'flex-col', 'absolute', 'top-16', 'left-0', 'right-0', 'bg-white', 'p-4', 'shadow-md', 'z-50', 'space-y-4');
+menuButton.innerHTML = '<i class="ri-menu-line ri-lg"></i>';
+}
+});
+});
+</script>
+<script id="tocMobileToggle">
+document.addEventListener('DOMContentLoaded', function() {
+const tocHeader = document.getElementById('toc-mobile-header');
+const tocContent = document.getElementById('toc-mobile-content');
+const tocIcon = document.getElementById('toc-icon');
+tocHeader.addEventListener('click', function() {
+if (tocContent.classList.contains('hidden')) {
+tocContent.classList.remove('hidden');
+tocIcon.classList.remove('ri-arrow-down-s-line');
+tocIcon.classList.add('ri-arrow-up-s-line');
+} else {
+tocContent.classList.add('hidden');
+tocIcon.classList.remove('ri-arrow-up-s-line');
+tocIcon.classList.add('ri-arrow-down-s-line');
+}
+});
+});
+</script>
+<script id="scrollSpy">
+document.addEventListener('DOMContentLoaded', function() {
+const sections = document.querySelectorAll('section[id]');
+const tocLinks = document.querySelectorAll('.toc-link');
+const backToTop = document.querySelector('.back-to-top');
+window.addEventListener('scroll', function() {
+let current = '';
+// Show/hide back to top button
+if (window.pageYOffset > 300) {
+backToTop.classList.add('visible');
+} else {
+backToTop.classList.remove('visible');
+}
+// Highlight current section in TOC
+sections.forEach(section => {
+const sectionTop = section.offsetTop - 100;
+const sectionHeight = section.offsetHeight;
+if (pageYOffset >= sectionTop && pageYOffset < sectionTop + sectionHeight) {
+current = section.getAttribute('id');
+}
+});
+tocLinks.forEach(link => {
+link.classList.remove('active');
+if (link.getAttribute('href').substring(1) === current) {
+link.classList.add('active');
+}
+});
+});
+// Smooth scroll to section when clicking TOC links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+anchor.addEventListener('click', function(e) {
+e.preventDefault();
+const targetId = this.getAttribute('href');
+if (targetId !== '#') {
+const targetElement = document.querySelector(targetId);
+if (targetElement) {
+window.scrollTo({
+top: targetElement.offsetTop - 80,
+behavior: 'smooth'
+});
+}
+}
+});
+});
+// Back to top button click handler
+backToTop.addEventListener('click', function() {
+window.scrollTo({
+top: 0,
+behavior: 'smooth'
+});
+});
+});
+</script>
+</body>
+</html>

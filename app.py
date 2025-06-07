@@ -90,6 +90,9 @@ def contact():
 def packages2():
     return render_template('packages2.html')
 
+@app.route('/terms')
+def terms_and_conditions():
+    return render_template('terms&conditions.html')
 
 # Location search for autocomplete
 @app.route('/search_location')
