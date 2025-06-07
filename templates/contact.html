@@ -1,157 +1,161 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Contact Us - Gayatri Tours & Travels</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-
-  <!-- Tailwind CSS CDN -->
-  <script>
-
-    // tailwind.config.js
-module.exports = {
-  theme: {
-    extend: {
-      colors: {
-        primary: '#0a2463',  // तुमचा navy blue किंवा हवा तो color
-      },
-    },
-  },
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us - Gayatri Tours and Travels</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#0a2463',secondary:'#ffc857'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body {
+    font-family: 'Montserrat', sans-serif;
 }
-
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            primary: "#0a2463", /* Navy blue */
-            secondary: "#f59e0b",
-          },
-          borderRadius: {
-            none: "0px",
-            sm: "4px",
-            DEFAULT: "8px",
-            md: "12px",
-            lg: "16px",
-            xl: "20px",
-            "2xl": "24px",
-            "3xl": "32px",
-            full: "9999px",
-            button: "8px",
-          },
-        },
-      },
-    };
-  </script>
-  <script src="https://cdn.tailwindcss.com/3.4.16"></script>
-
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet" />
-
-  <!-- Remix Icon -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" />
-
-  <style>
-    /* Fix icon content for remixicon */
-    :where([class^="ri-"])::before { content: "\f3c2"; }
-
-    /* Set Montserrat font for body */
-    body {
-      font-family: 'Montserrat', sans-serif;
-    }
-
-    /* Hero section background and gradient overlay */
-    .hero-section {
-      background-image: linear-gradient(to right, rgba(10, 36, 99, 0.9), rgba(10, 36, 99, 0.6)), 
-        url('https://readdy.ai/api/search-image?query=A%20modern%2C%20welcoming%20travel%20agency%20office%20interior%20with%20a%20professional%20customer%20service%20team%20at%20their%20desks.%20The%20space%20features%20contemporary%20design%20elements%2C%20warm%20lighting%2C%20and%20digital%20displays%20showing%20beautiful%20travel%20destinations.%20Large%20windows%20bring%20in%20natural%20light%2C%20and%20comfortable%20seating%20areas%20are%20arranged%20for%20client%20consultations.%20The%20atmosphere%20conveys%20trust%2C%20expertise%2C%20and%20hospitality.&width=1600&height=800&seq=contact1&orientation=landscape');
-      background-size: cover;
-      background-position: center;
-    }
-
-    /* Focus styles for inputs and textarea */
-    input:focus,
-    textarea:focus {
-      outline: none;
-      border-color: rgba(10, 36, 99, 1);
-      box-shadow: 0 0 0 3px rgba(10, 36, 99, 0.3);
-    }
-
-    /* Custom checkbox styling */
-    .custom-checkbox {
-      position: relative;
-      display: inline-block;
-      width: 20px;
-      height: 20px;
-      background-color: white;
-      border: 2px solid #d1d5db;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-
-    .custom-checkbox.checked {
-      background-color: rgba(10, 36, 99, 1);
-      border-color: rgba(10, 36, 99, 1);
-    }
-
-    .custom-checkbox.checked::after {
-      content: '';
-      position: absolute;
-      left: 6px;
-      top: 2px;
-      width: 6px;
-      height: 10px;
-      border: solid white;
-      border-width: 0 2px 2px 0;
-      transform: rotate(45deg);
-    }
-
-    .custom-checkbox input {
-      position: absolute;
-      opacity: 0;
-      cursor: pointer;
-    }
-  </style>
+.page-header {
+    background-image: linear-gradient(rgba(10, 36, 99, 0.8), rgba(10, 36, 99, 0.8)), url('https://readdy.ai/api/search-image?query=professional%2520travel%2520agency%2520office%2520with%2520modern%2520design%252C%2520travel%2520brochures%252C%2520world%2520map%2520on%2520wall%252C%2520friendly%2520staff%2520helping%2520customers%252C%2520high%2520quality%2520professional%2520photography%252C%2520bright%2520lighting%252C%2520clean%2520environment&width=1920&height=400&seq=20&orientation=landscape');
+    background-size: cover;
+    background-position: center;
+}
+.value-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.value-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+.timeline-item {
+    position: relative;
+}
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 19px;
+    height: 100%;
+    width: 2px;
+    background-color: #e5e7eb;
+    z-index: 0;
+}
+.timeline-item:last-child::before {
+    height: 50%;
+}
+.timeline-item:first-child::before {
+    top: 50%;
+    height: 50%;
+}
+.timeline-dot {
+    position: relative;
+    z-index: 1;
+    background-color: white;
+}
+.counter-item {
+    position: relative;
+}
+.counter-item::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    height: 50px;
+    width: 1px;
+    background-color: #e5e7eb;
+}
+.counter-item:last-child::after {
+    display: none;
+}
+.testimonial-card {
+    transition: transform 0.3s ease;
+}
+.testimonial-card.active {
+    transform: scale(1.05);
+}
+.service-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+.cta-section {
+    background-image: linear-gradient(to right, rgba(10, 36, 99, 0.9), rgba(10, 36, 99, 0.7)), url('https://readdy.ai/api/search-image?query=luxury%2520travel%2520concept%2520with%2520world%2520map%252C%2520passport%252C%2520tickets%252C%2520camera%252C%2520sunglasses%2520on%2520wooden%2520table%252C%2520professional%2520photography%252C%2520top%2520view%252C%2520travel%2520planning%2520concept%252C%2520high%2520resolution&width=1920&height=600&seq=21&orientation=landscape');
+    background-size: cover;
+    background-position: center;
+}
+</style>
 </head>
 <body class="bg-white">
-
-  <!-- Header Navigation -->
-  <header class="bg-white shadow-md fixed w-full top-0 z-50">
+<!-- Header -->
+<header class="bg-white shadow-md fixed w-full top-0 z-50">
     <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-      <a href="{{ url_for('home') }}" class="text-2xl font-['Pacifico'] text-primary">Gayatri Tours & Travels</a>   
+        <a href="{{ url_for('home') }}" class="text-2xl font-['Pacifico'] text-primary">Gayatri Tours & Travels</a>   
         <nav class="hidden lg:flex items-center space-x-6">
-        <a href="{{ url_for('home') }}" class="text-blue-900 hover:text-primary transition-colors">Home</a>
-        <a href="{{ url_for('about') }}" class="text-blue-900 hover:text-primary transition-colors">About</a>
-        <a href="{{ url_for('packages') }}" class="text-blue-900 hover:text-primary transition-colors">Packages</a>
-        <a href="{{ url_for('contact') }}" class="text-primary font-medium border-b-2 border-primary">Contact</a>
-      </nav>
-
-      <div class="hidden lg:flex items-center space-x-4">
-        <a href="tel:+919405597993" class="text-primary font-medium flex items-center whitespace-nowrap">
-          <div class="w-5 h-5 flex items-center justify-center mr-1">
-            <i class="ri-phone-line"></i>
-          </div>
-          +91 9405597993
-        </a>
-      </div>
-      <button class="lg:hidden w-10 h-10 flex items-center justify-center text-primary">
-        <i class="ri-menu-line text-2xl"></i>
-      </button>
+            <a href="{{ url_for('home') }}" class="text-gray-700 hover:text-primary transition-colors">Home</a>
+            <a href="{{ url_for('about') }}" class="text-gray-700 hover:text-primary transition-colors">About</a>
+            <a href="{{ url_for('packages') }}" class="text-gray-700 hover:text-primary transition-colors">Packages</a>
+            <a href="{{ url_for('contact') }}" class="text-primary font-medium border-b-2 border-primary">Contact</a>
+        </nav>
+        <div class="hidden lg:flex items-center space-x-4">
+            <a href="tel:+919405597993" class="text-primary font-medium flex items-center whitespace-nowrap">
+                <div class="w-5 h-5 flex items-center justify-center mr-1">
+                    <i class="ri-phone-line"></i>
+                </div>
+                +91 9405597393
+            </a>
+        </div>
+        <button class="lg:hidden w-10 h-10 flex items-center justify-center text-primary">
+            <i class="ri-menu-line text-2xl"></i>
+        </button>
     </div>
-  </header>
+</header>
 
-  <!-- Hero Section -->
-  <section class="hero-section w-full h-[500px] flex items-center justify-center mt-16">
-    <div class="container mx-auto px-4 text-center">
-      <h1 class="text-5xl font-bold text-white mb-4 drop-shadow-lg">Contact Us</h1>
-      <p class="text-xl text-white max-w-2xl mx-auto drop-shadow-md">
-        Get in touch with us for your next adventure. We're here to help plan your perfect journey.
+<!-- Page Header -->
+<section class="relative pt-28 pb-16">
+  <!-- Background Image -->
+  <div class="absolute inset-0 bg-cover bg-center z-0" 
+       style="background-image: url('https://sdmntprcentralus.oaiusercontent.com/files/00000000-ee44-61f5-969c-8af8352fd4e5/raw?se=2025-06-07T05%3A21%3A23Z&sp=r&sv=2024-08-04&sr=b&scid=2f2c6931-b3c9-544e-a29d-426e6393dfff&skoid=24a7dec3-38fc-4904-b888-8abe0855c442&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-06-07T01%3A14%3A53Z&ske=2025-06-08T01%3A14%3A53Z&sks=b&skv=2024-08-04&sig=yH/PoqAyyuDic/AsFHyn02EGOXhxmNyJ6nY%2B3Egk6Pc%3D');">
+  </div>
+
+  <!-- Optional dark overlay -->
+  <div class="absolute inset-0 bg-black/40 z-10"></div>
+
+  <!-- Content -->
+  <div class="relative z-20 container mx-auto px-4 text-white">
+    <div class="max-w-3xl p-6">
+      <h1 class="text-3xl md:text-4xl font-bold mb-4">Contact Us</h1>
+      <p class="text-lg mb-6">
+        Get in touch with <strong>Gayatri Tours & Travels</strong><br>
+        Your trusted partner for journeys across Maharashtra.
       </p>
+      <nav class="flex" aria-label="Breadcrumb">
+        <ol class="inline-flex items-center space-x-1 md:space-x-3">
+          <li class="inline-flex items-center">
+            <a href="/" class="inline-flex items-center text-white hover:text-gray-200">
+              <i class="ri-home-line mr-2"></i> Home
+            </a>
+          </li>
+          <li>
+            <div class="flex items-center text-white">
+              <i class="ri-arrow-right-s-line mx-2"></i>
+              <span>Contact Us</span>
+            </div>
+          </li>
+        </ol>
+      </nav>
     </div>
-  </section>
+  </div>
+</section>
+
+
+
+
+
+
 
   <!-- Main Content Section -->
   <section class="py-20">
@@ -260,14 +264,14 @@ module.exports = {
           <i class="ri-mail-line text-primary text-3xl"></i>
           <div>
             <h4 class="text-lg font-semibold text-blue-900">Email</h4>
-            <a href="mailto:info@gayatritravel.com" class="text-blue-700 hover:text-primary">info@gayatritravel.com</a>
+            <a href="mailto:gayatritoursandtravels@gmail.com" class="text-blue-700 hover:text-primary">gayatritoursandtravels@gmail.com</a>
           </div>
         </div>
         <div class="flex items-center space-x-4">
           <i class="ri-phone-line text-primary text-3xl"></i>
           <div>
             <h4 class="text-lg font-semibold text-blue-900">Phone</h4>
-            <a href="tel:+919405597993" class="text-blue-700 hover:text-primary">+91 9405597993</a>
+            <a href="tel:+919405597993" class="text-blue-700 hover:text-primary">+91 9405597393</a>
           </div>
         </div>
         <div class="flex items-center space-x-4 max-w-xs">
@@ -275,8 +279,7 @@ module.exports = {
           <div>
             <h4 class="text-lg font-semibold text-blue-900">Location</h4>
             <address class="not-italic text-blue-700">
-              Gayatri Tours & Travels,<br />
-              Pune, Maharashtra, India
+              Flat No 202, Swapnshilp Apartment, Abhinav College Road, Narhe, Pune 411041
             </address>
           </div>
         </div>
@@ -302,7 +305,7 @@ module.exports = {
 <div class="w-5 h-5 flex items-center justify-center mr-2">
 <i class="ri-phone-line"></i>
 </div>
-<a href="tel:+919405597993" class="text-white/80 hover:text-white">+91 9405597993</a>
+<a href="tel:+919405597393" class="text-white/80 hover:text-white">+91 9405597393</a>
 </div>
 <div class="flex items-center mb-2">
 <div class="w-5 h-5 flex items-center justify-center mr-2">
