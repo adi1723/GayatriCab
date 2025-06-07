@@ -1,11 +1,16 @@
-from flask import Flask, request, render_template, redirect, jsonify
+from flask import Flask, request, render_template, redirect, jsonify,url_for
 import os
 import smtplib
 import requests
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
+from flask import Flask, request, redirect, flash
+import smtplib
+from email.message import EmailMessage
+import os
 app = Flask(__name__)
+app.secret_key = os.urandom(24)
 HEADERS = {
     'User-Agent': 'GayatriCab/1.0 (admin@gayatricab.com)'  # Required by Nominatim
 }
@@ -94,6 +99,11 @@ def packages2():
 def terms_and_conditions():
     return render_template('terms&conditions.html')
 
+@app.route('/cancel')
+def cancel():
+    print("User cancelled booking")
+    return redirect(url_for('home'))
+
 # Location search for autocomplete
 @app.route('/search_location')
 def search_location():
@@ -107,53 +117,6 @@ def search_location():
     except Exception as e:
         print("Error in /search_location:", e)
         return jsonify([])
-
-if __name__ == '__main__':
-    app.run(debug=True)
-
-
-# Get distance between two places
-@app.route('/get_distance')
-def get_distance():
-    pickup = request.args.get('pickup')
-    dest = request.args.get('destination')
-    if not pickup or not dest:
-        return jsonify({'error': 'Missing pickup or destination'}), 400
-
-    try:
-        # Get coordinates for pickup
-        p_resp = requests.get('https://nominatim.openstreetmap.org/search', 
-                              params={'q': pickup, 'format': 'json', 'limit': 1}, headers=HEADERS)
-        p_data = p_resp.json()
-        if not p_data:
-            return jsonify({'error': 'Pickup location not found'}), 404
-        p_lat, p_lon = p_data[0]['lat'], p_data[0]['lon']
-
-        # Get coordinates for destination
-        d_resp = requests.get('https://nominatim.openstreetmap.org/search', 
-                              params={'q': dest, 'format': 'json', 'limit': 1}, headers=HEADERS)
-        d_data = d_resp.json()
-        if not d_data:
-            return jsonify({'error': 'Destination location not found'}), 404
-        d_lat, d_lon = d_data[0]['lat'], d_data[0]['lon']
-
-        # Use OSRM API to get driving distance (in meters)
-        osrm_url = f"http://router.project-osrm.org/route/v1/driving/{p_lon},{p_lat};{d_lon},{d_lat}"
-        osrm_params = {'overview': 'false'}
-        osrm_resp = requests.get(osrm_url, params=osrm_params)
-        osrm_data = osrm_resp.json()
-
-        if osrm_data.get('code') != 'Ok' or not osrm_data.get('routes'):
-            return jsonify({'error': 'Route not found'}), 404
-
-        distance_m = osrm_data['routes'][0]['distance']
-        distance_km = distance_m / 1000.0
-
-        return jsonify({'distance_km': round(distance_km, 2)})
-    except Exception as e:
-        return jsonify({'error': str(e)}), 500
-
-
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -1,7 +1,6 @@
-from dotenv import load_dotenv
 import os
 
-load_dotenv()
-
-print("MAIL_USERNAME:", os.getenv('MAIL_USERNAME'))
-print("MAIL_PASSWORD:", os.getenv('MAIL_PASSWORD'))
+# Check specific variable
+print("EMAIL_SENDER:", os.getenv("EMAIL_SENDER"))
+print("EMAIL_PASSWORD:", os.getenv("EMAIL_PASSWORD"))
+print("ADMIN_EMAIL:", os.getenv("ADMIN_EMAIL"))

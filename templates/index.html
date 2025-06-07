@@ -308,26 +308,35 @@ cursor: pointer;
     style="display: none;"
   >
     <!-- Booking Available Message -->
-    <div 
-      x-show="showMessage" 
-      class="bg-blue-900 text-white px-6 py-4 rounded shadow-lg max-w-md w-full text-center" 
-      style="display: none;"
+   <div 
+  x-show="showMessage" 
+  class="bg-blue-900 text-white px-6 py-4 rounded shadow-lg max-w-md w-full text-center" 
+  style="display: none;"
+>
+  <div class="text-lg font-semibold mb-4">Booking Available</div>
+
+  <div id="fare-output" class="mb-4 text-sm space-y-1">
+    <p>Estimated Distance: <strong x-text="distance ? distance.toFixed(2) + ' km' : '-'"></strong></p>
+    <p>Estimated Fare: <strong x-text="fare ? '₹' + fare : '-'"></strong></p>
+    <p>Discount Applied: <strong x-text="discountPercent + '%'"></strong></p>
+  </div>
+
+  <div class="flex justify-center gap-4">
+    <button
+      @click="showMessage = false; showForm = true"
+      class="bg-white text-blue-900 px-4 py-2 rounded hover:bg-gray-200"
     >
-      <div class="text-lg font-semibold mb-4">Booking Available</div>
+      Fill Details
+    </button>
+    <button
+  @click="window.location.href='/cancel'"
+      class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700"
+    >
+      Cancel
+    </button>
+  </div>
+</div>
 
-      <div id="fare-output" class="mb-4 text-sm space-y-1">
-        <p>Estimated Distance: <strong x-text="distance ? distance.toFixed(2) + ' km' : '-'"></strong></p>
-        <p>Estimated Fare: <strong x-text="fare ? '₹' + fare : '-'"></strong></p>
-        <p>Discount Applied: <strong x-text="discountPercent + '%'"></strong></p>
-      </div>
-
-      <button
-        @click="showMessage = false; showForm = true"
-        class="bg-white text-blue-900 px-4 py-2 rounded hover:bg-gray-200"
-      >
-        Fill Details
-      </button>
-    </div>
 
     <!-- Booking Form Modal -->
     <div
@@ -1244,7 +1253,7 @@ id="faq-section">
 <div class="flex flex-col md:flex-row justify-between items-center">
 <p class="text-white/80 mb-4 md:mb-0">© 2025 Gayatri Tours and Travels. All rights reserved.</p>
 <div class="flex space-x-4">
-<a href="" class="text-white/80 hover:text-white text-sm">Terms & Conditions</a>
+<a href="{{ url_for('terms_and_conditions') }}" class="text-white/80 hover:text-white text-sm">Terms & Conditions</a>
 <a href="#" class="text-white/80 hover:text-white text-sm">Privacy Policy</a>
 <a href="#" class="text-white/80 hover:text-white text-sm">Refund Policy</a>
 </div>
