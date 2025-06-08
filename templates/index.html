@@ -206,14 +206,22 @@ cursor: pointer;
 <!-- Hero Section -->
 <section class="hero-section min-h-[600px] flex items-center pt-20">
 <div class="container mx-auto px-4 py-16 text-white">
-<div class="max-w-3xl">
-<h1 class="text-4xl md:text-5xl font-bold mb-4">SERVICES ACROSS 2000+ CITIES</h1>
-<p class="text-xl mb-8">Experience the comfort and reliability of Gayatri Tours and Travels, your trusted partner for all your travel needs.</p>
-<div class="flex flex-wrap gap-4">
-<a href="#book-ride" class="bg-white text-primary px-6 py-3 font-medium !rounded-button whitespace-nowrap hover:bg-gray-100 transition-colors">Book Now</a>
-<a href="{{ url_for('packages') }}" class="bg-transparent border-2 border-white text-white px-6 py-3 font-medium !rounded-button whitespace-nowrap hover:bg-white/10 transition-colors">View Packages</a>
+<div class="max-w-3xl text-white">
+  <h1 class="text-4xl md:text-5xl font-bold mb-4">
+    Introducing Our All-New Cab Service — Now in Pune!
+  </h1>
+  <p class="text-xl mb-6 text-white/90">
+    Say hello to comfort, safety, and reliability with Gayatri Tours and Travels — now launching premium cab services in Pune and soon across Maharashtra.
+  </p>
+  <p class="text-lg mb-8 text-white/70 italic">
+    Be among the first to ride with us. Trusted travel — now on wheels!
+  </p>
+  <div class="flex flex-wrap gap-4">
+    <a href="#book-ride" class="bg-white text-primary px-6 py-3 font-semibold !rounded-button whitespace-nowrap hover:bg-gray-100 transition-all shadow-md">Book a Ride</a>
+    <a href="{{ url_for('packages') }}" class="bg-transparent border-2 border-white text-white px-6 py-3 font-semibold !rounded-button whitespace-nowrap hover:bg-white/10 transition-all">View Packages</a>
+  </div>
 </div>
-</div>
+
 </div>
 </section>
 <!-- Booking Section with Alpine.js -->
@@ -335,6 +343,10 @@ cursor: pointer;
       Cancel
     </button>
   </div>
+  <p class="mt-4 bg-blue-800 text-white text-sm px-4 py-3 rounded-md shadow-sm">
+  💡 <strong>Note:</strong> The fare shown is an estimate. Final pricing will be recalculated based on the actual distance between your pickup and drop-off locations.
+</p>
+
 </div>
 
 
@@ -859,81 +871,95 @@ View All Packages
 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
 <!-- Price Calculator -->
 <div class="bg-white p-6 rounded-lg shadow-lg">
-<h3 class="text-xl font-bold text-primary mb-4">Fare Calculator</h3>
-<form>
-<div class="mb-4">
-<label class="block text-gray-700 mb-2">From</label>
-<div class="relative">
-<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none w-10 h-10">
-<i class="ri-map-pin-line text-gray-500"></i>
-</div>
-<input type="text" value="Pune" class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
-</div>
-</div>
-<div class="mb-4">
-<label class="block text-gray-700 mb-2">To</label>
-<div class="relative">
-<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none w-10 h-10">
-<i class="ri-map-pin-line text-gray-500"></i>
-</div>
-<input type="text" placeholder="Enter destination" class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
-</div>
-</div>
-<div class="mb-4">
-<label class="block text-gray-700 mb-2">Cab Type</label>
-<div class="grid grid-cols-2 gap-4">
-<div class="flex items-center">
-<label class="custom-radio">
-<input type="radio" name="calc-cab-type" checked>
-<span class="radio-mark"></span>
-</label>
-<span>AC Cab (₹25/km)</span>
-</div>
-<div class="flex items-center">
-<label class="custom-radio">
-<input type="radio" name="calc-cab-type">
-<span class="radio-mark"></span>
-</label>
-<span>Non-AC Cab (₹21/km)</span>
-</div>
-</div>
-</div>
-<button type="button" class="w-full bg-primary text-white py-3 font-medium !rounded-button hover:bg-primary/90 transition-colors whitespace-nowrap">Calculate Fare</button>
-</form>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-{% if message %}
-<script>
-Swal.fire({
-  icon: 'success',
-  title: '{{ message }}',
-  showConfirmButton: true,
-  confirmButtonText: 'Go to Contact'
-})
-</script>
-{% endif %}
+  <h3 class="text-xl font-bold text-primary mb-4">Fare Calculator</h3>
+  <form>
+    <div class="mb-4">
+      <label class="block text-gray-700 mb-2">Enter Distance (in km)</label>
+      <input id="distance" type="number" placeholder="e.g. 150" class="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+    </div>
 
-<div class="mt-6 p-4 bg-gray-50 rounded-lg">
-<h4 class="font-medium text-gray-700 mb-2">Estimated Fare Details</h4>
-<div class="flex justify-between mb-2">
-<span class="text-gray-600">Distance</span>
-<span class="font-medium">150 km</span>
+    <div class="mb-4">
+      <label class="block text-gray-700 mb-2">Cab Type</label>
+      <div class="grid grid-cols-2 gap-4">
+        <div class="flex items-center">
+          <label class="custom-radio">
+            <input type="radio" name="cab-type" value="ac" checked>
+            <span class="radio-mark"></span>
+          </label>
+          <span>AC Cab (₹25/km)</span>
+        </div>
+        <div class="flex items-center">
+          <label class="custom-radio">
+            <input type="radio" name="cab-type" value="nonac">
+            <span class="radio-mark"></span>
+          </label>
+          <span>Non-AC Cab (₹21/km)</span>
+        </div>
+      </div>
+    </div>
+
+    <button type="button" onclick="calculateFare()" class="w-full bg-primary text-white py-3 font-medium !rounded-button hover:bg-primary/90 transition-colors whitespace-nowrap">Calculate Fare</button>
+  </form>
+
+  <div id="fareResult" class="mt-6 p-4 bg-gray-50 rounded-lg hidden">
+    <h4 class="font-medium text-gray-700 mb-2">Estimated Fare Details</h4>
+    <div class="flex justify-between mb-2">
+      <span class="text-gray-600">Distance</span>
+      <span class="font-medium" id="showDistance">-</span>
+    </div>
+    <div class="flex justify-between mb-2">
+      <span class="text-gray-600">Base Fare</span>
+      <span class="font-medium" id="baseFare">-</span>
+    </div>
+    <div class="flex justify-between text-green-600 font-medium mb-2" id="discountRow" style="display: none;">
+      <span>16% Discount Applied</span>
+      <span id="discountAmt">-</span>
+    </div>
+    <div class="border-t border-gray-300 my-2"></div>
+    <div class="flex justify-between font-bold text-primary">
+      <span>Total Fare</span>
+      <span id="totalFare">-</span>
+    </div>
+    <p class="text-xs text-gray-500 mt-2">*Excludes tolls & local charges</p>
+    <p class="text-sm text-gray-500 mt-4 italic">
+  *Note: Please enter the correct distance between pickup and drop locations. Fare calculation depends on the accurate distance provided.
+</p>
+
+  </div>
+  
 </div>
-<div class="flex justify-between mb-2">
-<span class="text-gray-600">Base Fare (₹25/km)</span>
-<span class="font-medium">₹3,750</span>
-</div>
-<div class="flex justify-between mb-2">
-<span class="text-gray-600">GST (5%)</span>
-<span class="font-medium">₹187.50</span>
-</div>
-<div class="border-t border-gray-300 my-2"></div>
-<div class="flex justify-between font-bold text-primary">
-<span>Total Fare</span>
-<span>₹3,937.50</span>
-</div>
-<p class="text-xs text-gray-500 mt-2">*Excluding tolls & local charges</p>
-</div>
-</div>
+
+<script>
+  function calculateFare() {
+    const distance = parseFloat(document.getElementById('distance').value);
+    const cabType = document.querySelector('input[name="cab-type"]:checked').value;
+
+    if (!distance || distance <= 0) {
+      alert("Please enter a valid distance.");
+      return;
+    }
+
+    let rate = cabType === "ac" ? 25 : 21;
+    let baseFare = distance * rate;
+    let discount = 0;
+
+    if (distance > 300) {
+      discount = baseFare * 0.16;
+      document.getElementById('discountRow').style.display = "flex";
+      document.getElementById('discountAmt').textContent = "-₹" + discount.toFixed(2);
+    } else {
+      document.getElementById('discountRow').style.display = "none";
+    }
+
+    let totalFare = baseFare - discount;
+
+    document.getElementById('showDistance').textContent = `${distance} km`;
+    document.getElementById('baseFare').textContent = `₹${baseFare.toFixed(2)}`;
+    document.getElementById('totalFare').textContent = `₹${totalFare.toFixed(2)}`;
+    document.getElementById('fareResult').classList.remove('hidden');
+  }
+</script>
+
 <!-- Service Area Map -->
 <div class="bg-white p-6 rounded-lg shadow-lg">
 <h3 class="text-xl font-bold text-primary mb-4">Our Service Areas</h3>
