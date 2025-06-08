@@ -493,84 +493,49 @@ View Rate Card
 </a>
 <!-- Rate Card Modal (Hidden by default) -->
 <div id="rateCardModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center hidden">
-<div class="bg-white rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto p-6">
-<div class="flex justify-between items-center mb-6">
-<h3 class="text-xl font-bold text-gray-900">Aura Cab Rate Card</h3>
-<button id="closeRateCard" class="text-gray-500 hover:text-gray-700">
-<div class="w-6 h-6 flex items-center justify-center">
-<i class="ri-close-line text-xl"></i>
+  <div class="bg-white rounded-lg max-w-md w-full max-h-[90vh] overflow-y-auto p-6">
+    <div class="flex justify-between items-center mb-6">
+      <h3 class="text-xl font-bold text-gray-900">Aura Cab Rate Card</h3>
+      <button id="closeRateCard" class="text-gray-500 hover:text-gray-700">
+        <div class="w-6 h-6 flex items-center justify-center">
+          <i class="ri-close-line text-xl"></i>
+        </div>
+      </button>
+    </div>
+
+    <div class="space-y-6">
+      <!-- Aura Rates -->
+      <div>
+        <h4 class="text-lg font-semibold text-gray-900 mb-3">Aura (AC / Non-AC)</h4>
+        <div class="bg-gray-50 rounded-lg p-4 text-sm">
+          <div class="grid grid-cols-2 gap-3">
+            <div class="font-medium">AC Rate (per km, up to 25 km)</div>
+            <div>₹25/km</div>
+
+            <div class="font-medium">Non-AC Rate (per km, up to 25 km)</div>
+            <div>₹21/km</div>
+
+            <div class="font-medium">Long Distance (Above 300 km)</div>
+            <div>16% Discount on total fare</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-sm text-gray-600">
+        <p class="font-medium mb-2">Additional Information:</p>
+        <ul class="list-disc pl-5 space-y-1">
+          <li>Toll, parking, and state entry taxes extra</li>
+          <li>Night charges (10 PM - 6 AM): ₹250 extra</li>
+          <li>Extra hour charges: ₹300 per hour</li>
+          <li>Extra kilometer charges as per above rates</li>
+        </ul>
+      </div>
+
+      <button class="w-full bg-primary text-white py-3 rounded-button mt-4 whitespace-nowrap">Book Now</button>
+    </div>
+  </div>
 </div>
-</button>
-</div>
-<div class="space-y-6">
-<!-- Sedan Rates -->
-<div>
-<h4 class="text-lg font-semibold text-gray-900 mb-3">Premium Sedan</h4>
-<div class="bg-gray-50 rounded-lg p-4">
-<div class="grid grid-cols-2 gap-2 text-sm">
-<div class="font-medium">Airport Transfer (One Way)</div>
-<div>₹1,800</div>
-<div class="font-medium">4 Hour / 40 KM Package</div>
-<div>₹2,200</div>
-<div class="font-medium">8 Hour / 80 KM Package</div>
-<div>₹3,800</div>
-<div class="font-medium">Outstation (Per KM)</div>
-<div>₹22/KM (Min. 250 KM per day)</div>
-<div class="font-medium">Driver Allowance</div>
-<div>₹300 per day</div>
-</div>
-</div>
-</div>
-<!-- SUV Rates -->
-<div>
-<h4 class="text-lg font-semibold text-gray-900 mb-3">Executive SUV</h4>
-<div class="bg-gray-50 rounded-lg p-4">
-<div class="grid grid-cols-2 gap-2 text-sm">
-<div class="font-medium">Airport Transfer (One Way)</div>
-<div>₹2,500</div>
-<div class="font-medium">4 Hour / 40 KM Package</div>
-<div>₹3,000</div>
-<div class="font-medium">8 Hour / 80 KM Package</div>
-<div>₹5,200</div>
-<div class="font-medium">Outstation (Per KM)</div>
-<div>₹28/KM (Min. 250 KM per day)</div>
-<div class="font-medium">Driver Allowance</div>
-<div>₹350 per day</div>
-</div>
-</div>
-</div>
-<!-- Minivan Rates -->
-<div>
-<h4 class="text-lg font-semibold text-gray-900 mb-3">Premium Minivan</h4>
-<div class="bg-gray-50 rounded-lg p-4">
-<div class="grid grid-cols-2 gap-2 text-sm">
-<div class="font-medium">Airport Transfer (One Way)</div>
-<div>₹3,200</div>
-<div class="font-medium">4 Hour / 40 KM Package</div>
-<div>₹3,800</div>
-<div class="font-medium">8 Hour / 80 KM Package</div>
-<div>₹6,500</div>
-<div class="font-medium">Outstation (Per KM)</div>
-<div>₹35/KM (Min. 250 KM per day)</div>
-<div class="font-medium">Driver Allowance</div>
-<div>₹400 per day</div>
-</div>
-</div>
-</div>
-<div class="text-sm text-gray-600">
-<p class="font-medium mb-2">Additional Information:</p>
-<ul class="list-disc pl-5 space-y-1">
-<li>All rates are exclusive of GST (18%)</li>
-<li>Toll, parking, and state entry taxes are extra</li>
-<li>Night charges (10 PM - 6 AM): ₹250 extra</li>
-<li>Extra hour charges: ₹300 per hour</li>
-<li>Extra kilometer charges as per vehicle category</li>
-</ul>
-</div>
-<button class="w-full bg-primary text-white py-3 rounded-button mt-4 whitespace-nowrap">Book Now</button>
-</div>
-</div>
-</div>
+
 <!-- Lightbox Modal (Hidden by default) -->
 <div id="lightboxModal" class="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center hidden">
 <div class="relative max-w-4xl w-full">
