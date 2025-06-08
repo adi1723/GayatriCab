@@ -128,6 +128,18 @@ def Gallery():
 def Details_Mahabaleshwar():
     return render_template('Details_Mahabaleshwar.html')
 
+@app.route('/Details_Shirdi')
+def Details_Shirdi():
+    return render_template('Details_Shirdi.html')
+
+@app.route('/Details_Lavasa')
+def Details_Lavasa():
+    return render_template('Details_Lavasa.html')
+
+@app.route('/Details_Lonavala')
+def Details_Lonavala():
+    return render_template('Details_Lonavala-Khandala.html')
+
 # Location search for autocomplete
 @app.route('/search_location')
 def search_location():

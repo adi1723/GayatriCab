@@ -1198,7 +1198,7 @@ body {
                     <div class="bg-white rounded-lg shadow-lg p-6">
                         <h3 class="text-xl font-bold text-gray-900 mb-4">Similar Packages</h3>
                         <div class="space-y-4">
-                            <a href="#" class="flex items-center p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors duration-200">
+                            <a href="{{ url_for('Details_Lonavala') }}" class="flex items-center p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors duration-200">
                                 <div class="w-16 h-16 rounded overflow-hidden mr-3 flex-shrink-0">
                                     <img src="https://readdy.ai/api/search-image?query=Beautiful%2520landscape%2520of%2520Lonavala-Khandala%2520with%2520lush%2520green%2520hills%252C%2520waterfalls%252C%2520and%2520scenic%2520viewpoints.%2520Misty%2520mountains%2520with%2520clear%2520blue%2520sky.%2520Natural%2520lighting%2520with%2520vibrant%2520colors.%2520Professional%2520travel%2520photography%2520style.%2520Perfect%2520for%2520tourism%2520promotion.&width=80&height=80&seq=14&orientation=squarish" alt="Lonavala Package" class="w-full h-full object-cover object-top">
                                 </div>
@@ -1208,7 +1208,7 @@ body {
                                     <p class="text-primary font-medium text-sm">₹3,499/person</p>
                                 </div>
                             </a>
-                            <a href="#" class="flex items-center p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors duration-200">
+                            <a href="{{ url_for('Details_Lavasa') }}" class="flex items-center p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors duration-200">
                                 <div class="w-16 h-16 rounded overflow-hidden mr-3 flex-shrink-0">
                                     <img src="https://readdy.ai/api/search-image?query=Beautiful%2520view%2520of%2520Lavasa%2520with%2520colorful%2520buildings%2520along%2520the%2520lakeside%252C%2520surrounded%2520by%2520hills%2520and%2520greenery.%2520European-style%2520architecture%2520with%2520promenade.%2520Clear%2520blue%2520sky%2520with%2520scattered%2520clouds.%2520Natural%2520lighting%2520with%2520vibrant%2520colors.%2520Professional%2520travel%2520photography%2520style.&width=80&height=80&seq=15&orientation=squarish" alt="Lavasa Package" class="w-full h-full object-cover object-top">
                                 </div>
@@ -1275,17 +1275,19 @@ body {
 </div>
 </div>
 <!-- Quick Links -->
-<div>
-<h3 class="text-xl font-bold mb-4">Quick Links</h3>
-<ul class="space-y-2">
-<li><a href="{{ url_for('home') }}" class="text-white/80 hover:text-white">Home</a></li>
-<li><a href="{{ url_for('about') }}" class="text-white/80 hover:text-white">About Us</a></li>
-<li><a href="{{ url_for('packages') }}" class="text-white/80 hover:text-white">Packages</a></li>
-<li><a href="{{ url_for('contact') }}" class="text-white/80 hover:text-white">Contact Us</a></li>
-<li><a href="{{ url_for('faq') }}" class="text-white/80 hover:text-white">FAQs</a></li>
-<li><a href="{{ url_for('terms_and_conditions') }}" class="text-white/80 hover:text-white">Terms & Conditions</a></li>
-<li><a href="{{ url_for('privacy_policy') }}" class="text-white/80 hover:text-white">Privacy Policy</a></li>
-</ul>
+   <div class="ml-10">
+    <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+    <ul class="space-y-2">
+        <li><a href="{{ url_for('home') }}" class="text-white/80 hover:text-white">Home</a></li>
+        <li><a href="{{ url_for('about') }}" class="text-white/80 hover:text-white">About Us</a></li>
+        <li><a href="{{ url_for('packages') }}" class="text-white/80 hover:text-white">Packages</a></li>
+        <li><a href="{{ url_for('ToursPackages') }}" class="text-white/80 hover:text-white">Tour Packages</a></li>
+        <li><a href="{{ url_for('Gallery') }}" class="text-white/80 hover:text-white">Gallery</a></li>  
+        <li><a href="{{ url_for('contact') }}" class="text-white/80 hover:text-white">Contact Us</a></li>
+        <li><a href="{{ url_for('faq') }}" class="text-white/80 hover:text-white">FAQs</a></li>
+        <li><a href="{{ url_for('terms_and_conditions') }}" class="text-white/80 hover:text-white">Terms & Conditions</a></li>
+        <li><a href="{{ url_for('privacy_policy') }}" class="text-white/80 hover:text-white">Privacy Policy</a></li>
+    </ul>
 </div>
 <!-- Popular Destinations -->
 <div>
