@@ -1,0 +1,1211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tour Packages - Gayatri Tours and Travels</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#0a2463',secondary:'#ffc857'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+.page-header {
+    background-image: linear-gradient(rgba(10, 36, 99, 0.8), rgba(10, 36, 99, 0.8)), url('https://readdy.ai/api/search-image?query=professional%2520travel%2520agency%2520office%2520with%2520modern%2520design%252C%2520travel%2520brochures%252C%2520world%2520map%2520on%2520wall%252C%2520friendly%2520staff%2520helping%2520customers%252C%2520high%2520quality%2520professional%2520photography%252C%2520bright%2520lighting%252C%2520clean%2520environment&width=1920&height=400&seq=20&orientation=landscape');
+    background-size: cover;
+    background-position: center;
+}
+.value-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.value-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+.timeline-item {
+    position: relative;
+}
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 19px;
+    height: 100%;
+    width: 2px;
+    background-color: #e5e7eb;
+    z-index: 0;
+}
+.timeline-item:last-child::before {
+    height: 50%;
+}
+.timeline-item:first-child::before {
+    top: 50%;
+    height: 50%;
+}
+.timeline-dot {
+    position: relative;
+    z-index: 1;
+    background-color: white;
+}
+.counter-item {
+    position: relative;
+}
+.counter-item::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    height: 50px;
+    width: 1px;
+    background-color: #e5e7eb;
+}
+.counter-item:last-child::after {
+    display: none;
+}
+.testimonial-card {
+    transition: transform 0.3s ease;
+}
+.testimonial-card.active {
+    transform: scale(1.05);
+}
+.service-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+.cta-section {
+    background-image: linear-gradient(to right, rgba(10, 36, 99, 0.9), rgba(10, 36, 99, 0.7)), url('https://readdy.ai/api/search-image?query=luxury%2520travel%2520concept%2520with%2520world%2520map%252C%2520passport%252C%2520tickets%252C%2520camera%252C%2520sunglasses%2520on%2520wooden%2520table%252C%2520professional%2520photography%252C%2520top%2520view%252C%2520travel%2520planning%2520concept%252C%2520high%2520resolution&width=1920&height=600&seq=21&orientation=landscape');
+    background-size: cover;
+    background-position: center;
+}
+</style>
+</head>
+<body class="bg-white">
+<!-- Header -->
+<header class="bg-white shadow-md fixed w-full top-0 z-50">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+        <a href="{{ url_for('home') }}" class="text-2xl font-['Pacifico'] text-primary">Gayatri Tours & Travels</a>   
+        <nav class="hidden lg:flex items-center space-x-6">
+            <a href="{{ url_for('home') }}" class="text-gray-700 hover:text-primary transition-colors">Home</a>
+            <a href="{{ url_for('about') }}" class="text-gray-700 hover:text-primary transition-colors">About</a>
+            <a href="{{ url_for('packages') }}" class="text-gray-700 hover:text-primary transition-colors">Packages</a>
+            <a href="{{ url_for('ToursPackages') }}" class="text-primary font-medium border-b-2 border-primary">Tour Packages</a>
+            <a href="{{ url_for('Gallery') }}" class="text-gray-700 hover:text-primary transition-colors">Gallery</a>
+            <a href="{{ url_for('contact') }}" class="text-gray-700 hover:text-primary transition-colors">Contact</a>
+        </nav>
+        <div class="flex items-center">
+<div class="hidden md:flex items-center mr-6">
+<div class="w-10 h-10 flex items-center justify-center text-primary">
+<i class="ri-phone-line ri-lg"></i>
+</div>
+<div>
+<p class="text-xs text-gray-500">Call us for booking</p>
+<p class="text-sm font-semibold">+91 94055 97393</p>
+</div>
+</div>
+<button class="bg-primary text-white px-4 py-2 !rounded-button whitespace-nowrap">Book Now</button>
+<button class="ml-4 md:hidden w-10 h-10 flex items-center justify-center text-gray-700" id="mobileMenuButton">
+<i class="ri-menu-line ri-lg"></i>
+</button>
+</div>
+        <button class="lg:hidden w-10 h-10 flex items-center justify-center text-primary">
+            <i class="ri-menu-line text-2xl"></i>
+        </button>
+    </div>
+</header>
+<!-- Hero Section -->
+<section class="relative">
+<div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://readdy.ai/api/search-image?query=Beautiful%20scenic%20mountain%20landscape%20with%20a%20luxury%20car%20on%20a%20winding%20road%2C%20showcasing%20travel%20destinations%20near%20Pune%2C%20India.%20Lush%20green%20hills%2C%20blue%20sky%20with%20scattered%20clouds%2C%20perfect%20for%20a%20road%20trip.%20Soft%20natural%20lighting%20creating%20a%20serene%20atmosphere.%20Wide%20angle%20panoramic%20view%20with%20space%20on%20the%20left%20side%20for%20text.&width=1920&height=600&seq=1&orientation=landscape');"></div>
+<div class="absolute inset-0 bg-gradient-to-r from-primary/80 to-transparent"></div>
+<div class="container mx-auto px-4 py-20 relative">
+<div class="max-w-xl text-white">
+<h1 class="text-4xl md:text-5xl font-bold mb-4">Explore Breathtaking Destinations from Pune</h1>
+<p class="text-lg mb-8">Premium tour packages with comfortable stay, delicious meals, and exclusive Aura car service for your perfect getaway.</p>
+<div class="flex flex-col sm:flex-row gap-4">
+<button href="{{ url_for('packages') }}" class="bg-white text-primary px-6 py-3 font-semibold !rounded-button whitespace-nowrap">View Packages</button>
+<button href="{{ url_for('contact') }}" class="bg-transparent border-2 border-white text-white px-6 py-3 font-semibold !rounded-button whitespace-nowrap">Contact Us</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Price Information Banner -->
+<section class="bg-primary text-white py-4">
+<div class="container mx-auto px-4">
+<div class="flex flex-wrap justify-center items-center gap-x-8 gap-y-3 text-center">
+<div class="flex items-center">
+<div class="w-8 h-8 flex items-center justify-center mr-2">
+<i class="ri-group-line ri-lg"></i>
+</div>
+<p class="font-medium">Minimum 3 passengers required</p>
+</div>
+<div class="flex items-center">
+<div class="w-8 h-8 flex items-center justify-center mr-2">
+<i class="ri-car-line ri-lg"></i>
+</div>
+<p class="font-medium">Aura car: Maximum 4 passengers</p>
+</div>
+<div class="flex items-center">
+<div class="w-8 h-8 flex items-center justify-center mr-2">
+<i class="ri-price-tag-3-line ri-lg"></i>
+</div>
+<p class="font-medium">Per person pricing</p>
+</div>
+<div class="flex items-center">
+<div class="w-8 h-8 flex items-center justify-center mr-2">
+<i class="ri-map-pin-line ri-lg"></i>
+</div>
+<p class="font-medium">All tours start from Pune</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Destination Categories -->
+<section id="packages" class="py-16 bg-white">
+<div class="container mx-auto px-4">
+<div class="text-center mb-12">
+<h2 class="text-3xl font-bold text-gray-900 mb-4">Popular Tour Packages</h2>
+<p class="text-gray-600 max-w-2xl mx-auto">Discover our carefully curated packages to the most scenic destinations near Pune. Each package includes comfortable stay, delicious meals, and exclusive Aura car service.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Lonavala-Khandala Package -->
+<div class="bg-white rounded shadow-lg overflow-hidden transition-transform duration-300 hover:-translate-y-2">
+<div class="h-48 overflow-hidden relative">
+<img src="https://readdy.ai/api/search-image?query=Beautiful%20landscape%20of%20Lonavala-Khandala%20with%20lush%20green%20hills%2C%20waterfalls%2C%20and%20scenic%20viewpoints.%20Misty%20mountains%20with%20clear%20blue%20sky.%20Natural%20lighting%20with%20vibrant%20colors.%20Professional%20travel%20photography%20style.%20Perfect%20for%20tourism%20promotion.&width=600&height=400&seq=2&orientation=landscape" alt="Lonavala-Khandala" class="w-full h-full object-cover object-top">
+<div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
+<span class="text-white text-sm font-medium bg-primary/80 px-2 py-1 rounded-full">2 Days, 1 Night</span>
+</div>
+</div>
+<div class="p-5">
+<h3 class="text-xl font-bold text-gray-900 mb-2">Lonavala-Khandala Package</h3>
+<p class="text-gray-600 mb-3 text-sm">Explore the beautiful hill stations with breathtaking views, just 65 km from Pune.</p>
+<div class="flex items-center mb-4">
+<div class="w-5 h-5 flex items-center justify-center text-primary mr-2">
+<i class="ri-map-pin-line"></i>
+</div>
+<span class="text-gray-700 text-sm">65 km from Pune</span>
+</div>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="bg-gray-100 text-gray-700 text-xs px-2 py-1 rounded-full">Hotel Stay</span>
+<span class="bg-gray-100 text-gray-700 text-xs px-2 py-1 rounded-full">All Meals</span>
+<span class="bg-gray-100 text-gray-700 text-xs px-2 py-1 rounded-full">Sightseeing</span>
+<span class="bg-gray-100 text-gray-700 text-xs px-2 py-1 rounded-full">Aura Car</span>
+</div>
+<div class="flex justify-between items-end">
+<div>
+<p class="text-xs text-gray-500">Starting from</p>
+<p class="text-2xl font-bold text-primary">₹3,499<span class="text-sm font-normal text-gray-600">/person</span></p>
+<p class="text-xs text-gray-500">Min 3 - Max 4 persons</p>
+</div>
+<a href="https://readdy.ai/home/5f17aaec-ee88-4105-96b1-f4fb1bd517b4/b5b8676c-4bfc-4035-8d23-72751f84041a" data-readdy="true">
+<button class="bg-primary text-white px-4 py-2 !rounded-button whitespace-nowrap">View Details</button>
+</a>
+</div>
+</div>
+</div>
+<!-- Mahabaleshwar Package -->
+<div class="bg-white rounded shadow-lg overflow-hidden transition-transform duration-300 hover:-translate-y-2">
+<div class="h-48 overflow-hidden relative">
+<img src="https://readdy.ai/api/search-image?query=Stunning%20panoramic%20view%20of%20Mahabaleshwar%20with%20strawberry%20farms%2C%20lush%20green%20valleys%2C%20and%20mountain%20peaks.%20Beautiful%20landscape%20with%20clear%20blue%20sky.%20Natural%20lighting%20with%20vibrant%20colors.%20Professional%20travel%20photography%20style.%20Perfect%20for%20tourism%20promotion.&width=600&height=400&seq=3&orientation=landscape" alt="Mahabaleshwar" class="w-full h-full object-cover object-top">
+<div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
+<span class="text-white text-sm font-medium bg-primary/80 px-2 py-1 rounded-full">3 Days, 2 Nights</span>
+</div>
+</div>
+<div class="p-5">
+<h3 class="text-xl font-bold text-gray-900 mb-2">Mahabaleshwar Package</h3>
+<p class="text-gray-600 mb-3 text-sm">Experience the strawberry capital of India with its stunning viewpoints and pleasant climate.</p>
+<div class="flex items-center mb-4">
+<div class="w-5 h-5 flex items-center justify-center text-primary mr-2">
+<i class="ri-map-pin-line"></i>
+</div>
+<span class="text-gray-700 text-sm">120 km from Pune</span>
+</div>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="bg-gray-100 text-gray-700 text-xs px-2 py-1 rounded-full">Hotel Stay</span>
+<span class="bg-gray-100 text-gray-700 text-xs px-2 py-1 rounded-full">All Meals</span>
+<span class="bg-gray-100 text-gray-700 text-xs px-2 py-1 rounded-full">Sightseeing</span>
+<span class="bg-gray-100 text-gray-700 text-xs px-2 py-1 rounded-full">Aura Car</span>
+</div>
+<div class="flex justify-between items-end">
+<div>
+<p class="text-xs text-gray-500">Starting from</p>
+<p class="text-2xl font-bold text-primary">₹5,999<span class="text-sm font-normal text-gray-600">/person</span></p>
+<p class="text-xs text-gray-500">Min 3 - Max 4 persons</p>
+</div>
+<a href="{{ url_for('Details_Mahabaleshwar') }}" data-readdy="true">
+<button class="bg-primary text-white px-4 py-2 !rounded-button whitespace-nowrap">View Details</button>
+</a>
+</div>
+</div>
+</div>
+<!-- Lavasa Package -->
+<div class="bg-white rounded shadow-lg overflow-hidden transition-transform duration-300 hover:-translate-y-2">
+<div class="h-48 overflow-hidden relative">
+<img src="https://readdy.ai/api/search-image?query=Beautiful%20view%20of%20Lavasa%20with%20colorful%20buildings%20along%20the%20lakeside%2C%20surrounded%20by%20hills%20and%20greenery.%20European-style%20architecture%20with%20promenade.%20Clear%20blue%20sky%20with%20scattered%20clouds.%20Natural%20lighting%20with%20vibrant%20colors.%20Professional%20travel%20photography%20style.&width=600&height=400&seq=4&orientation=landscape" alt="Lavasa" class="w-full h-full object-cover object-top">
+<div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
+<span class="text-white text-sm font-medium bg-primary/80 px-2 py-1 rounded-full">2 Days, 1 Night</span>
+</div>
+</div>
+<div class="p-5">
+<h3 class="text-xl font-bold text-gray-900 mb-2">Lavasa Package</h3>
+<p class="text-gray-600 mb-3 text-sm">Visit India's first planned hill city with its picturesque lake and European-style architecture.</p>
+<div class="flex items-center mb-4">
+<div class="w-5 h-5 flex items-center justify-center text-primary mr-2">
+<i class="ri-map-pin-line"></i>
+</div>
+<span class="text-gray-700 text-sm">60 km from Pune</span>
+</div>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="bg-gray-100 text-gray-700 text-xs px-2 py-1 rounded-full">Hotel Stay</span>
+<span class="bg-gray-100 text-gray-700 text-xs px-2 py-1 rounded-full">All Meals</span>
+<span class="bg-gray-100 text-gray-700 text-xs px-2 py-1 rounded-full">Sightseeing</span>
+<span class="bg-gray-100 text-gray-700 text-xs px-2 py-1 rounded-full">Aura Car</span>
+</div>
+<div class="flex justify-between items-end">
+<div>
+<p class="text-xs text-gray-500">Starting from</p>
+<p class="text-2xl font-bold text-primary">₹3,299<span class="text-sm font-normal text-gray-600">/person</span></p>
+<p class="text-xs text-gray-500">Min 3 - Max 4 persons</p>
+</div>
+<a href="https://readdy.ai/home/5f17aaec-ee88-4105-96b1-f4fb1bd517b4/b5b8676c-4bfc-4035-8d23-72751f84041a" data-readdy="true">
+<button class="bg-primary text-white px-4 py-2 !rounded-button whitespace-nowrap">View Details</button>
+</a>
+</div>
+</div>
+</div>
+<!-- Shirdi Package -->
+<div class="bg-white rounded shadow-lg overflow-hidden transition-transform duration-300 hover:-translate-y-2">
+<div class="h-48 overflow-hidden relative">
+<img src="https://readdy.ai/api/search-image?query=Beautiful%20view%20of%20Shirdi%20Sai%20Baba%20Temple%20with%20devotees%2C%20ornate%20architecture%2C%20and%20spiritual%20atmosphere.%20Golden%20dome%20and%20detailed%20facade.%20Clear%20blue%20sky.%20Natural%20lighting%20with%20warm%20tones.%20Professional%20travel%20photography%20style.%20Perfect%20for%20religious%20tourism%20promotion.&width=600&height=400&seq=5&orientation=landscape" alt="Shirdi" class="w-full h-full object-cover object-top">
+<div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
+<span class="text-white text-sm font-medium bg-primary/80 px-2 py-1 rounded-full">2 Days, 1 Night</span>
+</div>
+</div>
+<div class="p-5">
+<h3 class="text-xl font-bold text-gray-900 mb-2">Shirdi Package</h3>
+<p class="text-gray-600 mb-3 text-sm">Embark on a spiritual journey to the famous Sai Baba Temple and experience divine peace.</p>
+<div class="flex items-center mb-4">
+<div class="w-5 h-5 flex items-center justify-center text-primary mr-2">
+<i class="ri-map-pin-line"></i>
+</div>
+<span class="text-gray-700 text-sm">185 km from Pune</span>
+</div>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="bg-gray-100 text-gray-700 text-xs px-2 py-1 rounded-full">Hotel Stay</span>
+<span class="bg-gray-100 text-gray-700 text-xs px-2 py-1 rounded-full">All Meals</span>
+<span class="bg-gray-100 text-gray-700 text-xs px-2 py-1 rounded-full">Darshan</span>
+<span class="bg-gray-100 text-gray-700 text-xs px-2 py-1 rounded-full">Aura Car</span>
+</div>
+<div class="flex justify-between items-end">
+<div>
+<p class="text-xs text-gray-500">Starting from</p>
+<p class="text-2xl font-bold text-primary">₹4,299<span class="text-sm font-normal text-gray-600">/person</span></p>
+<p class="text-xs text-gray-500">Min 3 - Max 4 persons</p>
+</div>
+<a href="https://readdy.ai/home/5f17aaec-ee88-4105-96b1-f4fb1bd517b4/b5b8676c-4bfc-4035-8d23-72751f84041a" data-readdy="true">
+<button class="bg-primary text-white px-4 py-2 !rounded-button whitespace-nowrap">View Details</button>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Featured Package Details -->
+<section class="py-16 bg-gray-50">
+<div class="container mx-auto px-4">
+<div class="text-center mb-12">
+<h2 class="text-3xl font-bold text-gray-900 mb-4">Featured Package: Mahabaleshwar</h2>
+<p class="text-gray-600 max-w-2xl mx-auto">Experience the beauty of Mahabaleshwar with our all-inclusive 3-day package</p>
+</div>
+<div class="bg-white rounded-lg shadow-lg overflow-hidden">
+<div class="grid grid-cols-1 lg:grid-cols-2">
+<div class="h-64 lg:h-auto overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=Panoramic%20view%20of%20Mahabaleshwar%20valley%20with%20lush%20green%20forests%2C%20misty%20mountains%2C%20and%20winding%20roads.%20Beautiful%20landscape%20with%20clear%20blue%20sky%20and%20scattered%20clouds.%20Natural%20lighting%20with%20vibrant%20colors.%20Professional%20travel%20photography%20style%20with%20dramatic%20perspective.&width=800&height=600&seq=6&orientation=landscape" alt="Mahabaleshwar Package" class="w-full h-full object-cover object-top">
+</div>
+<div class="p-8">
+<div class="flex justify-between items-start mb-6">
+<div>
+<h3 class="text-2xl font-bold text-gray-900 mb-2">Mahabaleshwar Getaway</h3>
+<p class="text-gray-600">3 Days, 2 Nights | 120 km from Pune</p>
+</div>
+<div class="text-right">
+<p class="text-3xl font-bold text-primary">₹5,999<span class="text-sm font-normal text-gray-600">/person</span></p>
+<p class="text-sm text-gray-500">Min 3 - Max 4 persons</p>
+</div>
+</div>
+<div class="space-y-4 mb-6">
+<div class="flex items-start">
+<div class="w-6 h-6 flex items-center justify-center text-primary mt-0.5 mr-3">
+<i class="ri-hotel-line"></i>
+</div>
+<div>
+<h4 class="font-medium text-gray-900">Accommodation</h4>
+<p class="text-gray-600 text-sm">2 nights stay at a premium hotel with modern amenities</p>
+</div>
+</div>
+<div class="flex items-start">
+<div class="w-6 h-6 flex items-center justify-center text-primary mt-0.5 mr-3">
+<i class="ri-restaurant-line"></i>
+</div>
+<div>
+<h4 class="font-medium text-gray-900">Meals</h4>
+<p class="text-gray-600 text-sm">All meals included (breakfast, lunch, and dinner)</p>
+</div>
+</div>
+<div class="flex items-start">
+<div class="w-6 h-6 flex items-center justify-center text-primary mt-0.5 mr-3">
+<i class="ri-car-line"></i>
+</div>
+<div>
+<h4 class="font-medium text-gray-900">Transportation</h4>
+<p class="text-gray-600 text-sm">Comfortable Aura car for the entire journey</p>
+</div>
+</div>
+<div class="flex items-start">
+<div class="w-6 h-6 flex items-center justify-center text-primary mt-0.5 mr-3">
+<i class="ri-route-line"></i>
+</div>
+<div>
+<h4 class="font-medium text-gray-900">Sightseeing</h4>
+<p class="text-gray-600 text-sm">Visit to all major attractions including Venna Lake, Mapro Garden, and Pratapgad Fort</p>
+</div>
+</div>
+</div>
+<button class="bg-primary text-white px-6 py-3 font-semibold !rounded-button whitespace-nowrap w-full">Book This Package</button>
+</div>
+</div>
+<div class="border-t border-gray-200 p-8">
+<h4 class="text-lg font-bold text-gray-900 mb-4">Day-wise Itinerary</h4>
+<div class="space-y-6">
+<div class="flex">
+<div class="flex flex-col items-center mr-4">
+<div class="w-8 h-8 flex items-center justify-center bg-primary text-white rounded-full">1</div>
+<div class="w-0.5 h-full bg-gray-200 mt-2"></div>
+</div>
+<div>
+<h5 class="font-medium text-gray-900">Day 1: Pune to Mahabaleshwar</h5>
+<p class="text-gray-600 text-sm mt-1">
+- 7:00 AM: Pickup from Pune<br>
+- 11:00 AM: Arrive at Mahabaleshwar, check-in at hotel<br>
+- 1:00 PM: Lunch at hotel<br>
+- 2:30 PM: Visit to Venna Lake and boating<br>
+- 5:00 PM: Explore local market<br>
+- 8:00 PM: Dinner at hotel
+</p>
+</div>
+</div>
+<div class="flex">
+<div class="flex flex-col items-center mr-4">
+<div class="w-8 h-8 flex items-center justify-center bg-primary text-white rounded-full">2</div>
+<div class="w-0.5 h-full bg-gray-200 mt-2"></div>
+</div>
+<div>
+<h5 class="font-medium text-gray-900">Day 2: Mahabaleshwar Sightseeing</h5>
+<p class="text-gray-600 text-sm mt-1">
+- 8:00 AM: Breakfast at hotel<br>
+- 9:30 AM: Visit to Pratapgad Fort<br>
+- 1:00 PM: Lunch<br>
+- 2:30 PM: Visit to Mapro Garden<br>
+- 5:00 PM: Explore various viewpoints (Arthur's Seat, Elephant's Head Point)<br>
+- 8:00 PM: Dinner at hotel
+</p>
+</div>
+</div>
+<div class="flex">
+<div class="flex flex-col items-center mr-4">
+<div class="w-8 h-8 flex items-center justify-center bg-primary text-white rounded-full">3</div>
+</div>
+<div>
+<h5 class="font-medium text-gray-900">Day 3: Mahabaleshwar to Pune</h5>
+<p class="text-gray-600 text-sm mt-1">
+- 8:00 AM: Breakfast at hotel<br>
+- 9:30 AM: Visit to strawberry farms<br>
+- 11:00 AM: Check-out from hotel<br>
+- 11:30 AM: Visit to Panchgani tableland<br>
+- 1:30 PM: Lunch<br>
+- 2:30 PM: Departure for Pune<br>
+- 6:30 PM: Arrive at Pune
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Pricing Calculator Section -->
+<section class="py-16 bg-white">
+<div class="container mx-auto px-4">
+<div class="text-center mb-12">
+<h2 class="text-3xl font-bold text-gray-900 mb-4">Calculate Your Package Cost</h2>
+<p class="text-gray-600 max-w-2xl mx-auto">Use our calculator to estimate the total cost of your preferred package</p>
+</div>
+<div class="max-w-3xl mx-auto bg-white rounded-lg shadow-lg p-8">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div>
+<div class="mb-6">
+<label for="package-select" class="block text-gray-700 font-medium mb-2">Select Package</label>
+<div class="relative">
+<select id="package-select" class="w-full border border-gray-300 rounded px-4 py-3 appearance-none bg-white text-gray-700 pr-10 custom-input">
+<option value="lonavala">Lonavala-Khandala (₹3,499/person)</option>
+<option value="mahabaleshwar" selected>Mahabaleshwar (₹5,999/person)</option>
+<option value="lavasa">Lavasa (₹3,299/person)</option>
+<option value="shirdi">Shirdi (₹4,299/person)</option>
+</select>
+<div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+<div class="w-5 h-5 flex items-center justify-center text-gray-500">
+<i class="ri-arrow-down-s-line"></i>
+</div>
+</div>
+</div>
+</div>
+<div class="mb-6">
+<label for="travel-date" class="block text-gray-700 font-medium mb-2">Travel Date</label>
+<input type="date" id="travel-date" class="w-full border border-gray-300 rounded px-4 py-3 custom-input date-picker" min="2025-06-09">
+</div>
+<div class="mb-6">
+<label for="passengers" class="block text-gray-700 font-medium mb-2">Number of Passengers</label>
+<div class="flex items-center">
+<button id="decrease-passengers" class="w-10 h-10 flex items-center justify-center border border-gray-300 rounded-l text-gray-600">
+<i class="ri-subtract-line"></i>
+</button>
+<input type="number" id="passengers" class="w-full border-y border-gray-300 h-10 text-center passenger-counter custom-input" value="3" min="3" max="4" readonly>
+<button id="increase-passengers" class="w-10 h-10 flex items-center justify-center border border-gray-300 rounded-r text-gray-600">
+<i class="ri-add-line"></i>
+</button>
+</div>
+<p class="text-sm text-red-500 mt-1" id="passenger-warning">Minimum 3 passengers required</p>
+</div>
+<div class="mb-6">
+<label class="block text-gray-700 font-medium mb-2">Room Preference</label>
+<div class="space-y-2">
+<label class="flex items-center">
+<input type="radio" name="room-preference" value="single" class="hidden" checked>
+<span class="w-5 h-5 inline-block border border-gray-300 rounded-full mr-2 flex-shrink-0 relative">
+<span class="absolute inset-0 m-1 rounded-full bg-primary transform scale-0 transition-transform duration-200 checked:scale-100"></span>
+</span>
+<span class="text-gray-700">Single Room (3-4 persons)</span>
+</label>
+<label class="flex items-center">
+<input type="radio" name="room-preference" value="double" class="hidden">
+<span class="w-5 h-5 inline-block border border-gray-300 rounded-full mr-2 flex-shrink-0 relative">
+<span class="absolute inset-0 m-1 rounded-full bg-primary transform scale-0 transition-transform duration-200"></span>
+</span>
+<span class="text-gray-700">Double Room (2 persons each)</span>
+</label>
+</div>
+</div>
+</div>
+<div class="bg-gray-50 rounded-lg p-6">
+<h3 class="text-xl font-bold text-gray-900 mb-4">Cost Breakdown</h3>
+<div class="space-y-3 mb-6">
+<div class="flex justify-between">
+<span class="text-gray-600">Base Price</span>
+<span class="text-gray-900 font-medium">₹5,999/person</span>
+</div>
+<div class="flex justify-between">
+<span class="text-gray-600">Number of Passengers</span>
+<span class="text-gray-900 font-medium" id="passenger-count">3</span>
+</div>
+<div class="border-t border-gray-200 pt-3 flex justify-between">
+<span class="text-gray-900 font-medium">Total Amount</span>
+<span class="text-primary text-xl font-bold" id="total-amount">₹17,997</span>
+</div>
+</div>
+<div class="mb-6">
+<label class="flex items-center">
+<input type="checkbox" class="hidden" checked>
+<span class="w-5 h-5 inline-block border border-gray-300 rounded mr-2 flex-shrink-0 relative">
+<span class="absolute inset-0 m-0.5 rounded-sm bg-primary text-white flex items-center justify-center transform scale-0 transition-transform duration-200 checked:scale-100">
+<i class="ri-check-line ri-xs"></i>
+</span>
+</span>
+<span class="text-gray-700 text-sm">I agree to the terms and conditions</span>
+</label>
+</div>
+<button class="bg-primary text-white px-6 py-3 font-semibold !rounded-button whitespace-nowrap w-full mb-4">Proceed to Book</button>
+<div class="text-center">
+<p class="text-sm text-gray-500 mb-2">Secure Payment Options</p>
+<div class="flex justify-center space-x-4">
+<div class="w-8 h-8 flex items-center justify-center text-gray-600">
+<i class="ri-visa-fill ri-lg"></i>
+</div>
+<div class="w-8 h-8 flex items-center justify-center text-gray-600">
+<i class="ri-mastercard-fill ri-lg"></i>
+</div>
+<div class="w-8 h-8 flex items-center justify-center text-gray-600">
+<i class="ri-paypal-fill ri-lg"></i>
+</div>
+<div class="w-8 h-8 flex items-center justify-center text-gray-600">
+<i class="ri-google-pay-fill ri-lg"></i>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Important Information Section -->
+<section class="py-16 bg-gray-50">
+<div class="container mx-auto px-4">
+<div class="text-center mb-12">
+<h2 class="text-3xl font-bold text-gray-900 mb-4">Important Information</h2>
+<p class="text-gray-600 max-w-2xl mx-auto">Please read the following information before booking your tour package</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="bg-white rounded-lg shadow-lg p-6">
+<div class="w-12 h-12 flex items-center justify-center bg-primary/10 text-primary rounded-full mb-4">
+<i class="ri-file-list-3-line ri-lg"></i>
+</div>
+<h3 class="text-lg font-bold text-gray-900 mb-3">Booking Terms</h3>
+<ul class="text-gray-600 text-sm space-y-2">
+<li class="flex items-start">
+<div class="w-5 h-5 flex items-center justify-center text-primary mt-0.5 mr-2 flex-shrink-0">
+<i class="ri-checkbox-circle-line"></i>
+</div>
+<span>Minimum 3 passengers required for booking</span>
+</li>
+<li class="flex items-start">
+<div class="w-5 h-5 flex items-center justify-center text-primary mt-0.5 mr-2 flex-shrink-0">
+<i class="ri-checkbox-circle-line"></i>
+</div>
+<span>50% advance payment required at the time of booking</span>
+</li>
+<li class="flex items-start">
+<div class="w-5 h-5 flex items-center justify-center text-primary mt-0.5 mr-2 flex-shrink-0">
+<i class="ri-checkbox-circle-line"></i>
+</div>
+<span>Remaining payment to be made 3 days before the journey</span>
+</li>
+<li class="flex items-start">
+<div class="w-5 h-5 flex items-center justify-center text-primary mt-0.5 mr-2 flex-shrink-0">
+<i class="ri-checkbox-circle-line"></i>
+</div>
+<span>ID proof required for all passengers</span>
+</li>
+</ul>
+</div>
+<div class="bg-white rounded-lg shadow-lg p-6">
+<div class="w-12 h-12 flex items-center justify-center bg-primary/10 text-primary rounded-full mb-4">
+<i class="ri-close-circle-line ri-lg"></i>
+</div>
+<h3 class="text-lg font-bold text-gray-900 mb-3">Cancellation Policy</h3>
+<ul class="text-gray-600 text-sm space-y-2">
+<li class="flex items-start">
+<div class="w-5 h-5 flex items-center justify-center text-primary mt-0.5 mr-2 flex-shrink-0">
+<i class="ri-checkbox-circle-line"></i>
+</div>
+<span>7+ days before journey: 90% refund</span>
+</li>
+<li class="flex items-start">
+<div class="w-5 h-5 flex items-center justify-center text-primary mt-0.5 mr-2 flex-shrink-0">
+<i class="ri-checkbox-circle-line"></i>
+</div>
+<span>3-6 days before journey: 50% refund</span>
+</li>
+<li class="flex items-start">
+<div class="w-5 h-5 flex items-center justify-center text-primary mt-0.5 mr-2 flex-shrink-0">
+<i class="ri-checkbox-circle-line"></i>
+</div>
+<span>Less than 3 days: No refund</span>
+</li>
+<li class="flex items-start">
+<div class="w-5 h-5 flex items-center justify-center text-primary mt-0.5 mr-2 flex-shrink-0">
+<i class="ri-checkbox-circle-line"></i>
+</div>
+<span>Rescheduling allowed once with 5 days notice</span>
+</li>
+</ul>
+</div>
+<div class="bg-white rounded-lg shadow-lg p-6">
+<div class="w-12 h-12 flex items-center justify-center bg-primary/10 text-primary rounded-full mb-4">
+<i class="ri-luggage-cart-line ri-lg"></i>
+</div>
+<h3 class="text-lg font-bold text-gray-900 mb-3">What to Carry</h3>
+<ul class="text-gray-600 text-sm space-y-2">
+<li class="flex items-start">
+<div class="w-5 h-5 flex items-center justify-center text-primary mt-0.5 mr-2 flex-shrink-0">
+<i class="ri-checkbox-circle-line"></i>
+</div>
+<span>Comfortable clothing and footwear</span>
+</li>
+<li class="flex items-start">
+<div class="w-5 h-5 flex items-center justify-center text-primary mt-0.5 mr-2 flex-shrink-0">
+<i class="ri-checkbox-circle-line"></i>
+</div>
+<span>ID proof (Aadhar/PAN/Passport)</span>
+</li>
+<li class="flex items-start">
+<div class="w-5 h-5 flex items-center justify-center text-primary mt-0.5 mr-2 flex-shrink-0">
+<i class="ri-checkbox-circle-line"></i>
+</div>
+<span>Personal medications if any</span>
+</li>
+<li class="flex items-start">
+<div class="w-5 h-5 flex items-center justify-center text-primary mt-0.5 mr-2 flex-shrink-0">
+<i class="ri-checkbox-circle-line"></i>
+</div>
+<span>Camera, power bank, and chargers</span>
+</li>
+</ul>
+</div>
+<div class="bg-white rounded-lg shadow-lg p-6">
+<div class="w-12 h-12 flex items-center justify-center bg-primary/10 text-primary rounded-full mb-4">
+<i class="ri-information-line ri-lg"></i>
+</div>
+<h3 class="text-lg font-bold text-gray-900 mb-3">Additional Information</h3>
+<ul class="text-gray-600 text-sm space-y-2">
+<li class="flex items-start">
+<div class="w-5 h-5 flex items-center justify-center text-primary mt-0.5 mr-2 flex-shrink-0">
+<i class="ri-checkbox-circle-line"></i>
+</div>
+<span>Children below 5 years: 50% of adult price</span>
+</li>
+<li class="flex items-start">
+<div class="w-5 h-5 flex items-center justify-center text-primary mt-0.5 mr-2 flex-shrink-0">
+<i class="ri-checkbox-circle-line"></i>
+</div>
+<span>Extra luggage may incur additional charges</span>
+</li>
+<li class="flex items-start">
+<div class="w-5 h-5 flex items-center justify-center text-primary mt-0.5 mr-2 flex-shrink-0">
+<i class="ri-checkbox-circle-line"></i>
+</div>
+<span>Itinerary may change due to weather conditions</span>
+</li>
+<li class="flex items-start">
+<div class="w-5 h-5 flex items-center justify-center text-primary mt-0.5 mr-2 flex-shrink-0">
+<i class="ri-checkbox-circle-line"></i>
+</div>
+<span>Entry fees to certain attractions not included</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<!-- Testimonials Section -->
+<section class="py-16 bg-white">
+<div class="container mx-auto px-4">
+<div class="text-center mb-12">
+<h2 class="text-3xl font-bold text-gray-900 mb-4">What Our Customers Say</h2>
+<p class="text-gray-600 max-w-2xl mx-auto">Read testimonials from our satisfied customers who enjoyed our tour packages</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="bg-white rounded-lg shadow-lg p-6 border-t-4 border-primary">
+<div class="flex items-center mb-4">
+<div class="flex text-yellow-400">
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+</div>
+<span class="ml-2 text-gray-600 text-sm">5.0</span>
+</div>
+<p class="text-gray-600 mb-6">"We had an amazing experience with Gayatri Tours. The Mahabaleshwar package was well-organized, the hotel was comfortable, and our driver was very professional. The car was clean and well-maintained. Highly recommended!"</p>
+<div class="flex items-center">
+<div class="w-12 h-12 rounded-full bg-gray-200 flex items-center justify-center text-gray-500 mr-3">
+<i class="ri-user-3-line ri-lg"></i>
+</div>
+<div>
+<h4 class="font-medium text-gray-900">Rajesh Sharma</h4>
+<p class="text-gray-500 text-sm">Pune, Maharashtra</p>
+</div>
+</div>
+</div>
+<div class="bg-white rounded-lg shadow-lg p-6 border-t-4 border-primary">
+<div class="flex items-center mb-4">
+<div class="flex text-yellow-400">
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-half-fill"></i>
+</div>
+<span class="ml-2 text-gray-600 text-sm">4.5</span>
+</div>
+<p class="text-gray-600 mb-6">"The Lonavala-Khandala package was perfect for our weekend getaway. The itinerary covered all major attractions, and the meals were delicious. The Aura car was comfortable for our family of four. Will definitely book again!"</p>
+<div class="flex items-center">
+<div class="w-12 h-12 rounded-full bg-gray-200 flex items-center justify-center text-gray-500 mr-3">
+<i class="ri-user-3-line ri-lg"></i>
+</div>
+<div>
+<h4 class="font-medium text-gray-900">Priya Deshmukh</h4>
+<p class="text-gray-500 text-sm">Mumbai, Maharashtra</p>
+</div>
+</div>
+</div>
+<div class="bg-white rounded-lg shadow-lg p-6 border-t-4 border-primary">
+<div class="flex items-center mb-4">
+<div class="flex text-yellow-400">
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-line"></i>
+</div>
+<span class="ml-2 text-gray-600 text-sm">4.0</span>
+</div>
+<p class="text-gray-600 mb-6">"Our Shirdi trip was a wonderful experience. The hotel was close to the temple, and the darshan arrangements were smooth. The driver was knowledgeable and helpful. The only suggestion would be to include more vegetarian options in the meals."</p>
+<div class="flex items-center">
+<div class="w-12 h-12 rounded-full bg-gray-200 flex items-center justify-center text-gray-500 mr-3">
+<i class="ri-user-3-line ri-lg"></i>
+</div>
+<div>
+<h4 class="font-medium text-gray-900">Amit Patel</h4>
+<p class="text-gray-500 text-sm">Ahmedabad, Gujarat</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- FAQ Section -->
+<section class="py-16 bg-gray-50">
+<div class="container mx-auto px-4">
+<div class="text-center mb-12">
+<h2 class="text-3xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h2>
+<p class="text-gray-600 max-w-2xl mx-auto">Find answers to commonly asked questions about our tour packages</p>
+</div>
+<div class="max-w-3xl mx-auto">
+<div class="space-y-4" id="faq-accordion">
+<div class="bg-white rounded-lg shadow-sm overflow-hidden">
+<button class="w-full flex justify-between items-center p-5 text-left focus:outline-none" data-faq-toggle="faq-1">
+<span class="font-medium text-gray-900">What is the minimum number of passengers required for booking?</span>
+<div class="w-6 h-6 flex items-center justify-center text-primary transition-transform duration-200" id="faq-icon-1">
+<i class="ri-add-line"></i>
+</div>
+</button>
+<div class="hidden px-5 pb-5 text-gray-600" id="faq-1">
+<p>A minimum of 3 passengers is required to book any of our tour packages. This is because our packages are designed for the Aura car, which can accommodate 3-4 passengers comfortably. The pricing is calculated on a per-person basis with a minimum of 3 passengers.</p>
+</div>
+</div>
+<div class="bg-white rounded-lg shadow-sm overflow-hidden">
+<button class="w-full flex justify-between items-center p-5 text-left focus:outline-none" data-faq-toggle="faq-2">
+<span class="font-medium text-gray-900">What is included in the package price?</span>
+<div class="w-6 h-6 flex items-center justify-center text-primary transition-transform duration-200" id="faq-icon-2">
+<i class="ri-add-line"></i>
+</div>
+</button>
+<div class="hidden px-5 pb-5 text-gray-600" id="faq-2">
+<p>Our package prices include transportation in an Aura car, accommodation in a standard hotel room, all meals (breakfast, lunch, and dinner), and sightseeing as mentioned in the itinerary. Entry fees to certain attractions, personal expenses, and any activities not mentioned in the itinerary are not included.</p>
+</div>
+</div>
+<div class="bg-white rounded-lg shadow-sm overflow-hidden">
+<button class="w-full flex justify-between items-center p-5 text-left focus:outline-none" data-faq-toggle="faq-3">
+<span class="font-medium text-gray-900">Can I customize the itinerary?</span>
+<div class="w-6 h-6 flex items-center justify-center text-primary transition-transform duration-200" id="faq-icon-3">
+<i class="ri-add-line"></i>
+</div>
+</button>
+<div class="hidden px-5 pb-5 text-gray-600" id="faq-3">
+<p>Yes, we offer customization options for our packages. You can request changes to the itinerary, hotel upgrades, or additional activities. Please note that customizations may affect the package price. Contact our customer service team to discuss your specific requirements.</p>
+</div>
+</div>
+<div class="bg-white rounded-lg shadow-sm overflow-hidden">
+<button class="w-full flex justify-between items-center p-5 text-left focus:outline-none" data-faq-toggle="faq-4">
+<span class="font-medium text-gray-900">What is the payment policy?</span>
+<div class="w-6 h-6 flex items-center justify-center text-primary transition-transform duration-200" id="faq-icon-4">
+<i class="ri-add-line"></i>
+</div>
+</button>
+<div class="hidden px-5 pb-5 text-gray-600" id="faq-4">
+<p>We require a 50% advance payment at the time of booking to confirm your reservation. The remaining balance must be paid at least 3 days before the journey date. We accept payments through various methods including credit/debit cards, net banking, UPI, and digital wallets.</p>
+</div>
+</div>
+<div class="bg-white rounded-lg shadow-sm overflow-hidden">
+<button class="w-full flex justify-between items-center p-5 text-left focus:outline-none" data-faq-toggle="faq-5">
+<span class="font-medium text-gray-900">What is the pick-up and drop-off location?</span>
+<div class="w-6 h-6 flex items-center justify-center text-primary transition-transform duration-200" id="faq-icon-5">
+<i class="ri-add-line"></i>
+</div>
+</button>
+<div class="hidden px-5 pb-5 text-gray-600" id="faq-5">
+<p>We offer pick-up and drop-off services from any location within Pune city limits. The exact pick-up time will be communicated to you a day before the journey. For locations outside Pune city limits, additional charges may apply.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Contact Section -->
+<section id="contact" class="py-16 bg-white">
+<div class="container mx-auto px-4">
+<div class="text-center mb-12">
+<h2 class="text-3xl font-bold text-gray-900 mb-4">Contact Us</h2>
+<p class="text-gray-600 max-w-2xl mx-auto">Have questions or need more information? Get in touch with us</p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
+<div>
+<div class="bg-white rounded-lg shadow-lg p-8">
+<h3 class="text-xl font-bold text-gray-900 mb-6">Send Us a Message</h3>
+<form>
+<div class="mb-4">
+<label for="name" class="block text-gray-700 font-medium mb-2">Your Name</label>
+<input type="text" id="name" class="w-full border border-gray-300 rounded px-4 py-3 custom-input" placeholder="Enter your name">
+</div>
+<div class="mb-4">
+<label for="email" class="block text-gray-700 font-medium mb-2">Email Address</label>
+<input type="email" id="email" class="w-full border border-gray-300 rounded px-4 py-3 custom-input" placeholder="Enter your email">
+</div>
+<div class="mb-4">
+<label for="phone" class="block text-gray-700 font-medium mb-2">Phone Number</label>
+<input type="tel" id="phone" class="w-full border border-gray-300 rounded px-4 py-3 custom-input" placeholder="Enter your phone number">
+</div>
+<div class="mb-6">
+<label for="message" class="block text-gray-700 font-medium mb-2">Your Message</label>
+<textarea id="message" rows="4" class="w-full border border-gray-300 rounded px-4 py-3 custom-input" placeholder="Enter your message"></textarea>
+</div>
+<button type="submit" class="bg-primary text-white px-6 py-3 font-semibold !rounded-button whitespace-nowrap w-full">Send Message</button>
+</form>
+</div>
+</div>
+<div>
+<div class="bg-white rounded-lg shadow-lg p-8 mb-6">
+    <h3 class="text-xl font-bold text-gray-900 mb-6">Contact Information</h3>
+    <div class="space-y-4">
+
+        <!-- Address -->
+        <div class="flex items-start">
+            <div class="w-10 h-10 flex items-center justify-center bg-primary/10 text-primary rounded-full mr-4 flex-shrink-0">
+                <i class="ri-map-pin-line"></i>
+            </div>
+            <div>
+                <h4 class="font-medium text-gray-900">Office Address</h4>
+                <p class="text-gray-600">Flat No 202, Swapnshilp Apartment, Abhinav College Road, Narhe, Pune 411041, Maharashtra, India</p>
+            </div>
+        </div>
+
+        <!-- Phone -->
+        <div class="flex items-start">
+            <div class="w-10 h-10 flex items-center justify-center bg-primary/10 text-primary rounded-full mr-4 flex-shrink-0">
+                <i class="ri-phone-line"></i>
+            </div>
+            <div>
+                <h4 class="font-medium text-gray-900">Phone Number</h4>
+                <p class="text-gray-600">+91 9405597393</p>
+            </div>
+        </div>
+
+        <!-- Email -->
+        <div class="flex items-start">
+            <div class="w-10 h-10 flex items-center justify-center bg-primary/10 text-primary rounded-full mr-4 flex-shrink-0">
+                <i class="ri-mail-line"></i>
+            </div>
+            <div>
+                <h4 class="font-medium text-gray-900">Email Address</h4>
+                <p class="text-gray-600">gayatritoursandtravels@gmail.com</p>
+            </div>
+        </div>
+
+        <!-- Business Hours -->
+        <div class="flex items-start">
+            <div class="w-10 h-10 flex items-center justify-center bg-primary/10 text-primary rounded-full mr-4 flex-shrink-0">
+                <i class="ri-time-line"></i>
+            </div>
+            <div>
+                <h4 class="font-medium text-gray-900">Business Hours</h4>
+                <p class="text-gray-600">Monday - Saturday: 9:00 AM - 8:00 PM</p>
+                <p class="text-gray-600">Sunday: 10:00 AM - 4:00 PM</p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="bg-white rounded-lg shadow-lg p-8">
+<h3 class="text-xl font-bold text-gray-900 mb-4">Follow Us</h3>
+<p class="text-gray-600 mb-4">Stay connected with us on social media for updates and offers</p>
+<div class="flex space-x-4">
+<a href="#" class="w-10 h-10 flex items-center justify-center bg-primary/10 text-primary rounded-full hover:bg-primary hover:text-white transition-colors duration-300">
+<i class="ri-facebook-fill"></i>
+</a>
+<a href="#" class="w-10 h-10 flex items-center justify-center bg-primary/10 text-primary rounded-full hover:bg-primary hover:text-white transition-colors duration-300">
+<i class="ri-instagram-line"></i>
+</a>
+<a href="#" class="w-10 h-10 flex items-center justify-center bg-primary/10 text-primary rounded-full hover:bg-primary hover:text-white transition-colors duration-300">
+<i class="ri-twitter-x-line"></i>
+</a>
+<a href="#" class="w-10 h-10 flex items-center justify-center bg-primary/10 text-primary rounded-full hover:bg-primary hover:text-white transition-colors duration-300">
+<i class="ri-whatsapp-line"></i>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-primary text-white pt-16 pb-8">
+    <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+            <!-- Company Info -->
+            <div>
+                <h3 class="text-xl font-bold mb-4">Gayatri Tours and Travels</h3>
+                <p class="text-white/80 mb-4">Your trusted partner for comfortable and reliable cab services across India.</p>
+                <div class="flex items-start mb-2">
+                    <div class="w-5 h-5 flex items-center justify-center mr-2 mt-1">
+                        <i class="ri-map-pin-line"></i>
+                    </div>
+                    <p class="text-white/80">Flat No 202, Swapnshilp Apartment, Abhinav College Road, Narhe, Pune 411041</p>
+                </div>
+                <div class="flex items-center mb-2">
+                    <div class="w-5 h-5 flex items-center justify-center mr-2">
+                        <i class="ri-phone-line"></i>
+                    </div>
+                    <a href="tel:+919405597393" class="text-white/80 hover:text-white">+91 9405597393</a>
+                </div>
+                <div class="flex items-center mb-2">
+                    <div class="w-5 h-5 flex items-center justify-center mr-2">
+                        <i class="ri-mail-line"></i>
+                    </div>
+                    <a href="mailto:gayatritoursandtravels@gmail.com" class="text-white/80 hover:text-white">gayatritoursandtravels@gmail.com</a>
+                </div>
+            </div>
+            <!-- Quick Links -->
+            <div>
+                <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+                <ul class="space-y-2">
+                    <li><a href="{{ url_for('home') }}" class="text-white/80 hover:text-white">Home</a></li>
+                    <li><a href="{{ url_for('about') }}" class="text-white/80 hover:text-white">About Us</a></li>
+                    <li><a href="{{ url_for('packages') }}" class="text-white/80 hover:text-white">Packages</a></li>
+                    <li><a href="{{ url_for('contact') }}" class="text-white/80 hover:text-white">Contact Us</a></li>
+                    <li><a href="{{ url_for('faq') }}" class="text-white/80 hover:text-white">FAQs</a></li>
+                    <li><a href="{{ url_for('terms_and_conditions') }}" class="text-white/80 hover:text-white">Terms & Conditions</a></li>
+                    <li><a href="{{ url_for('privacy_policy') }}" class="text-white/80 hover:text-white">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <!-- Popular Destinations -->
+            <div>
+                <h3 class="text-xl font-bold mb-4">Popular Destinations</h3>
+                <ul class="space-y-2">
+                    <li><a href="#" class="text-white/80 hover:text-white">Pune to Mumbai</a></li>
+                    <li><a href="#" class="text-white/80 hover:text-white">Pune to Lonavala</a></li>
+                    <li><a href="#" class="text-white/80 hover:text-white">Pune to Mahabaleshwar</a></li>
+                    <li><a href="#" class="text-white/80 hover:text-white">Pune to Shirdi</a></li>
+                    <li><a href="#" class="text-white/80 hover:text-white">Pune to Goa</a></li>
+                    <li><a href="#" class="text-white/80 hover:text-white">Pune to Aurangabad</a></li>
+                    <li><a href="#" class="text-white/80 hover:text-white">Pune to Nashik</a></li>
+                    <li><a href="#" class="text-white/80 hover:text-white">Pune to Kolhapur</a></li>
+                </ul>
+            </div>
+            <!-- Connect With Us -->
+            <div>
+                <h3 class="text-xl font-bold mb-4">Connect With Us</h3>
+                <div class="flex space-x-4 mb-6">
+                    <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors">
+                        <i class="ri-facebook-fill"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors">
+                        <i class="ri-instagram-line"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors">
+                        <i class="ri-twitter-x-line"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors">
+                        <i class="ri-linkedin-fill"></i>
+                    </a>
+                </div>
+                <h3 class="text-xl font-bold mb-4">We Accept</h3>
+                <div class="flex flex-wrap gap-3">
+                    <div class="w-10 h-6 bg-white rounded flex items-center justify-center">
+                        <i class="ri-visa-fill text-blue-700"></i>
+                    </div>
+                    <div class="w-10 h-6 bg-white rounded flex items-center justify-center">
+                        <i class="ri-mastercard-fill text-orange-600"></i>
+                    </div>
+                    <div class="w-10 h-6 bg-white rounded flex items-center justify-center">
+                        <i class="ri-paypal-fill text-blue-600"></i>
+                    </div>
+                    <div class="w-10 h-6 bg-white rounded flex items-center justify-center">
+                        <i class="ri-google-fill text-red-500"></i>
+                    </div>
+                    <div class="w-10 h-6 bg-white rounded flex items-center justify-center">
+                        <i class="ri-amazon-pay-fill text-blue-900"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="border-t border-white/20 pt-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <p class="text-white/80 mb-4 md:mb-0">© 2025 Gayatri Tours and Travels. All rights reserved.</p>
+                <div class="flex space-x-4">
+                    <a href="{{ url_for('terms_and_conditions') }}" class="text-white/80 hover:text-white text-sm">Terms & Conditions</a>
+                    <a href="{{ url_for('privacy_policy') }}" class="text-white/80 hover:text-white text-sm">Privacy Policy</a>
+                    <a href="{{ url_for('refund_policy') }}" class="text-white/80 hover:text-white text-sm">Refund Policy</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- WhatsApp Button -->
+<a href="https://wa.me/919405597393" class="fixed bottom-6 right-6 w-14 h-14 bg-green-500 rounded-full flex items-center justify-center shadow-lg z-50 hover:bg-green-600 transition-colors">
+    <i class="ri-whatsapp-line text-white text-2xl"></i>
+</a>
+<!-- Scripts -->
+<script id="mobileMenuScript">
+document.addEventListener('DOMContentLoaded', function() {
+const mobileMenuButton = document.getElementById('mobileMenuButton');
+const mobileMenu = document.getElementById('mobileMenu');
+mobileMenuButton.addEventListener('click', function() {
+mobileMenu.classList.toggle('hidden');
+// Toggle icon
+const icon = mobileMenuButton.querySelector('i');
+if (mobileMenu.classList.contains('hidden')) {
+icon.className = 'ri-menu-line ri-lg';
+} else {
+icon.className = 'ri-close-line ri-lg';
+}
+});
+});
+</script>
+<script id="passengerCounterScript">
+document.addEventListener('DOMContentLoaded', function() {
+const decreaseBtn = document.getElementById('decrease-passengers');
+const increaseBtn = document.getElementById('increase-passengers');
+const passengerInput = document.getElementById('passengers');
+const passengerCount = document.getElementById('passenger-count');
+const totalAmount = document.getElementById('total-amount');
+const passengerWarning = document.getElementById('passenger-warning');
+// Update total amount based on passenger count
+function updateTotalAmount() {
+const basePrice = 5999; // Mahabaleshwar package price
+const count = parseInt(passengerInput.value);
+const total = basePrice * count;
+passengerCount.textContent = count;
+totalAmount.textContent = '₹' + total.toLocaleString();
+if (count <= 2) {
+passengerWarning.classList.remove('hidden');
+} else {
+passengerWarning.classList.add('hidden');
+}
+}
+decreaseBtn.addEventListener('click', function() {
+const currentValue = parseInt(passengerInput.value);
+if (currentValue > 3) {
+passengerInput.value = currentValue - 1;
+updateTotalAmount();
+}
+});
+increaseBtn.addEventListener('click', function() {
+const currentValue = parseInt(passengerInput.value);
+if (currentValue < 4) {
+passengerInput.value = currentValue + 1;
+updateTotalAmount();
+}
+});
+// Package select change event
+const packageSelect = document.getElementById('package-select');
+packageSelect.addEventListener('change', function() {
+let basePrice;
+switch(this.value) {
+case 'lonavala':
+basePrice = 3499;
+break;
+case 'mahabaleshwar':
+basePrice = 5999;
+break;
+case 'lavasa':
+basePrice = 3299;
+break;
+case 'shirdi':
+basePrice = 4299;
+break;
+default:
+basePrice = 5999;
+}
+const count = parseInt(passengerInput.value);
+const total = basePrice * count;
+document.querySelector('.cost-breakdown .text-gray-900.font-medium').textContent = '₹' + basePrice + '/person';
+totalAmount.textContent = '₹' + total.toLocaleString();
+});
+});
+</script>
+<script id="faqAccordionScript">
+document.addEventListener('DOMContentLoaded', function() {
+const faqToggles = document.querySelectorAll('[data-faq-toggle]');
+faqToggles.forEach(toggle => {
+toggle.addEventListener('click', function() {
+const targetId = this.getAttribute('data-faq-toggle');
+const target = document.getElementById(targetId);
+const icon = document.getElementById('faq-icon-' + targetId.split('-')[1]);
+// Close all other FAQs
+document.querySelectorAll('[id^="faq-"]:not([id="' + targetId + '"])').forEach(item => {
+if (!item.id.includes('icon')) {
+item.classList.add('hidden');
+}
+});
+// Reset all icons
+document.querySelectorAll('[id^="faq-icon-"]').forEach(iconElement => {
+iconElement.innerHTML = '<i class="ri-add-line"></i>';
+iconElement.style.transform = 'rotate(0deg)';
+});
+// Toggle current FAQ
+target.classList.toggle('hidden');
+// Update icon
+if (!target.classList.contains('hidden')) {
+icon.innerHTML = '<i class="ri-subtract-line"></i>';
+icon.style.transform = 'rotate(180deg)';
+} else {
+icon.innerHTML = '<i class="ri-add-line"></i>';
+icon.style.transform = 'rotate(0deg)';
+}
+});
+});
+});
+</script>
+<script id="customRadioCheckboxScript">
+document.addEventListener('DOMContentLoaded', function() {
+// Custom radio buttons
+const radioButtons = document.querySelectorAll('input[type="radio"]');
+radioButtons.forEach(radio => {
+radio.addEventListener('change', function() {
+// Reset all radio indicators
+document.querySelectorAll('input[name="' + this.name + '"] + span span').forEach(indicator => {
+indicator.style.transform = 'scale(0)';
+});
+// Set selected radio indicator
+if (this.checked) {
+const indicator = this.nextElementSibling.querySelector('span');
+indicator.style.transform = 'scale(1)';
+}
+});
+// Initialize state
+if (radio.checked) {
+const indicator = radio.nextElementSibling.querySelector('span');
+indicator.style.transform = 'scale(1)';
+}
+});
+// Custom checkboxes
+const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+checkboxes.forEach(checkbox => {
+checkbox.addEventListener('change', function() {
+const indicator = this.nextElementSibling.querySelector('span');
+if (this.checked) {
+indicator.style.transform = 'scale(1)';
+} else {
+indicator.style.transform = 'scale(0)';
+}
+});
+// Initialize state
+if (checkbox.checked) {
+const indicator = checkbox.nextElementSibling.querySelector('span');
+indicator.style.transform = 'scale(1)';
+}
+});
+});
+</script>
+</body>
+</html>

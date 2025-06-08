@@ -98,16 +98,25 @@ body {
             <a href="{{ url_for('home') }}" class="text-gray-700 hover:text-primary transition-colors">Home</a>
             <a href="{{ url_for('about') }}" class="text-primary font-medium border-b-2 border-primary">About</a>
             <a href="{{ url_for('packages') }}" class="text-gray-700 hover:text-primary transition-colors">Packages</a>
+            <a href="{{ url_for('ToursPackages') }}" class="text-gray-700 hover:text-primary transition-colors">Tour Packages</a>
+            <a href="{{ url_for('Gallery') }}" class="text-gray-700 hover:text-primary transition-colors">Gallery</a>
             <a href="{{ url_for('contact') }}" class="text-gray-700 hover:text-primary transition-colors">Contact</a>
         </nav>
-        <div class="hidden lg:flex items-center space-x-4">
-            <a href="tel:+919405597993" class="text-primary font-medium flex items-center whitespace-nowrap">
-                <div class="w-5 h-5 flex items-center justify-center mr-1">
-                    <i class="ri-phone-line"></i>
-                </div>
-                +91 9405597393
-            </a>
-        </div>
+        <div class="flex items-center">
+<div class="hidden md:flex items-center mr-6">
+<div class="w-10 h-10 flex items-center justify-center text-primary">
+<i class="ri-phone-line ri-lg"></i>
+</div>
+<div>
+<p class="text-xs text-gray-500">Call us for booking</p>
+<p class="text-sm font-semibold">+91 94055 97393</p>
+</div>
+</div>
+<button class="bg-primary text-white px-4 py-2 !rounded-button whitespace-nowrap">Book Now</button>
+<button class="ml-4 md:hidden w-10 h-10 flex items-center justify-center text-gray-700" id="mobileMenuButton">
+<i class="ri-menu-line ri-lg"></i>
+</button>
+</div>
         <button class="lg:hidden w-10 h-10 flex items-center justify-center text-primary">
             <i class="ri-menu-line text-2xl"></i>
         </button>

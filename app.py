@@ -116,6 +116,18 @@ def refund_policy():
 def faq():
     return render_template('FAQ.html')
 
+@app.route('/ToursPackages')
+def ToursPackages():
+    return render_template('ToursPackages.html')
+
+@app.route('/Gallery')
+def Gallery():
+    return render_template('Gallery.html')
+
+@app.route('/Details_Mahabaleshwar')
+def Details_Mahabaleshwar():
+    return render_template('Details_Mahabaleshwar.html')
+
 # Location search for autocomplete
 @app.route('/search_location')
 def search_location():

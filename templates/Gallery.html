@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gallery - Gayatri Tours and Travels</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#0a2463',secondary:'#ffc857'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+.page-header {
+    background-image: linear-gradient(rgba(10, 36, 99, 0.8), rgba(10, 36, 99, 0.8)), url('https://readdy.ai/api/search-image?query=professional%2520travel%2520agency%2520office%2520with%2520modern%2520design%252C%2520travel%2520brochures%252C%2520world%2520map%2520on%2520wall%252C%2520friendly%2520staff%2520helping%2520customers%252C%2520high%2520quality%2520professional%2520photography%252C%2520bright%2520lighting%252C%2520clean%2520environment&width=1920&height=400&seq=20&orientation=landscape');
+    background-size: cover;
+    background-position: center;
+}
+.value-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.value-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+.timeline-item {
+    position: relative;
+}
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 19px;
+    height: 100%;
+    width: 2px;
+    background-color: #e5e7eb;
+    z-index: 0;
+}
+.timeline-item:last-child::before {
+    height: 50%;
+}
+.timeline-item:first-child::before {
+    top: 50%;
+    height: 50%;
+}
+.timeline-dot {
+    position: relative;
+    z-index: 1;
+    background-color: white;
+}
+.counter-item {
+    position: relative;
+}
+.counter-item::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    height: 50px;
+    width: 1px;
+    background-color: #e5e7eb;
+}
+.counter-item:last-child::after {
+    display: none;
+}
+.testimonial-card {
+    transition: transform 0.3s ease;
+}
+.testimonial-card.active {
+    transform: scale(1.05);
+}
+.service-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+.cta-section {
+    background-image: linear-gradient(to right, rgba(10, 36, 99, 0.9), rgba(10, 36, 99, 0.7)), url('https://readdy.ai/api/search-image?query=luxury%2520travel%2520concept%2520with%2520world%2520map%252C%2520passport%252C%2520tickets%252C%2520camera%252C%2520sunglasses%2520on%2520wooden%2520table%252C%2520professional%2520photography%252C%2520top%2520view%252C%2520travel%2520planning%2520concept%252C%2520high%2520resolution&width=1920&height=600&seq=21&orientation=landscape');
+    background-size: cover;
+    background-position: center;
+}
+</style>
+</head>
+<body class="bg-white">
+<!-- Header -->
+<header class="bg-white shadow-md fixed w-full top-0 z-50">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+        <a href="{{ url_for('home') }}" class="text-2xl font-['Pacifico'] text-primary">Gayatri Tours & Travels</a>   
+        <nav class="hidden lg:flex items-center space-x-6">
+            <a href="{{ url_for('home') }}" class="text-gray-700 hover:text-primary transition-colors">Home</a>
+            <a href="{{ url_for('about') }}" class="text-gray-700 hover:text-primary transition-colors">About</a>
+            <a href="{{ url_for('packages') }}" class="text-gray-700 hover:text-primary transition-colors">Packages</a>
+            <a href="{{ url_for('ToursPackages') }}" class="text-gray-700 hover:text-primary transition-colors">Tour Packages</a>
+            <a href="{{ url_for('Gallery') }}" class="text-primary font-medium border-b-2 border-primary">Gallery</a>
+            <a href="{{ url_for('contact') }}" class="text-gray-700 hover:text-primary transition-colors">Contact</a>
+        </nav>
+        <div class="flex items-center">
+<div class="hidden md:flex items-center mr-6">
+<div class="w-10 h-10 flex items-center justify-center text-primary">
+<i class="ri-phone-line ri-lg"></i>
+</div>
+<div>
+<p class="text-xs text-gray-500">Call us for booking</p>
+<p class="text-sm font-semibold">+91 94055 97393</p>
+</div>
+</div>
+<button class="bg-primary text-white px-4 py-2 !rounded-button whitespace-nowrap">Book Now</button>
+<button class="ml-4 md:hidden w-10 h-10 flex items-center justify-center text-gray-700" id="mobileMenuButton">
+<i class="ri-menu-line ri-lg"></i>
+</button>
+</div>
+        <button class="lg:hidden w-10 h-10 flex items-center justify-center text-primary">
+            <i class="ri-menu-line text-2xl"></i>
+        </button>
+    </div>
+</header>
+
+<!-- Page Header -->
+<section class="page-header pt-28 pb-16">
+    <div class="container mx-auto px-4 text-white">
+       <div class="max-w-3xl">
+    <h1 class="text-3xl md:text-4xl font-bold mb-4">Gallery - Gayatri Tours and Travels</h1>
+    <p class="text-lg mb-6">Explore our journey through photos — happy customers, scenic destinations, and memorable tours across Maharashtra.</p>
+    <nav class="flex" aria-label="Breadcrumb">
+        <ol class="inline-flex items-center space-x-1 md:space-x-3">
+            <li class="inline-flex items-center">
+                <a href="https://readdy.ai/home/64319105-0b5e-4a51-af8b-8c85364cc76f/91671dcd-a745-4183-a82b-932bcd6286ff" data-readdy="true" class="inline-flex items-center text-white hover:text-gray-200">
+                    <div class="w-4 h-4 flex items-center justify-center mr-2">
+                        <i class="ri-home-line"></i>
+                    </div>
+                    Home
+                </a>
+            </li>
+            <li>
+                <div class="flex items-center">
+                    <div class="w-4 h-4 flex items-center justify-center mx-1">
+                        <i class="ri-arrow-right-s-line"></i>
+                    </div>
+                    <span class="text-white">Gallery</span>
+                </div>
+            </li>
+        </ol>
+    </nav>
+</div>
+
+    </div>
+</section>
+<!-- Mobile Navigation (Hidden by default) -->
+<div class="hidden md:hidden bg-white px-4 py-2 shadow-inner">
+<nav class="flex flex-col space-y-3 py-3">
+<a href="#" class="text-gray-600 py-2 hover:text-primary transition-colors">Home</a>
+<a href="#" class="text-gray-600 py-2 hover:text-primary transition-colors">About</a>
+<a href="#" class="text-primary py-2 font-medium">Gallery</a>
+<a href="#" class="text-gray-600 py-2 hover:text-primary transition-colors">Book Now</a>
+<a href="tel:+919876543210" class="flex items-center bg-primary text-white px-4 py-2 rounded-button whitespace-nowrap">
+<div class="w-5 h-5 flex items-center justify-center mr-2">
+<i class="ri-phone-line"></i>
+</div>
+Call for Booking
+</a>
+</nav>
+</div>
+</header>
+<!-- Gallery Title Section -->
+<section class="py-12 bg-white">
+<div class="container mx-auto px-4 text-center">
+<h1 class="text-4xl font-bold text-gray-900 mb-3">Aura Cab Fleet</h1>
+<p class="text-gray-600 max-w-2xl mx-auto">Experience premium comfort and reliability with our meticulously maintained fleet of vehicles, driven by professional chauffeurs.</p>
+<div class="w-24 h-1 bg-primary mx-auto mt-6 rounded-full"></div>
+</div>
+</section>
+<!-- Gallery Filter Section -->
+<section class="py-8 bg-white">
+<div class="container mx-auto px-4">
+<div class="flex flex-wrap justify-center gap-4 mb-8">
+<input type="radio" name="filter" id="all" value="all" checked>
+<label for="all" class="filter-btn px-5 py-2 rounded-full border border-gray-300 text-gray-700 bg-white hover:bg-gray-100">All Photos</label>
+<input type="radio" name="filter" id="exterior" value="exterior">
+<label for="exterior" class="filter-btn px-5 py-2 rounded-full border border-gray-300 text-gray-700 bg-white hover:bg-gray-100">Exterior Views</label>
+<input type="radio" name="filter" id="interior" value="interior">
+<label for="interior" class="filter-btn px-5 py-2 rounded-full border border-gray-300 text-gray-700 bg-white hover:bg-gray-100">Interior Views</label>
+<input type="radio" name="filter" id="service" value="service">
+<label for="service" class="filter-btn px-5 py-2 rounded-full border border-gray-300 text-gray-700 bg-white hover:bg-gray-100">Service Highlights</label>
+</div>
+<!-- Gallery Grid -->
+<div id="galleryGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+<!-- Page 1 -->
+<div class="gallery-item relative rounded-lg overflow-hidden shadow-md group" data-category="exterior" data-page="1">
+<img src="https://readdy.ai/api/search-image?query=Professional%20high-end%20luxury%20sedan%20car%20exterior%20view%2C%20pristine%20condition%2C%20metallic%20black%20paint%2C%20polished%20chrome%20details%2C%20modern%20design%2C%20parked%20in%20front%20of%20luxury%20hotel%2C%20soft%20natural%20lighting%2C%20professional%20automotive%20photography%2C%20clean%20background&width=600&height=400&seq=1&orientation=landscape" alt="Luxury Sedan Exterior" class="w-full h-64 object-cover object-top">
+<div class="overlay absolute inset-0 bg-black bg-opacity-60 opacity-0 transition-opacity flex flex-col justify-end p-4">
+<h3 class="text-white font-bold">Premium Sedan</h3>
+<p class="text-gray-200 text-sm mb-3">Luxury travel for up to 4 passengers</p>
+<button class="bg-primary text-white px-4 py-2 rounded-button whitespace-nowrap">Book Now</button>
+</div>
+</div>
+<!-- Gallery Item 2 -->
+<div class="gallery-item relative rounded-lg overflow-hidden shadow-md group" data-category="interior" data-page="1">
+<img src="https://readdy.ai/api/search-image?query=Luxury%20car%20interior%20view%2C%20premium%20leather%20seats%2C%20modern%20dashboard%20with%20digital%20display%2C%20elegant%20wood%20trim%20details%2C%20ambient%20lighting%2C%20spotlessly%20clean%2C%20spacious%20cabin%2C%20high-end%20audio%20system%20visible%2C%20professional%20automotive%20interior%20photography%2C%20no%20people&width=600&height=400&seq=2&orientation=landscape" alt="Sedan Interior" class="w-full h-64 object-cover object-top">
+<div class="overlay absolute inset-0 bg-black bg-opacity-60 opacity-0 transition-opacity flex flex-col justify-end p-4">
+<h3 class="text-white font-bold">Premium Interior</h3>
+<p class="text-gray-200 text-sm mb-3">Leather seats with climate control</p>
+<button class="bg-primary text-white px-4 py-2 rounded-button whitespace-nowrap">Book Now</button>
+</div>
+</div>
+<!-- Gallery Item 3 -->
+<div class="gallery-item relative rounded-lg overflow-hidden shadow-md group" data-category="service" data-page="1">
+<img src="https://readdy.ai/api/search-image?query=Professional%20chauffeur%20in%20formal%20uniform%20standing%20beside%20luxury%20car%2C%20holding%20door%20open%2C%20welcoming%20gesture%2C%20well-groomed%20appearance%2C%20professional%20service%2C%20luxury%20hotel%20entrance%20background%2C%20daytime%2C%20high-quality%20professional%20photography&width=600&height=400&seq=3&orientation=landscape" alt="Chauffeur Service" class="w-full h-64 object-cover object-top">
+<div class="overlay absolute inset-0 bg-black bg-opacity-60 opacity-0 transition-opacity flex flex-col justify-end p-4">
+<h3 class="text-white font-bold">Professional Chauffeurs</h3>
+<p class="text-gray-200 text-sm mb-3">Trained and courteous service</p>
+<button class="bg-primary text-white px-4 py-2 rounded-button whitespace-nowrap">Book Now</button>
+</div>
+</div>
+<!-- Gallery Item 4 -->
+<div class="gallery-item relative rounded-lg overflow-hidden shadow-md group" data-category="exterior" data-page="1">
+<img src="https://readdy.ai/api/search-image?query=Luxury%20SUV%20exterior%20view%2C%20black%20premium%20SUV%20with%20tinted%20windows%2C%20chrome%20details%2C%20alloy%20wheels%2C%20clean%20and%20polished%2C%20parked%20in%20upscale%20urban%20setting%2C%20professional%20automotive%20photography%2C%20soft%20natural%20lighting%2C%20no%20people&width=600&height=400&seq=4&orientation=landscape" alt="SUV Exterior" class="w-full h-64 object-cover object-top">
+<div class="overlay absolute inset-0 bg-black bg-opacity-60 opacity-0 transition-opacity flex flex-col justify-end p-4">
+<h3 class="text-white font-bold">Executive SUV</h3>
+<p class="text-gray-200 text-sm mb-3">Spacious travel for up to 6 passengers</p>
+<button class="bg-primary text-white px-4 py-2 rounded-button whitespace-nowrap">Book Now</button>
+</div>
+</div>
+<!-- Gallery Item 5 -->
+<div class="gallery-item relative rounded-lg overflow-hidden shadow-md group" data-category="interior" data-page="1">
+<img src="https://readdy.ai/api/search-image?query=Luxury%20SUV%20interior%20view%2C%20spacious%20cabin%20with%20premium%20leather%20seats%2C%20advanced%20entertainment%20system%2C%20elegant%20dashboard%2C%20ambient%20lighting%2C%20immaculate%20condition%2C%20professional%20automotive%20interior%20photography%2C%20no%20people&width=600&height=400&seq=5&orientation=landscape" alt="SUV Interior" class="w-full h-64 object-cover object-top">
+<div class="overlay absolute inset-0 bg-black bg-opacity-60 opacity-0 transition-opacity flex flex-col justify-end p-4">
+<h3 class="text-white font-bold">Spacious Comfort</h3>
+<p class="text-gray-200 text-sm mb-3">Premium entertainment system included</p>
+<button class="bg-primary text-white px-4 py-2 rounded-button whitespace-nowrap">Book Now</button>
+</div>
+</div>
+<!-- Gallery Item 6 -->
+<div class="gallery-item relative rounded-lg overflow-hidden shadow-md group" data-category="service" data-page="1">
+<img src="https://readdy.ai/api/search-image?query=Business%20travelers%20with%20luggage%20being%20assisted%20by%20professional%20chauffeur%20at%20airport%20arrival%2C%20chauffeur%20holding%20name%20sign%2C%20helping%20with%20luggage%2C%20professional%20service%2C%20airport%20terminal%20background%2C%20natural%20lighting%2C%20professional%20photography&width=600&height=400&seq=6&orientation=landscape" alt="Airport Service" class="w-full h-64 object-cover object-top">
+<div class="overlay absolute inset-0 bg-black bg-opacity-60 opacity-0 transition-opacity flex flex-col justify-end p-4">
+<h3 class="text-white font-bold">Airport Transfers</h3>
+<p class="text-gray-200 text-sm mb-3">Meet & greet with flight tracking</p>
+<button class="bg-primary text-white px-4 py-2 rounded-button whitespace-nowrap">Book Now</button>
+</div>
+</div>
+<!-- Gallery Item 7 -->
+<div class="gallery-item relative rounded-lg overflow-hidden shadow-md group" data-category="exterior" data-page="1">
+<img src="https://readdy.ai/api/search-image?query=Luxury%20minivan%20exterior%20view%2C%20sleek%20black%20premium%20minivan%20with%20tinted%20windows%2C%20chrome%20accents%2C%20alloy%20wheels%2C%20spotlessly%20clean%2C%20parked%20in%20front%20of%20luxury%20hotel%20entrance%2C%20professional%20automotive%20photography%2C%20soft%20natural%20lighting&width=600&height=400&seq=7&orientation=landscape" alt="Minivan Exterior" class="w-full h-64 object-cover object-top">
+<div class="overlay absolute inset-0 bg-black bg-opacity-60 opacity-0 transition-opacity flex flex-col justify-end p-4">
+<h3 class="text-white font-bold">Premium Minivan</h3>
+<p class="text-gray-200 text-sm mb-3">Group travel for up to 8 passengers</p>
+<button class="bg-primary text-white px-4 py-2 rounded-button whitespace-nowrap">Book Now</button>
+</div>
+</div>
+<!-- Gallery Item 8 -->
+<div class="gallery-item relative rounded-lg overflow-hidden shadow-md group" data-category="interior" data-page="1">
+<img src="https://readdy.ai/api/search-image?query=Luxury%20minivan%20interior%20view%2C%20spacious%20cabin%20with%20multiple%20rows%20of%20premium%20leather%20seats%2C%20advanced%20entertainment%20system%2C%20elegant%20trim%20details%2C%20ambient%20lighting%2C%20immaculate%20condition%2C%20professional%20automotive%20interior%20photography%2C%20no%20people&width=600&height=400&seq=8&orientation=landscape" alt="Minivan Interior" class="w-full h-64 object-cover object-top">
+<div class="overlay absolute inset-0 bg-black bg-opacity-60 opacity-0 transition-opacity flex flex-col justify-end p-4">
+<h3 class="text-white font-bold">Group Comfort</h3>
+<p class="text-gray-200 text-sm mb-3">Ample luggage space for all passengers</p>
+<button class="bg-primary text-white px-4 py-2 rounded-button whitespace-nowrap">Book Now</button>
+</div>
+</div>
+<!-- Gallery Item 9 -->
+<div class="gallery-item relative rounded-lg overflow-hidden shadow-md group" data-category="service" data-page="1">
+<img src="https://readdy.ai/api/search-image?query=Corporate%20event%20transportation%20service%2C%20row%20of%20luxury%20black%20cars%20parked%20outside%20convention%20center%2C%20professional%20chauffeurs%20in%20uniform%20standing%20by%20vehicles%2C%20elegant%20setting%2C%20professional%20service%20photography%2C%20daytime%2C%20clear%20weather&width=600&height=400&seq=9&orientation=landscape" alt="Corporate Service" class="w-full h-64 object-cover object-top">
+<div class="overlay absolute inset-0 bg-black bg-opacity-60 opacity-0 transition-opacity flex flex-col justify-end p-4">
+<h3 class="text-white font-bold">Corporate Events</h3>
+<p class="text-gray-200 text-sm mb-3">Fleet service for business functions</p>
+<button class="bg-primary text-white px-4 py-2 rounded-button whitespace-nowrap">Book Now</button>
+</div>
+</div>
+</div>
+<!-- Pagination Controls -->
+<div class="flex justify-center items-center space-x-2 mt-8">
+  <button class="pagination-btn w-10 h-10 flex items-center justify-center rounded-full border border-gray-300 text-gray-700 hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed" data-page="1">1</button>
+  <button class="pagination-btn w-10 h-10 flex items-center justify-center rounded-full border border-gray-300 text-gray-700 hover:bg-gray-100" data-page="2">2</button>
+  <button class="pagination-btn w-10 h-10 flex items-center justify-center rounded-full border border-gray-300 text-gray-700 hover:bg-gray-100" data-page="3">3</button>
+</div>
+</div>
+</section>
+<!-- Booking CTA Section -->
+<section class="py-12 bg-gray-100">
+<div class="container mx-auto px-4 text-center">
+<h2 class="text-3xl font-bold text-gray-900 mb-4">Ready to Experience Premium Transportation?</h2>
+<p class="text-gray-600 max-w-2xl mx-auto mb-8">Book your premium cab service today and enjoy the comfort, reliability, and professionalism that Aura Cab is known for.</p>
+<div class="flex flex-wrap justify-center gap-4">
+<a href="tel:+919876543210" class="flex items-center bg-primary text-white px-6 py-3 rounded-button shadow-md hover:bg-primary/90 transition-colors whitespace-nowrap">
+<div class="w-5 h-5 flex items-center justify-center mr-2">
+<i class="ri-phone-line"></i>
+</div>
+Call to Book: +91 9405 597 393
+</a>
+<a href="https://wa.me/9405597393" class="flex items-center bg-green-500 text-white px-6 py-3 rounded-button shadow-md hover:bg-green-600 transition-colors whitespace-nowrap">
+<div class="w-5 h-5 flex items-center justify-center mr-2">
+<i class="ri-whatsapp-line"></i>
+</div>
+Book via WhatsApp
+</a>
+<button id="rateCardBtn" class="flex items-center bg-white text-gray-800 px-6 py-3 rounded-button shadow-md border border-gray-300 hover:bg-gray-100 transition-colors whitespace-nowrap">
+<div class="w-5 h-5 flex items-center justify-center mr-2">
+<i class="ri-file-list-3-line"></i>
+</div>
+View Rate Card
+</button>
+</div>
+</div>
+</section>
+<!-- Testimonial Section -->
+<section class="py-12 bg-white">
+<div class="container mx-auto px-4">
+<h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">What Our Customers Say</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Testimonial 1 -->
+<div class="bg-gray-50 p-6 rounded-lg shadow-sm">
+<div class="flex items-center mb-4">
+<div class="text-primary">
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+</div>
+</div>
+<p class="text-gray-700 mb-4">"Exceptional service! The chauffeur was punctual, professional, and the vehicle was immaculate. Made my business trip stress-free."</p>
+<div class="flex items-center">
+<div class="w-10 h-10 bg-gray-300 rounded-full flex items-center justify-center text-gray-600">
+<i class="ri-user-line"></i>
+</div>
+<div class="ml-3">
+<h4 class="font-medium text-gray-900">Michael Thompson</h4>
+<p class="text-sm text-gray-600">Business Executive</p>
+</div>
+</div>
+</div>
+<!-- Testimonial 2 -->
+<div class="bg-gray-50 p-6 rounded-lg shadow-sm">
+<div class="flex items-center mb-4">
+<div class="text-primary">
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+</div>
+</div>
+<p class="text-gray-700 mb-4">"We hired Aura Cab for our wedding transportation and they exceeded our expectations. Elegant vehicles and attentive service made our special day perfect."</p>
+<div class="flex items-center">
+<div class="w-10 h-10 bg-gray-300 rounded-full flex items-center justify-center text-gray-600">
+<i class="ri-user-line"></i>
+</div>
+<div class="ml-3">
+<h4 class="font-medium text-gray-900">Priya Sharma</h4>
+<p class="text-sm text-gray-600">Recent Client</p>
+</div>
+</div>
+</div>
+<!-- Testimonial 3 -->
+<div class="bg-gray-50 p-6 rounded-lg shadow-sm">
+<div class="flex items-center mb-4">
+<div class="text-primary">
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+</div>
+</div>
+<p class="text-gray-700 mb-4">"I use Aura Cab for all my airport transfers. Their flight tracking and meet & greet service is fantastic. Drivers are always professional and vehicles are top-notch."</p>
+<div class="flex items-center">
+<div class="w-10 h-10 bg-gray-300 rounded-full flex items-center justify-center text-gray-600">
+<i class="ri-user-line"></i>
+</div>
+<div class="ml-3">
+<h4 class="font-medium text-gray-900">James Wilson</h4>
+<p class="text-sm text-gray-600">Frequent Traveler</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-primary text-white pt-16 pb-8">
+    <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+            <!-- Company Info -->
+            <div>
+                <h3 class="text-xl font-bold mb-4">Gayatri Tours and Travels</h3>
+                <p class="text-white/80 mb-4">Your trusted partner for comfortable and reliable cab services across India.</p>
+                <div class="flex items-start mb-2">
+                    <div class="w-5 h-5 flex items-center justify-center mr-2 mt-1">
+                        <i class="ri-map-pin-line"></i>
+                    </div>
+                    <p class="text-white/80">Flat No 202, Swapnshilp Apartment, Abhinav College Road, Narhe, Pune 411041</p>
+                </div>
+                <div class="flex items-center mb-2">
+                    <div class="w-5 h-5 flex items-center justify-center mr-2">
+                        <i class="ri-phone-line"></i>
+                    </div>
+                    <a href="tel:+919405597393" class="text-white/80 hover:text-white">+91 9405597393</a>
+                </div>
+                <div class="flex items-center mb-2">
+                    <div class="w-5 h-5 flex items-center justify-center mr-2">
+                        <i class="ri-mail-line"></i>
+                    </div>
+                    <a href="mailto:gayatritoursandtravels@gmail.com" class="text-white/80 hover:text-white">gayatritoursandtravels@gmail.com</a>
+                </div>
+            </div>
+            <!-- Quick Links -->
+            <div>
+                <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+                <ul class="space-y-2">
+                    <li><a href="{{ url_for('home') }}" class="text-white/80 hover:text-white">Home</a></li>
+                    <li><a href="{{ url_for('about') }}" class="text-white/80 hover:text-white">About Us</a></li>
+                    <li><a href="{{ url_for('packages') }}" class="text-white/80 hover:text-white">Packages</a></li>
+                    <li><a href="{{ url_for('contact') }}" class="text-white/80 hover:text-white">Contact Us</a></li>
+                    <li><a href="{{ url_for('faq') }}" class="text-white/80 hover:text-white">FAQs</a></li>
+                    <li><a href="{{ url_for('terms_and_conditions') }}" class="text-white/80 hover:text-white">Terms & Conditions</a></li>
+                    <li><a href="{{ url_for('privacy_policy') }}" class="text-white/80 hover:text-white">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <!-- Popular Destinations -->
+            <div>
+                <h3 class="text-xl font-bold mb-4">Popular Destinations</h3>
+                <ul class="space-y-2">
+                    <li><a href="#" class="text-white/80 hover:text-white">Pune to Mumbai</a></li>
+                    <li><a href="#" class="text-white/80 hover:text-white">Pune to Lonavala</a></li>
+                    <li><a href="#" class="text-white/80 hover:text-white">Pune to Mahabaleshwar</a></li>
+                    <li><a href="#" class="text-white/80 hover:text-white">Pune to Shirdi</a></li>
+                    <li><a href="#" class="text-white/80 hover:text-white">Pune to Goa</a></li>
+                    <li><a href="#" class="text-white/80 hover:text-white">Pune to Aurangabad</a></li>
+                    <li><a href="#" class="text-white/80 hover:text-white">Pune to Nashik</a></li>
+                    <li><a href="#" class="text-white/80 hover:text-white">Pune to Kolhapur</a></li>
+                </ul>
+            </div>
+            <!-- Connect With Us -->
+            <div>
+                <h3 class="text-xl font-bold mb-4">Connect With Us</h3>
+                <div class="flex space-x-4 mb-6">
+                    <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors">
+                        <i class="ri-facebook-fill"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors">
+                        <i class="ri-instagram-line"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors">
+                        <i class="ri-twitter-x-line"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors">
+                        <i class="ri-linkedin-fill"></i>
+                    </a>
+                </div>
+                <h3 class="text-xl font-bold mb-4">We Accept</h3>
+                <div class="flex flex-wrap gap-3">
+                    <div class="w-10 h-6 bg-white rounded flex items-center justify-center">
+                        <i class="ri-visa-fill text-blue-700"></i>
+                    </div>
+                    <div class="w-10 h-6 bg-white rounded flex items-center justify-center">
+                        <i class="ri-mastercard-fill text-orange-600"></i>
+                    </div>
+                    <div class="w-10 h-6 bg-white rounded flex items-center justify-center">
+                        <i class="ri-paypal-fill text-blue-600"></i>
+                    </div>
+                    <div class="w-10 h-6 bg-white rounded flex items-center justify-center">
+                        <i class="ri-google-fill text-red-500"></i>
+                    </div>
+                    <div class="w-10 h-6 bg-white rounded flex items-center justify-center">
+                        <i class="ri-amazon-pay-fill text-blue-900"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="border-t border-white/20 pt-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <p class="text-white/80 mb-4 md:mb-0">© 2025 Gayatri Tours and Travels. All rights reserved.</p>
+                <div class="flex space-x-4">
+                    <a href="{{ url_for('terms_and_conditions') }}" class="text-white/80 hover:text-white text-sm">Terms & Conditions</a>
+                    <a href="{{ url_for('privacy_policy') }}" class="text-white/80 hover:text-white text-sm">Privacy Policy</a>
+                    <a href="{{ url_for('refund_policy') }}" class="text-white/80 hover:text-white text-sm">Refund Policy</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- WhatsApp Button -->
+<a href="https://wa.me/919405597393" class="fixed bottom-6 right-6 w-14 h-14 bg-green-500 rounded-full flex items-center justify-center shadow-lg z-50 hover:bg-green-600 transition-colors">
+    <i class="ri-whatsapp-line text-white text-2xl"></i>
+</a>
+<!-- Rate Card Modal (Hidden by default) -->
+<div id="rateCardModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center hidden">
+<div class="bg-white rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto p-6">
+<div class="flex justify-between items-center mb-6">
+<h3 class="text-xl font-bold text-gray-900">Aura Cab Rate Card</h3>
+<button id="closeRateCard" class="text-gray-500 hover:text-gray-700">
+<div class="w-6 h-6 flex items-center justify-center">
+<i class="ri-close-line text-xl"></i>
+</div>
+</button>
+</div>
+<div class="space-y-6">
+<!-- Sedan Rates -->
+<div>
+<h4 class="text-lg font-semibold text-gray-900 mb-3">Premium Sedan</h4>
+<div class="bg-gray-50 rounded-lg p-4">
+<div class="grid grid-cols-2 gap-2 text-sm">
+<div class="font-medium">Airport Transfer (One Way)</div>
+<div>₹1,800</div>
+<div class="font-medium">4 Hour / 40 KM Package</div>
+<div>₹2,200</div>
+<div class="font-medium">8 Hour / 80 KM Package</div>
+<div>₹3,800</div>
+<div class="font-medium">Outstation (Per KM)</div>
+<div>₹22/KM (Min. 250 KM per day)</div>
+<div class="font-medium">Driver Allowance</div>
+<div>₹300 per day</div>
+</div>
+</div>
+</div>
+<!-- SUV Rates -->
+<div>
+<h4 class="text-lg font-semibold text-gray-900 mb-3">Executive SUV</h4>
+<div class="bg-gray-50 rounded-lg p-4">
+<div class="grid grid-cols-2 gap-2 text-sm">
+<div class="font-medium">Airport Transfer (One Way)</div>
+<div>₹2,500</div>
+<div class="font-medium">4 Hour / 40 KM Package</div>
+<div>₹3,000</div>
+<div class="font-medium">8 Hour / 80 KM Package</div>
+<div>₹5,200</div>
+<div class="font-medium">Outstation (Per KM)</div>
+<div>₹28/KM (Min. 250 KM per day)</div>
+<div class="font-medium">Driver Allowance</div>
+<div>₹350 per day</div>
+</div>
+</div>
+</div>
+<!-- Minivan Rates -->
+<div>
+<h4 class="text-lg font-semibold text-gray-900 mb-3">Premium Minivan</h4>
+<div class="bg-gray-50 rounded-lg p-4">
+<div class="grid grid-cols-2 gap-2 text-sm">
+<div class="font-medium">Airport Transfer (One Way)</div>
+<div>₹3,200</div>
+<div class="font-medium">4 Hour / 40 KM Package</div>
+<div>₹3,800</div>
+<div class="font-medium">8 Hour / 80 KM Package</div>
+<div>₹6,500</div>
+<div class="font-medium">Outstation (Per KM)</div>
+<div>₹35/KM (Min. 250 KM per day)</div>
+<div class="font-medium">Driver Allowance</div>
+<div>₹400 per day</div>
+</div>
+</div>
+</div>
+<div class="text-sm text-gray-600">
+<p class="font-medium mb-2">Additional Information:</p>
+<ul class="list-disc pl-5 space-y-1">
+<li>All rates are exclusive of GST (18%)</li>
+<li>Toll, parking, and state entry taxes are extra</li>
+<li>Night charges (10 PM - 6 AM): ₹250 extra</li>
+<li>Extra hour charges: ₹300 per hour</li>
+<li>Extra kilometer charges as per vehicle category</li>
+</ul>
+</div>
+<button class="w-full bg-primary text-white py-3 rounded-button mt-4 whitespace-nowrap">Book Now</button>
+</div>
+</div>
+</div>
+<!-- Lightbox Modal (Hidden by default) -->
+<div id="lightboxModal" class="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center hidden">
+<div class="relative max-w-4xl w-full">
+<button id="closeLightbox" class="absolute top-4 right-4 text-white hover:text-gray-300">
+<div class="w-8 h-8 flex items-center justify-center">
+<i class="ri-close-line text-3xl"></i>
+</div>
+</button>
+<img id="lightboxImage" src="" alt="Enlarged view" class="max-w-full max-h-[80vh] mx-auto">
+<div class="text-white text-center mt-4">
+<h3 id="lightboxTitle" class="text-xl font-bold"></h3>
+<p id="lightboxDescription" class="text-gray-300 mt-1"></p>
+</div>
+</div>
+</div>
+<script id="mobileMenuScript">
+document.addEventListener('DOMContentLoaded', function() {
+const menuButton = document.querySelector('.md\\:hidden.w-10.h-10');
+const mobileMenu = document.querySelector('.hidden.md\\:hidden.bg-white');
+menuButton.addEventListener('click', function() {
+mobileMenu.classList.toggle('hidden');
+});
+});
+</script>
+<script id="galleryFilterScript">
+document.addEventListener('DOMContentLoaded', function() {
+  const filterButtons = document.querySelectorAll('input[name="filter"]');
+  const galleryItems = document.querySelectorAll('.gallery-item');
+  const paginationButtons = document.querySelectorAll('.pagination-btn');
+  let currentPage = 1;
+  let currentFilter = 'all';
+
+  function updateGalleryDisplay() {
+    galleryItems.forEach(item => {
+      const matchesFilter = currentFilter === 'all' || item.dataset.category === currentFilter;
+      const matchesPage = item.dataset.page === currentPage.toString();
+      item.style.display = matchesFilter && matchesPage ? 'block' : 'none';
+    });
+  }
+
+  filterButtons.forEach(button => {
+    button.addEventListener('change', function() {
+      currentFilter = this.value;
+      currentPage = 1;
+      updateGalleryDisplay();
+      updatePaginationState();
+    });
+  });
+
+  function updatePaginationState() {
+    paginationButtons.forEach(btn => {
+      btn.classList.toggle('bg-primary', btn.dataset.page === currentPage.toString());
+      btn.classList.toggle('text-white', btn.dataset.page === currentPage.toString());
+    });
+  }
+
+  paginationButtons.forEach(btn => {
+    btn.addEventListener('click', function() {
+      currentPage = parseInt(this.dataset.page);
+      updateGalleryDisplay();
+      updatePaginationState();
+    });
+  });
+
+  updateGalleryDisplay();
+  updatePaginationState();
+});
+</script>
+<script id="lightboxScript">
+document.addEventListener('DOMContentLoaded', function() {
+const galleryItems = document.querySelectorAll('.gallery-item');
+const lightboxModal = document.getElementById('lightboxModal');
+const lightboxImage = document.getElementById('lightboxImage');
+const lightboxTitle = document.getElementById('lightboxTitle');
+const lightboxDescription = document.getElementById('lightboxDescription');
+const closeLightbox = document.getElementById('closeLightbox');
+galleryItems.forEach(item => {
+item.addEventListener('click', function() {
+const img = this.querySelector('img');
+const title = this.querySelector('h3').textContent;
+const description = this.querySelector('p').textContent;
+lightboxImage.src = img.src;
+lightboxTitle.textContent = title;
+lightboxDescription.textContent = description;
+lightboxModal.classList.remove('hidden');
+});
+});
+closeLightbox.addEventListener('click', function() {
+lightboxModal.classList.add('hidden');
+});
+lightboxModal.addEventListener('click', function(e) {
+if (e.target === lightboxModal) {
+lightboxModal.classList.add('hidden');
+}
+});
+});
+</script>
+<script id="rateCardScript">
+document.addEventListener('DOMContentLoaded', function() {
+const rateCardBtn = document.getElementById('rateCardBtn');
+const rateCardModal = document.getElementById('rateCardModal');
+const closeRateCard = document.getElementById('closeRateCard');
+rateCardBtn.addEventListener('click', function() {
+rateCardModal.classList.remove('hidden');
+});
+closeRateCard.addEventListener('click', function() {
+rateCardModal.classList.add('hidden');
+});
+rateCardModal.addEventListener('click', function(e) {
+if (e.target === rateCardModal) {
+rateCardModal.classList.add('hidden');
+}
+});
+});
+</script>
+</body>
+</html>
