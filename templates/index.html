@@ -13,6 +13,8 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
 <script src="https://unpkg.com/alpinejs" defer></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet">
+
 
 
 <style>
@@ -415,7 +417,6 @@ cursor: pointer;
 </section>
 
 <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
-
 <script>
   // Haversine formula to calculate distance in km
   function getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
@@ -447,7 +448,7 @@ cursor: pointer;
       cabType: 'AC',
       fare: null,
       distance: null,
-      discountPercent: 10,
+      discountPercent: 0,
 
       async fetchSuggestions(type) {
         const query = this[type];
@@ -498,6 +499,17 @@ cursor: pointer;
             pickupCoords.lat, pickupCoords.lon,
             destinationCoords.lat, destinationCoords.lon
           );
+
+          // Discount based on distance
+          if (this.distance > 200) {
+            this.discountPercent = 16;
+          } else if (this.distance >= 51 && this.distance <= 200) {
+            this.discountPercent = 13;
+          } else if (this.distance >= 0 && this.distance <= 50) {
+            this.discountPercent = 10;
+          } else {
+            this.discountPercent = 0;
+          }
 
           // Calculate fare based on cab type
           const rates = { 'AC': 25, 'Non-AC': 21 };
@@ -920,10 +932,11 @@ View All Packages
       <span class="text-gray-600">Base Fare</span>
       <span class="font-medium" id="baseFare">-</span>
     </div>
-    <div class="flex justify-between text-green-600 font-medium mb-2" id="discountRow" style="display: none;">
-      <span>16% Discount Applied</span>
-      <span id="discountAmt">-</span>
-    </div>
+   <div class="flex justify-between text-green-600 font-medium mb-2" id="discountRow" style="display: none;">
+  <span id="discountText">Discount Applied</span>
+  <span id="discountAmt">-</span>
+</div>
+
     <div class="border-t border-gray-300 my-2"></div>
     <div class="flex justify-between font-bold text-primary">
       <span>Total Fare</span>
@@ -937,175 +950,212 @@ View All Packages
   </div>
   
 </div>
-
 <script>
-  function calculateFare() {
-    const distance = parseFloat(document.getElementById('distance').value);
-    const cabType = document.querySelector('input[name="cab-type"]:checked').value;
+ function calculateFare() {
+  const distance = parseFloat(document.getElementById('distance').value);
+  const cabType = document.querySelector('input[name="cab-type"]:checked').value;
 
-    if (!distance || distance <= 0) {
-      alert("Please enter a valid distance.");
-      return;
-    }
-
-    let rate = cabType === "ac" ? 25 : 21;
-    let baseFare = distance * rate;
-    let discount = 0;
-
-    if (distance > 300) {
-      discount = baseFare * 0.16;
-      document.getElementById('discountRow').style.display = "flex";
-      document.getElementById('discountAmt').textContent = "-₹" + discount.toFixed(2);
-    } else {
-      document.getElementById('discountRow').style.display = "none";
-    }
-
-    let totalFare = baseFare - discount;
-
-    document.getElementById('showDistance').textContent = `${distance} km`;
-    document.getElementById('baseFare').textContent = `₹${baseFare.toFixed(2)}`;
-    document.getElementById('totalFare').textContent = `₹${totalFare.toFixed(2)}`;
-    document.getElementById('fareResult').classList.remove('hidden');
+  if (!distance || distance <= 0) {
+    alert("Please enter a valid distance.");
+    return;
   }
+
+  let rate = cabType === "ac" ? 25 : 21;
+  let baseFare = distance * rate;
+  let discountPercent = 0;
+
+  if (distance >= 0 && distance <= 50) {
+    discountPercent = 10;
+  } else if (distance >= 51 && distance <= 200) {
+    discountPercent = 13;
+  } else if (distance > 200) {
+    discountPercent = 16;
+  }
+
+  let discount = baseFare * (discountPercent / 100);
+  let totalFare = baseFare - discount;
+
+  document.getElementById('showDistance').textContent = `${distance} km`;
+  document.getElementById('baseFare').textContent = `₹${baseFare.toFixed(2)}`;
+  document.getElementById('totalFare').textContent = `₹${totalFare.toFixed(2)}`;
+
+  if (discountPercent > 0) {
+    document.getElementById('discountRow').style.display = "flex";
+    document.getElementById('discountAmt').textContent = `-₹${discount.toFixed(2)}`;
+    document.getElementById('discountText').textContent = `${discountPercent}% Discount Applied`;
+  } else {
+    document.getElementById('discountRow').style.display = "none";
+  }
+
+  document.getElementById('fareResult').classList.remove('hidden');
+}
+
 </script>
+
 
 <!-- Service Area Map -->
 <div class="bg-white p-6 rounded-lg shadow-lg">
-<h3 class="text-xl font-bold text-primary mb-4">Our Service Areas</h3>
-<div>
-  <!-- OpenStreetMap Embed -->
-<iframe 
-  width="100%" 
-  height="400" 
-  frameborder="0" 
-  scrolling="no" 
-  marginheight="0" 
-  marginwidth="0"
-  src="https://www.openstreetmap.org/export/embed.html?bbox=73.8236766%2C18.43581%2C73.8316766%2C18.44381&layer=mapnik&marker=18.43981%2C73.8276766"
-  style="border: 1px solid black"
-></iframe>
-<br/>
-<small>
-  <a href="https://www.openstreetmap.org/?mlat=18.43981&mlon=73.8276766#map=17/18.43981/73.8276766" target="_blank">
-    View Larger Map
-  </a>
-</small>
+  <h3 class="text-xl font-bold text-primary mb-4">Our Service Area – Pune</h3>
 
-</div><div class="mt-4">
-<p class="text-gray-600 mb-4">We provide cab services from Pune to over 2000+ cities across India. Some of our popular routes include:</p>
-<div class="grid grid-cols-2 gap-2">
-<div class="flex items-center">
-<div class="w-4 h-4 flex items-center justify-center mr-2">
-<i class="ri-checkbox-circle-fill text-primary"></i>
+  <!-- OpenStreetMap Embed -->
+  <div class="relative w-full overflow-hidden rounded-lg border border-gray-300">
+    <iframe 
+      width="100%" 
+      height="400" 
+      frameborder="0" 
+      scrolling="no" 
+      marginheight="0" 
+      marginwidth="0"
+      src="https://www.openstreetmap.org/export/embed.html?bbox=73.8236766%2C18.43581%2C73.8316766%2C18.44381&layer=mapnik&marker=18.43981%2C73.8276766"
+      style="border: 1px solid black"
+      allowfullscreen
+    ></iframe>
+  </div>
+
+  <!-- View Larger Map Link -->
+  <div class="mt-2">
+    <small>
+      <a 
+        href="https://www.openstreetmap.org/?mlat=18.43981&mlon=73.8276766#map=17/18.43981/73.8276766" 
+        target="_blank"
+        class="text-blue-600 underline"
+      >
+        View Larger Map
+      </a>
+    </small>
+  </div>
+
+  <!-- Business Address -->
+  <p class="text-gray-700 mt-2">
+    📍 <strong>Gayatri Tours and Travels</strong>, Pune, Maharashtra – 41100X
+  </p>
+
+  <!-- Service Description -->
+  <div class="mt-6">
+    <p class="text-gray-600">
+      We offer reliable and comfortable cab services throughout Pune city, covering all major localities including:
+    </p>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-4">
+      <div class="flex items-center">
+        <div class="w-4 h-4 flex items-center justify-center mr-2">
+          <i class="ri-checkbox-circle-fill text-primary"></i>
+        </div>
+        <span>Katraj</span>
+      </div>
+      <div class="flex items-center">
+        <div class="w-4 h-4 flex items-center justify-center mr-2">
+          <i class="ri-checkbox-circle-fill text-primary"></i>
+        </div>
+        <span>Swargate</span>
+      </div>
+      <div class="flex items-center">
+        <div class="w-4 h-4 flex items-center justify-center mr-2">
+          <i class="ri-checkbox-circle-fill text-primary"></i>
+        </div>
+        <span>Shivaji Nagar</span>
+      </div>
+      <div class="flex items-center">
+        <div class="w-4 h-4 flex items-center justify-center mr-2">
+          <i class="ri-checkbox-circle-fill text-primary"></i>
+        </div>
+        <span>Hadapsar</span>
+      </div>
+      <div class="flex items-center">
+        <div class="w-4 h-4 flex items-center justify-center mr-2">
+          <i class="ri-checkbox-circle-fill text-primary"></i>
+        </div>
+        <span>Kharadi</span>
+      </div>
+      <div class="flex items-center">
+        <div class="w-4 h-4 flex items-center justify-center mr-2">
+          <i class="ri-checkbox-circle-fill text-primary"></i>
+        </div>
+        <span>Pimpri-Chinchwad</span>
+      </div>
+    </div>
+  </div>
 </div>
-<span>Pune to Mumbai</span>
-</div>
-<div class="flex items-center">
-<div class="w-4 h-4 flex items-center justify-center mr-2">
-<i class="ri-checkbox-circle-fill text-primary"></i>
-</div>
-<span>Pune to Lonavala</span>
-</div>
-<div class="flex items-center">
-<div class="w-4 h-4 flex items-center justify-center mr-2">
-<i class="ri-checkbox-circle-fill text-primary"></i>
-</div>
-<span>Pune to Mahabaleshwar</span>
-</div>
-<div class="flex items-center">
-<div class="w-4 h-4 flex items-center justify-center mr-2">
-<i class="ri-checkbox-circle-fill text-primary"></i>
-</div>
-<span>Pune to Shirdi</span>
-</div>
-<div class="flex items-center">
-<div class="w-4 h-4 flex items-center justify-center mr-2">
-<i class="ri-checkbox-circle-fill text-primary"></i>
-</div>
-<span>Pune to Goa</span>
-</div>
-<div class="flex items-center">
-<div class="w-4 h-4 flex items-center justify-center mr-2">
-<i class="ri-checkbox-circle-fill text-primary"></i>
-</div>
-<span>Pune to Aurangabad</span>
-</div>
-</div>
-</div>
-</div>
+
 </div>
 </div>
 </section>
 <!-- Testimonials Section -->
 <section class="py-16 bg-white">
-<div class="container mx-auto px-4">
-<div class="text-center mb-12">
-<h2 class="text-3xl font-bold text-primary mb-4">What Our Customers Say</h2>
-<p class="text-gray-600 max-w-2xl mx-auto">Don't just take our word for it. Here's what our customers have to say about their experience with us.</p>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-<!-- Testimonial 1 -->
-<div class="bg-white p-6 rounded-lg shadow-md">
-<div class="flex items-center mb-4">
-<div class="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center text-primary font-bold mr-4">RK</div>
-<div>
-<h4 class="font-bold">Rajesh Kumar</h4>
-<div class="flex text-secondary">
-<i class="ri-star-fill"></i>
-<i class="ri-star-fill"></i>
-<i class="ri-star-fill"></i>
-<i class="ri-star-fill"></i>
-<i class="ri-star-fill"></i>
-</div>
-</div>
-</div>
-<p class="text-gray-600">"I booked a cab from Pune to Mumbai for a business trip. The driver was punctual, professional, and the car was very clean. The journey was comfortable, and I reached my destination on time. Highly recommended!"</p>
-</div>
-<!-- Testimonial 2 -->
-<div class="bg-white p-6 rounded-lg shadow-md">
-<div class="flex items-center mb-4">
-<div class="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center text-primary font-bold mr-4">AP</div>
-<div>
-<h4 class="font-bold">Ananya Patel</h4>
-<div class="flex text-secondary">
-<i class="ri-star-fill"></i>
-<i class="ri-star-fill"></i>
-<i class="ri-star-fill"></i>
-<i class="ri-star-fill"></i>
-<i class="ri-star-half-fill"></i>
-</div>
-</div>
-</div>
-<p class="text-gray-600">"We booked a weekend package to Mahabaleshwar. The driver was knowledgeable about the route and suggested some great spots to visit. The AC cab was comfortable, and the pricing was transparent with no hidden charges."</p>
-</div>
-<!-- Testimonial 3 -->
-<div class="bg-white p-6 rounded-lg shadow-md">
-<div class="flex items-center mb-4">
-<div class="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center text-primary font-bold mr-4">VS</div>
-<div>
-<h4 class="font-bold">Vikram Singh</h4>
-<div class="flex text-secondary">
-<i class="ri-star-fill"></i>
-<i class="ri-star-fill"></i>
-<i class="ri-star-fill"></i>
-<i class="ri-star-fill"></i>
-<i class="ri-star-fill"></i>
-</div>
-</div>
-</div>
-<p class="text-gray-600">"I've been using Gayatri Tours and Travels for my monthly trips to Shirdi for the past year. Their service is consistent, drivers are courteous, and the booking process is hassle-free. The digital invoice feature is very helpful for my expense tracking."</p>
-</div>
-</div>
-<div class="text-center mt-10">
-<a href="#" class="inline-flex items-center text-primary font-medium hover:underline">
-View All Reviews
-<div class="w-5 h-5 flex items-center justify-center ml-1">
-<i class="ri-arrow-right-line"></i>
-</div>
-</a>
-</div>
-</div>
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-bold text-primary mb-4">What Our Early Customers Say</h2>
+      <p class="text-gray-600 max-w-2xl mx-auto">
+        We're just getting started, and the feedback from our first few customers is already making us proud!
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <!-- Testimonial 1 -->
+      <div class="bg-white p-6 rounded-lg shadow-md">
+        <div class="flex items-center mb-4">
+          <div class="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center text-primary font-bold mr-4">AK</div>
+          <div>
+            <h4 class="font-bold">Amit Kulkarni</h4>
+            <div class="flex text-secondary">
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+            </div>
+          </div>
+        </div>
+        <p class="text-gray-600">"Tried their service for the first time last week. The car arrived on time, the driver was polite, and the vehicle was super clean. A promising new cab option in Pune!"</p>
+      </div>
+
+      <!-- Testimonial 2 -->
+      <div class="bg-white p-6 rounded-lg shadow-md">
+        <div class="flex items-center mb-4">
+          <div class="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center text-primary font-bold mr-4">SM</div>
+          <div>
+            <h4 class="font-bold">Sneha More</h4>
+            <div class="flex text-secondary">
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-half-fill"></i>
+            </div>
+          </div>
+        </div>
+        <p class="text-gray-600">"I booked a ride to the airport. Clean car, courteous driver, and affordable price. Happy to support a new local business!"</p>
+      </div>
+
+      <!-- Testimonial 3 -->
+      <div class="bg-white p-6 rounded-lg shadow-md">
+        <div class="flex items-center mb-4">
+          <div class="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center text-primary font-bold mr-4">RD</div>
+          <div>
+            <h4 class="font-bold">Ravi Deshmukh</h4>
+            <div class="flex text-secondary">
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+            </div>
+          </div>
+        </div>
+        <p class="text-gray-600">"Great experience! Booking was simple, and the service felt premium. I'm looking forward to using them regularly."</p>
+      </div>
+    </div>
+
+    <div class="text-center mt-10">
+      <a href="#" class="inline-flex items-center text-primary font-medium hover:underline">
+        View All Reviews
+        <div class="w-5 h-5 flex items-center justify-center ml-1">
+          <i class="ri-arrow-right-line"></i>
+        </div>
+      </a>
+    </div>
+  </div>
 </section>
+
 
 <!-- FAQ Section -->
 <section class="py-16 bg-white"
@@ -1179,20 +1229,7 @@ id="faq-section">
 </div>
 </div>
 </section>
-<!-- Newsletter Section -->
-<section class="py-16 bg-gray-50">
-<div class="container mx-auto px-4">
-<div class="max-w-3xl mx-auto text-center">
-<h2 class="text-3xl font-bold text-primary mb-4">Subscribe to Our Newsletter</h2>
-<p class="text-gray-600 mb-8">Stay updated with our latest offers, new destinations, and travel tips. Subscribe to our newsletter and get exclusive deals directly in your inbox.</p>
-<form class="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto">
-<input type="email" placeholder="Enter your email address" class="flex-1 px-4 py-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
-<button type="submit" class="bg-primary text-white px-6 py-3 font-medium !rounded-button whitespace-nowrap hover:bg-primary/90 transition-colors">Subscribe</button>
-</form>
-<p class="text-gray-500 text-sm mt-4">By subscribing, you agree to our Privacy Policy and consent to receive updates from our company.</p>
-</div>
-</div>
-</section>
+
 <!-- Footer -->
 <footer class="bg-primary text-white pt-16 pb-8">
 <div class="container mx-auto px-4">
@@ -1217,11 +1254,11 @@ id="faq-section">
 <div class="w-5 h-5 flex items-center justify-center mr-2">
 <i class="ri-mail-line"></i>
 </div>
-<a href="mailto:gayatritoursandtravels@gmail.com" class="text-white/80 hover:text-white">gayatritoursandtravels@gmail.com</a>
+<a href="mailto:gayatritoursandtravels2931@gmail.com" class="text-white/80 hover:text-white">gayatritoursandtravels22931@gmail.com</a>
 </div>
 </div>
 <!-- Quick Links -->
-   <div class="ml-10">
+   <div class="ml-16">
     <h3 class="text-xl font-bold mb-4">Quick Links</h3>
     <ul class="space-y-2">
         <li><a href="{{ url_for('home') }}" class="text-white/80 hover:text-white">Home</a></li>
@@ -1268,22 +1305,65 @@ id="faq-section">
 </div>
 <h3 class="text-xl font-bold mb-4">We Accept</h3>
 <div class="flex flex-wrap gap-3">
-<div class="w-10 h-6 bg-white rounded flex items-center justify-center">
-<i class="ri-visa-fill text-blue-700"></i>
+  <!-- Google Pay -->
+  <!-- Logo Button -->
+<div>
+  <button onclick="togglePopup()" class="w-10 h-10 bg-white rounded shadow flex items-center justify-center">
+    <img src="data:image/jpeg;base64,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" alt="Google Pay" class="h-6">
+  </button>
 </div>
-<div class="w-10 h-6 bg-white rounded flex items-center justify-center">
-<i class="ri-mastercard-fill text-orange-600"></i>
+
+<!-- QR Code Popup -->
+<div id="qrPopup" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
+  <div class="bg-white rounded-lg shadow-lg p-6 relative">
+    <button onclick="togglePopup()" class="absolute top-2 right-2 text-gray-500 hover:text-black text-xl">&times;</button>
+<img src="{{ url_for('static', filename='images/Gpay.jpeg') }}" alt="QR Code" class="w-64 h-64 object-contain">
+    <p class="mt-4 text-center text-sm text-gray-600">Scan to Pay with Google Pay</p>
+  </div>
 </div>
-<div class="w-10 h-6 bg-white rounded flex items-center justify-center">
-<i class="ri-paypal-fill text-blue-600"></i>
+ <script>
+    function togglePopup() {
+      document.getElementById('qrPopup').classList.toggle('hidden');
+    }
+  </script>
+
+
+  <!-- PhonePe -->
+  <div class="w-10 h-10 bg-white rounded shadow flex items-center justify-center">
+    <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5OjcBCgoKDQwNGg8PGjclHyU3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3N//AABEIAHwAggMBIgACEQEDEQH/xAAcAAEAAgMBAQEAAAAAAAAAAAAABgcEBQgDAQL/xABIEAABAwMBBAUEDQgLAAAAAAABAAIDBAURBgchMVESE0FhgRRxdJEiMjZCYoKSobGywcLSFRcjUlWUorMkJTM1Q1NjZHJz0f/EABoBAAIDAQEAAAAAAAAAAAAAAAAEAgMFAQb/xAAmEQACAgIBAwQCAwAAAAAAAAAAAQIDBBESITFBEyJRYQUyFIGR/9oADAMBAAIRAxEAPwC8UREAEREAEWvvN7ttjpuvulXHTsPtQ45c/ua0bz4Kur1tcdl0djtwx2TVh+40/e8FdVj2W/qiUYSl2LVRc+1uvdUVjiXXWSJp95AxrAPMQM/OtY7UF8ccuvd0z6bL+JNr8bPy0WKh/J0qi5yptW6jpTmG91xP+rKZfr5Uhte1S/UpaK6Klr4xxLm9U8/Gbu/hUZfjrV2aYOmXguxFEtPbQ7FensgfK6hqnbhFU4Acfgu4Hzbj3KWpOdcoPUloqaa7hERQOBERABERABERABQLXe0KGyvkt1oDKi4jdI872Qefm7u7O3kW03WTrLALXbJMXGdmXyN/wGHt/wCR7OXHlmluJyd5PElaWHhqa5z7F9de+rPeuraq41T6uvqJKiof7aSQ5Pm7h3DcvBFnWKqo6G701Tc6IVtIx36WnPvhgjgdxxxwdxwtZ9F0QwYkEM1QXCnhkmLPbdWwu6PnxwXmCDwXTFkqLbVWuCezdT5E9uY+paGtHdjsI4EdihG0zRH5QjkvNoh/prBmohYP7do98B+uPnHfhIV56lPjJaKlam9Mp9F8BBGRvBX1aBafCARgjIUz0btAr7C6Olry+stvDoOOZIR8AniPgnwwoaihZXGyPGSONJrTOnbbX0l0ooq2gnbPTyjLHt7f/DzB4LJXP2hdWT6YuPsy99uncPKIRvx8No/WHzjdyxfsE0VRBHPBI2SKRoex7TkOaRkELCycd0y+hScOLPRERLEAiIgAtfqC7Q2OzVVyqN7IGZDc46bjua3xJAWwVV7a7selQWeN27BqZgPFrPv+oK7Hq9WxRJQjylorSvrKi4Vs9bWP6yoneXyO5k8u4cAOwALwRF6JLQ6EUo0doqp1VT1M8NbFTMgeGHpxlxcSM8x3KRfmgrf21T/u7vxKmeTVB8ZS6kXOKemyK6O1XWaXrunFmailI8ops7nfCbyd9PA9mL5s91o71b4q63TCWCQbiOLT2gjsI5KsPzQVv7ap/wB3d+JbzSWh71pi4eUU16p5KeQjr6YwODZB8rc7kfpCQynj2rlGXu/vqU2cJdU+ppNqOivJjLfrTF+hcelWQtHtD2yAcufLjzxWi6lIDgQ4Ag7iD2qtLtskgqbhNPbbmKOmkPSbTupusEfMA9MbuQxuUsXNio8bH28na7VrUipUUv1hoCs0zQMrvLY6ym6YZI5sRjdGTwOMnIzu49o3KILRhZGxcovaLk01tBWtsc1E6SOWwVT8mMGWlJPvc+yZ4E5HnPYFVKzLLcpLPdqO5RZ6VNKHkDi5vBw8WkjxUL6lbW4nJx5LR00i/McjZY2yRuDmPAc0jtBX6XnBIIiIALn7aRVurNa3NxOWxPbCzuDWgEfK6XrXQK5q1K4v1LeHHia+o/mOWj+NXvb+i+hdWzXIiLYGCXaB1mNKuqYqilfUUlQQ4iMgPY4bsjO4gjv7FbWkdUUuqaWoqKOnngbBJ1bhN0ck4zuwTzXO6t7Yj/c9z9KH1As7OohwdmupTbFa2TXUl6g0/Z5rnUxSSxRFoLIsdI9JwaOJA4lQ3871p/Zlx9Uf4lttrHuFr/8Asg/msVEKrDxq7a+Ul5I1wjKO2dHaV1DT6ltjq+lgmhjEpj6M2M5AHInmmqr9Hpu0OuM0D52NkazoMIB3nHao5sb9yUnpkn0NXtte9xkvpEX1kt6Uf5Hp+NkOK56IbrPaHT6isMtsgt00JkexxkkkBADXB3AeZQBEW3VVGqPGPYajFRWkERFYdOg9ndZ5dou1SkklkPUnPH9GSz7qkaheyJxOi4QeDZ5QPlZ+1TRebvWrZL7YlP8AZhERVEQuctZ05pdXXiI8fK3v+Wen95dGqk9sVuNJqllYG4jroA7PN7PYn+HoJ/8AHS1a18oupfu0QVERbQyFbexB7fyZdY8+yFQ1xHcW4H0FVIplssv0Vl1C6CreGUte0ROedwa8H2BPdvcPjBLZcHOlpELFuLLK2owSVGhrk2JvSLOrkI+C2RpcfAAnwVBrqV7WvY5j2hzXDBaRkEKIT7M9LzTulFHLEHHJjjqHhvgM7vMFn4mXCqLjIprsUVpmJsb9yUnpkn0NXtte9xkvpEX1lJ7NaKCyUQo7ZAIIA4u6PSLiSeJJJJKjG173GS+kRfWVUJqeUpLyyKe7NlHIiLeGwiI1r3uDI2l73HDWji4ngEAXxsqgdBoihLxgyPlk8DI7HzYUuWDY6AWuzUNA058mgZFnmQACVnLzVsudkpfLEZPbbCIirOBRHafY3XnTMj6dhdVUR6+IDi4Aeyb8nJxzAUuRTrm4SUl4Op6ezlgHIyOC+qY7StKusF1NXSR/1bVvJjwN0T+JZ5uJHdkdihy9HXZGyKlEdTTW0F8IyMHgvqKZ0l2n9ol9s0LKZz466mYMNZU56TRyDxvx58reP2v1pZhllp2u5uqXOHq6I+lVqiXli0ye3Ei64vwX/s9v1ZqKxyV1wEQl8pcwNhaWtDQG44knt5rB2ve4yX0iL6ywdi9bTvsNVQiRvlMVS6R0ed/QcG4d5sgjwWbtfIGjXgkAmoiA796y+PHLSS8i+tWFHoiLcGgphstsZu+po6mRmaW34neSNxf7wesdL4qilJTT1tVFS0kTpaiZwZHG3i4ldC6O09FpqyRULCHzk9ZUSge3kPHwG4DuCTzL/Tr0u7K7ZcUbxERYQoEREAEREAYt0t9LdaCahr4RLTzNw9p+YjkQd4PYqG1lpCt0vVEvDp7e92IaoD+F/J3zHs7QOg151NPDVQSQVMTJoZB0XxyNDmuHIgpnHyZUv6Jwm4nLqK09UbKsufU6bmAB3mjndu+I/wCx3rVb3O2V9pm6m50c1K/OB1rMB3mdwd4EraqvrtXtY1Gal2MRERXEj7G98UjZInuY9vBzDgjxC9JqmoqABUVE0obvAkkLsebK8kALntY0EuccNaN5J7guaAL1pKaetqY6WkhfNUSnosjYMlxUp09s6vt4c2Soi/J1KeMlS32ZHwY+Prwrc0xpW16agLaCIuneMSVMu+R/dnsHcMBKX5ldfRdWVytUTUbP9Exach8sruhLdJW4c4b2wt/Vb9pUzRFi2WSslykKttvbCIigcCIiACIiACIiAC/E0Uc8bo5o2SRu3Fr2gg+C/aIAjVboHS1YcvtEMR/27nQ/MwgLXO2W6aJyGVjRyFQftU2RXLItXaT/ANJc5fJD4NmelonBz6KaYj/MqZMeoEKQ22y2u1A/k230tMTxdFEGk+c8Ss9FGVtk/wBpNg5N92ERFWRCIiACIiACIiAP/9k=" alt="PhonePe" class="h-6">
+  </div>
+
+ <!-- Paytm Logo -->
+<div onclick="togglePaytmPopup()" class="w-10 h-10 bg-white rounded shadow flex items-center justify-center cursor-pointer">
+  <img src="data:image/png;base64,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" alt="Paytm" class="h-6">
 </div>
-<div class="w-10 h-6 bg-white rounded flex items-center justify-center">
-<i class="ri-google-fill text-red-500"></i>
+
+<!-- Paytm QR Code Popup -->
+<div id="paytmPopup" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
+  <div class="bg-white rounded-lg shadow-lg p-6 relative">
+    <button onclick="togglePaytmPopup()" class="absolute top-2 right-2 text-gray-500 hover:text-black text-xl">&times;</button>
+    <img src="{{ url_for('static', filename='images/PaytmQR.jpeg') }}" alt="Paytm QR Code" class="w-64 h-64 object-contain">
+    <p class="mt-4 text-center text-sm text-gray-600">Scan to Pay with Paytm</p>
+  </div>
 </div>
-<div class="w-10 h-6 bg-white rounded flex items-center justify-center">
-<i class="ri-amazon-pay-fill text-blue-900"></i>
+
+<script>
+  function togglePaytmPopup() {
+    const popup = document.getElementById('paytmPopup');
+    popup.classList.toggle('hidden');
+  }
+</script>
+  <!-- Visa -->
+  <div class="w-10 h-10 bg-white rounded shadow flex items-center justify-center">
+    <i class="ri-visa-fill text-blue-700 text-xl"></i>
+  </div>
+
+  <!-- MasterCard -->
+  <div class="w-10 h-10 bg-white rounded shadow flex items-center justify-center">
+    <i class="ri-mastercard-fill text-orange-600 text-xl"></i>
+  </div>
 </div>
-</div>
+
 </div>
 </div>
 <div class="border-t border-white/20 pt-8">
