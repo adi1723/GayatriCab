@@ -181,105 +181,155 @@ Call for Booking
 <section class="py-8 bg-white">
 <div class="container mx-auto px-4">
 <div class="flex flex-wrap justify-center gap-4 mb-8">
-<input type="radio" name="filter" id="all" value="all" checked>
-<label for="all" class="filter-btn px-5 py-2 rounded-full border border-gray-300 text-gray-700 bg-white hover:bg-gray-100">All Photos</label>
-<input type="radio" name="filter" id="exterior" value="exterior">
-<label for="exterior" class="filter-btn px-5 py-2 rounded-full border border-gray-300 text-gray-700 bg-white hover:bg-gray-100">Exterior Views</label>
-<input type="radio" name="filter" id="interior" value="interior">
-<label for="interior" class="filter-btn px-5 py-2 rounded-full border border-gray-300 text-gray-700 bg-white hover:bg-gray-100">Interior Views</label>
-<input type="radio" name="filter" id="service" value="service">
-<label for="service" class="filter-btn px-5 py-2 rounded-full border border-gray-300 text-gray-700 bg-white hover:bg-gray-100">Service Highlights</label>
+  <input type="radio" name="filter" id="all" value="all" checked>
+  <label for="all" class="filter-btn px-5 py-2 rounded-full border border-gray-300 text-gray-700 bg-white hover:bg-gray-100">All Photos</label>
+
+  <input type="radio" name="filter" id="destinations" value="destinations">
+  <label for="destinations" class="filter-btn px-5 py-2 rounded-full border border-gray-300 text-gray-700 bg-white hover:bg-gray-100">Destinations</label>
+
+  <input type="radio" name="filter" id="hotels" value="hotels">
+  <label for="hotels" class="filter-btn px-5 py-2 rounded-full border border-gray-300 text-gray-700 bg-white hover:bg-gray-100">Hotels & Stays</label>
+
+  <input type="radio" name="filter" id="experience" value="experience">
+  <label for="experience" class="filter-btn px-5 py-2 rounded-full border border-gray-300 text-gray-700 bg-white hover:bg-gray-100">Travel Experience</label>
+
+  <input type="radio" name="filter" id="food" value="food">
+  <label for="food" class="filter-btn px-5 py-2 rounded-full border border-gray-300 text-gray-700 bg-white hover:bg-gray-100">Food & Dining</label>
 </div>
+
 <!-- Gallery Grid -->
 <div id="galleryGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-<!-- Page 1 -->
-<div class="gallery-item relative rounded-lg overflow-hidden shadow-md group" data-category="exterior" data-page="1">
-<img src="https://readdy.ai/api/search-image?query=Professional%20high-end%20luxury%20sedan%20car%20exterior%20view%2C%20pristine%20condition%2C%20metallic%20black%20paint%2C%20polished%20chrome%20details%2C%20modern%20design%2C%20parked%20in%20front%20of%20luxury%20hotel%2C%20soft%20natural%20lighting%2C%20professional%20automotive%20photography%2C%20clean%20background&width=600&height=400&seq=1&orientation=landscape" alt="Luxury Sedan Exterior" class="w-full h-64 object-cover object-top">
-<div class="overlay absolute inset-0 bg-black bg-opacity-60 opacity-0 transition-opacity flex flex-col justify-end p-4">
-<h3 class="text-white font-bold">Premium Sedan</h3>
-<p class="text-gray-200 text-sm mb-3">Luxury travel for up to 4 passengers</p>
-<button class="bg-primary text-white px-4 py-2 rounded-button whitespace-nowrap">Book Now</button>
+<!-- Gallery Item - Devkund Waterfall -->
+<div class="gallery-item relative rounded-lg overflow-hidden shadow-md" data-category="destinations" data-page="1">
+  <img src="https://static-blog.treebo.com/wp-content/uploads/2018/07/A-picture-of-the-Devkund-Waterfall-740x493.jpg" alt="Devkund Waterfall" class="w-full h-64 object-cover object-top">
+
+  <!-- Always visible title -->
+  <div class="absolute bottom-4 left-4 bg-black bg-opacity-60 px-3 py-1 rounded">
+    <h3 class="text-white font-bold text-lg">Devkund Waterfall</h3>
+  </div>
 </div>
+<!-- Gallery Item - Kalu Waterfall -->
+<div class="gallery-item relative rounded-lg overflow-hidden shadow-md" data-category="destinations" data-page="1">
+  <img src="https://i.ytimg.com/vi/_Qp40EQyzgI/maxresdefault.jpg" alt="Kalu Waterfall" class="w-full h-64 object-cover object-top">
+  
+  <!-- Always visible title -->
+  <div class="absolute bottom-4 left-4 bg-black bg-opacity-60 px-3 py-1 rounded">
+    <h3 class="text-white font-bold text-lg">Kalu Waterfall</h3>
+  </div>
 </div>
-<!-- Gallery Item 2 -->
-<div class="gallery-item relative rounded-lg overflow-hidden shadow-md group" data-category="interior" data-page="1">
-<img src="https://readdy.ai/api/search-image?query=Luxury%20car%20interior%20view%2C%20premium%20leather%20seats%2C%20modern%20dashboard%20with%20digital%20display%2C%20elegant%20wood%20trim%20details%2C%20ambient%20lighting%2C%20spotlessly%20clean%2C%20spacious%20cabin%2C%20high-end%20audio%20system%20visible%2C%20professional%20automotive%20interior%20photography%2C%20no%20people&width=600&height=400&seq=2&orientation=landscape" alt="Sedan Interior" class="w-full h-64 object-cover object-top">
-<div class="overlay absolute inset-0 bg-black bg-opacity-60 opacity-0 transition-opacity flex flex-col justify-end p-4">
-<h3 class="text-white font-bold">Premium Interior</h3>
-<p class="text-gray-200 text-sm mb-3">Leather seats with climate control</p>
-<button class="bg-primary text-white px-4 py-2 rounded-button whitespace-nowrap">Book Now</button>
+<!-- Gallery Item - Veg Thali Ganpati Pule -->
+<div class="gallery-item relative rounded-lg overflow-hidden shadow-md" data-category="food" data-page="1">
+  <img src="https://tse2.mm.bing.net/th?id=OIP.ANlNOOu7uGnyrRAgxY48DwHaFj&pid=Api&P=0&h=180" alt="Veg Thali Ganpati Pule" class="w-full h-64 object-cover object-top">
+  <div class="absolute bottom-4 left-4 bg-black bg-opacity-60 px-3 py-1 rounded">
+    <h3 class="text-white font-bold text-lg">Veg Thali Ganpati Pule</h3>
+  </div>
 </div>
+
+
+<!-- Gallery Item - Airport Transfer Service -->
+<div class="gallery-item relative rounded-lg overflow-hidden shadow-md" data-category="destinations" data-page="1">
+  <img src="https://media.assettype.com/thebridgechronicle/2024-12-16/acruy2bg/Pune%20Airport%20New%20Terminal.jpg?w=768&auto=format%2Ccompress&fit=max" alt="Airport Transfer" class="w-full h-64 object-cover object-top">
+  <div class="absolute bottom-4 left-4 bg-black bg-opacity-60 px-3 py-1 rounded">
+    <h3 class="text-white font-bold text-lg">Airport Transfers</h3>
+  </div>
 </div>
-<!-- Gallery Item 3 -->
-<div class="gallery-item relative rounded-lg overflow-hidden shadow-md group" data-category="service" data-page="1">
-<img src="https://readdy.ai/api/search-image?query=Professional%20chauffeur%20in%20formal%20uniform%20standing%20beside%20luxury%20car%2C%20holding%20door%20open%2C%20welcoming%20gesture%2C%20well-groomed%20appearance%2C%20professional%20service%2C%20luxury%20hotel%20entrance%20background%2C%20daytime%2C%20high-quality%20professional%20photography&width=600&height=400&seq=3&orientation=landscape" alt="Chauffeur Service" class="w-full h-64 object-cover object-top">
-<div class="overlay absolute inset-0 bg-black bg-opacity-60 opacity-0 transition-opacity flex flex-col justify-end p-4">
-<h3 class="text-white font-bold">Professional Chauffeurs</h3>
-<p class="text-gray-200 text-sm mb-3">Trained and courteous service</p>
-<button class="bg-primary text-white px-4 py-2 rounded-button whitespace-nowrap">Book Now</button>
+
+<!-- Gallery Item - Revdanda Beach -->
+<div class="gallery-item relative rounded-lg overflow-hidden shadow-md" data-category="destinations" data-page="1">
+  <img src="https://4.bp.blogspot.com/-bIhk2XxsFnU/VYPyYWmxvXI/AAAAAAAACX8/5G2Tmtq5MDc/s1600/Revdanda%2Bfort..jpg" alt="Revdanda Beach" class="w-full h-64 object-cover object-top">
+  
+  <!-- Always visible title -->
+  <div class="absolute bottom-4 left-4 bg-black bg-opacity-60 px-3 py-1 rounded">
+    <h3 class="text-white font-bold text-lg">Revdanda Beach</h3>
+  </div>
 </div>
+
+<!-- Gallery Item - Alibaug Beach -->
+<div class="gallery-item relative rounded-lg overflow-hidden shadow-md" data-category="experience" data-page="1">
+  <img src="https://viacation.com/wp-content/uploads/2024/11/Alibaug-1-1290x878.jpg" alt="Alibaug Beach" class="w-full h-64 object-cover object-top">
+  <div class="absolute bottom-4 left-4 bg-black bg-opacity-60 px-3 py-1 rounded">
+    <h3 class="text-white font-bold text-lg">Alibaug Beach</h3>
+  </div>
 </div>
-<!-- Gallery Item 4 -->
-<div class="gallery-item relative rounded-lg overflow-hidden shadow-md group" data-category="exterior" data-page="1">
-<img src="https://readdy.ai/api/search-image?query=Luxury%20SUV%20exterior%20view%2C%20black%20premium%20SUV%20with%20tinted%20windows%2C%20chrome%20details%2C%20alloy%20wheels%2C%20clean%20and%20polished%2C%20parked%20in%20upscale%20urban%20setting%2C%20professional%20automotive%20photography%2C%20soft%20natural%20lighting%2C%20no%20people&width=600&height=400&seq=4&orientation=landscape" alt="SUV Exterior" class="w-full h-64 object-cover object-top">
-<div class="overlay absolute inset-0 bg-black bg-opacity-60 opacity-0 transition-opacity flex flex-col justify-end p-4">
-<h3 class="text-white font-bold">Executive SUV</h3>
-<p class="text-gray-200 text-sm mb-3">Spacious travel for up to 6 passengers</p>
-<button class="bg-primary text-white px-4 py-2 rounded-button whitespace-nowrap">Book Now</button>
+
+<!-- Gallery Item - Fish Thali -->
+<div class="gallery-item relative rounded-lg overflow-hidden shadow-md" data-category="food" data-page="1">
+  <img src="https://tse3.mm.bing.net/th?id=OIP.28y7-HV3s58frXvUj6o1nQHaED&pid=Api&P=0&h=180" alt="Fish Thali" class="w-full h-64 object-cover object-top">
+  <div class="absolute bottom-4 left-4 bg-black bg-opacity-60 px-3 py-1 rounded">
+    <h3 class="text-white font-bold text-lg">Fish Thali</h3>
+  </div>
 </div>
+
+
+<!-- Gallery Item - Gateway of India -->
+<div class="gallery-item relative rounded-lg overflow-hidden shadow-md" data-category="destinations" data-page="1">
+  <img src="https://tse3.mm.bing.net/th?id=OIP.BU5nwsJOv8j11rLAKuxQWwHaEo&pid=Api&P=0&h=180" alt="Gateway of India" class="w-full h-64 object-cover object-top">
+
+  <!-- Always visible title -->
+  <div class="absolute bottom-4 left-4 bg-black bg-opacity-60 px-3 py-1 rounded">
+    <h3 class="text-white font-bold text-lg">Gateway of India</h3>
+  </div>
 </div>
-<!-- Gallery Item 5 -->
-<div class="gallery-item relative rounded-lg overflow-hidden shadow-md group" data-category="interior" data-page="1">
-<img src="https://readdy.ai/api/search-image?query=Luxury%20SUV%20interior%20view%2C%20spacious%20cabin%20with%20premium%20leather%20seats%2C%20advanced%20entertainment%20system%2C%20elegant%20dashboard%2C%20ambient%20lighting%2C%20immaculate%20condition%2C%20professional%20automotive%20interior%20photography%2C%20no%20people&width=600&height=400&seq=5&orientation=landscape" alt="SUV Interior" class="w-full h-64 object-cover object-top">
-<div class="overlay absolute inset-0 bg-black bg-opacity-60 opacity-0 transition-opacity flex flex-col justify-end p-4">
-<h3 class="text-white font-bold">Spacious Comfort</h3>
-<p class="text-gray-200 text-sm mb-3">Premium entertainment system included</p>
-<button class="bg-primary text-white px-4 py-2 rounded-button whitespace-nowrap">Book Now</button>
+
+<!-- Gallery Item - Marine Drive -->
+<div class="gallery-item relative rounded-lg overflow-hidden shadow-md" data-category="experience" data-page="1">
+  <img src="https://luxurylaunches.com/wp-content/uploads/2015/06/marine-drive-mumbai-india.jpg" alt="Marine Drive Mumbai" class="w-full h-64 object-cover object-top">
+  <div class="absolute bottom-4 left-4 bg-black bg-opacity-60 px-3 py-1 rounded">
+    <h3 class="text-white font-bold text-lg">Marine Drive</h3>
+  </div>
 </div>
+<!-- Gallery Item - Shirdi -->
+<div class="gallery-item relative rounded-lg overflow-hidden shadow-md" data-category="destinations" data-page="2">
+  <img src="https://oneday.travel/wp-content/uploads/one-day-mumbai-to-shirdi-shani-shignapur-tour-by-cab-header.jpg" alt="Shirdi" class="w-full h-64 object-cover object-top">
+
+  <!-- Always visible title -->
+  <div class="absolute bottom-4 left-4 bg-black bg-opacity-60 px-3 py-1 rounded">
+    <h3 class="text-white font-bold text-lg">Shirdi</h3>
+  </div>
 </div>
-<!-- Gallery Item 6 -->
-<div class="gallery-item relative rounded-lg overflow-hidden shadow-md group" data-category="service" data-page="1">
-<img src="https://readdy.ai/api/search-image?query=Business%20travelers%20with%20luggage%20being%20assisted%20by%20professional%20chauffeur%20at%20airport%20arrival%2C%20chauffeur%20holding%20name%20sign%2C%20helping%20with%20luggage%2C%20professional%20service%2C%20airport%20terminal%20background%2C%20natural%20lighting%2C%20professional%20photography&width=600&height=400&seq=6&orientation=landscape" alt="Airport Service" class="w-full h-64 object-cover object-top">
-<div class="overlay absolute inset-0 bg-black bg-opacity-60 opacity-0 transition-opacity flex flex-col justify-end p-4">
-<h3 class="text-white font-bold">Airport Transfers</h3>
-<p class="text-gray-200 text-sm mb-3">Meet & greet with flight tracking</p>
-<button class="bg-primary text-white px-4 py-2 rounded-button whitespace-nowrap">Book Now</button>
+<!-- Gallery Item - Matheran -->
+<div class="gallery-item relative rounded-lg overflow-hidden shadow-md" data-category="destinations" data-page="2">
+  <img src="https://tse3.mm.bing.net/th?id=OIP.rAm89UI8CgnDhIjc0OZk7AHaFj&pid=Api&P=0&h=180" alt="Matheran" class="w-full h-64 object-cover object-top">
+
+  <!-- Always visible title -->
+  <div class="absolute bottom-4 left-4 bg-black bg-opacity-60 px-3 py-1 rounded">
+    <h3 class="text-white font-bold text-lg">Matheran</h3>
+  </div>
 </div>
+<!-- Gallery Item - Matheran Mini Train -->
+<div class="gallery-item relative rounded-lg overflow-hidden shadow-md" data-category="experience" data-page="2">
+  <img src="https://www.inditales.com/wp-content/uploads/2022/05/matheran-hill-railways.jpg" alt="Matheran Mini Train" class="w-full h-64 object-cover object-top">
+
+  <!-- Always visible title -->
+  <div class="absolute bottom-4 left-4 bg-black bg-opacity-60 px-3 py-1 rounded">
+    <h3 class="text-white font-bold text-lg">Matheran Toy Train</h3>
+  </div>
 </div>
-<!-- Gallery Item 7 -->
-<div class="gallery-item relative rounded-lg overflow-hidden shadow-md group" data-category="exterior" data-page="1">
-<img src="https://readdy.ai/api/search-image?query=Luxury%20minivan%20exterior%20view%2C%20sleek%20black%20premium%20minivan%20with%20tinted%20windows%2C%20chrome%20accents%2C%20alloy%20wheels%2C%20spotlessly%20clean%2C%20parked%20in%20front%20of%20luxury%20hotel%20entrance%2C%20professional%20automotive%20photography%2C%20soft%20natural%20lighting&width=600&height=400&seq=7&orientation=landscape" alt="Minivan Exterior" class="w-full h-64 object-cover object-top">
-<div class="overlay absolute inset-0 bg-black bg-opacity-60 opacity-0 transition-opacity flex flex-col justify-end p-4">
-<h3 class="text-white font-bold">Premium Minivan</h3>
-<p class="text-gray-200 text-sm mb-3">Group travel for up to 8 passengers</p>
-<button class="bg-primary text-white px-4 py-2 rounded-button whitespace-nowrap">Book Now</button>
+<!-- Gallery Item - Lonavala-Khandala -->
+<div class="gallery-item relative rounded-lg overflow-hidden shadow-md" data-category="destinations" data-page="2">
+  <img src="https://hblimg.mmtcdn.com/content/hubble/img/lonavala-khandala/mmt/activities/t_ufs/m_activities-lonavala-khandala-kune-waterfalls_l_400_640.jpg" alt="Lonavala-Khandala" class="w-full h-64 object-cover object-top">
+
+  <!-- Always visible title -->
+  <div class="absolute bottom-4 left-4 bg-black bg-opacity-60 px-3 py-1 rounded">
+    <h3 class="text-white font-bold text-lg">Lonavala-Khandala</h3>
+  </div>
 </div>
+<!-- Gallery Item - Lonavala-Khandala -->
+<div class="gallery-item relative rounded-lg overflow-hidden shadow-md" data-category="experience" data-page="2">
+  <img src="https://cdn1.tripoto.com/media/filter/nl/img/2380291/Image/1697624301_bhushi_dam_lonavala.png" alt="Lonavala-Khandala" class="w-full h-64 object-cover object-top">
+
+  <!-- Always visible title -->
+  <div class="absolute bottom-4 left-4 bg-black bg-opacity-60 px-3 py-1 rounded">
+    <h3 class="text-white font-bold text-lg">Bhushi Dam</h3>
+  </div>
 </div>
-<!-- Gallery Item 8 -->
-<div class="gallery-item relative rounded-lg overflow-hidden shadow-md group" data-category="interior" data-page="1">
-<img src="https://readdy.ai/api/search-image?query=Luxury%20minivan%20interior%20view%2C%20spacious%20cabin%20with%20multiple%20rows%20of%20premium%20leather%20seats%2C%20advanced%20entertainment%20system%2C%20elegant%20trim%20details%2C%20ambient%20lighting%2C%20immaculate%20condition%2C%20professional%20automotive%20interior%20photography%2C%20no%20people&width=600&height=400&seq=8&orientation=landscape" alt="Minivan Interior" class="w-full h-64 object-cover object-top">
-<div class="overlay absolute inset-0 bg-black bg-opacity-60 opacity-0 transition-opacity flex flex-col justify-end p-4">
-<h3 class="text-white font-bold">Group Comfort</h3>
-<p class="text-gray-200 text-sm mb-3">Ample luggage space for all passengers</p>
-<button class="bg-primary text-white px-4 py-2 rounded-button whitespace-nowrap">Book Now</button>
-</div>
-</div>
-<!-- Gallery Item 9 -->
-<div class="gallery-item relative rounded-lg overflow-hidden shadow-md group" data-category="service" data-page="1">
-<img src="https://readdy.ai/api/search-image?query=Corporate%20event%20transportation%20service%2C%20row%20of%20luxury%20black%20cars%20parked%20outside%20convention%20center%2C%20professional%20chauffeurs%20in%20uniform%20standing%20by%20vehicles%2C%20elegant%20setting%2C%20professional%20service%20photography%2C%20daytime%2C%20clear%20weather&width=600&height=400&seq=9&orientation=landscape" alt="Corporate Service" class="w-full h-64 object-cover object-top">
-<div class="overlay absolute inset-0 bg-black bg-opacity-60 opacity-0 transition-opacity flex flex-col justify-end p-4">
-<h3 class="text-white font-bold">Corporate Events</h3>
-<p class="text-gray-200 text-sm mb-3">Fleet service for business functions</p>
-<button class="bg-primary text-white px-4 py-2 rounded-button whitespace-nowrap">Book Now</button>
-</div>
-</div>
+
 </div>
 <!-- Pagination Controls -->
 <div class="flex justify-center items-center space-x-2 mt-8">
   <button class="pagination-btn w-10 h-10 flex items-center justify-center rounded-full border border-gray-300 text-gray-700 hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed" data-page="1">1</button>
   <button class="pagination-btn w-10 h-10 flex items-center justify-center rounded-full border border-gray-300 text-gray-700 hover:bg-gray-100" data-page="2">2</button>
   <button class="pagination-btn w-10 h-10 flex items-center justify-center rounded-full border border-gray-300 text-gray-700 hover:bg-gray-100" data-page="3">3</button>
-</div>
 </div>
 </section>
 <!-- Booking CTA Section -->
