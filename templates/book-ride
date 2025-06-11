@@ -1,0 +1,538 @@
+<main class="container mx-auto px-4 py-16">
+      <section
+        class="max-w-5xl mx-auto bg-white/10 backdrop-blur-md rounded-xl shadow-2xl overflow-hidden"
+      >
+        <div class="p-8">
+          <h1 class="text-4xl font-bold text-white mb-2">Book Your Ride</h1>
+          <p class="text-blue-100 mb-8">
+            Fast, reliable transportation at your fingertips
+          </p>
+
+          <div class="bg-secondary/50 p-1 rounded-full inline-flex mb-8">
+            <button
+              id="oneWayBtn"
+              class="booking-toggle-btn active px-6 py-3 rounded-full text-white whitespace-nowrap"
+            >
+              One Way
+            </button>
+            <button
+              id="roundTripBtn"
+              class="booking-toggle-btn px-6 py-3 rounded-full text-white whitespace-nowrap"
+            >
+              Round Trip
+            </button>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <div class="relative">
+              <div
+                class="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none"
+              >
+                <div
+                  class="w-6 h-6 flex items-center justify-center text-[#2C74B3]"
+                >
+                  <i class="ri-map-pin-line ri-lg"></i>
+                </div>
+              </div>
+              <input
+                type="text"
+                id="pickupLocation"
+                class="input-field w-full bg-white/90 border border-[#144272]/30 rounded-lg pl-12 pr-4 py-4 text-primary placeholder-[#144272]/60 outline-none transition"
+                placeholder="Pickup Location"
+              />
+            </div>
+
+            <div class="relative">
+              <div
+                class="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none"
+              >
+                <div
+                  class="w-6 h-6 flex items-center justify-center text-[#2C74B3]"
+                >
+                  <i class="ri-map-pin-line ri-lg"></i>
+                </div>
+              </div>
+              <input
+                type="text"
+                id="dropoffLocation"
+                class="input-field w-full bg-white/90 border border-[#144272]/30 rounded-lg pl-12 pr-4 py-4 text-primary placeholder-[#144272]/60 outline-none transition"
+                placeholder="Dropoff Location"
+              />
+            </div>
+          </div>
+
+          <div class="flex justify-center -mt-3 mb-3">
+            <button
+              id="swapLocations"
+              class="swap-button bg-[#2C74B3] w-10 h-10 rounded-full flex items-center justify-center shadow-lg hover:bg-[#2980b9] transition"
+            >
+              <div class="w-6 h-6 flex items-center justify-center text-white">
+                <i class="ri-arrow-up-down-line ri-lg"></i>
+              </div>
+            </button>
+          </div>
+
+          <div
+            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8"
+            id="dateSelectionContainer"
+          >
+            <div class="relative">
+              <div
+                class="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none"
+              >
+                <div
+                  class="w-6 h-6 flex items-center justify-center text-[#2C74B3]"
+                >
+                  <i class="ri-calendar-line ri-lg"></i>
+                </div>
+              </div>
+              <input
+                type="date"
+                id="pickupDate"
+                class="date-input w-full bg-white/90 border border-[#144272]/30 rounded-lg pl-12 pr-4 py-4 text-primary outline-none transition"
+              />
+            </div>
+
+            <div class="relative">
+              <div
+                class="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none"
+              >
+                <div
+                  class="w-6 h-6 flex items-center justify-center text-[#2C74B3]"
+                >
+                  <i class="ri-time-line ri-lg"></i>
+                </div>
+              </div>
+              <input
+                type="time"
+                id="pickupTime"
+                class="date-input w-full bg-white/90 border border-[#144272]/30 rounded-lg pl-12 pr-4 py-4 text-primary outline-none transition"
+              />
+            </div>
+
+            <div class="relative hidden" id="returnDateContainer">
+              <div
+                class="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none"
+              >
+                <div
+                  class="w-6 h-6 flex items-center justify-center text-[#2C74B3]"
+                >
+                  <i class="ri-calendar-line ri-lg"></i>
+                </div>
+              </div>
+              <input
+                type="date"
+                id="returnDate"
+                class="date-input w-full bg-white/90 border border-[#144272]/30 rounded-lg pl-12 pr-4 py-4 text-primary outline-none transition"
+              />
+            </div>
+          </div>
+
+          <div class="flex justify-center">
+            <button
+              class="search-btn bg-[#2C74B3] text-white px-12 py-4 !rounded-button text-lg font-semibold transition whitespace-nowrap shadow-lg"
+            >
+              Search Rides
+            </button>
+          </div>
+        </div>
+
+        <div class="bg-[#0A2647] p-8">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="flex items-start">
+              <div
+                class="w-12 h-12 flex items-center justify-center bg-[#2C74B3] rounded-full mr-4"
+              >
+                <i class="ri-shield-check-line ri-lg text-white"></i>
+              </div>
+              <div>
+                <h3 class="text-white font-semibold mb-2">Safe & Secure</h3>
+                <p class="text-blue-100 text-sm">
+                  All our drivers are verified and vehicles regularly inspected
+                  for your safety.
+                </p>
+              </div>
+            </div>
+
+            <div class="flex items-start">
+              <div
+                class="w-12 h-12 flex items-center justify-center bg-[#2C74B3] rounded-full mr-4"
+              >
+                <i class="ri-time-line ri-lg text-white"></i>
+              </div>
+              <div>
+                <h3 class="text-white font-semibold mb-2">On-Time Service</h3>
+                <p class="text-blue-100 text-sm">
+                  We pride ourselves on punctuality with real-time tracking and
+                  notifications.
+                </p>
+              </div>
+            </div>
+
+            <div class="flex items-start">
+              <div
+                class="w-12 h-12 flex items-center justify-center bg-[#2C74B3] rounded-full mr-4"
+              >
+                <i class="ri-money-dollar-circle-line ri-lg text-white"></i>
+              </div>
+              <div>
+                <h3 class="text-white font-semibold mb-2">
+                  Best Price Guarantee
+                </h3>
+                <p class="text-blue-100 text-sm">
+                  Competitive pricing with no hidden fees. Get the best value
+                  for your journey.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+
+
+      <section 
+  id="book-ride"
+  x-data="bookRide()"
+  class="py-16 bg-white"
+>
+  <div class="container mx-auto px-4">
+    <div class="max-w-5xl mx-auto bg-white shadow-xl rounded-lg -mt-24 relative z-10 p-6 md:p-8">
+      <h2 class="text-2xl font-bold text-primary mb-6">Book Your Ride</h2>
+      <form class="grid grid-cols-1 md:grid-cols-2 gap-6" @submit.prevent>
+        <div>
+          <input 
+            list="pickup-list"
+            type="text"
+            id="pickup"
+            name="pickup"
+            placeholder="Enter pickup location"
+            class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded"
+            x-model="pickup"
+            @input.debounce.500ms="fetchSuggestions('pickup')"
+          />
+          <datalist id="pickup-list" 
+            x-html="pickupSuggestions.map(p => `<option value='${p}'></option>`).join('')">
+          </datalist>
+        </div>
+
+        <div>
+          <input 
+            list="destination-list"
+            type="text"
+            id="destination"
+            name="destination"
+            placeholder="Enter destination"
+            class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded"
+            x-model="destination"
+            @input.debounce.500ms="fetchSuggestions('destination')"
+          />
+          <datalist id="destination-list" 
+            x-html="destinationSuggestions.map(d => `<option value='${d}'></option>`).join('')">
+          </datalist>
+        </div>
+<!-- Include Flatpickr CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
+<div>
+  <label class="block text-gray-700 mb-2">Date</label>
+  <input
+    type="text"
+    id="date"
+    class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded"
+   placeholder="Select Date"
+  />
+</div>
+
+<!-- Include Flatpickr CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<!-- Include Flatpickr JS -->
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+<script>
+  flatpickr("#date", {
+    dateFormat: "Y-m-d",
+    minDate: "today", // disable past dates
+    enable: [
+      function(date) {
+        // enable only Saturdays (6) and Sundays (0)
+        return (date.getDay() === 6 || date.getDay() === 0);
+      }
+    ],
+    "locale": {
+      "firstDayOfWeek": 1 // optional: start week on Monday
+    }
+  });
+</script>
+
+
+
+
+        <div>
+          <label class="block text-gray-700 mb-2">Time</label>
+          <input type="time" name="time" x-model="time" class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded" />
+        </div>
+
+        <div>
+          <label class="block text-gray-700 mb-2">Cab Type</label>
+          <div class="grid grid-cols-2 gap-4">
+            <label class="flex items-center space-x-2">
+              <input type="radio" name="cab_type" value="AC" x-model="cabType" checked />
+              <span>AC Cab (₹25/km)</span>
+            </label>
+            <label class="flex items-center space-x-2">
+              <input type="radio" name="cab_type" value="Non-AC" x-model="cabType" />
+              <span>Non-AC Cab (₹21/km)</span>
+            </label>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-gray-700 mb-2">Number of Passengers</label>
+          <input type="number" name="passengers" x-model="passengers" min="1" max="4" class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded" />
+        </div>
+
+        <div class="md:col-span-2">
+          <button 
+            type="button"
+            @click="calculateFare()"
+            class="w-full bg-primary text-white py-3 font-medium rounded hover:bg-primary/90 transition-colors"
+          >
+            Search Available Cabs
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Popup Overlay -->
+  <div 
+    x-show="popupVisible"
+    class="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-30"
+    style="display: none;"
+  >
+    <!-- Booking Available Message -->
+   <div 
+  x-show="showMessage" 
+  class="bg-blue-900 text-white px-6 py-4 rounded shadow-lg max-w-md w-full text-center" 
+  style="display: none;"
+>
+  <div class="text-lg font-semibold mb-4">Booking Available</div>
+
+  <div id="fare-output" class="mb-4 text-sm space-y-1" x-show="fare">
+  <p>Estimated Distance: <strong x-text="distance ? distance.toFixed(2) + ' km' : '-'"></strong></p>
+  <p>Estimated Fare: <strong x-text="fare ? '₹' + fare : '-'"></strong></p>
+  <p>Discount Applied: <strong x-text="discountPercent + '%'"></strong></p>
+</div>
+
+
+
+  <div class="flex justify-center gap-4">
+    <button
+      @click="showMessage = false; showForm = true"
+      class="bg-white text-blue-900 px-4 py-2 rounded hover:bg-gray-200"
+    >
+      Fill Details
+    </button>
+    <button
+  @click="window.location.href='/cancel'"
+      class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700"
+    >
+      Cancel
+    </button>
+  </div>
+  <p class="mt-4 bg-blue-800 text-white text-sm px-4 py-3 rounded-md shadow-sm">
+  💡 <strong>Note:</strong> The fare shown is an estimate. Final pricing will be recalculated based on the actual distance between your pickup and drop-off locations.
+</p>
+
+</div>
+
+
+    <!-- Booking Form Modal -->
+    <div
+      x-show="showForm"
+      class="bg-white rounded-lg p-6 w-full max-w-md shadow-lg"
+      style="display: none;"
+    >
+      <h2 class="text-xl font-bold mb-4 text-center text-blue-900">Confirm Booking</h2>
+      <form method="POST" action="/book">
+        <input type="text" name="name" placeholder="Your Name" required class="w-full border p-2 mb-3 rounded" />
+        <input type="text" name="mobile" placeholder="Mobile Number" required class="w-full border p-2 mb-3 rounded" />
+        <input type="text" name="pickupaddress" placeholder="Pickup Address" required class="w-full border p-2 mb-3 rounded" />
+        <input type="text" name="dropaddress" placeholder="Drop Address"  required class="w-full border p-2 mb-3 rounded" />
+        <input type="date" name="date" x-model="date" hidden />
+        <input type="time" name="time" x-model="time" hidden />
+        <input type="number" name="passengers" x-model="passengers" hidden />
+        <input type="text" name="cab_type" x-model="cabType" hidden />
+
+
+        <button type="submit" class="w-full bg-blue-900 text-white py-2 rounded mb-2">Book Ride</button>
+        <button type="button" @click="showForm = false; showMessage = true" class="w-full text-sm text-red-500 underline">Cancel</button>
+      </form>
+    </div>
+  </div>
+
+<!-- Popup message on booking success/fail -->
+{% if status == 'success' or status == 'fail' %}
+  <div id="popup" style="
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 300px;
+    padding: 15px;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    z-index: 9999;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    background-color: {% if status == 'success' %}#28a745{% else %}#dc3545{% endif %};">
+    {% if status == 'success' %}
+      Booking successful! We will contact you shortly.
+    {% else %}
+      Sorry, booking failed. Please try again later.
+    {% endif %}
+  </div>
+
+  <script>
+    setTimeout(() => {
+      const popup = document.getElementById('popup');
+      if (popup) {
+        popup.style.display = 'none';
+      }
+    }, 3000);
+  </script>
+{% endif %}
+
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+<script>
+  // Haversine formula to calculate distance in km
+  function getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
+    const R = 6371; // Radius of the earth in km
+    const dLat = (lat2 - lat1) * Math.PI / 180;
+    const dLon = (lon2 - lon1) * Math.PI / 180;
+    const a = 
+      Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+      Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+      Math.sin(dLon / 2) * Math.sin(dLon / 2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    return R * c; // Distance in km
+  }
+
+  document.addEventListener('alpine:init', () => {
+    Alpine.data('bookRide', () => ({
+      popupVisible: false,
+      showMessage: true,
+      showForm: false,
+
+      pickup: '',
+      destination: '',
+      pickupSuggestions: [],
+      destinationSuggestions: [],
+
+      date: '',
+      time: '',
+      passengers: 1,
+      cabType: 'AC',
+      fare: null,
+      distance: null,
+      discountPercent: 0,  // For display only
+
+      async fetchSuggestions(type) {
+        const query = this[type];
+        if (query.length < 3) {
+          if (type === 'pickup') this.pickupSuggestions = [];
+          else this.destinationSuggestions = [];
+          return;
+        }
+
+        try {
+          const url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(query)}&limit=5`;
+          const response = await fetch(url, {
+            headers: { 'User-Agent': 'GayatriCab/1.0 (admin@gayatricab.com)' }
+          });
+          const data = await response.json();
+          const suggestions = data.map(item => item.display_name);
+          if (type === 'pickup') {
+            this.pickupSuggestions = suggestions;
+          } else {
+            this.destinationSuggestions = suggestions;
+          }
+        } catch (error) {
+          console.error(`Error fetching ${type} suggestions:`, error);
+        }
+      },
+
+      async calculateFare() {
+        if (!this.pickup || !this.destination) {
+          alert('Please enter both pickup and destination locations');
+          return;
+        }
+
+        const getCoords = async (place) => {
+          const url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(place)}&limit=1`;
+          const response = await fetch(url, {
+            headers: { 'User-Agent': 'GayatriCab/1.0 (admin@gayatricab.com)' }
+          });
+          const data = await response.json();
+          if (data.length === 0) throw new Error(`Location not found: ${place}`);
+          return { lat: parseFloat(data[0].lat), lon: parseFloat(data[0].lon) };
+        };
+
+        try {
+          const pickupCoords = await getCoords(this.pickup);
+          const destinationCoords = await getCoords(this.destination);
+
+          this.distance = getDistanceFromLatLonInKm(
+            pickupCoords.lat, pickupCoords.lon,
+            destinationCoords.lat, destinationCoords.lon
+          );
+
+          // === Show discount percent for display only ===
+          if (this.distance <= 50) {
+            this.discountPercent = 10;
+          } else if (this.distance <= 200) {
+            this.discountPercent = 13;
+          } else {
+            this.discountPercent = 16;
+          }
+
+          // === Existing fare calculation logic ===
+          const rates = { 'AC': 25, 'Non-AC': 21 };
+          let baseFare = 0;
+          let remainingDistance = this.distance;
+
+          // Slab 1: 0-50 km @ 10% discount
+          const slab1 = Math.min(remainingDistance, 50);
+          baseFare += slab1 * rates[this.cabType] * 0.90;
+          remainingDistance -= slab1;
+
+          // Slab 2: 51-200 km @ 13% discount
+          if (remainingDistance > 0) {
+            const slab2 = Math.min(remainingDistance, 150);
+            baseFare += slab2 * rates[this.cabType] * 0.87;
+            remainingDistance -= slab2;
+          }
+
+          // Slab 3: >200 km @ 16% discount
+          if (remainingDistance > 0) {
+            baseFare += remainingDistance * rates[this.cabType] * 0.84;
+          }
+
+          this.fare = baseFare.toFixed(2);
+          this.popupVisible = true;
+          this.showMessage = true;
+          this.showForm = false;
+
+        } catch (error) {
+          alert(error.message);
+          this.fare = null;
+          this.distance = null;
+          this.discountPercent = 0;
+        }
+      }
+    }));
+  });
+</script>

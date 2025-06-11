@@ -146,6 +146,10 @@ def Details_Lavasa():
 def Details_Lonavala():
     return render_template('Details_Lonavala-Khandala.html')
 
+@app.route('/review', methods=['GET'])
+def review():
+    return render_template('review.html')
+
 # Location search for autocomplete
 @app.route('/search_location')
 def search_location():
