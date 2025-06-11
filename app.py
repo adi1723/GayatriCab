@@ -25,46 +25,52 @@ def home():
 
 @app.route('/book', methods=['POST'])
 def book():
-    name = request.form.get('name')
-    mobile = request.form.get('mobile')
-    pickup = request.form.get('pickupaddress')
-    drop = request.form.get('dropaddress')
-    date = request.form.get('date')
-    time = request.form.get('time')
-    passengers = request.form.get('passengers')
-    cab_type = request.form.get('cab_type')
-    package = request.form.get('package')  # New field from modal form
-
-    subject = 'New Cab Booking Confirmation'
-    body = f"""
-Subject: 🚖 New Booking Received - Gayatri Tours and Travels
-
-Hello Admin,
-
-A new booking has been received via the Gayatri Tours and Travels website. Below are the customer details:
-
-Name: {name}
-Mobile: {mobile}
-Pickup Address: {pickup}
-Drop Address: {drop}
-Date: {date}
-Time: {time}
-Number of Passengers: {passengers}
-Cab Type: {cab_type}
-Package: {package}
-
-Please review the booking and contact the customer at your earliest convenience to confirm the ride.
-
-Regards,
-Gayatri Tours and Travels System
-"""
-
     try:
+        name = request.form.get('name')
+        mobile = request.form.get('mobile')
+        pickup = request.form.get('pickupaddress')
+        drop = request.form.get('dropaddress')
+        date = request.form.get('date')
+        time = request.form.get('time')
+        passengers = request.form.get('passengers')
+        cab_type = request.form.get('cab_type')
+        package = request.form.get('package')
+
+        if not all([name, mobile, pickup, drop, date, time, passengers, cab_type]):
+            flash("Please fill all required fields.")
+            return redirect('/?status=fail')
+
+        subject = 'New Cab Booking Confirmation'
+        body = f"""
+        Subject: 🚖 New Booking Received - Gayatri Tours and Travels
+
+        Hello Admin,
+
+        A new booking has been received via the Gayatri Tours and Travels website. Below are the customer details:
+
+        Name: {name}
+        Mobile: {mobile}
+        Pickup Address: {pickup}
+        Drop Address: {drop}
+        Date: {date}
+        Time: {time}
+        Number of Passengers: {passengers}
+        Cab Type: {cab_type}
+        Package: {package}
+
+        Please review the booking and contact the customer at your earliest convenience to confirm the ride.
+
+        Regards,
+        Gayatri Tours and Travels System
+        """
+
         send_email(subject, body, ADMIN_EMAIL)
         return redirect('/?status=success')
     except Exception as e:
-        print(f"Failed to send email: {e}")
+        print(f"Booking failed: {e}")
+        flash("Booking failed due to an internal error.")
         return redirect('/?status=fail')
+
 
 def send_email(subject, body, recipient):
     msg = MIMEMultipart()
