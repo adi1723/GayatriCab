@@ -15,8 +15,6 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet">
 
-
-
 <style>
 :where([class^="ri-"])::before { content: "\f3c2"; }
 body {
@@ -245,25 +243,25 @@ cursor: pointer;
 </div>
 </header>
 <!-- Hero Section -->
-<section class="hero-section min-h-[600px] flex items-center pt-20">
-<div class="container mx-auto px-4 py-16 text-white">
-<div class="max-w-3xl text-white">
-  <h1 class="text-4xl md:text-5xl font-bold mb-4">
-    Introducing Our All-New Cab Services — Now in Pune!
-  </h1>
-  <p class="text-xl mb-6 text-white/90">
-    Say hello to comfort, safety, and reliability with Gayatri Tours and Travels — now launching premium cab services in Pune and soon across Maharashtra.
-  </p>
-  <p class="text-lg mb-8 text-white/70 italic">
-    Be among the first to ride with us. Trusted travel — now on wheels!
-  </p>
-  <div class="flex flex-wrap gap-4">
-    <a href="#book-ride" class="bg-white text-primary px-6 py-3 font-semibold !rounded-button whitespace-nowrap hover:bg-gray-100 transition-all shadow-md">Book a Ride</a>
-    <a href="{{ url_for('packages') }}" class="bg-transparent border-2 border-white text-white px-6 py-3 font-semibold !rounded-button whitespace-nowrap hover:bg-white/10 transition-all">View Packages</a>
+<section class="hero-section min-h-[600px] flex items-center pt-20 bg-cover bg-center bg-[url('/static/images/auracar.png')]">
+<div class="container mx-auto px-4 py-0 text-white"> <!-- changed py-16 to py-0 -->
+  <div class="max-w-3xl text-white">
+    <h1 class="text-4xl md:text-5xl font-bold mb-4 mt-0"> <!-- added mt-0 -->
+      Introducing Our All-New Cab Services — Now in Pune!
+    </h1>
+    <p class="text-xl mb-6 text-white/90">
+      Say hello to comfort, safety, and reliability with Gayatri Tours and Travels — now launching premium cab services in Pune and soon across Maharashtra.
+    </p>
+    <p class="text-lg mb-8 text-white/70 italic">
+      Be among the first to ride with us. Trusted travel — now on wheels!
+    </p>
+    <div class="flex flex-wrap gap-4">
+      <a href="#book-ride" class="bg-white text-primary px-6 py-3 font-semibold !rounded-button whitespace-nowrap hover:bg-gray-100 transition-all shadow-md">Book a Ride</a>
+      <a href="{{ url_for('packages') }}" class="bg-transparent border-2 border-white text-white px-6 py-3 font-semibold !rounded-button whitespace-nowrap hover:bg-white/10 transition-all">View Packages</a>
+    </div>
   </div>
 </div>
 
-</div>
 </section>
 <!-- Booking Section with Alpine.js -->
 <!-- Booking Section with Alpine.js -->
@@ -1311,7 +1309,7 @@ id="faq-section">
 <div class="w-5 h-5 flex items-center justify-center mr-2">
 <i class="ri-mail-line"></i>
 </div>
-<a href="mailto:gayatritoursandtravels2931@gmail.com" class="text-white/80 hover:text-white">gayatritoursandtravels22931@gmail.com</a>
+<a href="mailto:gayatritoursandtravels2931@gmail.com" class="text-white/80 hover:text-white">gayatritoursandtravels2931@gmail.com</a>
 </div>
 </div>
 <!-- Quick Links -->
@@ -1325,8 +1323,6 @@ id="faq-section">
         <li><a href="{{ url_for('Gallery') }}" class="text-white/80 hover:text-white">Gallery</a></li>  
         <li><a href="{{ url_for('contact') }}" class="text-white/80 hover:text-white">Contact Us</a></li>
         <li><a href="{{ url_for('faq') }}" class="text-white/80 hover:text-white">FAQs</a></li>
-        <li><a href="{{ url_for('terms_and_conditions') }}" class="text-white/80 hover:text-white">Terms & Conditions</a></li>
-        <li><a href="{{ url_for('privacy_policy') }}" class="text-white/80 hover:text-white">Privacy Policy</a></li>
     </ul>
 </div>
 <!-- Popular Destinations -->
