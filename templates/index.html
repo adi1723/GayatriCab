@@ -262,283 +262,317 @@ cursor: pointer;
 
 
 </section>
-<!-- Booking Section with Alpine.js -->
-<!-- Booking Section with Alpine.js -->
-<section 
-  id="book-ride"
-  x-data="bookRide()"
-  class="py-16 bg-white"
->
-<main class="container mx-auto px-4 py-16">
-      <section
-        class="max-w-5xl mx-auto bg-white/10 backdrop-blur-md rounded-xl shadow-2xl overflow-hidden"
-      >
-        <div class="p-8">
-          <h1 class="text-4xl font-bold text-white mb-2">Book Your Ride</h1>
-          <p class="text-blue-100 mb-8">
-            Fast, reliable transportation at your fingertips
-          </p>
+<!-- Booking Form -->
+<!-- Booking Form - Compressed -->
+ <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
 
-          <div class="bg-secondary/50 p-1 rounded-full inline-flex mb-8">
-            <button
-              id="oneWayBtn"
-              class="booking-toggle-btn active px-6 py-3 rounded-full text-white whitespace-nowrap"
-            >
-              One Way
-            </button>
-            <button
-              id="roundTripBtn"
-              class="booking-toggle-btn px-6 py-3 rounded-full text-white whitespace-nowrap"
-            >
-              Round Trip
-            </button>
-          </div>
+<section class="py-12 bg-white">
+  <div class="mx-auto px-4" style="max-width: 70%;">
+    <div class="max-w-3xl mx-auto bg-white shadow-xl rounded-2xl -mt-24 relative z-10 p-6 md:p-10">
+      <h2 class="text-xl font-semibold text-primary mb-4">Book Your Ride</h2>
 
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-            <div class="relative">
-              <div
-                class="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none"
-              >
-                <div
-                  class="w-6 h-6 flex items-center justify-center text-[#2C74B3]"
-                >
-                  <i class="ri-map-pin-line ri-lg"></i>
-                </div>
-              </div>
-              <input
-                type="text"
-                id="pickupLocation"
-                class="input-field w-full bg-white/90 border border-[#144272]/30 rounded-lg pl-12 pr-4 py-4 text-primary placeholder-[#144272]/60 outline-none transition"
-                placeholder="Pickup Location"
-              />
+      <!-- One Way / Round Trip Toggle -->
+      <div class="bg-gray-100 p-1 rounded-full inline-flex mb-4 text-sm">
+        <button type="button" id="oneWayBtn" class="booking-toggle-btn active px-4 py-1.5 rounded-full text-primary font-medium">
+          One Way
+        </button>
+        <button type="button" id="roundTripBtn" class="booking-toggle-btn px-4 py-1.5 rounded-full text-primary font-medium">
+          Round Trip
+        </button>
+      </div>
+
+      <form class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+<div class="flex items-center space-x-4">
+  
+  <!-- Pickup Location Container -->
+  <div class="flex-1">
+    <label class="block text-gray-700 mb-1">Pickup Location</label>
+    <div class="relative">
+      <input id="pickupInput" type="text" placeholder="Enter pickup location"
+        class="w-full pl-3 pr-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-sm autocomplete-input">
+      <ul id="pickupSuggestions" class="absolute bg-white border border-gray-300 w-full max-h-48 overflow-y-auto rounded mt-1 z-20 hidden"></ul>
+    </div>
+  </div>
+  
+  <!-- Swap Button Container -->
+  <div class="flex-none mt-6">
+    <button
+      id="swapLocations"
+      class="swap-button bg-[#2C74B3] w-10 h-10 rounded-full flex items-center justify-center shadow-lg hover:bg-[#2980b9] transition"
+    >
+      <div class="w-6 h-6 flex items-center justify-center text-white">
+        <i class="ri-arrow-up-down-line ri-lg"></i>
+      </div>
+    </button>
+  </div>
+  <script>
+  document.getElementById('swapLocations').addEventListener('click', function() {
+    const pickupInput = document.getElementById('pickupInput');
+    const destinationInput = document.getElementById('destinationInput');
+
+    // Swap their values
+    const temp = pickupInput.value;
+    pickupInput.value = destinationInput.value;
+    destinationInput.value = temp;
+  });
+</script>
+
+  <!-- Destination Location Container -->
+  <div class="flex-1">
+    <label class="block text-gray-700 mb-1">Destination</label>
+    <div class="relative">
+      <input id="destinationInput" type="text" placeholder="Enter destination"
+        class="w-full pl-3 pr-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-sm autocomplete-input">
+      <ul id="destinationSuggestions" class="absolute bg-white border border-gray-300 w-full max-h-48 overflow-y-auto rounded mt-1 z-20 hidden"></ul>
+    </div>
+  </div>
+
+</div>
+
+
+<script>
+  // Function to fetch suggestions from Nominatim API
+  async function fetchLocations(query) {
+    const url = `https://nominatim.openstreetmap.org/search?format=json&addressdetails=1&limit=5&q=${encodeURIComponent(query)}`;
+    const response = await fetch(url, {
+      headers: { 'Accept-Language': 'en' }
+    });
+    if (!response.ok) return [];
+    const data = await response.json();
+    return data;
+  }
+
+  function setupAutocomplete(inputId, suggestionsId) {
+    const input = document.getElementById(inputId);
+    const suggestions = document.getElementById(suggestionsId);
+
+    input.addEventListener('input', async () => {
+      const query = input.value.trim();
+      if (query.length < 3) {
+        suggestions.innerHTML = '';
+        suggestions.style.display = 'none';
+        return;
+      }
+
+      const locations = await fetchLocations(query);
+      if (locations.length === 0) {
+        suggestions.innerHTML = '';
+        suggestions.style.display = 'none';
+        return;
+      }
+
+      suggestions.innerHTML = locations.map(loc => `
+        <li class="p-2 cursor-pointer hover:bg-primary/20">${loc.display_name}</li>
+      `).join('');
+      suggestions.style.display = 'block';
+
+      // Add click event listeners to list items
+      Array.from(suggestions.children).forEach((item, index) => {
+        item.addEventListener('click', () => {
+          input.value = locations[index].display_name;
+          suggestions.style.display = 'none';
+        });
+      });
+    });
+
+    // Hide suggestions if click outside input or suggestions
+    document.addEventListener('click', (e) => {
+      if (!input.contains(e.target) && !suggestions.contains(e.target)) {
+        suggestions.style.display = 'none';
+      }
+    });
+  }
+
+  // Setup autocomplete for pickup and destination inputs
+  setupAutocomplete('pickupInput', 'pickupSuggestions');
+  setupAutocomplete('destinationInput', 'destinationSuggestions');
+</script>
+
+<style>
+  /* Basic style for suggestion box */
+  #pickupSuggestions, #destinationSuggestions {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+</style>
+
+<!-- Include flatpickr CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
+<!-- Pickup Date input -->
+<div>
+  <label class="block text-gray-700 mb-1">Pickup Date</label>
+  <input type="text" id="pickupDate" 
+         class="w-full pl-3 pr-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-sm"
+         placeholder="Select Pickup Date">
+</div>
+<!-- Flatpickr JS -->
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script>
+    // List your holidays here in YYYY-MM-DD format
+    const holidays = [
+      "2025-06-21",
+      "2025-07-04",
+      "2025-08-15",
+    ];
+
+    // Convert holiday strings to Date objects for comparison
+    const holidayDates = holidays.map((d) => new Date(d).setHours(0, 0, 0, 0));
+
+    flatpickr("#pickupDate", {
+      dateFormat: "Y-m-d",
+      minDate: "today", // disable past dates
+      locale: {
+        firstDayOfWeek: 1, // Week starts on Monday
+      },
+      enable: [
+        function (date) {
+          const day = date.getDay();
+          const time = date.setHours(0, 0, 0, 0);
+
+          const isWeekend = day === 0 || day === 6; // Sunday=0, Saturday=6
+          const isHoliday = holidayDates.includes(time);
+
+          // Enable only Saturdays, Sundays, or holidays
+          return isWeekend || isHoliday;
+        },
+      ],
+    });
+  </script>
+
+
+
+        <!-- Pickup Time -->
+        <div>
+          <label class="block text-gray-700 mb-1">Pickup Time</label>
+          <div class="relative">
+            <div class="absolute inset-y-0 left-0 pl-3 flex items-center text-sm pointer-events-none">
+              <i class="ri-time-line text-gray-500"></i>
             </div>
-
-            <div class="relative">
-              <div
-                class="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none"
-              >
-                <div
-                  class="w-6 h-6 flex items-center justify-center text-[#2C74B3]"
-                >
-                  <i class="ri-map-pin-line ri-lg"></i>
-                </div>
-              </div>
-              <input
-                type="text"
-                id="dropoffLocation"
-                class="input-field w-full bg-white/90 border border-[#144272]/30 rounded-lg pl-12 pr-4 py-4 text-primary placeholder-[#144272]/60 outline-none transition"
-                placeholder="Dropoff Location"
-              />
-            </div>
-          </div>
-
-          <div class="flex justify-center -mt-3 mb-3">
-            <button
-              id="swapLocations"
-              class="swap-button bg-[#2C74B3] w-10 h-10 rounded-full flex items-center justify-center shadow-lg hover:bg-[#2980b9] transition"
-            >
-              <div class="w-6 h-6 flex items-center justify-center text-white">
-                <i class="ri-arrow-up-down-line ri-lg"></i>
-              </div>
-            </button>
-          </div>
-
-          <div
-            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8"
-            id="dateSelectionContainer"
-          >
-            <div class="relative">
-              <div
-                class="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none"
-              >
-                <div
-                  class="w-6 h-6 flex items-center justify-center text-[#2C74B3]"
-                >
-                  <i class="ri-calendar-line ri-lg"></i>
-                </div>
-              </div>
-              <input
-                type="date"
-                id="pickupDate"
-                class="date-input w-full bg-white/90 border border-[#144272]/30 rounded-lg pl-12 pr-4 py-4 text-primary outline-none transition"
-              />
-            </div>
-
-            <div class="relative">
-              <div
-                class="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none"
-              >
-                <div
-                  class="w-6 h-6 flex items-center justify-center text-[#2C74B3]"
-                >
-                  <i class="ri-time-line ri-lg"></i>
-                </div>
-              </div>
-              <input
-                type="time"
-                id="pickupTime"
-                class="date-input w-full bg-white/90 border border-[#144272]/30 rounded-lg pl-12 pr-4 py-4 text-primary outline-none transition"
-              />
-            </div>
-
-            <div class="relative hidden" id="returnDateContainer">
-              <div
-                class="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none"
-              >
-                <div
-                  class="w-6 h-6 flex items-center justify-center text-[#2C74B3]"
-                >
-                  <i class="ri-calendar-line ri-lg"></i>
-                </div>
-              </div>
-              <input
-                type="date"
-                id="returnDate"
-                class="date-input w-full bg-white/90 border border-[#144272]/30 rounded-lg pl-12 pr-4 py-4 text-primary outline-none transition"
-              />
-            </div>
-          </div>
-
-          <div class="flex justify-center">
-            <button
-              class="search-btn bg-[#2C74B3] text-white px-12 py-4 !rounded-button text-lg font-semibold transition whitespace-nowrap shadow-lg"
-            >
-              Search Rides
-            </button>
+            <input type="time"
+              class="w-full pl-9 pr-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-sm">
           </div>
         </div>
 
-        <div class="bg-[#0A2647] p-8">
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="flex items-start">
-              <div
-                class="w-12 h-12 flex items-center justify-center bg-[#2C74B3] rounded-full mr-4"
-              >
-                <i class="ri-shield-check-line ri-lg text-white"></i>
-              </div>
-              <div>
-                <h3 class="text-white font-semibold mb-2">Safe & Secure</h3>
-                <p class="text-blue-100 text-sm">
-                  All our drivers are verified and vehicles regularly inspected
-                  for your safety.
-                </p>
-              </div>
-            </div>
+        <!-- Return Date (hidden by default) -->
+<div class="hidden" id="returnDateContainer">
+  <label class="block text-gray-700 mb-1">Return Date</label>
+  <div class="relative">
+    <div class="absolute inset-y-0 left-0 pl-3 flex items-center text-sm pointer-events-none">
+      <i class="ri-calendar-line text-gray-500"></i>
+    </div>
+    <input
+      type="text"
+      id="returnDate"
+      class="w-full pl-9 pr-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-sm"
+      placeholder="Select return date"
+    />
+  </div>
+</div>
 
-            <div class="flex items-start">
-              <div
-                class="w-12 h-12 flex items-center justify-center bg-[#2C74B3] rounded-full mr-4"
-              >
-                <i class="ri-time-line ri-lg text-white"></i>
-              </div>
-              <div>
-                <h3 class="text-white font-semibold mb-2">On-Time Service</h3>
-                <p class="text-blue-100 text-sm">
-                  We pride ourselves on punctuality with real-time tracking and
-                  notifications.
-                </p>
-              </div>
-            </div>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script>
+  // List of holiday dates (YYYY-MM-DD)
+  const holidayList = [
+    "2025-06-21",
+    "2025-07-04",
+    "2025-08-15",
+  ];
+  
+  // Convert holiday strings to normalized timestamp for easy comparison
+  const holidayTimeStamps = holidayList.map(dateStr => new Date(dateStr).setHours(0, 0, 0, 0));
 
-            <div class="flex items-start">
-              <div
-                class="w-12 h-12 flex items-center justify-center bg-[#2C74B3] rounded-full mr-4"
-              >
-                <i class="ri-money-dollar-circle-line ri-lg text-white"></i>
-              </div>
-              <div>
-                <h3 class="text-white font-semibold mb-2">
-                  Best Price Guarantee
-                </h3>
-                <p class="text-blue-100 text-sm">
-                  Competitive pricing with no hidden fees. Get the best value
-                  for your journey.
-                </p>
-              </div>
+  // Function to allow only Saturdays, Sundays, and holidays
+  function enableValidDates(date) {
+    const dayOfWeek = date.getDay();
+    const timeStamp = date.setHours(0, 0, 0, 0);
+    const isWeekend = (dayOfWeek === 0 || dayOfWeek === 6); // Sunday=0, Saturday=6
+    const isHoliday = holidayTimeStamps.includes(timeStamp);
+    return isWeekend || isHoliday;
+  }
+
+  // Initialize flatpickr on Pickup Date input
+  flatpickr("#pickupDate", {
+    dateFormat: "Y-m-d",
+    minDate: "today",
+    locale: { firstDayOfWeek: 1 }, // Week starts on Monday
+    enable: [enableValidDates],
+  });
+
+  // Initialize flatpickr on Return Date input
+  flatpickr("#returnDate", {
+    dateFormat: "Y-m-d",
+    minDate: "today",
+    locale: { firstDayOfWeek: 1 }, // Week starts on Monday
+    enable: [enableValidDates],
+  });
+</script>
+
+
+
+        <!-- Passengers -->
+        <div>
+          <label class="block text-gray-700 mb-1">Passengers</label>
+          <div class="relative">
+            <div class="absolute inset-y-0 left-0 pl-3 flex items-center text-sm pointer-events-none">
+              <i class="ri-user-line text-gray-500"></i>
             </div>
+            <input type="number" min="1" max="6" value="1"
+              class="w-full pl-9 pr-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-sm">
           </div>
         </div>
-      </section>
 
- <script id="bookingToggleScript">
-      document.addEventListener("DOMContentLoaded", function () {
-        const oneWayBtn = document.getElementById("oneWayBtn");
-        const roundTripBtn = document.getElementById("roundTripBtn");
-        const returnDateContainer = document.getElementById("returnDateContainer");
-        const dateSelectionContainer = document.getElementById(
-          "dateSelectionContainer",
-        );
-        const pickupDateInput = document.getElementById("pickupDate");
-        const returnDateInput = document.getElementById("returnDate");
-        function updateReturnDate() {
-          const pickupDate = new Date(pickupDateInput.value);
-          const nextDay = new Date(pickupDate);
-          nextDay.setDate(pickupDate.getDate() + 1);
-          const formattedDate = nextDay.toISOString().split("T")[0];
-          returnDateInput.value = formattedDate;
-        }
-        oneWayBtn.addEventListener("click", function () {
-          oneWayBtn.classList.add("active");
-          roundTripBtn.classList.remove("active");
-          returnDateContainer.classList.add("hidden");
-          dateSelectionContainer.classList.remove("md:grid-cols-3");
-          dateSelectionContainer.classList.add("md:grid-cols-2");
-        });
-        roundTripBtn.addEventListener("click", function () {
-          roundTripBtn.classList.add("active");
-          oneWayBtn.classList.remove("active");
-          returnDateContainer.classList.remove("hidden");
-          dateSelectionContainer.classList.remove("md:grid-cols-2");
-          dateSelectionContainer.classList.add("md:grid-cols-3");
-          updateReturnDate();
-        });
-        pickupDateInput.addEventListener("change", function () {
-          if (!returnDateContainer.classList.contains("hidden")) {
-            updateReturnDate();
-          }
-        });
-      });
-    </script>
-    <script id="swapLocationsScript">
-      document.addEventListener("DOMContentLoaded", function () {
-        const swapButton = document.getElementById("swapLocations");
-        const pickupLocation = document.getElementById("pickupLocation");
-        const dropoffLocation = document.getElementById("dropoffLocation");
-        swapButton.addEventListener("click", function () {
-          const tempValue = pickupLocation.value;
-          pickupLocation.value = dropoffLocation.value;
-          dropoffLocation.value = tempValue;
-          // Add animation class
-          swapButton.classList.add("animate-spin");
-          // Remove animation class after animation completes
-          setTimeout(() => {
-            swapButton.classList.remove("animate-spin");
-          }, 300);
-        });
-      });
-    </script>
-    <script id="dateInitScript">
-      document.addEventListener("DOMContentLoaded", function () {
-        // Set default dates
-        const today = new Date();
-        const tomorrow = new Date(today);
-        tomorrow.setDate(tomorrow.getDate() + 1);
-        // Format dates for input fields
-        const formatDate = (date) => {
-          const year = date.getFullYear();
-          const month = String(date.getMonth() + 1).padStart(2, "0");
-          const day = String(date.getDate()).padStart(2, "0");
-          return `${year}-${month}-${day}`;
-        };
-        // Set default values
-        document.getElementById("pickupDate").value = formatDate(today);
-        document.getElementById("returnDate").value = formatDate(tomorrow);
-        // Set default time (current hour rounded up)
-        const hours = String(today.getHours()).padStart(2, "0");
-        const minutes = "00";
-        document.getElementById("pickupTime").value = `${hours}:${minutes}`;
-      });
-    </script>
+        <!-- Cab Type -->
+        <!-- Cab Type -->
+<div class="md:col-span-2">
+  <label class="block text-gray-700 mb-2">Cab Type</label>
+  <div class="flex space-x-4"> <!-- Changed grid to flex and added small horizontal spacing -->
+    <label class="flex items-center space-x-1">  <!-- Use label to wrap input + text for better UX -->
+      <input type="radio" name="cab-type" checked>
+      <span>AC Cab (₹25/km)</span>
+    </label>
+    <label class="flex items-center space-x-1">
+      <input type="radio" name="cab-type">
+      <span>Non-AC Cab (₹21/km)</span>
+    </label>
+  </div>
+</div>
+
+
+        <!-- Submit -->
+        <div class="md:col-span-2 flex justify-center">
+  <button type="submit"
+    class="bg-primary text-white text-base px-4 py-2 font-medium rounded-md hover:bg-primary/90 transition-colors whitespace-nowrap">
+    Search Available Cabs
+  </button>
+</div>
+
+
+      </form>
+    </div>
+  </div>
+</section>
+
+<script>
+  const oneWayBtn = document.getElementById("oneWayBtn");
+  const roundTripBtn = document.getElementById("roundTripBtn");
+  const returnDateContainer = document.getElementById("returnDateContainer");
+
+  oneWayBtn.addEventListener("click", () => {
+    oneWayBtn.classList.add("bg-primary", "text-white");
+    roundTripBtn.classList.remove("bg-primary", "text-white");
+    returnDateContainer.style.display = "none";
+  });
+
+  roundTripBtn.addEventListener("click", () => {
+    roundTripBtn.classList.add("bg-primary", "text-white");
+    oneWayBtn.classList.remove("bg-primary", "text-white");
+    returnDateContainer.style.display = "block";
+  });
+</script>
+
+     
 <!-- Popular Packages -->
 <section class="py-16 bg-gray-50">
 <div class="container mx-auto px-4">
