@@ -414,36 +414,37 @@ cursor: pointer;
     </div>
   </div>
 
-  <!-- Popup message on booking success/fail -->
-  {% if status == 'success' or status == 'fail' %}
-    <div id="popup" style="
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      width: 300px;
-      padding: 15px;
-      border-radius: 5px;
-      color: white;
-      font-weight: bold;
-      z-index: 9999;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-      background-color: {% if status == 'success' %}#28a745{% else %}#dc3545{% endif %}">
-      {% if status == 'success' %}
-        Booking successful! We will contact you shortly.
-      {% else %}
-        Sorry, booking failed. Please try again later.
-      {% endif %}
-    </div>
+<!-- Popup message on booking success/fail -->
+{% if status == 'success' or status == 'fail' %}
+  <div id="popup" style="
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 300px;
+    padding: 15px;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    z-index: 9999;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    background-color: {% if status == 'success' %}#28a745{% else %}#dc3545{% endif %};">
+    {% if status == 'success' %}
+      Booking successful! We will contact you shortly.
+    {% else %}
+      Sorry, booking failed. Please try again later.
+    {% endif %}
+  </div>
 
-    <script>
-      setTimeout(() => {
-        const popup = document.getElementById('popup');
-        if (popup) {
-          popup.style.display = 'none';
-        }
-      }, 3000);
-    </script>
-  {% endif %}
+  <script>
+    setTimeout(() => {
+      const popup = document.getElementById('popup');
+      if (popup) {
+        popup.style.display = 'none';
+      }
+    }, 3000);
+  </script>
+{% endif %}
+
 </section>
 
 <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
@@ -530,25 +531,29 @@ cursor: pointer;
             destinationCoords.lat, destinationCoords.lon
           );
 
-          // Discount based on distance
-          if (this.distance > 200) {
-            this.discountPercent = 16;
-          } else if (this.distance >= 51 && this.distance <= 200) {
-            this.discountPercent = 13;
-          } else if (this.distance >= 0 && this.distance <= 50) {
-            this.discountPercent = 10;
-          } else {
-            this.discountPercent = 0;
+          // Calculate fare using slab-based discount
+          const rates = { 'AC': 25, 'Non-AC': 21 };
+          let baseFare = 0;
+          let remainingDistance = this.distance;
+
+          // Slab 1: 0-50 km @ 10% discount
+          const slab1 = Math.min(remainingDistance, 50);
+          baseFare += slab1 * rates[this.cabType] * 0.90;
+          remainingDistance -= slab1;
+
+          // Slab 2: 51-200 km @ 13% discount
+          if (remainingDistance > 0) {
+            const slab2 = Math.min(remainingDistance, 150);
+            baseFare += slab2 * rates[this.cabType] * 0.87;
+            remainingDistance -= slab2;
           }
 
-          // Calculate fare based on cab type
-          const rates = { 'AC': 25, 'Non-AC': 21 };
-          const baseFare = this.distance * rates[this.cabType];
+          // Slab 3: >200 km @ 16% discount
+          if (remainingDistance > 0) {
+            baseFare += remainingDistance * rates[this.cabType] * 0.84;
+          }
 
-          // Apply discount
-          const discountedFare = baseFare * (1 - this.discountPercent / 100);
-
-          this.fare = discountedFare.toFixed(2);
+          this.fare = baseFare.toFixed(2);
           this.popupVisible = true;
           this.showMessage = true;
           this.showForm = false;
@@ -561,6 +566,7 @@ cursor: pointer;
     }));
   });
 </script>
+
 
 
 
@@ -981,46 +987,67 @@ View All Packages
   
 </div>
 <script>
- function calculateFare() {
-  const distance = parseFloat(document.getElementById('distance').value);
-  const cabType = document.querySelector('input[name="cab-type"]:checked').value;
+  function calculateFare() {
+    const distance = parseFloat(document.getElementById('distance').value);
+    const cabType = document.querySelector('input[name="cab-type"]:checked').value;
 
-  if (!distance || distance <= 0) {
-    alert("Please enter a valid distance.");
-    return;
+    if (!distance || distance <= 0) {
+      alert("Please enter a valid distance.");
+      return;
+    }
+
+    const rate = cabType === "ac" ? 25 : 21;
+    let totalFare = 0;
+    let remaining = distance;
+
+    // Slab 1: 0-50 km @ 10%
+    const slab1 = Math.min(remaining, 50);
+    totalFare += slab1 * rate * 0.90;
+    remaining -= slab1;
+
+    // Slab 2: 51-200 km @ 13%
+    if (remaining > 0) {
+      const slab2 = Math.min(remaining, 150); // Up to 200 total
+      totalFare += slab2 * rate * 0.87;
+      remaining -= slab2;
+    }
+
+    // Slab 3: Above 200 km @ 16%
+    if (remaining > 0) {
+      totalFare += remaining * rate * 0.84;
+    }
+
+    const fullFare = distance * rate;
+    const discount = fullFare - totalFare;
+
+    // Set displayed discount based on total distance
+    let displayedDiscount = 0;
+    if (distance > 200) {
+      displayedDiscount = 16;
+    } else if (distance > 50) {
+      displayedDiscount = 13;
+    } else {
+      displayedDiscount = 10;
+    }
+
+    // Update UI
+    document.getElementById('showDistance').textContent = `${distance} km`;
+    document.getElementById('baseFare').textContent = `₹${fullFare.toFixed(2)}`;
+    document.getElementById('totalFare').textContent = `₹${totalFare.toFixed(2)}`;
+
+    if (discount > 0) {
+      document.getElementById('discountRow').style.display = "flex";
+      document.getElementById('discountAmt').textContent = `-₹${discount.toFixed(2)}`;
+      document.getElementById('discountText').textContent = `${displayedDiscount}% Discount Applied`;
+    } else {
+      document.getElementById('discountRow').style.display = "none";
+    }
+
+    document.getElementById('fareResult').classList.remove('hidden');
   }
-
-  let rate = cabType === "ac" ? 25 : 21;
-  let baseFare = distance * rate;
-  let discountPercent = 0;
-
-  if (distance >= 0 && distance <= 50) {
-    discountPercent = 10;
-  } else if (distance >= 51 && distance <= 200) {
-    discountPercent = 13;
-  } else if (distance > 200) {
-    discountPercent = 16;
-  }
-
-  let discount = baseFare * (discountPercent / 100);
-  let totalFare = baseFare - discount;
-
-  document.getElementById('showDistance').textContent = `${distance} km`;
-  document.getElementById('baseFare').textContent = `₹${baseFare.toFixed(2)}`;
-  document.getElementById('totalFare').textContent = `₹${totalFare.toFixed(2)}`;
-
-  if (discountPercent > 0) {
-    document.getElementById('discountRow').style.display = "flex";
-    document.getElementById('discountAmt').textContent = `-₹${discount.toFixed(2)}`;
-    document.getElementById('discountText').textContent = `${discountPercent}% Discount Applied`;
-  } else {
-    document.getElementById('discountRow').style.display = "none";
-  }
-
-  document.getElementById('fareResult').classList.remove('hidden');
-}
-
 </script>
+
+
 
 
 <!-- Service Area Map -->
