@@ -569,20 +569,146 @@ cursor: pointer;
     returnDateContainer.style.display = "block";
   });
 </script>
-<!-- Booking Popup Modal -->
-<div id="bookingPopup" class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50 hidden">
-  <div class="bg-white p-6 rounded shadow-md text-center w-80">
-    <h3 class="text-lg font-semibold mb-4 text-green-600">Booking Available</h3>
-    <p id="distanceInfo" class="mb-2 text-gray-700"></p>
-    <p id="totalFareInfo" class="mb-1 text-gray-700"></p>
-    <p id="discountInfo" class="mb-1 text-gray-500 text-sm"></p>
-    <p id="finalFareInfo" class="mb-2 text-gray-700 font-medium"></p>
-    <p class="text-xs text-gray-400 mt-2">Note: Fare is an estimate and may vary based on exact pickup/drop.</p>
-    <button onclick="closePopup()" class="bg-primary text-white px-4 py-2 rounded hover:bg-primary/90 transition mt-4">
+<div id="bookingPopup" class="fixed inset-0 bg-black bg-opacity-40 backdrop-blur-sm flex justify-center items-center z-50 hidden">
+  <div class="bg-white p-6 rounded-2xl shadow-2xl w-11/12 max-w-sm text-center animate-fade-in text-gray-900 border border-gray-300">
+    <h3 class="text-2xl font-bold text-green-600 mb-3">Booking Available</h3>
+
+    <p id="distanceInfo" class="text-base text-gray-700 mb-2"></p>
+    <p id="totalFareInfo" class="text-base text-gray-700 mb-1 font-medium"></p>
+    <p id="discountInfo" class="text-sm text-blue-600 italic mb-1"></p>
+    <p id="finalFareInfo" class="text-lg text-purple-700 font-semibold mb-3"></p>
+
+    <p class="text-xs text-gray-500 mt-1">Note: Fare is an estimate and may vary based on exact pickup/drop. <br></p>
+
+    <button id="openBookingFormBtn" 
+      class="w-full mb-4 px-6 py-2 bg-[#0b1e4d] hover:bg-[#142a75] text-white rounded-lg font-semibold transition duration-300">
+      Fill Form
+    </button>
+
+    <button onclick="closePopup()" 
+      class="mt-4 w-full bg-transparent border border-red-600 text-red-600 py-2 rounded-lg font-semibold hover:bg-red-600 hover:text-white transition duration-300">
       Close
     </button>
   </div>
 </div>
+
+
+<!-- Booking Form Modal -->
+<div id="bookingFormPopup" class="fixed inset-0 bg-black bg-opacity-40 backdrop-blur-sm flex justify-center items-center z-50 hidden">
+  <div class="bg-white p-6 rounded-2xl shadow-2xl w-11/12 max-w-sm text-center animate-fade-in text-gray-900 border border-gray-300">
+    <h3 class="text-2xl font-bold text-green-600 mb-4">Booking Form</h3>
+
+    <form id="bookingForm" class="space-y-4 text-left">
+      <div>
+        <label for="name" class="block mb-1 font-medium text-gray-800">Name</label>
+        <input id="name" name="name" type="text" required
+          class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#0b1e4d]" />
+      </div>
+      <div>
+        <label for="mobile" class="block mb-1 font-medium text-gray-800">Mobile</label>
+        <input id="mobile" name="mobile" type="tel" pattern="[0-9]{10}" required placeholder="10-digit number"
+          class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#0b1e4d]" />
+      </div>
+      <div>
+        <label for="pickup" class="block mb-1 font-medium text-gray-800">Pickup Address</label>
+        <input id="pickup" name="pickup" type="text" required
+          class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#0b1e4d]" />
+      </div>
+      <div>
+        <label for="drop" class="block mb-1 font-medium text-gray-800">Drop Address</label>
+        <input id="drop" name="drop" type="text" required
+          class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#0b1e4d]" />
+      </div>
+
+      <button type="submit"
+        class="w-full bg-[#0b1e4d] hover:bg-[#142a75] text-white py-2 rounded-lg font-semibold transition duration-300">
+        Book
+      </button>
+    </form>
+
+    <button onclick="closeFormPopup()"
+      class="mt-4 w-full bg-transparent border border-red-600 text-red-600 py-2 rounded-lg font-semibold hover:bg-red-600 hover:text-white transition duration-300">
+      Close
+    </button>
+  </div>
+</div>
+
+
+<!-- Booking Form Modal -->
+<div id="bookingFormPopup" class="fixed inset-0 bg-white flex justify-center items-center z-50 hidden">
+  <div class="bg-white p-6 rounded-2xl shadow-xl w-11/12 max-w-sm text-center animate-fade-in text-gray-900 border border-gray-300">
+    <h3 class="text-2xl font-bold text-green-600 mb-4">Booking Form</h3>
+
+    <form id="bookingForm" class="space-y-4 text-left">
+      <div>
+        <label for="name" class="block mb-1 font-medium text-gray-800">Name</label>
+        <input id="name" name="name" type="text" required
+          class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#0b1e4d]" />
+      </div>
+      <div>
+        <label for="mobile" class="block mb-1 font-medium text-gray-800">Mobile</label>
+        <input id="mobile" name="mobile" type="tel" pattern="[0-9]{10}" required placeholder="10-digit number"
+          class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#0b1e4d]" />
+      </div>
+      <div>
+        <label for="pickup" class="block mb-1 font-medium text-gray-800">Pickup Address</label>
+        <input id="pickup" name="pickup" type="text" required
+          class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#0b1e4d]" />
+      </div>
+      <div>
+        <label for="drop" class="block mb-1 font-medium text-gray-800">Drop Address</label>
+        <input id="drop" name="drop" type="text" required
+          class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#0b1e4d]" />
+      </div>
+
+      <button type="submit"
+        class="w-full bg-[#0b1e4d] hover:bg-[#142a75] text-white py-2 rounded-lg font-semibold transition duration-300">
+        Book
+      </button>
+    </form>
+
+    <button onclick="closeFormPopup()"
+      class="mt-4 w-full bg-transparent border border-red-600 text-red-600 py-2 rounded-lg font-semibold hover:bg-red-600 hover:text-white transition duration-300">
+      Close
+    </button>
+  </div>
+</div>
+
+
+<script>
+  // Elements
+  const bookingPopup = document.getElementById('bookingPopup');
+  const bookingFormPopup = document.getElementById('bookingFormPopup');
+  const openBookingFormBtn = document.getElementById('openBookingFormBtn');
+  const bookingForm = document.getElementById('bookingForm');
+
+  // Open booking form popup when Fill Form button clicked
+  openBookingFormBtn.addEventListener('click', () => {
+    bookingFormPopup.classList.remove('hidden');
+  });
+
+  // Close booking popup
+  function closePopup() {
+    bookingPopup.classList.add('hidden');
+  }
+
+  // Close booking form popup and reset form
+  function closeFormPopup() {
+    bookingFormPopup.classList.add('hidden');
+    bookingForm.reset();
+  }
+
+  // Booking form submission
+  bookingForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    // You can handle the booking data here (send to backend etc)
+    alert('Booking submitted successfully!');
+
+    closeFormPopup();
+  });
+</script>
+
 
 <script>
   const ORS_API_KEY = '5b3ce3597851110001cf624829a67dfe681542c889ee8e7e660c1cb6';
