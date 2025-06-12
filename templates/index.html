@@ -522,18 +522,16 @@ cursor: pointer;
               class="w-full pl-9 pr-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-sm">
           </div>
         </div>
-
-        <!-- Cab Type -->
-        <!-- Cab Type -->
+<!-- Cab Type -->
 <div class="md:col-span-2">
   <label class="block text-gray-700 mb-2">Cab Type</label>
-  <div class="flex space-x-4"> <!-- Changed grid to flex and added small horizontal spacing -->
-    <label class="flex items-center space-x-1">  <!-- Use label to wrap input + text for better UX -->
-      <input type="radio" name="cab-type" checked>
+  <div class="flex space-x-4">
+    <label class="flex items-center space-x-1">
+      <input type="radio" name="cab-type" value="ac" checked>
       <span>AC Cab (₹25/km)</span>
     </label>
     <label class="flex items-center space-x-1">
-      <input type="radio" name="cab-type">
+      <input type="radio" name="cab-type" value="non-ac">
       <span>Non-AC Cab (₹21/km)</span>
     </label>
   </div>
@@ -569,6 +567,117 @@ cursor: pointer;
     roundTripBtn.classList.add("bg-primary", "text-white");
     oneWayBtn.classList.remove("bg-primary", "text-white");
     returnDateContainer.style.display = "block";
+  });
+</script>
+<!-- Booking Popup Modal -->
+<div id="bookingPopup" class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50 hidden">
+  <div class="bg-white p-6 rounded shadow-md text-center w-80">
+    <h3 class="text-lg font-semibold mb-4 text-green-600">Booking Available</h3>
+    <p id="distanceInfo" class="mb-2 text-gray-700"></p>
+    <p id="totalFareInfo" class="mb-1 text-gray-700"></p>
+    <p id="discountInfo" class="mb-1 text-gray-500 text-sm"></p>
+    <p id="finalFareInfo" class="mb-2 text-gray-700 font-medium"></p>
+    <p class="text-xs text-gray-400 mt-2">Note: Fare is an estimate and may vary based on exact pickup/drop.</p>
+    <button onclick="closePopup()" class="bg-primary text-white px-4 py-2 rounded hover:bg-primary/90 transition mt-4">
+      Close
+    </button>
+  </div>
+</div>
+
+<script>
+  const ORS_API_KEY = '5b3ce3597851110001cf62488f1ea8522cc64209a4582889723a52f2';
+
+  async function getCoordinates(place) {
+    const url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(place)}`;
+    const res = await fetch(url);
+    const data = await res.json();
+    if (data.length === 0) throw new Error("Location not found");
+    return {
+      lat: parseFloat(data[0].lat),
+      lon: parseFloat(data[0].lon)
+    };
+  }
+
+  async function getDistanceFromORS(start, end) {
+    const url = "https://api.openrouteservice.org/v2/directions/driving-car";
+    const res = await fetch(url, {
+      method: "POST",
+      headers: {
+        "Authorization": ORS_API_KEY,
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        coordinates: [
+          [start.lon, start.lat],
+          [end.lon, end.lat]
+        ]
+      })
+    });
+
+    const data = await res.json();
+    const meters = data.routes[0].summary.distance;
+    return meters / 1000; // km
+  }
+
+  function calculateFare(distance, isAC) {
+    const rate = isAC ? 25 : 21;
+    const totalFare = distance * rate;
+    let discount = 0;
+
+    if (distance <= 50) {
+      discount = distance * rate * 0.10;
+    } else if (distance <= 200) {
+      discount = (50 * rate * 0.10) + ((distance - 50) * rate * 0.13);
+    } else {
+      discount = (50 * rate * 0.10) + (150 * rate * 0.13) + ((distance - 200) * rate * 0.16);
+    }
+
+    return {
+      ratePerKm: rate,
+      totalFare: Math.round(totalFare),
+      finalFare: Math.round(totalFare - discount),
+      totalDiscount: Math.round(discount),
+      slabUsed: distance <= 50 ? "10%" : distance <= 200 ? "13%" : "16%"
+    };
+  }
+
+  function openPopup(distance, fareData) {
+    document.getElementById("distanceInfo").innerText = `Total Distance: ${distance.toFixed(2)} km`;
+    document.getElementById("totalFareInfo").innerText = `Total Fare (Before Discount): ₹${fareData.totalFare}`;
+    document.getElementById("discountInfo").innerText = `Discount (${fareData.slabUsed}): -₹${fareData.totalDiscount}`;
+    document.getElementById("finalFareInfo").innerText = `Estimated Final Fare: ₹${fareData.finalFare}`;
+    document.getElementById("bookingPopup").classList.remove("hidden");
+  }
+
+  function closePopup() {
+    document.getElementById("bookingPopup").classList.add("hidden");
+  }
+
+  document.querySelector("form").addEventListener("submit", async function (e) {
+    e.preventDefault();
+
+    const pickup = document.getElementById("pickupInput").value.trim();
+    const destination = document.getElementById("destinationInput").value.trim();
+
+    if (!pickup || !destination) {
+      alert("Please enter both Pickup and Destination locations.");
+      return;
+    }
+
+    try {
+      const pickupCoords = await getCoordinates(pickup);
+      const destCoords = await getCoordinates(destination);
+      const distance = await getDistanceFromORS(pickupCoords, destCoords);
+
+      const cabType = document.querySelector('input[name="cab-type"]:checked').value;
+      const isAC = cabType === "ac";
+
+      const fareData = calculateFare(distance, isAC);
+      openPopup(distance, fareData);
+    } catch (err) {
+      alert("Error fetching distance. Please check the addresses and try again.");
+      console.error(err);
+    }
   });
 </script>
 
@@ -990,7 +1099,7 @@ View All Packages
   
 </div>
 <script>
-  function calculateFare() {
+  function calculateFares() {
     const distance = parseFloat(document.getElementById('distance').value);
     const cabType = document.querySelector('input[name="cab-type"]:checked').value;
 
