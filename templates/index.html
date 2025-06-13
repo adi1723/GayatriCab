@@ -284,8 +284,8 @@ cursor: pointer;
       <form class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
 <div class="flex flex-col md:flex-row items-center gap-4">
 
- <!-- Pickup Location -->
-<div class="flex-1 w-full min-w-[300px] max-w-lg">
+ <!-- Pickup Location (Hidden on mobile) -->
+<div class="flex-1 w-full min-w-[300px] max-w-lg hidden sm:block">
   <label for="pickupInput" class="block text-sm font-medium text-gray-700 mb-1">Pickup Location</label>
   <div class="relative">
     <input id="pickupInput" type="text" placeholder="Enter pickup location"
@@ -294,6 +294,18 @@ cursor: pointer;
       class="absolute bg-white border border-gray-300 w-full max-h-48 overflow-y-auto rounded mt-1 z-20 hidden"></ul>
   </div>
 </div>
+
+<!-- Pickup Location (Mobile only) -->
+<div class="flex-1 w-full min-w-0 max-w-full sm:max-w-lg px-4 sm:px-0 block sm:hidden">
+  <label for="pickupInput" class="block text-sm font-medium text-gray-700 mb-1">Pickup Location</label>
+  <div class="relative">
+    <input id="pickupInput" type="text" placeholder="Enter pickup location"
+      class="w-full px-4 py-3 border border-[#0a2463] rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-[#0a2463] focus:border-transparent text-base sm:text-sm">
+    <ul id="pickupSuggestions"
+      class="absolute bg-white border border-gray-300 w-full max-h-48 overflow-y-auto rounded mt-1 z-20 hidden"></ul>
+  </div>
+</div>
+
 
 
 <!-- Swap Button -->
@@ -304,8 +316,8 @@ cursor: pointer;
   </button>
 </div>
 
-<!-- Destination Location -->
-<div class="flex-1 w-full min-w-[300px] max-w-lg">
+<!-- Destination Location (Hidden on mobile) -->
+<div class="flex-1 w-full min-w-[300px] max-w-lg hidden sm:block">
   <label for="destinationInput" class="block text-sm font-medium text-gray-700 mb-1">Destination</label>
   <div class="relative">
     <input id="destinationInput" type="text" placeholder="Enter destination"
@@ -314,6 +326,18 @@ cursor: pointer;
       class="absolute bg-white border border-gray-300 w-full max-h-48 overflow-y-auto rounded mt-1 z-20 hidden"></ul>
   </div>
 </div>
+<!-- Destination Location (Mobile only) -->
+ <div class="flex-1 w-full min-w-[300px] max-w-lg block sm:hidden">
+  <label for="destinationInput" class="block text-sm font-medium text-gray-700 mb-1">Destination</label>
+  <div class="relative">
+    <input id="destinationInput" type="text" placeholder="Enter destination"
+      class="w-full px-4 py-2 border border-[#0a2463] rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-[#0a2463] focus:border-transparent text-sm">
+    <ul id="destinationSuggestions"
+      class="absolute bg-white border border-gray-300 w-full max-h-48 overflow-y-auto rounded mt-1 z-20 hidden"></ul>
+  </div>
+</div>
+
+
 
 </div>
 
