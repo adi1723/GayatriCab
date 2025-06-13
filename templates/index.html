@@ -282,52 +282,50 @@ cursor: pointer;
       </div>
 
       <form class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
-<div class="flex items-center space-x-4">
-  
-  <!-- Pickup Location Container -->
-  <div class="flex-1">
-    <label class="block text-gray-700 mb-1">Pickup Location</label>
-    <div class="relative">
-      <input id="pickupInput" type="text" placeholder="Enter pickup location"
-        class="w-full pl-3 pr-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-sm autocomplete-input">
-      <ul id="pickupSuggestions" class="absolute bg-white border border-gray-300 w-full max-h-48 overflow-y-auto rounded mt-1 z-20 hidden"></ul>
-    </div>
+<div class="flex flex-col md:flex-row items-center gap-4">
+
+ <!-- Pickup Location -->
+<div class="flex-1 w-full min-w-[300px] max-w-lg">
+  <label for="pickupInput" class="block text-sm font-medium text-gray-700 mb-1">Pickup Location</label>
+  <div class="relative">
+    <input id="pickupInput" type="text" placeholder="Enter pickup location"
+      class="w-full px-4 py-2 border border-[#0a2463] rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-[#0a2463] focus:border-transparent text-sm">
+    <ul id="pickupSuggestions"
+      class="absolute bg-white border border-gray-300 w-full max-h-48 overflow-y-auto rounded mt-1 z-20 hidden"></ul>
   </div>
-  
-  <!-- Swap Button Container -->
-  <div class="flex-none mt-6">
-    <button
-      id="swapLocations"
-      class="swap-button bg-[#2C74B3] w-10 h-10 rounded-full flex items-center justify-center shadow-lg hover:bg-[#2980b9] transition"
-    >
-      <div class="w-6 h-6 flex items-center justify-center text-white">
-        <i class="ri-arrow-up-down-line ri-lg"></i>
-      </div>
-    </button>
+</div>
+
+
+<!-- Swap Button -->
+<div class="flex-none mt-1 md:mt-6">
+  <button id="swapLocations"
+    class="bg-[#0a2463] w-10 h-10 rounded-full flex items-center justify-center shadow-md hover:bg-[#081b4a] transition duration-300 ease-in-out">
+    <i class="ri-arrow-up-down-line text-white text-xl"></i>
+  </button>
+</div>
+
+<!-- Destination Location -->
+<div class="flex-1 w-full min-w-[300px] max-w-lg">
+  <label for="destinationInput" class="block text-sm font-medium text-gray-700 mb-1">Destination</label>
+  <div class="relative">
+    <input id="destinationInput" type="text" placeholder="Enter destination"
+      class="w-full px-4 py-2 border border-[#0a2463] rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-[#0a2463] focus:border-transparent text-sm">
+    <ul id="destinationSuggestions"
+      class="absolute bg-white border border-gray-300 w-full max-h-48 overflow-y-auto rounded mt-1 z-20 hidden"></ul>
   </div>
-  <script>
-  document.getElementById('swapLocations').addEventListener('click', function() {
+</div>
+
+</div>
+
+<!-- Swap Script -->
+<script>
+  document.getElementById('swapLocations').addEventListener('click', function () {
     const pickupInput = document.getElementById('pickupInput');
     const destinationInput = document.getElementById('destinationInput');
 
-    // Swap their values
-    const temp = pickupInput.value;
-    pickupInput.value = destinationInput.value;
-    destinationInput.value = temp;
+    [pickupInput.value, destinationInput.value] = [destinationInput.value, pickupInput.value];
   });
 </script>
-
-  <!-- Destination Location Container -->
-  <div class="flex-1">
-    <label class="block text-gray-700 mb-1">Destination</label>
-    <div class="relative">
-      <input id="destinationInput" type="text" placeholder="Enter destination"
-        class="w-full pl-3 pr-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-sm autocomplete-input">
-      <ul id="destinationSuggestions" class="absolute bg-white border border-gray-300 w-full max-h-48 overflow-y-auto rounded mt-1 z-20 hidden"></ul>
-    </div>
-  </div>
-
-</div>
 
 
 <script>
@@ -399,14 +397,15 @@ cursor: pointer;
 
 <!-- Include flatpickr CSS -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-
+<br>
 <!-- Pickup Date input -->
 <div>
   <label class="block text-gray-700 mb-1">Pickup Date</label>
   <input type="text" id="pickupDate" 
-         class="w-full pl-3 pr-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-sm"
+         class="w-full pl-3 pr-3 py-2 border border-[#0a2463] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#0a2463] focus:border-transparent text-sm"
          placeholder="Select Pickup Date">
 </div>
+
 <!-- Flatpickr JS -->
   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
   <script>
@@ -442,20 +441,19 @@ cursor: pointer;
   </script>
 
 
+<!-- Pickup Time -->
+<div>
+  <label class="block text-gray-700 mb-1">Pickup Time</label>
+  <div class="relative">
+    <div class="absolute inset-y-0 left-0 pl-3 flex items-center text-sm pointer-events-none">
+      <i class="ri-time-line text-gray-500"></i>
+    </div>
+    <input type="time"
+      class="w-full pl-9 pr-3 py-2 border border-[#0a2463] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#0a2463] focus:border-transparent text-sm">
+  </div>
+</div>
 
-        <!-- Pickup Time -->
-        <div>
-          <label class="block text-gray-700 mb-1">Pickup Time</label>
-          <div class="relative">
-            <div class="absolute inset-y-0 left-0 pl-3 flex items-center text-sm pointer-events-none">
-              <i class="ri-time-line text-gray-500"></i>
-            </div>
-            <input type="time"
-              class="w-full pl-9 pr-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-sm">
-          </div>
-        </div>
-
-        <!-- Return Date (hidden by default) -->
+<!-- Return Date (hidden by default) -->
 <div class="hidden" id="returnDateContainer">
   <label class="block text-gray-700 mb-1">Return Date</label>
   <div class="relative">
@@ -465,7 +463,7 @@ cursor: pointer;
     <input
       type="text"
       id="returnDate"
-      class="w-full pl-9 pr-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-sm"
+      class="w-full pl-9 pr-3 py-2 border border-[#0a2463] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#0a2463] focus:border-transparent text-sm"
       placeholder="Select return date"  name="returnDate"
     />
   </div>
@@ -511,17 +509,18 @@ cursor: pointer;
 
 
 
-        <!-- Passengers -->
-        <div>
-          <label class="block text-gray-700 mb-1">Passengers</label>
-          <div class="relative">
-            <div class="absolute inset-y-0 left-0 pl-3 flex items-center text-sm pointer-events-none">
-              <i class="ri-user-line text-gray-500"></i>
-            </div>
-            <input type="number" min="1" max="6" value="1"
-              class="w-full pl-9 pr-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-sm">
-          </div>
-        </div>
+    <!-- Passengers -->
+<div>
+  <label class="block text-gray-700 mb-1">Passengers</label>
+  <div class="relative">
+    <div class="absolute inset-y-0 left-0 pl-3 flex items-center text-sm pointer-events-none">
+      <i class="ri-user-line text-gray-500"></i>
+    </div>
+    <input type="number" min="1" max="6" value="1"
+      class="w-full pl-9 pr-3 py-2 border border-[#0a2463] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#0a2463] focus:border-transparent text-sm">
+  </div>
+</div>
+
 <!-- Cab Type -->
 <div class="md:col-span-2">
   <label class="block text-gray-700 mb-2">Cab Type</label>
