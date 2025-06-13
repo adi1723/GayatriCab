@@ -4,6 +4,8 @@ import smtplib
 import requests
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
+from dotenv import load_dotenv
+
 
 from flask import Flask, request, redirect, flash
 import smtplib
@@ -14,9 +16,6 @@ app.secret_key = os.urandom(24)
 HEADERS = {
     'User-Agent': 'GayatriCab/1.0 (admin@gayatricab.com)'  # Required by Nominatim
 }
-EMAIL_SENDER = os.getenv('MAIL_USERNAME') or 'your-email@gmail.com'
-EMAIL_PASSWORD = os.getenv('MAIL_PASSWORD') or 'your-email-password'
-ADMIN_EMAIL = os.getenv('ADMIN_EMAIL') or EMAIL_SENDER
 
 @app.route('/')
 def home():
@@ -24,18 +23,56 @@ def home():
     return render_template('index.html', status=status)
 
 
-def send_email(subject, body, recipient):
-    msg = MIMEMultipart()
-    msg['From'] = EMAIL_SENDER
-    msg['To'] = recipient
-    msg['Subject'] = subject
-    msg.attach(MIMEText(body, 'plain'))
 
-    server = smtplib.SMTP('smtp.gmail.com', 587)
-    server.starttls()
-    server.login(EMAIL_SENDER, EMAIL_PASSWORD)
-    server.send_message(msg)
-    server.quit()
+# Load environment variables from .env file
+load_dotenv()
+
+SMTP_SERVER = os.getenv('SMTP_SERVER')
+SMTP_PORT = int(os.getenv('SMTP_PORT'))
+EMAIL_ADDRESS = os.getenv('EMAIL_ADDRESS')
+EMAIL_PASSWORD = os.getenv('EMAIL_PASSWORD')
+TO_EMAIL = os.getenv('TO_EMAIL')        # .env मधून वाचेल
+
+def send_booking_email(data):
+    subject = 'New Booking Received'
+    body = f"""
+    Name: {data.get('name')}
+    Mobile: {data.get('mobile')}
+    Pickup Address: {data.get('pickup')}
+    Drop Address: {data.get('drop')}
+    Pickup Date: {data.get('pickupDate')}
+    Return Date: {data.get('returnDate')}
+    Pickup Time: {data.get('pickupTime')}
+    Passengers: {data.get('passengers')}
+    Cab Type: {data.get('cabType')}
+    Fare: {data.get('fare')}
+    """
+
+
+    msg = MIMEText(body)
+    msg['Subject'] = subject
+    msg['From'] = EMAIL_ADDRESS
+    msg['To'] = TO_EMAIL
+
+    try:
+        server = smtplib.SMTP(SMTP_SERVER, SMTP_PORT)
+        server.starttls()
+        server.login(EMAIL_ADDRESS, EMAIL_PASSWORD)
+        server.sendmail(EMAIL_ADDRESS, TO_EMAIL, msg.as_string())
+        server.quit()
+        return True
+    except Exception as e:
+        print('Error sending email:', e)
+        return False
+
+@app.route('/send-booking-email', methods=['POST'])
+def send_booking_email_route():
+    data = request.json
+    if send_booking_email(data):
+        return jsonify({'status': 'success'})
+    else:
+        return jsonify({'status': 'error'}), 500
+
 
 @app.route('/about')
 def about():

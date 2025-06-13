@@ -466,7 +466,7 @@ cursor: pointer;
       type="text"
       id="returnDate"
       class="w-full pl-9 pr-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-sm"
-      placeholder="Select return date"
+      placeholder="Select return date"  name="returnDate"
     />
   </div>
 </div>
@@ -569,6 +569,15 @@ cursor: pointer;
     returnDateContainer.style.display = "block";
   });
 </script>
+<!-- Loader Overlay -->
+<div id="loaderOverlay" class="fixed inset-0 bg-black bg-opacity-40 backdrop-blur-sm z-50 flex items-center justify-center hidden">
+  <div class="flex flex-col items-center">
+    <div class="animate-spin rounded-full h-12 w-12 border-t-4 border-blue-600 border-opacity-70 mb-2"></div>
+    <p class="text-white text-sm font-medium">Calculating Fare...</p>
+  </div>
+</div>
+
+
 <div id="bookingPopup" class="fixed inset-0 bg-black bg-opacity-40 backdrop-blur-sm flex justify-center items-center z-50 hidden">
   <div class="bg-white p-6 rounded-2xl shadow-2xl w-11/12 max-w-sm text-center animate-fade-in text-gray-900 border border-gray-300">
     <h3 class="text-2xl font-bold text-green-600 mb-3">Booking Available</h3>
@@ -577,6 +586,7 @@ cursor: pointer;
     <p id="totalFareInfo" class="text-base text-gray-700 mb-1 font-medium"></p>
     <p id="discountInfo" class="text-sm text-blue-600 italic mb-1"></p>
     <p id="finalFareInfo" class="text-lg text-purple-700 font-semibold mb-3"></p>
+
 
     <p class="text-xs text-gray-500 mt-1">Note: Fare is an estimate and may vary based on exact pickup/drop. <br></p>
 
@@ -599,6 +609,16 @@ cursor: pointer;
     <h3 class="text-2xl font-bold text-green-600 mb-4">Booking Form</h3>
 
     <form id="bookingForm" class="space-y-4 text-left">
+        <!-- Hidden inputs to store above data -->
+  <input type="hidden" id="hiddenPickupDate" name="pickupDate" />
+  <input type="hidden" id="hiddenPickupTime" name="pickupTime" />
+  <input type="hidden" id="hiddenPassengers" name="passengers" />
+  <input type="hidden" id="hiddenCabType" name="cabType" />
+        <input type="hidden" id="hiddenReturnDate" name="returnDate" />
+
+      <input type="hidden" id="fare" name="fare" />
+
+
       <div>
         <label for="name" class="block mb-1 font-medium text-gray-800">Name</label>
         <input id="name" name="name" type="text" required
@@ -620,11 +640,32 @@ cursor: pointer;
           class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#0b1e4d]" />
       </div>
 
-      <button type="submit"
-        class="w-full bg-[#0b1e4d] hover:bg-[#142a75] text-white py-2 rounded-lg font-semibold transition duration-300">
-        Book
-      </button>
-    </form>
+   <button type="submit"
+  id="bookBtn"
+  class="w-full bg-[#0b1e4d] hover:bg-[#142a75] text-white py-2 rounded-lg font-semibold transition duration-300 flex items-center justify-center gap-2">
+  <span id="bookBtnText">Book</span>
+  <span id="bookBtnLoader" class="hidden loader border-white border-t-transparent border-2 rounded-full w-4 h-4 animate-spin"></span>
+</button>
+<style>
+  .loader {
+    border-top-color: transparent;
+    border-right-color: white;
+    border-bottom-color: white;
+    border-left-color: white;
+    border-width: 2px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    animation: spin 0.6s linear infinite;
+  }
+
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+</style>
+
 
     <button onclick="closeFormPopup()"
       class="mt-4 w-full bg-transparent border border-red-600 text-red-600 py-2 rounded-lg font-semibold hover:bg-red-600 hover:text-white transition duration-300">
@@ -632,83 +673,96 @@ cursor: pointer;
     </button>
   </div>
 </div>
-
-
-<!-- Booking Form Modal -->
-<div id="bookingFormPopup" class="fixed inset-0 bg-white flex justify-center items-center z-50 hidden">
-  <div class="bg-white p-6 rounded-2xl shadow-xl w-11/12 max-w-sm text-center animate-fade-in text-gray-900 border border-gray-300">
-    <h3 class="text-2xl font-bold text-green-600 mb-4">Booking Form</h3>
-
-    <form id="bookingForm" class="space-y-4 text-left">
-      <div>
-        <label for="name" class="block mb-1 font-medium text-gray-800">Name</label>
-        <input id="name" name="name" type="text" required
-          class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#0b1e4d]" />
-      </div>
-      <div>
-        <label for="mobile" class="block mb-1 font-medium text-gray-800">Mobile</label>
-        <input id="mobile" name="mobile" type="tel" pattern="[0-9]{10}" required placeholder="10-digit number"
-          class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#0b1e4d]" />
-      </div>
-      <div>
-        <label for="pickup" class="block mb-1 font-medium text-gray-800">Pickup Address</label>
-        <input id="pickup" name="pickup" type="text" required
-          class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#0b1e4d]" />
-      </div>
-      <div>
-        <label for="drop" class="block mb-1 font-medium text-gray-800">Drop Address</label>
-        <input id="drop" name="drop" type="text" required
-          class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#0b1e4d]" />
-      </div>
-
-      <button type="submit"
-        class="w-full bg-[#0b1e4d] hover:bg-[#142a75] text-white py-2 rounded-lg font-semibold transition duration-300">
-        Book
-      </button>
-    </form>
-
-    <button onclick="closeFormPopup()"
-      class="mt-4 w-full bg-transparent border border-red-600 text-red-600 py-2 rounded-lg font-semibold hover:bg-red-600 hover:text-white transition duration-300">
-      Close
-    </button>
-  </div>
-</div>
-
 
 <script>
-  // Elements
-  const bookingPopup = document.getElementById('bookingPopup');
+document.addEventListener('DOMContentLoaded', () => {
   const bookingFormPopup = document.getElementById('bookingFormPopup');
   const openBookingFormBtn = document.getElementById('openBookingFormBtn');
   const bookingForm = document.getElementById('bookingForm');
 
-  // Open booking form popup when Fill Form button clicked
   openBookingFormBtn.addEventListener('click', () => {
     bookingFormPopup.classList.remove('hidden');
+
+    // Copy visible inputs to hidden inputs
+    document.getElementById('hiddenPickupDate').value = document.getElementById('pickupDate').value;
+    document.getElementById('hiddenPickupTime').value = document.querySelector('input[type="time"]').value;
+    document.getElementById('hiddenPassengers').value = document.querySelector('input[type="number"]').value;
+    document.getElementById('hiddenCabType').value = document.querySelector('input[name="cab-type"]:checked').value;
+
+    // If return date is shown, copy it
+    const returnDateEl = document.getElementById('returnDate');
+    if (!returnDateEl.closest('#returnDateContainer').classList.contains('hidden')) {
+      document.getElementById('hiddenReturnDate').value = returnDateEl.value;
+    } else {
+      document.getElementById('hiddenReturnDate').value = '';
+    }
+
+    // Set final fare
+    const finalFareText = document.getElementById('finalFareInfo').innerText || '';
+    const fareAmount = finalFareText.replace(/[^\d]/g, '');
+    document.getElementById('fare').value = fareAmount;
   });
 
-  // Close booking popup
-  function closePopup() {
-    bookingPopup.classList.add('hidden');
-  }
-
-  // Close booking form popup and reset form
-  function closeFormPopup() {
+  window.closeFormPopup = function () {
     bookingFormPopup.classList.add('hidden');
     bookingForm.reset();
-  }
+  };
 
-  // Booking form submission
-  bookingForm.addEventListener('submit', (e) => {
+  bookingForm.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    // You can handle the booking data here (send to backend etc)
-    alert('Booking submitted successfully!');
+    const bookBtn = document.getElementById('bookBtn');
+    const bookBtnText = document.getElementById('bookBtnText');
+    const bookBtnLoader = document.getElementById('bookBtnLoader');
 
-    closeFormPopup();
+    // Show loader
+    bookBtn.disabled = true;
+    bookBtnText.textContent = 'Booking...';
+    bookBtnLoader.classList.remove('hidden');
+
+    const formData = new FormData(bookingForm);
+    const data = Object.fromEntries(formData.entries());
+
+    try {
+      const response = await fetch('/send-booking-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+
+      if (response.ok) {
+        alert('Booking submitted successfully! We’ll inform you shortly!".');
+
+        // Clear visible inputs
+        document.getElementById('pickupDate').value = '';
+        document.querySelector('input[type="time"]').value = '';
+        document.querySelector('input[type="number"]').value = '1';
+        document.querySelector('input[name="cab-type"][value="ac"]').checked = true;
+
+        // Clear hidden inputs
+        document.getElementById('hiddenPickupDate').value = '';
+        document.getElementById('hiddenPickupTime').value = '';
+        document.getElementById('hiddenPassengers').value = '';
+        document.getElementById('hiddenCabType').value = '';
+        document.getElementById('hiddenReturnDate').value = '';
+        document.getElementById('fare').value = '';
+
+        bookingForm.reset();
+        closeFormPopup();
+      } else {
+        alert('Error submitting booking.');
+      }
+    } catch (error) {
+      alert('Network error: ' + error.message);
+    } finally {
+      // Hide loader and restore button
+      bookBtn.disabled = false;
+      bookBtnText.textContent = 'Book';
+      bookBtnLoader.classList.add('hidden');
+    }
   });
+});
 </script>
-
 
 <script>
   const ORS_API_KEY = '5b3ce3597851110001cf624829a67dfe681542c889ee8e7e660c1cb6';
@@ -772,6 +826,9 @@ cursor: pointer;
     document.getElementById("totalFareInfo").innerText = `Total Fare (Before Discount): ₹${fareData.totalFare}`;
     document.getElementById("discountInfo").innerText = `Discount (${fareData.slabUsed}): -₹${fareData.totalDiscount}`;
     document.getElementById("finalFareInfo").innerText = `Estimated Final Fare: ₹${fareData.finalFare}`;
+
+    document.getElementById("fare").value = fareData.finalFare;
+
     document.getElementById("bookingPopup").classList.remove("hidden");
   }
 
@@ -790,6 +847,9 @@ cursor: pointer;
       return;
     }
 
+    const loader = document.getElementById("loaderOverlay");
+    loader.classList.remove("hidden"); // Show loader
+
     try {
       const pickupCoords = await getCoordinates(pickup);
       const destCoords = await getCoordinates(destination);
@@ -803,11 +863,13 @@ cursor: pointer;
     } catch (err) {
       alert("Error fetching distance. Please check the addresses and try again.");
       console.error(err);
+    } finally {
+      loader.classList.add("hidden"); // Hide loader
     }
   });
 </script>
 
-     
+
 <!-- Popular Packages -->
 <section class="py-16 bg-gray-50">
 <div class="container mx-auto px-4">
